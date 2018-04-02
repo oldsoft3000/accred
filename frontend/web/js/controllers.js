@@ -18,9 +18,9 @@ controllers.controller('MainController', ['$scope', '$location', '$window',
 controllers.controller('ContactController', ['$scope', '$http', '$window',
     function($scope, $http, $window) {
         $scope.captchaUrl = 'site/captcha';
-        $scope.contact = function () {
+        $scope.contact = function () { 
             $scope.submitted = true;
-            $scope.errors = {};
+            $scope.errors = {};   
             $http.post('api/contact', $scope.contactModel).then(
                 function (data) {
                     $scope.contactModel = {};
