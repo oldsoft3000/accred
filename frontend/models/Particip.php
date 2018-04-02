@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "participiant".
+ * This is the model class for table "particip".
  *
  * @property int $id
  * @property int $title
@@ -30,14 +30,14 @@ use Yii;
  * @property string $visa_city
  * @property string $dietary_preference
  */
-class Participiant extends \yii\db\ActiveRecord
+class Particip extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'participiant';
+        return 'particip';
     }
 
     /**
@@ -46,12 +46,12 @@ class Participiant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'first_name', 'middle_name', 'last_name', 'gender', 'email', 'date_of_birth', 'citizenship', 'passport_type', 'passport_number', 'organization', 'designation', 'registered_address', 'status', 'phone_number', 'fax_number', 'visa_passport_validity', 'visa_country', 'visa_city', 'dietary_preference'], 'required'],
-            [['id', 'title', 'gender', 'citizenship', 'passport_type', 'passport_number', 'status'], 'integer'],
+            [['title', 'first_name', 'middle_name', 'last_name'], 'required'],
+            [['title', 'gender', 'citizenship', 'passport_type', 'passport_number', 'status'], 'integer'],
             [['date_of_birth'], 'safe'],
             [['first_name', 'middle_name', 'last_name', 'email', 'organization', 'designation', 'registered_address', 'phone_number', 'fax_number', 'visa_passport_validity', 'visa_country', 'visa_city', 'dietary_preference'], 'string', 'max' => 100],
             [['visa_required'], 'string', 'max' => 1],
-            [['id'], 'unique'],
+            ['date_of_birth', 'datetime', 'format' => 'yyyy-MM-dd HH:mm:ss'],
         ];
     }
 
@@ -84,5 +84,14 @@ class Participiant extends \yii\db\ActiveRecord
             'visa_city' => 'Visa City',
             'dietary_preference' => 'Dietary Preference',
         ];
+    }
+    
+    public function beforeValidate()
+    {
+        if ($this->isNewRecord)
+        {
+            $this->date_of_birth = Yii::$app->formatter->asDateTime($this->date_of_birth, 'yyyy-MM-dd HH:mm:ss');
+        }
+        return parent::beforeValidate();
     }
 }
