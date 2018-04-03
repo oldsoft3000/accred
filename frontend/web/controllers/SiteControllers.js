@@ -4,21 +4,21 @@ SiteApp.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'partials/index.html'
+                templateUrl: 'views/site/index.html'
             }).
             when('/about', {
-                templateUrl: 'partials/about.html'
+                templateUrl: 'views/site/about.html'
             }). 
             when('/contact', {
-                templateUrl: 'partials/contact.html',
+                templateUrl: 'views/site/contact.html',
                 controller: 'ContactController',
             }).
             when('/login', {
-                templateUrl: 'partials/login.html',
+                templateUrl: 'views/site/login.html',
                 controller: 'LoginController',
             }).
             when('/dashboard', {
-                templateUrl: 'partials/dashboard.html',
+                templateUrl: 'views/site/dashboard.html',
                 controller: 'DashboardController', 
                 resolve: {
                     response: function(SiteServices) {
@@ -27,11 +27,11 @@ SiteApp.config(['$routeProvider', '$httpProvider',
                 }
             }).
             when('/error', {
-                templateUrl: 'partials/error.html',
+                templateUrl: 'views/site/error.html',
                 controller: 'ErrorController'
             }).
             otherwise({
-                templateUrl: 'partials/404.html'
+                templateUrl: 'views/site/404.html'
             });
         $httpProvider.interceptors.push('authInterceptor');
     }
@@ -72,9 +72,9 @@ SiteApp.controller('DashboardController', ['$scope', 'response',
 SiteApp.controller('ContactController', ['$scope', '$window', 'SiteServices',
     function($scope, $window, SiteServices) {
         $scope.captchaUrl = 'site/captcha';
-        $scope.submitted = true;
-        $scope.error = {}; 
         $scope.contact = function () {
+            $scope.error = {}; 
+            $scope.submitted = true;
             SiteServices.contact($scope.contactModel)
                 .then(successHandler)
                 .catch(errorHandler);

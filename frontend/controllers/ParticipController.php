@@ -3,15 +3,13 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\filters\ContentNegotiator;
+use yii\web\Response;
+use yii\filters\AccessControl;
+use yii\rest\Controller;
+use yii\filters\auth\HttpBearerAuth;
 use app\models\Particip;
 use app\models\ParticipSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\filters\auth\HttpBasicAuth;
-use yii\filters\auth\CompositeAuth;
-use yii\filters\auth\HttpBearerAuth;
-use yii\filters\auth\QueryParamAuth;
 
 
 
@@ -20,48 +18,39 @@ use yii\filters\auth\QueryParamAuth;
  */
 class ParticipController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public $enableCsrfValidation = false;
     
     /**
      * @inheritdoc
      */
-    
-    public function actions()
-    {
-        return [
-            'options' => [
-                'class' => 'yii\rest\OptionsAction',
-            ],
-        ];
-    }
-    
     
     public function behaviors() {
-        return [
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::className(),
-                'cors' => [
-                    // restrict access to
-                    'Origin' => ['http://accred.frontend.client', 'https://www.myserver.com'],
-                    'Access-Control-Request-Method' => ['POST', 'PUT', 'DELETE'],
-                    // Allow only POST and PUT methods
-                    'Access-Control-Request-Headers' => ['*'],
-                    // Allow only headers 'X-Wsse'
-                    'Access-Control-Allow-Credentials' => true,
-                    // Allow OPTIONS caching
-                    'Access-Control-Max-Age' => 3600,
-                    // Allow the X-Pagination-Current-Page header to be exposed to the browser.
-                    'Access-Control-Expose-Headers' => ['X-Pagination-Current-Page'],
-                ],
-            ],
-            /*'authenticator' => [
-                'class' => HttpBearerAuth::className(),
-                'except' => ['options'],
-            ],*/
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::className(),
         ];
+        $behaviors['contentNegotiator'] = [
+            'class' => ContentNegotiator::className(),
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+            ],
+        ];
+        $behaviors['access'] = [
+            'class' => AccessControl::className(),
+                'only' => ['index', 'login', 'logout', 'signup', 'delete'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'signup'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout', 'index'],
+                        'roles' => ['@'],
+                    ],
+                ],
+        ];
+        return $behaviors;
     }
 
     /**
@@ -75,16 +64,16 @@ class ParticipController extends Controller
     
     public function actionIndex()
     {
-        //Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         
-        $searchModel = new ParticipSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new Particip();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $data = $searchModel->find()->asArray()->all();
         
-        return $this->render('index', [
+        /*return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
+        ]);*/
         //Yii::$app->response->headers->set('Access-Control-Allow-Origin', '*');
         return $data;
     }

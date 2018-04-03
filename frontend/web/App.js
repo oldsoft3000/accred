@@ -1,5 +1,7 @@
 'use strict';
 
+var serviceBase = 'http://accred.frontend.server/';
+
 var App = angular.module('App', [
     'ngRoute',
     'mgcrea.ngStrap',
@@ -43,7 +45,7 @@ App.config(function($controllerProvider, $httpProvider) {
 
 App.service('ErrorService', function($location) {
     this.printError = function (error) {
-        this.lastError = error;
+        this.lastError = error.data.message;
         //errorMessage[0] = "code: " + error.data.code;
         //errorMessage[1] = "file: " + error.data.file;
         //errorMessage[2] = "line: " + error.data.line;

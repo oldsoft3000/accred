@@ -26,17 +26,20 @@ return [
             ],
         ],
         'urlManager' => [
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            /*'rules' => [
-                ['class' => 'yii\rest\UrlRule',
-                'controller' => 'particip'],
-                '<controller:\w+>' => '<controller>/index',
-                '<controller:\w+>/<id:\d+>' => '<controller>/index',
+            'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'particip',
+                ],
+                '/' => 'site/index',
+                '<action:\w+>' => 'site/<action>',
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                
-            ],*/
+            ]
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
