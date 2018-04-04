@@ -7,10 +7,12 @@ $params = array_merge(
 );
 
 return [
+    'language' => 'ru-RU',
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
@@ -60,7 +62,6 @@ return [
             'password' => '818181',
             'charset' => 'utf8',
         ],
-        
     ],
     'params' => $params,
 ];

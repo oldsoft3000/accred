@@ -9,9 +9,14 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/styles.css',
+        //'css/styles.scss',
+        'assets/bootstrap/css/bootstrap.min.css',
     ];
     public $js = [
+        //'assets/jquery/jquery.min.js',
+        'assets/popper.js/umd/popper.min.js',
+        'assets/bootstrap/js/bootstrap.min.js',
         'App.js',
         'controllers/SiteControllers.js',
         'controllers/ParticipControllers.js',
@@ -20,7 +25,8 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAssetPlugins',
         'frontend\assets\AngularAsset',
     ];
 }

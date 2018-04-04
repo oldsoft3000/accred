@@ -64,11 +64,9 @@ class ParticipController extends Controller
     
     public function actionIndex()
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        
-        $searchModel = new Particip();
+        $mode = new Particip();
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $data = $searchModel->find()->asArray()->all();
+        $data = $mode->find()->asArray()->all();
         
         /*return $this->render('index', [
             'searchModel' => $searchModel,
@@ -78,17 +76,11 @@ class ParticipController extends Controller
         return $data;
     }
 
-    /**
-     * Displays a single particip model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
+    public function actionView($id = null)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $mode = new Particip();
+        $data = $mode->find()->asArray()->all();
+        return $data;
     }
 
     /**

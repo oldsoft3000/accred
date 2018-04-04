@@ -11,10 +11,21 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', 'ErrorSe
                     return response;
                 }
                 function errorHandler(response) {
-                    ErrorService.printError(response);
+                    return $q.reject(response);
+                }  
+        };
+        
+        obj.signup = function (userModel) {
+            return $http.post('api/signup', userModel)
+                .then(successHandler)
+                .catch(errorHandler);
+                function successHandler(response) {
+                    return response;
+                }
+                function errorHandler(response) {
                     return $q.reject(response);
                 }
-        };
+        }; 
         
         obj.dashboard = function () {
             return $http.get('api/dashboard')

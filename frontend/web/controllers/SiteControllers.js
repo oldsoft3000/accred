@@ -17,6 +17,10 @@ SiteApp.config(['$routeProvider', '$httpProvider',
                 templateUrl: 'views/site/login.html',
                 controller: 'LoginController',
             }).
+            when('/signup', {
+                templateUrl: 'views/site/signup.html',
+                controller: 'SignupController',
+            }).        
             when('/dashboard', {
                 templateUrl: 'views/site/dashboard.html',
                 controller: 'DashboardController', 
@@ -46,6 +50,7 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window',
         $scope.logout = function () {
             delete $window.sessionStorage.access_token;
             $location.path('/login').replace();
+            $('#collapsible-sidebar').collapse('hide');
         };
     }
 ]); 
@@ -53,11 +58,46 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window',
 SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteServices',
     function($scope, $window, $location, SiteServices) {
         $scope.login = function () {
+            $scope.dataLoading = true;
+            $scope.error = {};
             SiteServices.login($scope.userModel)
-                .then(successHandler);
+                .then(successHandler) 
+                .catch(errorHandler);
                 function successHandler(response) {
                     $window.sessionStorage.access_token = response.data.access_token;
-                    $location.path('/dashboard').replace();
+                    $location.path('/particips').replace();
+                    $('#collapsible-sidebar').collapse("show");
+                }
+                function errorHandler(response) {
+                    $scope.dataLoading = false;
+                    angular.forEach(response.data, function (error) {
+                        $scope.error[error.field] = error.message;
+                    });
+                }
+        };
+    }
+]);
+
+SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteServices',
+    function($scope, $window, $location, SiteServices) {
+        $scope.signup = function () {
+            if ($scope.userModel && $scope.userModel.password != $scope.password_verify) {
+                $scope.error["password_verify"] = "Пароли должны сопадать";
+                return;
+            }
+            $scope.dataLoading = true;
+            $scope.error = {};
+            SiteServices.signup($scope.userModel)
+                .then(successHandler)
+                .catch(errorHandler);
+                function successHandler(response) {
+                    $location.path('/').replace();
+                }
+                function errorHandler(response) {
+                    $scope.dataLoading = false;
+                    angular.forEach(response.data, function (error) {
+                        $scope.error[error.field] = error.message;
+                    });
                 }
         };
     }

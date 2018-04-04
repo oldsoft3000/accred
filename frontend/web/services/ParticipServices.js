@@ -5,7 +5,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
         var obj = {};
 
         obj.getparticips = function(){
-            return $http.get(serviceBase + 'particips')
+            return $http.get("particip/view")
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
@@ -18,7 +18,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
         };
         
         obj.deleteparticip = function (participID) {
-            return $http.delete(serviceBase + 'particips/' + participID )
+            return $http.delete("particip/particips/" + participID )
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {

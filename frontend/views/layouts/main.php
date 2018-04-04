@@ -16,59 +16,110 @@ AppAsset::register($this);
 
 <script>paceOptions = {ajax: {trackMethods: ['GET', 'POST']}};</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/red/pace-theme-minimal.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/red/pace-theme-minimal.css" rel="stylesheet" /> 
 </head>
 <body ng-controller="MainController">
 <?php $this->beginBody() ?>
 <div class="wrap">
-    <nav class="navbar-inverse navbar-fixed-top navbar" role="navigation" bs-navbar>
-        <div class="container">
-            <div class="navbar-header">
-                <button ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" type="button" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="#/">My Company</a>
-            </div>
-            <div ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true" class="collapse navbar-collapse" >
-                <ul class="navbar-nav navbar-right nav">
-                    <li data-match-route="/">
-                        <a href="/">Home</a>
-                    </li>
-                    <li data-match-route="/about">
-                        <a href="#!/about">About</a>
-                    </li>
-                    <li data-match-route="/contact">
-                        <a href="#!/contact">Contact</a>
-                    </li>
-                    <li data-match-route="/dashboard" ng-show="loggedIn()" class="ng-hide">
-                        <a href="#!/dashboard">Dashboard</a>
-                    </li>
-                    <li ng-class="{active:isActive('/logout')}" ng-show="loggedIn()" ng-click="logout()"  class="ng-hide">
-                        <a href="">Logout</a>
-                    </li>
-                    <li data-match-route="/login" ng-hide="loggedIn()">
-                        <a href="#!/login">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="container">
-        <div ng-view>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#/!">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!particip/index">Каталог фильмов</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!site/contact">Обратная связь</a>
+                </li>
+            </ul>
         </div>
+    </nav> -->
+    
+    
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-2 col-xl-2 bd-sidebar">
+                <ul class="nav column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#!/login">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!site/about">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!site/contact">Link</a>
+                    </li>
+                 </ul>
+            </div>
+            <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+                <div class="content">
+                    <div ng-view></div>  
+                </div>
+            </main>
+        </div>
+    </div> -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <!-- <div class="navbar-collapse justify-content-end" id="navbarsExampleDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item"> 
+          <a ng-show="loggedIn()" ng-click="logout()" href="" class="btn btn-primary" role="button" aria-disabled="false">Выйти</a>
+        </li>
+      </ul>
+    </div> -->
+  </nav>
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+      <div class="col-12 col-md-2 col-xl-2 sidebar">
+        <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li ng-show="!loggedIn()" class="nav-item">
+            <a class="nav-link" href="#!/login">Личный кабинет</a>
+          </li>
+          <li ng-show="loggedIn()" class="nav-item">
+            <a class="nav-link" href="#/!">Соглашение</a>
+          </li>
+          <li ng-show="loggedIn()" class="nav-item">
+            <a class="nav-link" href="#!site/about">Link</a>
+          </li>
+          <li ng-show="loggedIn()" class="nav-item">
+            <a ng-click="logout()" class="nav-link" href="">Выход</a>
+          </li>
+
+        </ul>
+        </div>
+      </div> 
+
+      <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <div class="content">
+          <!-- ngView: --><div ng-view="" class="ng-scope"><div class="jumbotron text-center ng-scope">
+              <h1>Главная страница</h1>
+
+              <p class="ng-binding">Everyone come and see how good I look!</p>
+            </div></div>  
+        </div>
+      </main>
     </div>
+  </div>
 
 </div>
 
-<footer class="footer">
+<!-- <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <a href="http://blog.neattutorials.com">Neat Tutorials</a> <?= date('Y') ?></p>
         <p class="pull-right"><?= Yii::powered() ?> <?= Yii::getVersion() ?></p>
     </div>
-</footer>
+</footer> -->
 
 <?php $this->endBody() ?>
 </body>

@@ -4,8 +4,13 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/particips', {
-                templateUrl: 'views/particip/index.html',
-                controller: 'IndexController',
+                templateUrl: 'views/particip/view.html',
+                controller: 'ViewController',
+                resolve: {
+                    response: function(ParticipServices) {
+                        return ParticipServices.getparticips();
+                    }
+                }
             }).
             otherwise({
                 templateUrl: 'views/site/404.html'
@@ -14,12 +19,9 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
     }
 ]);
 
-ParticipApp.controller('IndexController', ['$scope', '$http', '$route', 'ParticipServices',
-    function($scope, $http, $route, ParticipServices) {
-        $scope.message = 'Everyone come and see how good I look!';
-        ParticipServices.getparticips().then(function(response){
-            $scope.particips = response.data;
-        });    
+ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
+    function($scope, $http, $route, response, ParticipServices) {
+        $scope.particips = response.data;   
         $scope.deleteparticip = function(filmID) {
             if(confirm("Are you sure to delete film number: " + filmID)==true && filmID>0){
                 ParticipServices.deleteparticip(filmID);    

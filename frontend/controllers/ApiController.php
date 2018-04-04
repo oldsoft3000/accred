@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\LoginForm;
+use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
@@ -91,5 +92,19 @@ class ApiController extends Controller
             $model->validate();
             return $model;
         }
+    }
+    
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post(), '')) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+        $model->validate();
+        return $model;
     }
 }

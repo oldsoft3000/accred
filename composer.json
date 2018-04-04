@@ -21,7 +21,9 @@
         "yiisoft/yii2-jui": "^2.0",
         "bower-asset/angular": "*",
         "bower-asset/angular-route": "*",
-        "bower-asset/angular-strap": "*"
+        "bower-asset/angular-strap": "*",
+        "artem-frolov/yii-sass": "2.*"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
