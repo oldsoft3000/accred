@@ -33,13 +33,14 @@ body {
 }
 
 /*
- * Sidebar
+ * Sidebar 
  */
 
 .sidebar {
     display: block;
     position: fixed;
-    width: 220px;
+    text-align: center;
+    width: 150px;
     height: 100%;
     left: 0;
     z-index: 1000;
@@ -55,9 +56,9 @@ body {
 #main {
     display: block;
     padding-left: 10px;
-    padding-right: 10;
+    padding-right: 10px;
     width: 100%;
-    margin-left: 220px;
+    margin-left: 150px;
     text-align: center;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;

@@ -23,7 +23,7 @@ SiteApp.config(['$routeProvider', '$httpProvider',
             }).    
             when('/agreement', {
                 templateUrl: 'views/site/agreement.html',
-                //controller: 'AgreementController',
+                controller: 'AgreementController',
             }).               
             when('/dashboard', {
                 templateUrl: 'views/site/dashboard.html',
@@ -113,19 +113,18 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
     }
 ]);
 
-/*SiteApp.controller('AgreementController', ['$cookies',
-    function ($cookies) {
-        $scope.isAgreed = function () {
-            if ($cookies) {
-                return $cookies.get('accred_agreed');
-            }
+SiteApp.controller('AgreementController', ['$cookies', '$location', '$scope', 'SiteServices',
+    function ($cookies, $location, $scope, SiteServices) {
+        $scope.isUserAgreed = function () {
+            return SiteServices.isUserAgreed();
         }
         $scope.agree = function () {
-            $cookies.accred_agreed = 1;
+            SiteServices.agree();
+            $location.path('/particips').replace();
         }
 
     }
-]);*/
+]);
 
 SiteApp.controller('DashboardController', ['$scope', 'response',
     function ($scope, response) {

@@ -43,10 +43,10 @@ AppAsset::register($this);
             <a class="nav-link" href="#!/login">Вход в личный кабинет</a>
           </li>
           <li ng-show="loggedIn()" class="nav-item">
-            <a class="nav-link" href="#/!">Соглашение</a>
+            <a class="nav-link" href="#!/agreement">Соглашение</a>
           </li>
           <li ng-show="loggedIn()" class="nav-item">
-            <a class="nav-link" href="#!site/about">Link</a>
+            <a class="nav-link" href="#!/particips">Список участников</a>
           </li>
           <li ng-show="loggedIn()" class="nav-item">
             <a ng-click="logout()" class="nav-link" href="">Выход</a>
