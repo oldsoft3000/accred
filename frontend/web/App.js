@@ -9,8 +9,8 @@ var App = angular.module('App', [
     'ParticipApp'
 ]);
 
-var SiteApp = angular.module('SiteApp', ['ngRoute']);
-var ParticipApp = angular.module('ParticipApp', ['ngRoute']);
+var SiteApp = angular.module('SiteApp', ['ngRoute', 'ngCookies']);
+var ParticipApp = angular.module('ParticipApp', ['ngRoute', 'ngCookies']);
 
 /// Token injector
 

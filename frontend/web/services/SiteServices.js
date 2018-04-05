@@ -1,7 +1,7 @@
 'use strict';
 
-SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', 'ErrorService',
-    function($http, $window, $location, $q, ErrorService) {
+SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookies', 'ErrorService',
+    function($http, $window, $location, $q, $cookies, ErrorService) {
         var obj = {};
         obj.login = function (userModel) {
             return $http.post('api/login', userModel)
@@ -67,6 +67,15 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', 'ErrorSe
                     return $q.reject(response);
                 }
         };
+        
+        obj.isUserAgreed = function() {
+            return $cookies.user_agreed;
+        };
+        
+        obj.agree = function() {
+            $cookies.user_agreed = 1;
+        };
+
         
         
         return obj; 

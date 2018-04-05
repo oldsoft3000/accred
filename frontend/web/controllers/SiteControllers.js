@@ -20,7 +20,11 @@ SiteApp.config(['$routeProvider', '$httpProvider',
             when('/signup', {
                 templateUrl: 'views/site/signup.html',
                 controller: 'SignupController',
-            }).        
+            }).    
+            when('/agreement', {
+                templateUrl: 'views/site/agreement.html',
+                //controller: 'AgreementController',
+            }).               
             when('/dashboard', {
                 templateUrl: 'views/site/dashboard.html',
                 controller: 'DashboardController', 
@@ -55,7 +59,7 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window',
     }
 ]); 
 
-SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteServices',
+SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteServices', 
     function($scope, $window, $location, SiteServices) {
         $scope.login = function () {
             $scope.dataLoading = true;
@@ -64,8 +68,13 @@ SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteSe
                 .then(successHandler) 
                 .catch(errorHandler);
                 function successHandler(response) {
+                    $scope.dataLoading = false;
                     $window.sessionStorage.access_token = response.data.access_token;
-                    $location.path('/particips').replace();
+                    if (SiteServices.isUserAgreed()) {
+                        $location.path('/particips').replace();
+                    } else {
+                        $location.path('/agreement').replace();
+                    }
                     $('#collapsible-sidebar').collapse("show");
                 }
                 function errorHandler(response) {
@@ -88,9 +97,10 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
             $scope.dataLoading = true;
             $scope.error = {};
             SiteServices.signup($scope.userModel)
-                .then(successHandler)
+                .then(successHandler) 
                 .catch(errorHandler);
                 function successHandler(response) {
+                    $scope.dataLoading = false;
                     $location.path('/').replace();
                 }
                 function errorHandler(response) {
@@ -102,6 +112,20 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
         };
     }
 ]);
+
+/*SiteApp.controller('AgreementController', ['$cookies',
+    function ($cookies) {
+        $scope.isAgreed = function () {
+            if ($cookies) {
+                return $cookies.get('accred_agreed');
+            }
+        }
+        $scope.agree = function () {
+            $cookies.accred_agreed = 1;
+        }
+
+    }
+]);*/
 
 SiteApp.controller('DashboardController', ['$scope', 'response',
     function ($scope, response) {
