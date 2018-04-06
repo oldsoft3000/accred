@@ -16,6 +16,10 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                 }  
         };
         
+        obj.logout = function () {
+            delete $window.sessionStorage.access_token;
+        };
+
         obj.signup = function (userModel) {
             return $http.post('api/signup', userModel)
                 .then(successHandler)
@@ -69,18 +73,31 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                 }
         };  
         
+        obj.isLoggedIn = function() {
+            return Boolean($window.sessionStorage.access_token);
+        };
+        
         obj.isUserAgreed = function() {
             var user_agreed = $cookies.get('user_agreed');
-            return user_agreed;
+            if (user_agreed === "1") {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        
+        obj.resetAgree = function() {
+            $cookies.put('user_agreed', '0');
         };
         
         obj.agree = function() {
             var d = new Date();
             var v = new Date();
-            v.setMinutes(d.getMinutes() + 3);
+            v.setDate(d.getDate() + 1);
             $cookies.put('user_agreed', '1', {expires: v});
         };
-
+        
+        
         
         return obj; 
     }

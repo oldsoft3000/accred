@@ -2,54 +2,54 @@
 <h1 class="block_title">Персональная информация</h2>
 <form class="common-block" name="signupForm" ng-submit="create()" role="form">
   <div class="form-group row justify-content-center">
-    <label class="col-2 col-sm-2 col-md-2 col-form-label">Обращение</label>
-    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.title" type="text" class="form-control" id="inputEmail1" placeholder="">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Обращение</label>
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.title" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
         {{ error['username']}}
       </div>
     </div>
   </div>
   <div class="form-group row justify-content-center">
-    <label class="col-2 col-sm-2 col-md-2 col-form-label">Имя</label>
-    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.first_name" type="password" class="form-control" id="inputPassword2" placeholder="">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Имя</label>
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.first_name" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
         {{ error['password']}}
       </div>
     </div>
   </div> 
   <div class="form-group row justify-content-center">
-    <label class="col-2 col-sm-2 col-md-2 col-form-label">Отчество</label>
-    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.middle_name" type="password" class="form-control" id="inputPassword2" placeholder="">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Отчество</label>
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.middle_name" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
         {{ error['password']}}
       </div>
     </div>
   </div> 
   <div class="form-group row justify-content-center">
-    <label class="col-2 col-sm-2 col-md-2 col-form-label">Фамилия</label>
-    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.last_name" type="password" class="form-control" id="inputPassword2" placeholder="">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Фамилия</label>
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.last_name" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
         {{ error['password']}}
       </div>
     </div>
   </div> 
   <div class="form-group row justify-content-center">
-    <label class="col-2 col-sm-2 col-md-2 col-form-label">Пол</label>
-    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.gender" type="password" class="form-control" id="inputPassword2" placeholder="">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Пол</label>
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.gender" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
         {{ error['password']}}
       </div>
     </div>
   </div> 
   <div class="form-group row justify-content-center">
-    <label class="col-2 col-sm-2 col-md-2 col-form-label">Дата рождения</label>
-    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.date_of_birth" type="password" class="form-control" id="inputPassword2" placeholder="">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Дата рождения</label>
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.date_of_birth" type="date" class="form-control" placeholder="">
       <div class="invalid-tooltip">
         {{ error['password']}}
       </div>

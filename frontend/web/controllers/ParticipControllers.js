@@ -34,7 +34,7 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
         };
 }]);
 
-ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
-    function($scope, $http, $route, response, ParticipServices) {
+ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'ParticipServices',
+    function($scope, $http, $route, ParticipServices) {
 
 }]);

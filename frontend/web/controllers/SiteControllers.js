@@ -45,16 +45,15 @@ SiteApp.config(['$routeProvider', '$httpProvider',
     }
 ]);
 
-SiteApp.controller('MainController', ['$scope', '$location', '$window',
-    function ($scope, $location, $window) {
-        $scope.loggedIn = function() {
-            return Boolean($window.sessionStorage.access_token);
+SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteServices',
+    function ($scope, $location, $window, SiteServices) {
+        $scope.isLoggedIn = function() {
+            return SiteServices.isLoggedIn();
         };
 
         $scope.logout = function () {
-            delete $window.sessionStorage.access_token;
+            SiteServices.logout();
             $location.path('/login').replace();
-            $('#collapsible-sidebar').collapse('hide');
         };
         
         $scope.isActivePath = function (route) {
@@ -112,6 +111,7 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
                         .then(successHandler) 
                         .catch(errorHandler);
                         function successHandler(response) {
+                            SiteServices.resetAgree();
                             $location.path('/agreement').replace();
                         }
                         function errorHandler(response) {

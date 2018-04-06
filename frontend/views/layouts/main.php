@@ -44,20 +44,20 @@ AppAsset::register($this);
 
     <div class="sidebar collapse" id="sidebar">
       <ul class="nav"> 
-        <li ng-show="!loggedIn()" class="nav-item">
+        <li ng-show="!isLoggedIn()" class="nav-item">
           <!--ng-class="{'selected-style':isActivePath('/login')||isActivePath('/signup')}"-->
           <a  class="btn btn-outline-secondary nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a>
         </li>
-        <li ng-show="loggedIn()" class="nav-item">
+        <li ng-show="isLoggedIn()" class="nav-item">
           <!--ng-class="{'selected-style':isActivePath('/agreement')}"--> 
           <a class="btn btn-outline-secondary nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a>
         </li>
-        <li ng-show="loggedIn()" class="nav-item">
+        <li ng-show="isLoggedIn()" class="nav-item">
           <!--ng-ng-class="{'selected-style':isActivePath('/particips')}"--> 
           <a class="btn btn-outline-secondary nav-link " role="button" aria-disabled="true" href="#!/particips">Список участников</a>
         </li>
-        <li ng-show="loggedIn()" class="nav-item">
-          <a ng-ng-click="logout()" class="btn btn-outline-secondary nav-link" role="button" aria-disabled="true" href="">Выход</a>
+        <li ng-show="isLoggedIn()" class="nav-item">
+          <a ng-click="logout()" class="btn btn-outline-secondary nav-link" role="button" aria-disabled="true" href="">Выход</a>
         </li>
       </ul>
     </div> 
