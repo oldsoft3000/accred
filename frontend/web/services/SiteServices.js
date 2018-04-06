@@ -4,7 +4,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
     function($http, $window, $location, $q, $cookies, ErrorService) {
         var obj = {};
         obj.login = function (userModel) {
-            return $http.post('api/login', userModel)
+            return $http.post('site/login', userModel)
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
@@ -21,7 +21,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
         };
 
         obj.signup = function (userModel) {
-            return $http.post('api/signup', userModel)
+            return $http.post('site/signup', userModel)
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
@@ -33,7 +33,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
         }; 
         
         obj.dashboard = function () {
-            return $http.get('api/dashboard')
+            return $http.get('site/dashboard')
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
@@ -46,7 +46,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
         };
         
         obj.contact = function ( contactModel ) {
-            return $http.post('api/contact', contactModel)  
+            return $http.post('site/contact', contactModel)  
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
