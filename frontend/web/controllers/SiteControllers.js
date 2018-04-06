@@ -56,6 +56,10 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window',
             $location.path('/login').replace();
             $('#collapsible-sidebar').collapse('hide');
         };
+        
+        $scope.isActivePath = function (route) {
+            return route === $location.path();
+        }; 
     }
 ]); 
 
@@ -69,19 +73,19 @@ SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteSe
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
-                    $window.sessionStorage.access_token = response.data.access_token;
                     if (SiteServices.isUserAgreed()) {
                         $location.path('/particips').replace();
                     } else {
                         $location.path('/agreement').replace();
                     }
-                    $('#collapsible-sidebar').collapse("show");
+                    return response;
                 }
                 function errorHandler(response) {
                     $scope.dataLoading = false;
                     angular.forEach(response.data, function (error) {
                         $scope.error[error.field] = error.message;
                     });
+                    return response;
                 }
         };
     }
@@ -101,7 +105,19 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
-                    $location.path('/').replace();
+                    var userModel = {};
+                    userModel.username = $scope.userModel.username;
+                    userModel.password = $scope.userModel.password;
+                    SiteServices.login(userModel)
+                        .then(successHandler) 
+                        .catch(errorHandler);
+                        function successHandler(response) {
+                            $location.path('/agreement').replace();
+                        }
+                        function errorHandler(response) {
+                            $scope.ErrorService.printError(response);
+                        }
+                    //$location.path('/login').replace();
                 }
                 function errorHandler(response) {
                     $scope.dataLoading = false;

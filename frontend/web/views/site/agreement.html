@@ -1,5 +1,7 @@
 <h1 class="block_title">Соглашение</h1>
 
-<p class="lead">Дамы и господа,<br>Спасибо за интерес, проявленный ко II Всемирному зерновому форуму!</p>
-<input ng-hide="isUserAgreed()" ng-click="agree()" type ="checkbox" aria-label="">
-<label ng-hide="isUserAgreed()" class="form-check-label">Согласие на обработку персональных данных</label>  
+<p class="lead common-text-block">Дамы и господа,<br>Спасибо за интерес, проявленный ко II Всемирному зерновому форуму!</p>
+<div ng-hide="isUserAgreed()"class="d-inline-flex">
+  <input ng-click="agree()" type ="checkbox" aria-label="" style="width:25px;height:25px;margin-right:10px;">
+  <label class="form-check-label">Согласие на обработку персональных данных</label>  
+</div>

@@ -1,39 +1,66 @@
-<div>
-    <h1>Каталог фильмов: добавление фильма</h1>
- 
-    <p>{{ message}}</p>
-    <form role="form" name="myForm">
-        <div class= "form-group" ng-class="{error: myForm.title.$invalid}">
-            <label> Название </label>
-            <div>
-                <input name="title" ng-model="particip.title" type= "text" class= "form-control" placeholder="Название фильма" required/>
-                <span ng-show="myForm.title.$dirty && myForm.title.$invalid" class="help-inline">Название обязательно</span>
-            </div>
-        </div>
-        <div class= "form-group">
-            <label> Описание </label>
-            <div>
-                <textarea name="storyline" ng-model="particip.first_name" class= "form-control" placeholder= "Описание фильма"></textarea>
-            </div>
-        </div>
-        <div class= "form-group" ng-class="{error: myForm.director.$invalid}">
-            <label> Режиссер </label>
-            <div>
-                <input name="director" ng-model="particip.middle_name" type= "text" class= "form-control" placeholder="Режиссер" required/>
-                <!--<span ng-show="myForm.director.$dirty && myForm.director.$invalid" class="help-inline">Режиссер обязателен</span>-->
-            </div>
-        </div>
-        <div class= "form-group" ng-class="{error: myForm.year.$invalid}">
-            <label> Год </label>
-            <div>
-                <input name="year" ng-model="particip.last_name" type= "text" class= "form-control" placeholder="Год год выпуска" required/>
-                <span ng-show="myForm.year.$dirty && myForm.year.$invalid" class="help-inline">Год обязателен</span>
-            </div>
-        </div>
- 
-        <a href="#/particip/index" class="btn btn-default">Cancel</a>
-        <button ng-click="createparticip(particip);" 
-                ng-disabled="myForm.$invalid"
-                type="submit" class="btn btn-default">Submit</button>
-    </form>
-</div>
+
+<h1 class="block_title">Персональная информация</h2>
+<form class="common-block" name="signupForm" ng-submit="create()" role="form">
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Обращение</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.title" type="text" class="form-control" id="inputEmail1" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['username']}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Имя</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.first_name" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['password']}}
+      </div>
+    </div>
+  </div> 
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Отчество</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.middle_name" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['password']}}
+      </div>
+    </div>
+  </div> 
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Фамилия</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.last_name" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['password']}}
+      </div>
+    </div>
+  </div> 
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Пол</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.gender" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['password']}}
+      </div>
+    </div>
+  </div> 
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Дата рождения</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.date_of_birth" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['password']}}
+      </div>
+    </div>
+  </div> 
+
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-outline-secondary">Зарегистрироваться</button>
+      <a href="#!/login" class="btn btn-link text-dark">Отменить</a>
+      <img ng-if="dataLoading" style="width: 16px; margin-top: 10px; position: fixed;" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+  </div>
+</form>

@@ -8,6 +8,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
+                    $window.sessionStorage.access_token = response.data.access_token;
                     return response;
                 }
                 function errorHandler(response) {
@@ -66,17 +67,20 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                     ErrorService.printError(response);
                     return $q.reject(response);
                 }
-        };
+        };  
         
         obj.isUserAgreed = function() {
-            return $cookies.user_agreed;
+            var user_agreed = $cookies.get('user_agreed');
+            return user_agreed;
         };
         
         obj.agree = function() {
-            $cookies.user_agreed = 1;
+            var d = new Date();
+            var v = new Date();
+            v.setMinutes(d.getMinutes() + 3);
+            $cookies.put('user_agreed', '1', {expires: v});
         };
 
-        
         
         return obj; 
     }

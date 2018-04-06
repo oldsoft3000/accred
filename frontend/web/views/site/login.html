@@ -1,35 +1,33 @@
-<div class="col-md-10 col-md-offset-3 mx-auto">
-  <h2 class="text-center">Авторизоваться</h2>
-  <form name="loginForm" ng-submit="login()" role="form">
-    <div class="form-group row justify-content-center">
-      <label class="col-2 col-form-label">Логин</label>
-      <div class="col-6">
-        <input ng-keypress="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.username" type="text" class="form-control" id="inputEmail1" placeholder="">
-        <div class="invalid-tooltip">
-          {{ error['username']}}
-        </div>
+
+<h1 class="block_title">Авторизоваться</h2>
+<form class="common-block" name="loginForm" ng-submit="login()" role="form">
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Логин</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.username" type="text" class="form-control" id="inputEmail1" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['username']}}
       </div>
     </div>
-    <div class="form-group row justify-content-center">
-      <label class="col-2 col-form-label">Пароль</label>
-      <div class="col-6">
-        <input ng-keypress="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.password" type="password" class="form-control" id="inputPassword2" placeholder="Password">
-        <div class="invalid-tooltip">
-          {{ error['password']}}
-        </div>
-      </div>
-    </div> 
-
-    <div class="form-group row justify-content-center">
-      <div class="col-10">
-        <button type="submit" class="btn btn-primary">Войти</button>
-        <a href="#!/signup" class="btn btn-link">Зарегистрируйтесь</a>
-        <img style="width: 16px; margin-top: 10px; position: fixed;" ng-show="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-      </div>
-      <div class="col-1">
+  </div>
+  <div class="form-group row justify-content-center">
+    <label class="col-2 col-sm-2 col-md-2 col-form-label">Пароль</label>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.password" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['password']}}
       </div>
     </div>
-  </form>
-</div> 
+  </div> 
 
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" class="btn btn-outline-secondary">Войти</button>
+      <a href="#!/signup" class="btn btn-link text-dark">Зарегистрируйтесь</a>
+      <img style="width: 16px; margin-top: 10px; position: fixed;" ng-show="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+    <div class="col-1">
+    </div>
+  </div>
+</form>
 

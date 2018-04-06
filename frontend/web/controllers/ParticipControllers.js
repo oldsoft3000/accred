@@ -12,6 +12,10 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
                     }
                 }
             }).
+            when('/create', {
+                templateUrl: 'views/particip/create.html',
+                controller: 'CreateController',
+            }).
             otherwise({
                 templateUrl: 'views/site/404.html'
             });
@@ -28,4 +32,9 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
                 $route.reload();
             }
         };
+}]);
+
+ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
+    function($scope, $http, $route, response, ParticipServices) {
+
 }]);

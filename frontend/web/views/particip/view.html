@@ -1,7 +1,7 @@
 <div>
-  <h1>Список участников</h1>    
+  <h1 class="block_title">Список участников</h1>    
   <p>{{ message}}</p>
-  <div ng-show="particips.length > 0">
+  <div class="common-block" ng-show="particips.length > 0">
     <table class="table table-striped table-hover">
       <thead>
       <th>Полное имя</th>
@@ -41,9 +41,9 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> 
   </div>
   <div>
-    <a class="btn btn-primary" href="#" role="button">Добавить участника</a>
+    <a class="btn btn-outline-secondary" href="#!/create" role="button">Добавить участника</a>
   </div>
 </div>
