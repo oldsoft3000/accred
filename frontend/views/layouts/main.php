@@ -24,7 +24,7 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
 
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#sidebar" aria-expanded="false" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#sidebar" aria-expanded="true" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -42,7 +42,7 @@ AppAsset::register($this);
     </nav>
 
 
-    <div class="sidebar collapse" id="sidebar">
+    <div class="sidebar collapse show" id="sidebar">
       <ul class="nav"> 
         <li ng-show="!isLoggedIn()" class="nav-item">
           <!--ng-class="{'selected-style':isActivePath('/login')||isActivePath('/signup')}"-->

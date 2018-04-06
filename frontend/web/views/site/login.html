@@ -2,7 +2,7 @@
 <h1 class="block_title">Авторизоваться</h2>
 <form class="common-block" name="loginForm" ng-submit="login()" role="form">
   <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Логин</label>
+    <label class="col-sm-3 col-md-2 col-lg-2 col-xl-2 col-form-label">Логин</label>
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
       <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.username" type="text" class="form-control" id="inputEmail1" placeholder="">
       <div class="invalid-tooltip">
@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Пароль</label>
+    <label class="col-sm-3 col-md-2 col-lg-2 col-xl-2 col-form-label">Пароль</label>
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
       <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.password" type="password" class="form-control" id="inputPassword2" placeholder="">
       <div class="invalid-tooltip">

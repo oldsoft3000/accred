@@ -1,57 +1,108 @@
 
-<h1 class="block_title">Персональная информация</h2>
+<h1 class="block_title">Персональная информация</h1>
 <form class="common-block" name="signupForm" ng-submit="create()" role="form">
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Обращение</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.title" type="text" class="form-control" placeholder="">
+  <div class="form-group row required">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label">Обращение</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['title'] = ''" ng-class="{
+          'is- invalid': error['title'] }" ng-model="userModel.title" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
-        {{ error['username']}}
+        {{ error['title']}}
       </div>
     </div>
   </div>
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Имя</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.first_name" type="text" class="form-control" placeholder="">
+
+  <div class="form-group row required">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label">Фамилия</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['last_name'] = ''" ng-class="{
+          'is- invalid': error['last_name'] }" ng-model="userModel.last_name" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
-        {{ error['password']}}
+        {{ error['last_name']}}
       </div>
     </div>
   </div> 
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Отчество</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.middle_name" type="text" class="form-control" placeholder="">
+
+  <div class="form-group row required">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label">Имя</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['first_name'] = ''" ng-class="{
+          'is- invalid': error['first_name'] }" ng-model="userModel.first_name" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
-        {{ error['password']}}
+        {{ error['first_name']}}
       </div>
     </div>
   </div> 
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Фамилия</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.last_name" type="text" class="form-control" placeholder="">
+  <div class="form-group row">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label">Отчество</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['middle_name'] = ''" ng-class="{
+          'is- invalid': error['middle_name'] }" ng-model="userModel.middle_name" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
-        {{ error['password']}}
+        {{ error['middle_name']}}
       </div>
     </div>
   </div> 
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Пол</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.gender" type="text" class="form-control" placeholder="">
+
+  <div class="form-group row required">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+      <label class="col-form-label" style="line-height: 50%">Фамилия</label>
+      <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['last_name_latin'] = ''" ng-class="{
+          'is- invalid': error['last_name_latin'] }" ng-model="userModel.last_name_latin" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
-        {{ error['password']}}
+        {{ error['last_name_latin']}}
       </div>
     </div>
   </div> 
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-form-label">Дата рождения</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.date_of_birth" type="date" class="form-control" placeholder="">
+
+  <div class="form-group row required">
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+      <label class="col-form-label" style="line-height: 50%">Имя</label>
+      <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['first_name_latin'] = ''" ng-class="{
+          'is- invalid': error['first_name_latin'] }" ng-model="userModel.first_name_latin" type="text" class="form-control" placeholder="">
       <div class="invalid-tooltip">
-        {{ error['password']}}
+        {{ error['first_name_latin']}}
+      </div>
+    </div>
+  </div> 
+
+  <div class="form-group row required">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label">Пол</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['gender'] = ''" ng-class="{
+          'is- invalid': error['gender'] }" ng-model="userModel.gender" type="text" class="form-control" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['gender']}}
+      </div>
+    </div>
+  </div> 
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label">Фотография</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['photo'] = ''" ng-class="{
+          'is- invalid': error['photo'] }" ng-model="userModel.photo" type="text" class="form-control" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['photo']}}
+      </div>
+    </div>
+  </div> 
+
+  <h1 class="block_title my-5">Пасортные данные</h1>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-1 col-form-label">Дата рождения</label>
+    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+      <input ng-click="error['date_of_birth'] = ''" ng-class="{
+          'is- invalid': error['date_of_birth'] }" ng-model="userModel.date_of_birth" type="date" class="form-control" placeholder="">
+      <div class="invalid-tooltip">
+        {{ error['date_of_birth']}}
       </div>
     </div>
   </div> 
