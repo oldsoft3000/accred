@@ -22,7 +22,7 @@ body {
  */
 
 .sidebar {
-    position: fixed;
+    position: absolute;
     width: 220px;
     height: auto;
     z-index: 1000;
