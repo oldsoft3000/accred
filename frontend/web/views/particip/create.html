@@ -7,10 +7,10 @@
       <select ng-click="error['title'] = ''"
               ng-class="{'is-invalid': error['title'] }"
               ng-model="userModel.title" type="text" class="form-control">
-        <option selected value="0" disabled>Выберите обращение</option>
+        <option selected value="" disabled>Выберите обращение</option>
         <option value="1">Г-н</option>
         <option value="2">Г-жа</option>
-      </select>
+      </select> 
       <div class="invalid-tooltip">
         {{ error['title']}}
       </div>
@@ -88,7 +88,7 @@
       <select ng-click="error['gender'] = ''"
               ng-class="{'is-invalid': error['gender'] }"
               ng-model="userModel.gender" type="text" class="form-control">
-        <option selected value="0" disabled>Выберите пол</option>
+        <option selected value="" disabled>Выберите пол</option>
         <option value="1">Мужской</option>
         <option value="2">Женский</option>
       </select>

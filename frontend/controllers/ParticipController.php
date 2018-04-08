@@ -45,7 +45,7 @@ class ParticipController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'delete'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -129,9 +129,10 @@ class ParticipController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-        
-        return $this->actionIndex();
+        $model = $this->findModel($id);
+        $model->delete();
+          
+        return $model;
     }
 
     /**

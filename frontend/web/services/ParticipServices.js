@@ -29,7 +29,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
         };
         
         obj.deleteparticip = function (participID) {
-            return $http.delete("particip/particips/" + participID )
+            return $http.delete("particips/" + participID )
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {

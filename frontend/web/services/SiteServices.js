@@ -92,7 +92,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
         obj.agree = function() {
             var d = new Date();
             var v = new Date();
-            v.setDate(d.getDate() + 1);
+            v.setDate(d.getDate() + 365);
             $cookies.put('user_agreed', '1', {expires: v});
         };
 
