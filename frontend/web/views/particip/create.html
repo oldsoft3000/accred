@@ -7,9 +7,9 @@
       <select ng-click="error['title'] = ''"
               ng-class="{'is-invalid': error['title'] }"
               ng-model="userModel.title" type="text" class="form-control">
-        <option selected value="" disabled>Выберите обращение</option>
-        <option>Г-н</option>
-        <option>Г-жа</option>
+        <option selected value="0" disabled>Выберите обращение</option>
+        <option value="1">Г-н</option>
+        <option value="2">Г-жа</option>
       </select>
       <div class="invalid-tooltip">
         {{ error['title']}}
@@ -60,7 +60,7 @@
     <div class="col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5">
       <input ng-click="error['last_name_latin'] = ''"
              ng-class="{'is-invalid': error['last_name_latin'] }"
-             ng-model="userModel.last_name_latin" type="text" class="form-control" placeholder="">
+             ng-model="userModel.last_name_latin" type="text" class="form-control" placeholder="" only-latin>
       <div class="invalid-tooltip">
         {{ error['last_name_latin']}}
       </div>
@@ -75,7 +75,7 @@
     <div class="col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5">
       <input ng-click="error['first_name_latin'] = ''"
              ng-class="{'is-invalid': error['first_name_latin'] }"
-             ng-model="userModel.first_name_latin" type="text" class="form-control" placeholder="">
+             ng-model="userModel.first_name_latin" type="text" class="form-control" placeholder="" only-latin>
       <div class="invalid-tooltip">
         {{ error['first_name_latin']}}
       </div>
@@ -88,9 +88,9 @@
       <select ng-click="error['gender'] = ''"
               ng-class="{'is-invalid': error['gender'] }"
               ng-model="userModel.gender" type="text" class="form-control">
-        <option selected value="" disabled>Выберите пол</option>
-        <option>Мужской</option>
-        <option>Женский</option>
+        <option selected value="0" disabled>Выберите пол</option>
+        <option value="1">Мужской</option>
+        <option value="2">Женский</option>
       </select>
       <div class="invalid-tooltip">
         {{ error['gender']}}
@@ -129,7 +129,8 @@
     <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2">
       <input ng-click="error['passport_series'] = ''"
              ng-class="{'is-invalid': error['passport_series'] }"
-             ng-model="userModel.passport_series" type="text" class="form-control" placeholder="Серия">
+             ng-model="userModel.passport_series" type="text" class="form-control" placeholder="Серия"
+             cleave="options.digits_4">
       <div class="invalid-tooltip">
         {{ error['passport_series']}}
       </div>
@@ -137,7 +138,8 @@
     <div class="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-3">
       <input ng-click="error['passport_number'] = ''"
              ng-class="{'is-invalid': error['passport_number'] }"
-             ng-model="userModel.passport_number" type="text" class="form-control" placeholder="Номер">
+             ng-model="userModel.passport_number" type="text" class="form-control" placeholder="Номер"
+             cleave="options.digits_6">
       <div class="invalid-tooltip">
         {{ error['passport_number']}}
       </div>
@@ -261,7 +263,7 @@
     <div class="col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5">
       <input ng-click="error['organization_latin'] = ''"
              ng-class="{'is-invalid': error['organization_latin'] }"
-             ng-model="userModel.organization_latin" type="text" class="form-control" placeholder="">
+             ng-model="userModel.organization_latin" type="text" class="form-control" placeholder="" only-latin>
       <div class="invalid-tooltip">
         {{ error['organization_latin']}}
       </div>
@@ -275,7 +277,7 @@
     <div class="col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5">
       <input ng-click="error['position_latin'] = ''"
              ng-class="{'is-invalid': error['position_latin'] }"
-             ng-model="userModel.position_latin" type="text" class="form-control" placeholder="">
+             ng-model="userModel.position_latin" type="text" class="form-control" name="position_latin" placeholder="" only-latin>
       <div class="invalid-tooltip">
         {{ error['position_latin']}}
       </div>
@@ -300,7 +302,7 @@
           ng-class="{'is-invalid': error['phone_number'] }"
           ng-model="userModel.phone_number"
           placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number"
-          cleave="options.custom">
+          cleave="options.telephone">
       <div class="invalid-tooltip">
         {{ error['phone_number']}}
       </div>

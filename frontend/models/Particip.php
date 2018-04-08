@@ -49,16 +49,16 @@ class Particip extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'gender', 'citizenship', 'passport_series', 'passport_number'], 'integer'],
+            [['title', 'gender', 'passport_series', 'passport_number'], 'integer'],
             [['title','first_name', 'last_name', 'email', 'date_of_birth',
               'registration_address', 'phone_number', 'visa_passport_validity', 'visa_country', 'visa_city',
               'place_of_birth', 'first_name_latin', 'last_name_latin', 'position',
               'position_latin','citizenship','passport_series','passport_number'], 'required'],
             [['photo'], 'string'],
-            ['phone_number','match','pattern'=>'\+[0-9]{1}([0-9]{3}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}', 'message' => 'Your username can only contain alphanumeric characters, underscores and dashes.'],
             [['first_name', 'middle_name', 'last_name', 'email', 'organization', 'registration_address',
                 'phone_number', 'visa_country', 'visa_city', 'place_of_birth', 'first_name_latin',
                 'last_name_latin','position', 'organization_latin', 'position_latin'], 'string', 'max' => 100],
+            [['citizenship','visa_country'], 'string', 'max' => 11],
             [['visa_required'], 'string', 'max' => 1],
         ];
     }

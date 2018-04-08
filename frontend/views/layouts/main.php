@@ -73,32 +73,6 @@ AppAsset::register($this);
     
     <script type="text/javascript">
 
-       /*$(window).on('resize', function(){
-            var container = document.getElementById ("main");
-            if (container.scrollWidth > container.clientWidth) {
-               $('#main').css('margin-left', '0px');
-               $('#sidebar').css('position', 'relative');
-               $('#sidebar').css('width', '100%');
-            }
-      });*/
-        // Wrap IIFE around your code
-
-        function isBreakpoint( alias ) {
-            return $('.device-' + alias).is(':visible');
-        }
-        
-        var intervalID = setInterval(function() {
-            if( isBreakpoint('sm') ) {
-                //$('#sidebar').collapse('hide');
-                //$('navbar-toggler').last().addClass("collapsed");
-                //$('#sidebar').last().removeClass("show");
-                
-            } else {
-               //$('#sidebar').collapse('show');
-               //$('navbar-toggler').last().removeClass("collapsed");
-               //$('#sidebar').last().addClass("show");
-            }
-        }, 300 );
         
     </script>
   </body>

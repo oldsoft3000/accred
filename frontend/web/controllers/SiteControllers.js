@@ -62,18 +62,30 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteSer
         
 
         $scope.userModel = {
+            telephone: '',
+            digits_4: '',
+            digits_6: ''
         };
 
         $scope.options = {
-            custom: {
+            telephone: {
                 numericOnly: true,
                 blocks: [2, 3, 3, 2, 2],
                 delimiters: ['(',')','-','-'],
                 prefix: '+',
-                noImmediatePrefix: true
-            }
+                noImmediatePrefix: true,
+            },  
+            digits_4: {
+                numericOnly: true,
+                blocks: [4],
+            },  
+            digits_6: {
+                numericOnly: true,
+                blocks: [6],
+            },  
+            
         };
- 
+   
     }
 ]); 
 
@@ -198,4 +210,21 @@ SiteApp.controller('ContactController', ['$scope', '$window', 'SiteServices',
 
 
 
-       
+SiteApp.directive('onlyLatin', function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, element, attr, ctrl) {
+        function inputValue(val) {
+            var transformedInput = val.replace(/[^/.,:0-9a-zA-Z\s]/g, '');
+            //console.log(transformedInput);
+            if (transformedInput !== val) {
+              ctrl.$setViewValue(transformedInput);
+              ctrl.$render();
+            }
+            return transformedInput;
+        }            
+        ctrl.$parsers.push(inputValue);
+      }
+    };
+});
+   
