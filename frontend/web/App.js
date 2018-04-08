@@ -6,7 +6,8 @@ var App = angular.module('App', [
     'ngRoute',
     'mgcrea.ngStrap',
     'SiteApp',
-    'ParticipApp'
+    'ParticipApp',
+    'cleave.js'
 ]);
 
 var SiteApp = angular.module('SiteApp', ['ngRoute', 'ngCookies']);

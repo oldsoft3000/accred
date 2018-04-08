@@ -298,7 +298,9 @@
     <div class="col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5">
       <input
           ng-class="{'is-invalid': error['phone_number'] }"
-          ng-model="userModel.phone_number" placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number">
+          ng-model="userModel.phone_number"
+          placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number"
+          cleave="options.custom">
       <div class="invalid-tooltip">
         {{ error['phone_number']}}
       </div>

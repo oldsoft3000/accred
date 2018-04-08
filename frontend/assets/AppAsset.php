@@ -17,6 +17,8 @@ class AppAsset extends AssetBundle
         //'assets/jquery/jquery.min.js',
         'assets/popper.js/umd/popper.min.js',
         'assets/bootstrap/js/bootstrap.min.js',
+        'assets/cleave/cleave-angular.min.js',
+        'assets/cleave/addons/cleave-phone.ru.js',
         'App.js',
         'controllers/SiteControllers.js',
         'controllers/ParticipControllers.js',

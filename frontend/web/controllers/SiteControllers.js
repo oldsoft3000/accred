@@ -59,6 +59,21 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteSer
         $scope.isActivePath = function (route) {
             return route === $location.path();
         }; 
+        
+
+        $scope.userModel = {
+        };
+
+        $scope.options = {
+            custom: {
+                numericOnly: true,
+                blocks: [2, 3, 3, 2, 2],
+                delimiters: ['(',')','-','-'],
+                prefix: '+',
+                noImmediatePrefix: true
+            }
+        };
+ 
     }
 ]); 
 
@@ -179,3 +194,8 @@ SiteApp.controller('ContactController', ['$scope', '$window', 'SiteServices',
                 }
         };
 }]);
+
+
+
+
+       

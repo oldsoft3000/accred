@@ -95,9 +95,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
             v.setDate(d.getDate() + 1);
             $cookies.put('user_agreed', '1', {expires: v});
         };
-        
-        
-        
+
         return obj; 
     }
 ]);
