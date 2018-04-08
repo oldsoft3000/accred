@@ -36,5 +36,22 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
 
 ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'ParticipServices',
     function($scope, $http, $route, ParticipServices) {
-
+        $scope.create = function () {
+            $scope.dataLoading = true;
+            $scope.error = {};
+            ParticipServices.create($scope.userModel)
+                .then(successHandler) 
+                .catch(errorHandler);
+                function successHandler(response) {
+                    $scope.dataLoading = false;
+                    return response;
+                }
+                function errorHandler(response) {
+                    $scope.dataLoading = false;
+                    angular.forEach(response.data, function (error) {
+                        $scope.error[error.field] = error.message;
+                    });
+                    return response;
+                }
+        };
 }]);

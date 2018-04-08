@@ -217,3 +217,28 @@ body {
   content:"*";
   color:red;
 }
+
+
+.required:after {
+  content: "*";
+  position: absolute;
+  top: 0px;
+  right: 6px;
+  color:red;
+}
+
+
+
+
+
+
+
+/*input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }*/

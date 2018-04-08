@@ -92,13 +92,12 @@ class ParticipController extends Controller
     {
         $model = new Particip();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save()) {
+            return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+        } else {
+            $model->validate();
+            return $model;
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
