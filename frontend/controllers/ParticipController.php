@@ -92,7 +92,7 @@ class ParticipController extends Controller
     {
         $model = new Particip();
 
-        if ($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save()) {
+        if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->save()) {
             return ['access_token' => Yii::$app->user->identity->getAuthKey()];
         } else {
             $model->validate();

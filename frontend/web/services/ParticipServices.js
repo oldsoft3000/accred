@@ -12,7 +12,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
                     return response;
                 }
                 function errorHandler(response) {
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }  
         };
 
@@ -24,8 +24,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
                     return response;
                 }
                 function errorHandler(response) {
-                    ErrorService.printError(response);
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }
         };
         
@@ -37,8 +36,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
                     $route.reload();
                 }
                 function errorHandler(response){
-                    ErrorService.printError(response);
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }    
         };  
 

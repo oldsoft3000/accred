@@ -12,7 +12,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                     return response;
                 }
                 function errorHandler(response) {
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }  
         };
         
@@ -28,7 +28,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                     return response;
                 }
                 function errorHandler(response) {
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }
         }; 
         
@@ -41,7 +41,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                 }
                 function errorHandler(response) {
                     ErrorService.printError(response);
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }
         };
         
@@ -55,7 +55,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                 function errorHandler(response) {
                     //return response;
                     //ErrorService.printError(response);
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }
         };
         
@@ -68,8 +68,7 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
                     return response;
                 }
                 function errorHandler(response) {
-                    ErrorService.printError(response);
-                    return $q.reject(response);
+                    return ErrorService.handleError(response); 
                 }
         };  
         

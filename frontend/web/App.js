@@ -43,14 +43,15 @@ App.config(function($controllerProvider, $httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });
 
-App.service('ErrorService', function($location) {
-    this.printError = function (error) {
-        this.lastError = error.data.message;
-        //errorMessage[0] = "code: " + error.data.code;
-        //errorMessage[1] = "file: " + error.data.file;
-        //errorMessage[2] = "line: " + error.data.line;
-        //errorMessage[3] = "message: " + error.data.message; 
-        $location.path("/error" ).replace();
+App.service('ErrorService', function($location, $q) {
+    this.handleError = function (response) {
+        if (response.status === 500) {
+            this.lastError = response.data.message;
+            $location.path("/error" ).replace(); 
+        } else {
+            return $q.reject(response);
+        }
+        
     };
 });
 
