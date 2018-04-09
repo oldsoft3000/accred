@@ -105,4 +105,10 @@ class Particip extends \yii\db\ActiveRecord
         }*/
         return parent::beforeValidate();
     }
+    
+    public function afterFind()
+    {
+        //$this->date_of_birth = date('Y/m/d', strtotime($this->date_of_birth));
+        //$this-> visa_passport_validity = date('Y/m/d', strtotime($this->visa_passport_validity));
+    }
 }

@@ -16,8 +16,14 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
                 }  
         };
 
-        obj.getparticips = function(){
-            return $http.get("particip/view")
+        obj.view = function(id){
+            var route = '';
+            if (typeof id !== 'undefined') {
+                route = "particips/" + id;
+            } else {
+                route = "particips";
+            }
+            return $http.get(route)
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
@@ -28,8 +34,8 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
                 }
         };
         
-        obj.deleteparticip = function (participID) {
-            return $http.delete("particips/" + participID )
+        obj.delete = function (id) {
+            return $http.delete("particips/" + id )
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {

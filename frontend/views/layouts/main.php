@@ -54,7 +54,7 @@ AppAsset::register($this);
         </li>
         <li ng-show="isLoggedIn()" class="nav-item">
           <!--ng-ng-class="{'selected-style':isActivePath('/particips')}"--> 
-          <a class="btn btn-outline-secondary nav-link " role="button" aria-disabled="true" href="#!/particips">Список участников</a>
+          <a class="btn btn-outline-secondary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a>
         </li>
         <li ng-show="isLoggedIn()" class="nav-item">
           <a ng-click="logout()" class="btn btn-outline-secondary nav-link" role="button" aria-disabled="true" href="">Выход</a>

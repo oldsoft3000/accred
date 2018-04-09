@@ -100,7 +100,7 @@ SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteSe
                 function successHandler(response) {
                     $scope.dataLoading = false;
                     if (SiteServices.isUserAgreed()) {
-                        $location.path('/particips').replace();
+                        $location.path('/particip/view').replace();
                     } else {
                         $location.path('/agreement').replace();
                     }

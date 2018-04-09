@@ -64,23 +64,14 @@ class ParticipController extends Controller
     
     public function actionIndex()
     {
-        $mode = new Particip();
-        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $data = $mode->find()->asArray()->all();
-        
-        /*return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);*/
-        //Yii::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+        $model = new Particip();
+        $data = $model->find()->asArray()->all();
         return $data;
     }
 
     public function actionView($id = null)
     {
-        $mode = new Particip();
-        $data = $mode->find()->asArray()->all();
-        return $data;
+        return $this->findModel($id);
     }
 
     /**
