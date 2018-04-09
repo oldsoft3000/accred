@@ -82,10 +82,8 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteSer
             digits_6: {
                 numericOnly: true,
                 blocks: [6],
-            },  
-            
+            },   
         };
-   
     }
 ]); 
 
@@ -227,4 +225,3 @@ SiteApp.directive('onlyLatin', function () {
       }
     };
 });
-   

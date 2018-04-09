@@ -1,7 +1,5 @@
 'use strict';
 
-var serviceBase = 'http://accred.frontend.server/';
-
 var App = angular.module('App', [
     'ngRoute',
     'mgcrea.ngStrap',

@@ -15,6 +15,18 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
                     return ErrorService.handleError(response); 
                 }  
         };
+        
+        obj.update = function (userModel) {
+            return $http.put('particips/' + userModel.id, userModel)
+                .then(successHandler)
+                .catch(errorHandler);
+                function successHandler(response) {
+                    return response;
+                }
+                function errorHandler(response) {
+                    return ErrorService.handleError(response); 
+                }  
+        };
 
         obj.view = function(id){
             var route = '';

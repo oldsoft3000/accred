@@ -219,7 +219,7 @@ body {
 }
 
 
-.required:after {
+.required_ext:after {
   content: "*";
   position: absolute;
   top: 0px;
@@ -234,14 +234,14 @@ body {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .6)!important;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0, 0, 0, .6)!important;
 }
- 
 
-/*input[type="date"]:before {
-    content: attr(placeholder) !important;
-    color: #aaa;
-    margin-right: 0.5em;
-  }
-  input[type="date"]:focus:before,
-  input[type="date"]:valid:before {
-    content: "";
-  }*/
+/*placeholder for input*/
+input[type="date"]:not(.has-value):before{
+  color: gray;
+  content: attr(placeholder);
+  padding-right: 5px;
+}
+/*placeholder for select*/
+ select:invalid { 
+    color: red;
+ }

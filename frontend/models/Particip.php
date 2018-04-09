@@ -49,17 +49,19 @@ class Particip extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'gender', 'passport_series', 'passport_number'], 'integer'],
-            [['title','first_name', 'last_name', 'email', 'date_of_birth',
-              'registration_address', 'phone_number', 'visa_passport_validity', 'visa_country', 'visa_city',
+            [['title', 'gender', 'passport_series', 'passport_number', 'visa_required'], 'integer'],
+            [['title','first_name', 'last_name', 'gender', 'email', 'date_of_birth',
+              'registration_address', 'phone_number', 
               'place_of_birth', 'first_name_latin', 'last_name_latin', 'position',
               'position_latin','citizenship','passport_series','passport_number'], 'required'],
+            [['visa_passport_validity', 'visa_country', 'visa_city'], 'required', 'when' => function($model) {
+                return $model->visa_required == '1';
+            }],
             [['photo'], 'string'],
             [['first_name', 'middle_name', 'last_name', 'email', 'organization', 'registration_address',
                 'phone_number', 'visa_country', 'visa_city', 'place_of_birth', 'first_name_latin',
                 'last_name_latin','position', 'organization_latin', 'position_latin'], 'string', 'max' => 100],
             [['citizenship','visa_country'], 'string', 'max' => 11],
-            [['visa_required'], 'string', 'max' => 1],
         ];
     }
 

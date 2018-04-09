@@ -13,7 +13,7 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
                 }
             }).
             when('/particip/view/:id', {
-                templateUrl: 'views/particip/update.html',
+                templateUrl: 'views/particip/create.html',
                 controller: 'UpdateController',
                 resolve: {
                     response: function(ParticipServices, $route) {
@@ -43,9 +43,10 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
         };
 }]);
 
-ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'ParticipServices',
-    function($scope, $http, $route, ParticipServices) {
-        $scope.create = function () {
+ParticipApp.controller('CreateController', ['$scope', '$rootScope', '$http', '$route', '$location', 'ParticipServices',
+    function($scope, $rootScope, $http, $route, $location, ParticipServices) {
+        $scope.button = "Добавить участника";
+        $scope.action = function () {
             $scope.dataLoading = true;
             $scope.error = {};
             ParticipServices.create($scope.userModel)
@@ -53,6 +54,7 @@ ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'Partic
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
+                    $location.path('/particip/view').replace();
                     return response;
                 }
                 function errorHandler(response) {
@@ -63,14 +65,42 @@ ParticipApp.controller('CreateController', ['$scope', '$http', '$route', 'Partic
                     return response;
                 }
         };
+        
+        $scope.visaReuired = function(value) {
+            var el =angular.element( document.querySelector( '#visa-fieldset' ) );
+            if (value === 0) {
+                el.attr('disabled', 'true');
+            } else {
+                el.removeAttr('disabled');
+            }
+        };
+        
+        $scope.$watch('userModel.visa_required', function(newVal, oldVal){
+            $scope.$emit('visaReuired', newVal);
+            if (typeof $scope.error !== 'undefined') {
+                $scope.error['visa_passport_validity'] = '';
+                $scope.error['visa_country'] = '';
+                $scope.error['visa_city'] = '';
+            }
+        }, true);
+
+        $rootScope.$on('visaReuired', function(event, value) {
+            $scope.visaReuired(value);
+        });
+        
+        $scope.userModel.visa_required = 1;
 }]);
 
-ParticipApp.controller('UpdateController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
-    function($scope, $http, $route, response, ParticipServices) {
+ParticipApp.controller('UpdateController', ['$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
+    function($scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.userModel = response.data;
         $scope.userModel.date_of_birth = new Date(response.data.date_of_birth);
         $scope.userModel.visa_passport_validity = new Date(response.data.visa_passport_validity);
-        $scope.update = function () {
+        $scope.button = "Обновить данные";
+        $scope.userModel.title = response.data.title.toString();
+        $scope.userModel.gender = response.data.gender.toString();
+  
+        $scope.action = function () {
             $scope.dataLoading = true;
             $scope.error = {};
             ParticipServices.update($scope.userModel)
@@ -78,6 +108,7 @@ ParticipApp.controller('UpdateController', ['$scope', '$http', '$route', 'respon
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
+                    $location.path('/particip/view').replace();
                     return response;
                 }
                 function errorHandler(response) {
@@ -88,4 +119,8 @@ ParticipApp.controller('UpdateController', ['$scope', '$http', '$route', 'respon
                     return response;
                 }
         };
+       
+        $scope.$watch('userModel.visa_required', function(newVal, oldVal){
+           $rootScope.$emit('visaReuired', newVal);
+        }, true);
 }]);
