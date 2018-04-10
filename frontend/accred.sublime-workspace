@@ -1,0 +1,3309 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"P",
+				"ParticipSearch"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "accred.sublime-project",
+			"settings":
+			{
+				"buffer_size": 179,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/ParticipController.php",
+			"settings":
+			{
+				"buffer_size": 3982,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n<h1 class=\"block_title\">Персональная информация</h1>\n<form class=\"common-block\" name=\"createForm\" ng-submit=\"action()\" role=\"form\" novalidate>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Обращение</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <select ng-focus=\"error['title'] = ''\"\n                    ng-click=\"error['title'] = ''\"\n                    ng-class=\"{'is-invalid': error['title'] }\"\n                    ng-model=\"userModel.title\" class=\"form-control\">\n                <option selected value=\"\" style=\"display:none;\">Выберите обращение</option>\n                <option value='1'>Г-н</option>\n                <option value='2'>Г-жа</option>\n            </select>\n            <div class=\"invalid-tooltip\">P\n                {{ error['title']}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Фамилия</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['last_name'] = ''\"\n                   ng-class=\"{'is-invalid': error['last_name'] }\"\n                   ng-model=\"userModel.last_name\" type=\"text\" class=\"form-control\" placeholder=\"\" id=\"inputLastName\">\n            <div class=\"invalid-tooltip\">\n                {{ error['last_name']}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Имя</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['first_name'] = ''\"\n                   ng-class=\"{'is-invalid': error['first_name'] }\"\n                   ng-model=\"userModel.first_name\" type=\"text\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['first_name']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Отчество</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['middle_name'] = ''\"\n                   ng-class=\"{'is-invalid': error['middle_name'] }\"\n                   ng-model=\"userModel.middle_name\" type=\"text\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['middle_name']}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"form-group row required\">\n        <div class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1\">\n            <label class=\"col-form-label\" style=\"line-height: 50%\">Фамилия</label>\n            <p class=\"\" style=\"line-height: 50%; font-size:80%;\">на латинице</p>\n        </div>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['last_name_latin'] = ''\"\n                   ng-class=\"{'is-invalid': error['last_name_latin'] }\"\n                   ng-model=\"userModel.last_name_latin\" type=\"text\" class=\"form-control\" placeholder=\"\" only-latin>\n            <div class=\"invalid-tooltip\">\n                {{ error['last_name_latin']}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"form-group row required\">\n        <div class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1\">\n            <label class=\"col-form-label\" style=\"line-height: 50%\">Имя</label>\n            <p class=\"\" style=\"line-height: 50%; font-size:80%;\">на латинице</p>\n        </div>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['first_name_latin'] = ''\"\n                   ng-class=\"{'is-invalid': error['first_name_latin'] }\"\n                   ng-model=\"userModel.first_name_latin\" type=\"text\" class=\"form-control\" placeholder=\"\" only-latin>\n            <div class=\"invalid-tooltip\">\n                {{ error['first_name_latin']}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Пол</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <select ng-focus=\"error['gender'] = ''\"\n                    ng-click=\"error['gender'] = ''\"\n                    ng-class=\"{'is-invalid': error['gender'] }\"\n                    ng-model=\"userModel.gender\" type=\"text\" class=\"form-control\">\n                <option selected value=\"\" style=\"display:none;\">Выберите пол</option>\n                <option value=\"1\">Мужской</option>\n                <option value=\"2\">Женский</option>\n            </select>\n            <div class=\"invalid-tooltip\">\n                {{ error['gender']}}\n            </div>\n        </div>\n    </div>\n\n    <div class=\"form-group row\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Фотография</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['photo'] = ''\"\n                   ng-class=\"{'is-invalid': error['photo'] }\"\n                   ng-model=\"userModel.photo\" type=\"text\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['photo']}}\n            </div>\n        </div>\n    </div>\n    <h1 class=\"block_title my-5\">Пасортные данные</h1>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Гражданство</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <select ng-focus=\"error['citizenship'] = ''\"\n                    ng-click=\"error['citizenship'] = ''\"\n                    ng-class=\"{'is-invalid': error['citizenship'] }\"\n                    ng-model=\"userModel.citizenship\" type=\"text\" class=\"form-control\" placeholder=\"\">\n                <option selected value=\"\" style=\"display:none;\">Выберите гражданство</option>\n                <option value=\"AU\">Австралия</option><option value=\"AT\">Австрия</option><option value=\"AZ\">Азербайджан</option><option value=\"AX\">Аландские о-ва</option><option value=\"AL\">Албания</option><option value=\"DZ\">Алжир</option><option value=\"AS\">Американское Самоа</option><option value=\"AI\">Ангилья</option><option value=\"AO\">Ангола</option><option value=\"AD\">Андорра</option><option value=\"AQ\">Антарктида</option><option value=\"AG\">Антигуа и Барбуда</option><option value=\"AR\">Аргентина</option><option value=\"AM\">Армения</option><option value=\"AW\">Аруба</option><option value=\"AF\">Афганистан</option><option value=\"BS\">Багамы</option><option value=\"BD\">Бангладеш</option><option value=\"BB\">Барбадос</option><option value=\"BH\">Бахрейн</option><option value=\"BY\">Беларусь</option><option value=\"BZ\">Белиз</option><option value=\"BE\">Бельгия</option><option value=\"BJ\">Бенин</option><option value=\"BM\">Бермуды</option><option value=\"BG\">Болгария</option><option value=\"BO\">Боливия</option><option value=\"BQ\">Бонэйр, Синт-Эстатиус и Саба</option><option value=\"BA\">Босния и Герцеговина</option><option value=\"BW\">Ботсвана</option><option value=\"BR\">Бразилия</option><option value=\"IO\">Британская территория в Индийском океане</option><option value=\"BN\">Бруней-Даруссалам</option><option value=\"BF\">Буркина-Фасо</option><option value=\"BI\">Бурунди</option><option value=\"BT\">Бутан</option><option value=\"VU\">Вануату</option><option value=\"VA\">Ватикан</option><option value=\"GB\">Великобритания</option><option value=\"HU\">Венгрия</option><option value=\"VE\">Венесуэла</option><option value=\"VG\">Виргинские о-ва (Британские)</option><option value=\"VI\">Виргинские о-ва (США)</option><option value=\"UM\">Внешние малые о-ва (США)</option><option value=\"TL\">Восточный Тимор</option><option value=\"VN\">Вьетнам</option><option value=\"GA\">Габон</option><option value=\"HT\">Гаити</option><option value=\"GY\">Гайана</option><option value=\"GM\">Гамбия</option><option value=\"GH\">Гана</option><option value=\"GP\">Гваделупа</option><option value=\"GT\">Гватемала</option><option value=\"GN\">Гвинея</option><option value=\"GW\">Гвинея-Бисау</option><option value=\"DE\">Германия</option><option value=\"GG\">Гернси</option><option value=\"GI\">Гибралтар</option><option value=\"HN\">Гондурас</option><option value=\"HK\">Гонконг (специальный административный район)</option><option value=\"GD\">Гренада</option><option value=\"GL\">Гренландия</option><option value=\"GR\">Греция</option><option value=\"GE\">Грузия</option><option value=\"GU\">Гуам</option><option value=\"DK\">Дания</option><option value=\"JE\">Джерси</option><option value=\"DJ\">Джибути</option><option value=\"DG\">Диего-Гарсия</option><option value=\"DM\">Доминика</option><option value=\"DO\">Доминиканская Республика</option><option value=\"EG\">Египет</option><option value=\"ZM\">Замбия</option><option value=\"EH\">Западная Сахара</option><option value=\"ZW\">Зимбабве</option><option value=\"IL\">Израиль</option><option value=\"IN\">Индия</option><option value=\"ID\">Индонезия</option><option value=\"JO\">Иордания</option><option value=\"IQ\">Ирак</option><option value=\"IR\">Иран</option><option value=\"IE\">Ирландия</option><option value=\"IS\">Исландия</option><option value=\"ES\">Испания</option><option value=\"IT\">Италия</option><option value=\"YE\">Йемен</option><option value=\"CV\">Кабо-Верде</option><option value=\"KZ\">Казахстан</option><option value=\"KY\">Каймановы о-ва</option><option value=\"KH\">Камбоджа</option><option value=\"CM\">Камерун</option><option value=\"CA\">Канада</option><option value=\"IC\">Канарские о-ва</option><option value=\"QA\">Катар</option><option value=\"KE\">Кения</option><option value=\"CY\">Кипр</option><option value=\"KG\">Киргизия</option><option value=\"KI\">Кирибати</option><option value=\"CN\">Китай</option><option value=\"KP\">КНДР</option><option value=\"CC\">Кокосовые о-ва</option><option value=\"CO\">Колумбия</option><option value=\"KM\">Коморы</option><option value=\"CG\">Конго - Браззавиль</option><option value=\"CD\">Конго - Киншаса</option><option value=\"XK\">Косово</option><option value=\"CR\">Коста-Рика</option><option value=\"CI\">Кот-д&rsquo;Ивуар</option><option value=\"CU\">Куба</option><option value=\"KW\">Кувейт</option><option value=\"CW\">Кюрасао</option><option value=\"LA\">Лаос</option><option value=\"LV\">Латвия</option><option value=\"LS\">Лесото</option><option value=\"LR\">Либерия</option><option value=\"LB\">Ливан</option><option value=\"LY\">Ливия</option><option value=\"LT\">Литва</option><option value=\"LI\">Лихтенштейн</option><option value=\"LU\">Люксембург</option><option value=\"MU\">Маврикий</option><option value=\"MR\">Мавритания</option><option value=\"MG\">Мадагаскар</option><option value=\"YT\">Майотта</option><option value=\"MO\">Макао (специальный административный район)</option><option value=\"MK\">Македония</option><option value=\"MW\">Малави</option><option value=\"MY\">Малайзия</option><option value=\"ML\">Мали</option><option value=\"MV\">Мальдивы</option><option value=\"MT\">Мальта</option><option value=\"MA\">Марокко</option><option value=\"MQ\">Мартиника</option><option value=\"MH\">Маршалловы Острова</option><option value=\"MX\">Мексика</option><option value=\"MZ\">Мозамбик</option><option value=\"MD\">Молдова</option><option value=\"MC\">Монако</option><option value=\"MN\">Монголия</option><option value=\"MS\">Монтсеррат</option><option value=\"MM\">Мьянма (Бирма)</option><option value=\"NA\">Намибия</option><option value=\"NR\">Науру</option><option value=\"NP\">Непал</option><option value=\"NE\">Нигер</option><option value=\"NG\">Нигерия</option><option value=\"NL\">Нидерланды</option><option value=\"NI\">Никарагуа</option><option value=\"NU\">Ниуэ</option><option value=\"NZ\">Новая Зеландия</option><option value=\"NC\">Новая Каледония</option><option value=\"NO\">Норвегия</option><option value=\"AC\">о-в Вознесения</option><option value=\"IM\">о-в Мэн</option><option value=\"NF\">о-в Норфолк</option><option value=\"CX\">о-в Рождества</option><option value=\"SH\">о-в Св. Елены</option><option value=\"TC\">о-ва Тёркс и Кайкос</option><option value=\"AE\">ОАЭ</option><option value=\"OM\">Оман</option><option value=\"UN\">Организация Объединенных Наций</option><option value=\"CK\">Острова Кука</option><option value=\"PN\">острова Питкэрн</option><option value=\"PK\">Пакистан</option><option value=\"PW\">Палау</option><option value=\"PS\">Палестинские территории</option><option value=\"PA\">Панама</option><option value=\"PG\">Папуа &ndash; Новая Гвинея</option><option value=\"PY\">Парагвай</option><option value=\"PE\">Перу</option><option value=\"PL\">Польша</option><option value=\"PT\">Португалия</option><option value=\"PR\">Пуэрто-Рико</option><option value=\"KR\">Республика Корея</option><option value=\"RE\">Реюньон</option><option value=\"RU\">Россия</option><option value=\"RW\">Руанда</option><option value=\"RO\">Румыния</option><option value=\"SV\">Сальвадор</option><option value=\"WS\">Самоа</option><option value=\"SM\">Сан-Марино</option><option value=\"ST\">Сан-Томе и Принсипи</option><option value=\"SA\">Саудовская Аравия</option><option value=\"SZ\">Свазиленд</option><option value=\"MP\">Северные Марианские о-ва</option><option value=\"SC\">Сейшельские Острова</option><option value=\"BL\">Сен-Бартелеми</option><option value=\"MF\">Сен-Мартен</option><option value=\"PM\">Сен-Пьер и Микелон</option><option value=\"SN\">Сенегал</option><option value=\"VC\">Сент-Винсент и Гренадины</option><option value=\"KN\">Сент-Китс и Невис</option><option value=\"LC\">Сент-Люсия</option><option value=\"RS\">Сербия</option><option value=\"EA\">Сеута и Мелилья</option><option value=\"SG\">Сингапур</option><option value=\"SX\">Синт-Мартен</option><option value=\"SY\">Сирия</option><option value=\"SK\">Словакия</option><option value=\"SI\">Словения</option><option value=\"US\">Соединенные Штаты</option><option value=\"SB\">Соломоновы Острова</option><option value=\"SO\">Сомали</option><option value=\"SD\">Судан</option><option value=\"SR\">Суринам</option><option value=\"SL\">Сьерра-Леоне</option><option value=\"TJ\">Таджикистан</option><option value=\"TH\">Таиланд</option><option value=\"TW\">Тайвань</option><option value=\"TZ\">Танзания</option><option value=\"TG\">Того</option><option value=\"TK\">Токелау</option><option value=\"TO\">Тонга</option><option value=\"TT\">Тринидад и Тобаго</option><option value=\"TA\">Тристан-да-Кунья</option><option value=\"TV\">Тувалу</option><option value=\"TN\">Тунис</option><option value=\"TM\">Туркменистан</option><option value=\"TR\">Турция</option><option value=\"UG\">Уганда</option><option value=\"UZ\">Узбекистан</option><option value=\"UA\">Украина</option><option value=\"WF\">Уоллис и Футуна</option><option value=\"UY\">Уругвай</option><option value=\"FO\">Фарерские о-ва</option><option value=\"FM\">Федеративные Штаты Микронезии</option><option value=\"FJ\">Фиджи</option><option value=\"PH\">Филиппины</option><option value=\"FI\">Финляндия</option><option value=\"FK\">Фолклендские о-ва</option><option value=\"FR\">Франция</option><option value=\"GF\">Французская Гвиана</option><option value=\"PF\">Французская Полинезия</option><option value=\"TF\">Французские Южные территории</option><option value=\"HR\">Хорватия</option><option value=\"CF\">ЦАР</option><option value=\"TD\">Чад</option><option value=\"ME\">Черногория</option><option value=\"CZ\">Чехия</option><option value=\"CL\">Чили</option><option value=\"CH\">Швейцария</option><option value=\"SE\">Швеция</option><option value=\"SJ\">Шпицберген и Ян-Майен</option><option value=\"LK\">Шри-Ланка</option><option value=\"EC\">Эквадор</option><option value=\"GQ\">Экваториальная Гвинея</option><option value=\"ER\">Эритрея</option><option value=\"EE\">Эстония</option><option value=\"ET\">Эфиопия</option><option value=\"ZA\">ЮАР</option><option value=\"GS\">Южная Георгия и Южные Сандвичевы о-ва</option><option value=\"SS\">Южный Судан</option><option value=\"JM\">Ямайка</option><option value=\"JP\">Япония</option><option value=\"EZ\">Eurozone</option>\n            </select>\n            <div class=\"invalid-tooltip\">\n                {{ error['citizenship']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Серия и номер паспорта</label>\n        <div class=\"col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2\">\n            <input ng-click=\"error['passport_series'] = ''\"\n                   ng-class=\"{'is-invalid': error['passport_series'] }\"\n                   ng-model=\"userModel.passport_series\" type=\"text\" class=\"form-control\" placeholder=\"Серия\"\n                   cleave=\"options.digits_4\">\n            <div class=\"invalid-tooltip\">\n                {{ error['passport_series']}}\n            </div>\n        </div>\n        <div class=\"col-5 col-sm-4 col-md-4 col-lg-3 col-xl-3\">\n            <input ng-click=\"error['passport_number'] = ''\"\n                   ng-class=\"{'is-invalid': error['passport_number'] }\"\n                   ng-model=\"userModel.passport_number\" type=\"text\" class=\"form-control\" placeholder=\"Номер\"\n                   cleave=\"options.digits_6\">\n            <div class=\"invalid-tooltip\">\n                {{ error['passport_number']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Дата рождения</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['date_of_birth'] = ''\"\n                   ng-class=\"{'is-invalid': error['date_of_birth'] }\"\n                   ng-model=\"userModel.date_of_birth\" type=\"date\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['date_of_birth']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Место рождения</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['place_of_birth'] = ''\"\n                   ng-class=\"{'is-invalid': error['place_of_birth'] }\"\n                   ng-model=\"userModel.place_of_birth\" type=\"text\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['place_of_birth']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Адрес регистрации</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['registration_address'] = ''\"\n                   ng-class=\"{'is-invalid': error['registration_address'] }\"\n                   ng-model=\"userModel.registration_address\" type=\"text\" class=\"form-control\" placeholder=\"РФ,119213,г.Москва,ул.Ленина,д.10\">\n            <div class=\"invalid-tooltip\">\n                {{ error['registration_address']}}\n            </div>\n        </div>\n    </div>\n    <h1 class=\"block_title my-5\">Визовая поддержка</h1>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Требуется виза</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <div class=\"form-check\">\n                <input class=\"form-check-input\"\n                       name=\"visa_required_0\" type=\"radio\" ng-value=\"0\"\n                       ng-model=\"userModel.visa_required\"\n                       ng-checked=\"!userModel.visa_required\">\n                <label class=\"form-check-label\">\n                    Виза не требуется\n                </label>\n            </div>\n            <div class=\"form-check\">\n                <input class=\"form-check-input\"\n                       name=\"visa_required_1\" type=\"radio\" ng-value=\"1\"\n                       ng-model=\"userModel.visa_required\"\n                       ng-checked=\"userModel.visa_required === 1\">\n                <label class=\"form-check-label\">\n                    Виза требуется\n                </label>\n            </div>\n        </div>\n    </div>\n    <fieldset id=\"visa-fieldset\">\n        <div class=\"form-group row required\">\n            <div class=\"offset-4 offset-sm-4 offset-md-4 offset-lg-4 offset-xl-4 col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5 required_ext\">\n                <input type=\"date\"\n                       placeholder='Срок действия паспорта'\n                       class=\"form-control\"\n                       ng-click=\"error['visa_passport_validity'] = ''\"\n                       ng-class=\"{'is-invalid': error['visa_passport_validity'], 'has-value' : userModel.visa_passport_validity }\"\n                       ng-model=\"userModel.visa_passport_validity\" />\n                <div class=\"invalid-tooltip\">\n                    {{ error['visa_passport_validity']}}\n                </div>\n            </div>\n        </div>\n        <div class=\"form-group row required\">\n            <div class=\"offset-4 offset-sm-4 offset-md-4 offset-lg-4 offset-xl-4 col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5 required_ext\">\n                <select ng-focus=\"error['visa_country'] = ''\"\n                        ng-click=\"error['visa_country'] = ''\"\n                        ng-class=\"{'is-invalid': error['visa_country'] }\"\n                        ng-model=\"userModel.visa_country\" type=\"text\" class=\"form-control\" placeholder=\"\">\n                    <option selected value=\"\" style=\"display:none;\">Страна получения визы</option>\n                    <option value=\"AU\">Австралия</option><option value=\"AT\">Австрия</option><option value=\"AZ\">Азербайджан</option><option value=\"AX\">Аландские о-ва</option><option value=\"AL\">Албания</option><option value=\"DZ\">Алжир</option><option value=\"AS\">Американское Самоа</option><option value=\"AI\">Ангилья</option><option value=\"AO\">Ангола</option><option value=\"AD\">Андорра</option><option value=\"AQ\">Антарктида</option><option value=\"AG\">Антигуа и Барбуда</option><option value=\"AR\">Аргентина</option><option value=\"AM\">Армения</option><option value=\"AW\">Аруба</option><option value=\"AF\">Афганистан</option><option value=\"BS\">Багамы</option><option value=\"BD\">Бангладеш</option><option value=\"BB\">Барбадос</option><option value=\"BH\">Бахрейн</option><option value=\"BY\">Беларусь</option><option value=\"BZ\">Белиз</option><option value=\"BE\">Бельгия</option><option value=\"BJ\">Бенин</option><option value=\"BM\">Бермуды</option><option value=\"BG\">Болгария</option><option value=\"BO\">Боливия</option><option value=\"BQ\">Бонэйр, Синт-Эстатиус и Саба</option><option value=\"BA\">Босния и Герцеговина</option><option value=\"BW\">Ботсвана</option><option value=\"BR\">Бразилия</option><option value=\"IO\">Британская территория в Индийском океане</option><option value=\"BN\">Бруней-Даруссалам</option><option value=\"BF\">Буркина-Фасо</option><option value=\"BI\">Бурунди</option><option value=\"BT\">Бутан</option><option value=\"VU\">Вануату</option><option value=\"VA\">Ватикан</option><option value=\"GB\">Великобритания</option><option value=\"HU\">Венгрия</option><option value=\"VE\">Венесуэла</option><option value=\"VG\">Виргинские о-ва (Британские)</option><option value=\"VI\">Виргинские о-ва (США)</option><option value=\"UM\">Внешние малые о-ва (США)</option><option value=\"TL\">Восточный Тимор</option><option value=\"VN\">Вьетнам</option><option value=\"GA\">Габон</option><option value=\"HT\">Гаити</option><option value=\"GY\">Гайана</option><option value=\"GM\">Гамбия</option><option value=\"GH\">Гана</option><option value=\"GP\">Гваделупа</option><option value=\"GT\">Гватемала</option><option value=\"GN\">Гвинея</option><option value=\"GW\">Гвинея-Бисау</option><option value=\"DE\">Германия</option><option value=\"GG\">Гернси</option><option value=\"GI\">Гибралтар</option><option value=\"HN\">Гондурас</option><option value=\"HK\">Гонконг (специальный административный район)</option><option value=\"GD\">Гренада</option><option value=\"GL\">Гренландия</option><option value=\"GR\">Греция</option><option value=\"GE\">Грузия</option><option value=\"GU\">Гуам</option><option value=\"DK\">Дания</option><option value=\"JE\">Джерси</option><option value=\"DJ\">Джибути</option><option value=\"DG\">Диего-Гарсия</option><option value=\"DM\">Доминика</option><option value=\"DO\">Доминиканская Республика</option><option value=\"EG\">Египет</option><option value=\"ZM\">Замбия</option><option value=\"EH\">Западная Сахара</option><option value=\"ZW\">Зимбабве</option><option value=\"IL\">Израиль</option><option value=\"IN\">Индия</option><option value=\"ID\">Индонезия</option><option value=\"JO\">Иордания</option><option value=\"IQ\">Ирак</option><option value=\"IR\">Иран</option><option value=\"IE\">Ирландия</option><option value=\"IS\">Исландия</option><option value=\"ES\">Испания</option><option value=\"IT\">Италия</option><option value=\"YE\">Йемен</option><option value=\"CV\">Кабо-Верде</option><option value=\"KZ\">Казахстан</option><option value=\"KY\">Каймановы о-ва</option><option value=\"KH\">Камбоджа</option><option value=\"CM\">Камерун</option><option value=\"CA\">Канада</option><option value=\"IC\">Канарские о-ва</option><option value=\"QA\">Катар</option><option value=\"KE\">Кения</option><option value=\"CY\">Кипр</option><option value=\"KG\">Киргизия</option><option value=\"KI\">Кирибати</option><option value=\"CN\">Китай</option><option value=\"KP\">КНДР</option><option value=\"CC\">Кокосовые о-ва</option><option value=\"CO\">Колумбия</option><option value=\"KM\">Коморы</option><option value=\"CG\">Конго - Браззавиль</option><option value=\"CD\">Конго - Киншаса</option><option value=\"XK\">Косово</option><option value=\"CR\">Коста-Рика</option><option value=\"CI\">Кот-д&rsquo;Ивуар</option><option value=\"CU\">Куба</option><option value=\"KW\">Кувейт</option><option value=\"CW\">Кюрасао</option><option value=\"LA\">Лаос</option><option value=\"LV\">Латвия</option><option value=\"LS\">Лесото</option><option value=\"LR\">Либерия</option><option value=\"LB\">Ливан</option><option value=\"LY\">Ливия</option><option value=\"LT\">Литва</option><option value=\"LI\">Лихтенштейн</option><option value=\"LU\">Люксембург</option><option value=\"MU\">Маврикий</option><option value=\"MR\">Мавритания</option><option value=\"MG\">Мадагаскар</option><option value=\"YT\">Майотта</option><option value=\"MO\">Макао (специальный административный район)</option><option value=\"MK\">Македония</option><option value=\"MW\">Малави</option><option value=\"MY\">Малайзия</option><option value=\"ML\">Мали</option><option value=\"MV\">Мальдивы</option><option value=\"MT\">Мальта</option><option value=\"MA\">Марокко</option><option value=\"MQ\">Мартиника</option><option value=\"MH\">Маршалловы Острова</option><option value=\"MX\">Мексика</option><option value=\"MZ\">Мозамбик</option><option value=\"MD\">Молдова</option><option value=\"MC\">Монако</option><option value=\"MN\">Монголия</option><option value=\"MS\">Монтсеррат</option><option value=\"MM\">Мьянма (Бирма)</option><option value=\"NA\">Намибия</option><option value=\"NR\">Науру</option><option value=\"NP\">Непал</option><option value=\"NE\">Нигер</option><option value=\"NG\">Нигерия</option><option value=\"NL\">Нидерланды</option><option value=\"NI\">Никарагуа</option><option value=\"NU\">Ниуэ</option><option value=\"NZ\">Новая Зеландия</option><option value=\"NC\">Новая Каледония</option><option value=\"NO\">Норвегия</option><option value=\"AC\">о-в Вознесения</option><option value=\"IM\">о-в Мэн</option><option value=\"NF\">о-в Норфолк</option><option value=\"CX\">о-в Рождества</option><option value=\"SH\">о-в Св. Елены</option><option value=\"TC\">о-ва Тёркс и Кайкос</option><option value=\"AE\">ОАЭ</option><option value=\"OM\">Оман</option><option value=\"UN\">Организация Объединенных Наций</option><option value=\"CK\">Острова Кука</option><option value=\"PN\">острова Питкэрн</option><option value=\"PK\">Пакистан</option><option value=\"PW\">Палау</option><option value=\"PS\">Палестинские территории</option><option value=\"PA\">Панама</option><option value=\"PG\">Папуа &ndash; Новая Гвинея</option><option value=\"PY\">Парагвай</option><option value=\"PE\">Перу</option><option value=\"PL\">Польша</option><option value=\"PT\">Португалия</option><option value=\"PR\">Пуэрто-Рико</option><option value=\"KR\">Республика Корея</option><option value=\"RE\">Реюньон</option><option value=\"RU\">Россия</option><option value=\"RW\">Руанда</option><option value=\"RO\">Румыния</option><option value=\"SV\">Сальвадор</option><option value=\"WS\">Самоа</option><option value=\"SM\">Сан-Марино</option><option value=\"ST\">Сан-Томе и Принсипи</option><option value=\"SA\">Саудовская Аравия</option><option value=\"SZ\">Свазиленд</option><option value=\"MP\">Северные Марианские о-ва</option><option value=\"SC\">Сейшельские Острова</option><option value=\"BL\">Сен-Бартелеми</option><option value=\"MF\">Сен-Мартен</option><option value=\"PM\">Сен-Пьер и Микелон</option><option value=\"SN\">Сенегал</option><option value=\"VC\">Сент-Винсент и Гренадины</option><option value=\"KN\">Сент-Китс и Невис</option><option value=\"LC\">Сент-Люсия</option><option value=\"RS\">Сербия</option><option value=\"EA\">Сеута и Мелилья</option><option value=\"SG\">Сингапур</option><option value=\"SX\">Синт-Мартен</option><option value=\"SY\">Сирия</option><option value=\"SK\">Словакия</option><option value=\"SI\">Словения</option><option value=\"US\">Соединенные Штаты</option><option value=\"SB\">Соломоновы Острова</option><option value=\"SO\">Сомали</option><option value=\"SD\">Судан</option><option value=\"SR\">Суринам</option><option value=\"SL\">Сьерра-Леоне</option><option value=\"TJ\">Таджикистан</option><option value=\"TH\">Таиланд</option><option value=\"TW\">Тайвань</option><option value=\"TZ\">Танзания</option><option value=\"TG\">Того</option><option value=\"TK\">Токелау</option><option value=\"TO\">Тонга</option><option value=\"TT\">Тринидад и Тобаго</option><option value=\"TA\">Тристан-да-Кунья</option><option value=\"TV\">Тувалу</option><option value=\"TN\">Тунис</option><option value=\"TM\">Туркменистан</option><option value=\"TR\">Турция</option><option value=\"UG\">Уганда</option><option value=\"UZ\">Узбекистан</option><option value=\"UA\">Украина</option><option value=\"WF\">Уоллис и Футуна</option><option value=\"UY\">Уругвай</option><option value=\"FO\">Фарерские о-ва</option><option value=\"FM\">Федеративные Штаты Микронезии</option><option value=\"FJ\">Фиджи</option><option value=\"PH\">Филиппины</option><option value=\"FI\">Финляндия</option><option value=\"FK\">Фолклендские о-ва</option><option value=\"FR\">Франция</option><option value=\"GF\">Французская Гвиана</option><option value=\"PF\">Французская Полинезия</option><option value=\"TF\">Французские Южные территории</option><option value=\"HR\">Хорватия</option><option value=\"CF\">ЦАР</option><option value=\"TD\">Чад</option><option value=\"ME\">Черногория</option><option value=\"CZ\">Чехия</option><option value=\"CL\">Чили</option><option value=\"CH\">Швейцария</option><option value=\"SE\">Швеция</option><option value=\"SJ\">Шпицберген и Ян-Майен</option><option value=\"LK\">Шри-Ланка</option><option value=\"EC\">Эквадор</option><option value=\"GQ\">Экваториальная Гвинея</option><option value=\"ER\">Эритрея</option><option value=\"EE\">Эстония</option><option value=\"ET\">Эфиопия</option><option value=\"ZA\">ЮАР</option><option value=\"GS\">Южная Георгия и Южные Сандвичевы о-ва</option><option value=\"SS\">Южный Судан</option><option value=\"JM\">Ямайка</option><option value=\"JP\">Япония</option><option value=\"EZ\">Eurozone</option>\n                </select>\n                <div class=\"invalid-tooltip\">\n                    {{ error['visa_country']}}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"form-group row required\">\n            <div class=\"offset-4 offset-sm-4 offset-md-4 offset-lg-4 offset-xl-4 col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5 required_ext\">\n                <input ng-click=\"error['visa_city'] = ''\"\n                       ng-class=\"{'is-invalid': error['visa_city'] }\"\n                       ng-model=\"userModel.visa_city\" type=\"text\" class=\"form-control test\" placeholder=\"Город получения визы\">\n                <div class=\"invalid-tooltip\">\n                    {{ error['visa_city']}}\n                </div>\n            </div>\n        </div>\n    </fieldset>\n    <h1 class=\"block_title my-5\">Профессиональная деятельность</h1>\n    <div class=\"form-group row\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Организация</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['organization'] = ''\"\n                   ng-class=\"{'is-invalid': error['organization'] }\"\n                   ng-model=\"userModel.organization\" type=\"text\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['organization']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Должность</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['position'] = ''\"\n                   ng-class=\"{'is-invalid': error['position'] }\"\n                   ng-model=\"userModel.position\" type=\"text\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['position']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row\">\n        <div class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1\">\n            <label class=\"col-form-label\" style=\"line-height: 50%\">Организация</label>\n            <p class=\"\" style=\"line-height: 50%; font-size:80%;\">на латинице</p>\n        </div>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['organization_latin'] = ''\"\n                   ng-class=\"{'is-invalid': error['organization_latin'] }\"\n                   ng-model=\"userModel.organization_latin\" type=\"text\" class=\"form-control\" placeholder=\"\" only-latin>\n            <div class=\"invalid-tooltip\">\n                {{ error['organization_latin']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <div class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1\">\n            <label class=\"col-form-label\" style=\"line-height: 50%\">Должность</label>\n            <p class=\"\" style=\"line-height: 50%; font-size:80%;\">на латинице</p>\n        </div>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['position_latin'] = ''\"\n                   ng-class=\"{'is-invalid': error['position_latin'] }\"\n                   ng-model=\"userModel.position_latin\" type=\"text\" class=\"form-control\" name=\"position_latin\" placeholder=\"\" only-latin>\n            <div class=\"invalid-tooltip\">\n                {{ error['position_latin']}}\n            </div>\n        </div>\n    </div>\n    <h1 class=\"block_title my-5\">Контактная информация</h1>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">E-mail</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['email'] = ''\"\n                   ng-class=\"{'is-invalid': error['email'] }\"\n                   ng-model=\"userModel.email\" type=\"email\" class=\"form-control\" placeholder=\"\">\n            <div class=\"invalid-tooltip\">\n                {{ error['email']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row required\">\n        <label class=\"col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1 col-form-label\">Мобильный телефон</label>\n        <div class=\"col-8 col-sm-6 col-md-6 col-lg-5 col-xl-5\">\n            <input ng-click=\"error['phone_number'] = ''\"\n                   ng-class=\"{'is-invalid': error['phone_number'] }\"\n                   ng-model=\"userModel.phone_number\"\n                   placeholder=\"+_(___)___-__-__\" type=\"text\" class=\"form-control\" name=\"phone_number\"\n                   cleave=\"options.telephone\">\n            <div class=\"invalid-tooltip\">\n                {{ error['phone_number']}}\n            </div>\n        </div>\n    </div>\n    <div class=\"form-group row justify-content-center common-block\" style=\"text-align:center;\">\n        <div class=\"col-10\">\n            <button type=\"submit\" class=\"btn btn-outline-secondary\">{{button}}</button>\n            <img ng-if=\"dataLoading\" style=\"width: 16px; margin-top: 10px; position: fixed;\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        </div>\n    </div>\n</form>\n",
+			"file": "web/views/particip/create.html",
+			"file_size": 43187,
+			"file_write_time": 131678470415072295,
+			"settings":
+			{
+				"buffer_size": 37896,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "web/index.php",
+			"settings":
+			{
+				"buffer_size": 613,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/main.php",
+			"settings":
+			{
+				"buffer_size": 2087,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layouts/main.php",
+			"settings":
+			{
+				"buffer_size": 3240,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/home/oleg/.config/sublime-text-3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nSublimeCodeIntel\n----------------\n\n  SublimeCodeIntel\n  ================\n  \n   ____        _     _ _                 ____          _      ___       _       _\n  / ___| _   _| |__ | (_)_ __ ___   ___ / ___|___   __| | ___|_ _|_ __ | |_ ___| |\n  \\___ \\| | | | '_ \\| | | '_ ` _ \\ / _ \\ |   / _ \\ / _` |/ _ \\| || '_ \\| __/ _ \\ |\n   ___) | |_| | |_) | | | | | | | |  __/ |__| (_) | (_| |  __/| || | | | ||  __/ |\n  |____/ \\__,_|_.__/|_|_|_| |_| |_|\\___|\\____\\___/ \\__,_|\\___|___|_| |_|\\__\\___|_|\n  A full-featured code intelligence and smart autocomplete engine for Sublime Text.\n     (Code intelligence plugin ported from Open Komodo Editor to Sublime Text)\n  \n  \n  +-------------------------------- HELP WANTED ---------------------------------+\n  |     Maintaining this project is hard, I do it in my spare time, but I'm      |\n  |     basically all alone. If anyone is interested in contributing, please     |\n  |     contact me. I really need much more help maintaining SublimeCodeIntel    |\n  |                                                                              |\n  |                       Follow me on twitter @germbravo                        |\n  |           You can find us at #sublimecodeintel on irc.freenode.net           |\n  |                                                                              |\n  |             If you like SublimeCodeIntel, please make a donation:            |\n  |        http://sublimecodeintel.github.io/SublimeCodeIntel/donate.html        |\n  +------------------------------------------------------------------------------+\n  \n  \n  Features\n  --------\n  \n  Supports all the languages Komodo Editor supports for Code Intelligence (CIX, CodeIntel2):\n  \n  JavaScript, Mason, XBL, XUL, RHTML, SCSS, Python, HTML, Ruby, Python3, XML, Sass, XSLT, Django, HTML5, Perl, CSS, Twig, Less, Smarty, Node.js, Tcl, TemplateToolkit, PHP.\n  \n  \n  Provides the following features:\n  \n  * Jump to Symbol Definition - Jump to the file and line of the definition of a symbol.\n  * Imports autocomplete - Shows autocomplete with the available modules/symbols in real time.\n  * Function Call tooltips - Displays information in the status bar about the working function.\n  \n  \n  + Shortcuts for jump to definition have changed:\n  \n    For Mac OS X:\n      * Jump to definition = ``Control+Click``\n      * Jump to definition = ``Control+Command+Alt+Up``\n      * Go back = ``Control+Command+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n    For Linux:\n      * Jump to definition = ``Super+Click``\n      * Jump to definition = ``Control+Super+Alt+Up``\n      * Go back = ``Control+Super+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n    For Windows:\n      * Jump to definition = ``Alt+Click``\n      * Jump to definition = ``Control+Windows+Alt+Up``\n      * Go back = ``Control+Windows+Alt+Left``\n      * Manual CodeIntel = ``Control+Shift+space``\n  \n  \n  \n  Notes\n  -----\n  \n  ** Restart Sublime Text after reading this **\n  \n  \n  More information\n  ----------------\n  Please take the time to read the documentation:\n  \n  In case of trouble, please read the Troubleshooting section in the README.\n  \n  * Online - http://sublimecodeintel.github.io/SublimeCodeIntel/\n  * Git - https://github.com/SublimeCodeIntel/SublimeCodeIntel\n  \n  \n  IMPORTANT\n  ---------\n  \n  Do NOT edit the default SublimeCodeIntel settings. Your changes will be lost\n  when SublimeCodeIntel is updated. ALWAYS edit the user SublimeCodeIntel settings\n  by selecting \"Preferences->Package Settings->SublimeCodeIntel->Settings - User\".\n  Note that individual settings you include in your user settings will **completely**\n  replace the corresponding default setting, so you must provide that setting in its entirety.\n",
+			"settings":
+			{
+				"buffer_size": 3795,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/home/oleg/.config/sublime-text-3/Packages/User/SublimeCodeIntel.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 4927,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "web/controllers/ParticipControllers.js",
+			"settings":
+			{
+				"buffer_size": 5050,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/accred/server/vendor/yiisoft/yii2/base/Controller.php",
+			"settings":
+			{
+				"buffer_size": 19942,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/oleg/.config/sublime-text-3/Packages/User/Xdebug.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 44,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Context",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Watch",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Stack",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "=> /var/www/accred/server/frontend/controllers/ParticipController.php\n\t|+| 103\n",
+			"settings":
+			{
+				"buffer_size": 79,
+				"line_ending": "Unix",
+				"name": "Xdebug Breakpoint",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 394.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: package",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"CodeIntel",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"select col",
+				"UI: Select Color Scheme"
+			],
+			[
+				"select c",
+				"UI: Select Color Scheme"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"select colo",
+				"UI: Select Color Scheme"
+			],
+			[
+				"select s",
+				"UI: Select Color Scheme"
+			],
+			[
+				"select sc",
+				"UI: Select Color Scheme"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 813.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/accred/server/frontend",
+		"/var/www/accred/server/frontend/config",
+		"/var/www/accred/server/frontend/controllers",
+		"/var/www/accred/server/frontend/views",
+		"/var/www/accred/server/frontend/views/layouts",
+		"/var/www/accred/server/frontend/web",
+		"/var/www/accred/server/frontend/web/controllers",
+		"/var/www/accred/server/frontend/web/views",
+		"/var/www/accred/server/frontend/web/views/particip"
+	],
+	"file_history":
+	[
+		"/home/oleg/.config/sublime-text-3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/home/oleg/.config/sublime-text-3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/var/www/accred/server/frontend/controllers/ParticipController.php",
+		"/home/oleg/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
+		"/home/oleg/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/var/www/accred/server/frontend/web/views/particip/create.html",
+		"/home/oleg/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/oleg/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/oleg/.config/sublime-text-3/Packages/Web Inspector/swi.sublime-settings",
+		"/home/oleg/.config/sublime-text-3/Packages/User/swi.sublime-settings",
+		"/var/www/accred/server/frontend/web/css/styles.css"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"$s"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "accred.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								179,
+								179
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										169,
+										170
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										105,
+										106
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "controllers/ParticipController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3982,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								161
+							]
+						],
+						"settings":
+						{
+							"SL.17.region_keys":
+							[
+								"SL.htmltidy.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+							],
+							"SL.23.region_keys":
+							[
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Gutter.region.whitish.dot",
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+							],
+							"SL.27.region_keys":
+							[
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+								"SL.htmltidy.Gutter.region.whitish.dot",
+								"sublime_linter.protected_regions"
+							],
+							"auto_complete": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "web/views/particip/create.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 37896,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1567,
+								1567
+							]
+						],
+						"settings":
+						{
+							"SL.52.region_keys":
+							[
+								"SL.htmltidy.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1563,
+										1566
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/tag.png",
+										"region.orangish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1159,
+										1162
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1563,
+										1566
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/tag.png",
+										"region.orangish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1159,
+										1162
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "web/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								613,
+								613
+							]
+						],
+						"settings":
+						{
+							"SL.32.region_keys":
+							[
+								"SL.htmltidy.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "config/main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2087,
+								2087
+							]
+						],
+						"settings":
+						{
+							"SL.18.region_keys":
+							[
+								"SL.htmltidy.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+							],
+							"SL.31.region_keys":
+							[
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot"
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2085,
+										2086
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/square_bracket.png",
+										"region.bluish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										243,
+										244
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/layouts/main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3240,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3240,
+								3240
+							]
+						],
+						"settings":
+						{
+							"SL.33.region_keys":
+							[
+								"SL.htmltidy.Gutter.region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter.dot",
+								"sublime_linter.protected_regions",
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 288.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/oleg/.config/sublime-text-3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": 18,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3795,
+								3795
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"default_dir": "/var/www/accred/server/frontend/controllers",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/oleg/.config/sublime-text-3/Packages/User/SublimeCodeIntel.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4927,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4479,
+								4479
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										4701,
+										4702
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										4478,
+										4479
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										4701,
+										4702
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										4478,
+										4479
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1596.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "web/controllers/ParticipControllers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5050,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								839,
+								839
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2629,
+										2630
+									],
+									"2":
+									[
+										2009,
+										2010
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									],
+									"2":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"region.yellowish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1885,
+										1886
+									],
+									"2":
+									[
+										1992,
+										1993
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										838,
+										839
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										651,
+										652
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/var/www/accred/server/vendor/yiisoft/yii2/base/Controller.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6137,
+								6137
+							]
+						],
+						"settings":
+						{
+							"SL.65.region_keys":
+							[
+								"SL.htmltidy.Highlights.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+								"SL.htmltidy.Gutter.region.whitish.dot",
+								"sublime_linter.protected_regions"
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										5700,
+										5701
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										5334,
+										5335
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2624.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/home/oleg/.config/sublime-text-3/Packages/User/Xdebug.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 44,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								44,
+								44
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										43,
+										44
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"default_dir": "/var/www/accred/server/frontend",
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"default_dir": "/var/www/accred/server/frontend",
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"default_dir": "/var/www/accred/server/frontend",
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 79,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"default_dir": "/var/www/accred/server/frontend",
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.7,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 501.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.xdebug":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "accred.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"xdebug":
+		{
+			"hide_conflict": false,
+			"restore_index":
+			{
+				"19":
+				{
+					"group": 0,
+					"index": 0
+				},
+				"22":
+				{
+					"group": 0,
+					"index": 9
+				},
+				"23":
+				{
+					"group": 0,
+					"index": 6
+				},
+				"24":
+				{
+					"group": 0,
+					"index": 8
+				},
+				"25":
+				{
+					"group": 0,
+					"index": 7
+				},
+				"27":
+				{
+					"group": 0,
+					"index": 1
+				},
+				"47":
+				{
+					"group": 0,
+					"index": 4
+				},
+				"48":
+				{
+					"group": 0,
+					"index": 5
+				},
+				"65":
+				{
+					"group": 0,
+					"index": 3
+				},
+				"67":
+				{
+					"group": 0,
+					"index": 2
+				},
+				"72":
+				{
+					"group": 2,
+					"index": 0
+				},
+				"90":
+				{
+					"group": 1,
+					"index": 0
+				}
+			},
+			"restore_layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						2,
+						1
+					],
+					[
+						0,
+						1,
+						1,
+						2
+					],
+					[
+						1,
+						1,
+						2,
+						2
+					]
+				],
+				"cols":
+				[
+					0.0,
+					0.6,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					0.7,
+					1.0
+				]
+			}
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 163.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
