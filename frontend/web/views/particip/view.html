@@ -19,11 +19,19 @@
           <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
           <td>{{data.status}}</td>
           <td style="text-align: center;"> {{data.photo ? '' : 'Нет фото'}}
-            <button style="height:25px;width:80%;"
+            <!-- <button style="height:25px;width:80%;"
                     class="btn btn-secondary btn-lg"
                     ng-if="data.photo"
                     ng-click="showPhoto()"
-                    data-toggle="modal" data-target="#myModal"></button>
+                    data-toggle="tooltip" data-target="#myModal"
+                    title="Показать фото" ></button> -->
+
+            <a  class="action_icon_block"
+                data-toggle="tooltip" title="Показать фото"
+                ng-if="data.photo"
+                ng-click="showPhoto()">
+              <img class="action_icon" border="0" src="images/view.png" width=30 height=30 >
+            </a> 
 
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog modal-dialog-centered ">
@@ -46,12 +54,12 @@
           </td>
           <td>Оплата</td>
 
-          <td>
-            <a class="btn btn-primary btn-xs" href="#!/particip/view/{{data.id}}">
-              <i class="glyphicon glyphicon-pencil"></i>
+          <td style="text-align: center;">
+            <a class="action_icon_block" href="#!/particip/view/{{data.id}}" data-toggle="tooltip" title="Редактировать">
+              <img class="action_icon" border="0" src="images/edit.png" width=20 height=20 >
             </a> 
-            <a class="btn btn-danger btn-xs" ng-click="delete(data.id)">
-              <i class="glyphicon glyphicon-pencil"></i>
+            <a class="action_icon_block" ng-click="delete(data.id)" data-toggle="tooltip" title="Удалить">
+              <img class="action_icon" border="0" src="images/delete.png" width=20 height=20>
             </a> 
           </td>
 

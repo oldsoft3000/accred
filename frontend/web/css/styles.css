@@ -24,7 +24,7 @@ body {
 .sidebar {
     position: absolute;
     width: 220px;
-    height: auto;
+    height: 90%;
     z-index: 1000;
     overflow-x: hidden;
     overflow-y: auto; 
@@ -240,4 +240,28 @@ input[type="date"]:not(.has-value):before{
 
  .custom-file-label::after {
     content: "Обзор"!important;
+}
+
+.action_icon_block {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.action_icon { 
+    display: block;
+    opacity: 0.6;
+    width: 28px;
+    height: 28px;
+    left: 5px;
+}
+
+.action_icon:hover {
+    width: 30px;
+    height: 30px;
+}
+
+td {
+  padding: 10px!important;
 }

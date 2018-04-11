@@ -31,4 +31,6 @@ class AppAsset extends AssetBundle
         //'yii\bootstrap\BootstrapAssetPlugins',
         'frontend\assets\AngularAsset',
     ];
+
+    
 }

@@ -48,7 +48,8 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
         };
 
         $scope.showPhoto = function() {
-            
+            console.log("showPhoto");
+            $('#myModal').modal('toggle')
         };
 }]);
 

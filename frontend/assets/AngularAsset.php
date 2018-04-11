@@ -14,7 +14,7 @@ class AngularAsset extends AssetBundle
         'angular-strap/dist/angular-strap.min.js',
         'angular-cookies/angular-cookies.min.js'
     ];
-    public $jsOptions = [
-        'position' => View::POS_HEAD,
-    ];
+   // public $jsOptions = [
+   //     'position' => View::POS_HEAD,
+    //];
 }
