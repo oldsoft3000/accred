@@ -22,7 +22,8 @@
         "bower-asset/angular": "*",
         "bower-asset/angular-route": "*",
         "bower-asset/angular-strap": "*",
-        "artem-frolov/yii-sass": "2.*"
+        "artem-frolov/yii-sass": "2.*",
+        "nizsheanez/yii2-asset-converter": "1.*"
 
     },
     "require-dev": {

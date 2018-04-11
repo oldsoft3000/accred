@@ -245,3 +245,7 @@ input[type="date"]:not(.has-value):before{
  select:invalid { 
     color: red;
  }
+
+ .custom-file-label::after {
+    content: "Обзор"!important;
+}

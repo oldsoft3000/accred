@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "813de9b9a40beb4cc6cebf41f707d0f7",
+    "content-hash": "660772e5d264ce66534c8810549d0bfb",
     "packages": [
         {
             "name": "artem-frolov/scssphp-compass",
@@ -551,6 +551,174 @@
             "time": "2017-02-23T05:07:33+00:00"
         },
         {
+            "name": "nizsheanez/yii2-asset-converter",
+            "version": "V1.3.0",
+            "target-dir": "nizsheanez/assetConverter",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nizsheanez/yii2-asset-converter.git",
+                "reference": "194cd141cd2a22881ffe325eefe1de053ae8167b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nizsheanez/yii2-asset-converter/zipball/194cd141cd2a22881ffe325eefe1de053ae8167b",
+                "reference": "194cd141cd2a22881ffe325eefe1de053ae8167b",
+                "shasum": ""
+            },
+            "require": {
+                "leafo/scssphp": "0.*",
+                "oyejorge/less.php": "1.7.0.*",
+                "php": ">=5.4.0",
+                "richthegeek/phpsass": "1.*",
+                "yiisoft/yii2": "2.*",
+                "yiisoft/yii2-composer": "2.*",
+                "yourilima/scssphp-compass": "1.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-0": {
+                    "nizsheanez\\assetConverter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Sharov",
+                    "email": "www.pismeco@gmail.com",
+                    "role": "Author"
+                }
+            ],
+            "description": "Less, Sass, Scss and Phamlp converter for Yii2. No system requires. yii2-composer support, Less autoupdate, customizing of output directory",
+            "keywords": [
+                "asset",
+                "compass",
+                "converter",
+                "less",
+                "phamlp",
+                "sass",
+                "scss",
+                "yii",
+                "yii2"
+            ],
+            "time": "2015-12-30T03:28:06+00:00"
+        },
+        {
+            "name": "oyejorge/less.php",
+            "version": "v1.7.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oyejorge/less.php.git",
+                "reference": "42925c5a01a07d67ca7e82dfc8fb31814d557bc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oyejorge/less.php/zipball/42925c5a01a07d67ca7e82dfc8fb31814d557bc9",
+                "reference": "42925c5a01a07d67ca7e82dfc8fb31814d557bc9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8.24"
+            },
+            "bin": [
+                "bin/lessc"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Less": "lib/"
+                },
+                "classmap": [
+                    "lessc.inc.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Agar",
+                    "homepage": "https://github.com/agar"
+                },
+                {
+                    "name": "Martin Jantošovič",
+                    "homepage": "https://github.com/Mordred"
+                },
+                {
+                    "name": "Josh Schmidt",
+                    "homepage": "https://github.com/oyejorge"
+                }
+            ],
+            "description": "PHP port of the Javascript version of LESS http://lesscss.org (Originally maintained by Josh Schmidt)",
+            "homepage": "http://lessphp.gpeasy.com",
+            "keywords": [
+                "css",
+                "less",
+                "less.js",
+                "lesscss",
+                "php",
+                "stylesheet"
+            ],
+            "time": "2017-03-28T22:19:25+00:00"
+        },
+        {
+            "name": "richthegeek/phpsass",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/richthegeek/phpsass.git",
+                "reference": "96923ffb2acd942426a48631e95a99a38456106d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/richthegeek/phpsass/zipball/96923ffb2acd942426a48631e95a99a38456106d",
+                "reference": "96923ffb2acd942426a48631e95a99a38456106d",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "script/",
+                    "renderers/",
+                    "tree/",
+                    "SassException.php",
+                    "SassFile.php",
+                    "SassParser.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Richard Lyon",
+                    "homepage": "https://github.com/richthegeek"
+                },
+                {
+                    "name": "Sebastian Siemssen",
+                    "homepage": "https://twitter.com/thefubhy"
+                },
+                {
+                    "name": "Steve Jones",
+                    "homepage": "https://github.com/darthsteven"
+                },
+                {
+                    "name": "Sam Richard",
+                    "homepage": "https://github.com/snugug"
+                }
+            ],
+            "description": "PHPSass is a PHP compiler for SASS, a popular CSS pre-processor language.",
+            "homepage": "http://phpsass.com",
+            "time": "2014-11-06T13:25:54+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.0.2",
             "source": {
@@ -914,6 +1082,41 @@
                 "yii2"
             ],
             "time": "2017-08-04T10:48:17+00:00"
+        },
+        {
+            "name": "yourilima/scssphp-compass",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yourilima/scssphp-compass.git",
+                "reference": "02917fe54bcc65ab925e2b9d85f6059640cab095"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yourilima/scssphp-compass/zipball/02917fe54bcc65ab925e2b9d85f6059640cab095",
+                "reference": "02917fe54bcc65ab925e2b9d85f6059640cab095",
+                "shasum": ""
+            },
+            "require": {
+                "leafo/scssphp": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "compass.inc.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Leaf Corcoran",
+                    "email": "leafot@gmail.com",
+                    "homepage": "http://leafo.net"
+                }
+            ],
+            "description": "Compass for scssphp",
+            "homepage": "http://leafo.net/scssphp/",
+            "time": "2015-12-14T10:54:53+00:00"
         }
     ],
     "packages-dev": [
@@ -2770,7 +2973,7 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
@@ -2827,7 +3030,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -2895,7 +3098,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -2948,7 +3151,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -3004,16 +3207,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "85eaf6a8ec915487abac52e133efc4a268204428"
+                "reference": "63353a71073faf08f62caab4e6889b06a787f07b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/85eaf6a8ec915487abac52e133efc4a268204428",
-                "reference": "85eaf6a8ec915487abac52e133efc4a268204428",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/63353a71073faf08f62caab4e6889b06a787f07b",
+                "reference": "63353a71073faf08f62caab4e6889b06a787f07b",
                 "shasum": ""
             },
             "require": {
@@ -3063,20 +3266,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-14T14:11:10+00:00"
+            "time": "2018-04-06T07:35:43+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "c72995d9f5999b3fcdd8660c0c9690243252e1e1"
+                "reference": "ca27c02b7a3fef4828c998c2ff9ba7aae1641c49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/c72995d9f5999b3fcdd8660c0c9690243252e1e1",
-                "reference": "c72995d9f5999b3fcdd8660c0c9690243252e1e1",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/ca27c02b7a3fef4828c998c2ff9ba7aae1641c49",
+                "reference": "ca27c02b7a3fef4828c998c2ff9ba7aae1641c49",
                 "shasum": ""
             },
             "require": {
@@ -3112,7 +3315,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-02T09:52:41+00:00"
+            "time": "2018-04-04T05:10:37+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3175,7 +3378,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.0.7",
+            "version": "v4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

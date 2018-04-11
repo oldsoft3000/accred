@@ -58,3 +58,25 @@ App.run(["$rootScope", "ErrorService", function($rootScope, ErrorService) {
         return $rootScope.ErrorService = ErrorService;
     }
 ]);
+
+
+
+
+
+App.directive('onlyLatin', function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, element, attr, ctrl) {
+        function inputValue(val) {
+            var transformedInput = val.replace(/[^/.,:0-9a-zA-Z\s]/g, '');
+            //console.log(transformedInput);
+            if (transformedInput !== val) {
+              ctrl.$setViewValue(transformedInput);
+              ctrl.$render();
+            }
+            return transformedInput;
+        }            
+        ctrl.$parsers.push(inputValue);
+      }
+    };
+});

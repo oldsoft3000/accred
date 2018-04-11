@@ -10,7 +10,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/styles.css',
-        //'css/styles.scss',
+        //'css/custom.css',
         'assets/bootstrap/css/bootstrap.min.css',
     ];
     public $js = [
