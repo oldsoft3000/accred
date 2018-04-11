@@ -24,9 +24,12 @@ AppAsset::register($this);
     <?php $this->beginBody() ?>
 
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#sidebar" aria-expanded="true" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+      <div id="logo">
+        <img src="../images/logo_1.png"> 
+      </div>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar" aria-expanded="true" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
       <!-- <a class="navbar-brand" href="#">Navbar</a> -->
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,19 +47,19 @@ AppAsset::register($this);
 
     <div class="sidebar collapse show" id="sidebar">
       <ul class="nav"> 
-        <li ng-show="!isLoggedIn()" class="nav-item">
+        <li ng-class="{'sidebar-loaded': true}" ng-show="!isLoggedIn()" class="nav-item sidebar-loading">
           <!--ng-class="{'selected-style':isActivePath('/login')||isActivePath('/signup')}"-->
           <a  class="btn btn-secondary nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a>
         </li>
-        <li ng-show="isLoggedIn()" class="nav-item">
+        <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading">
           <!--ng-class="{'selected-style':isActivePath('/agreement')}"--> 
           <a class="btn btn-secondary nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a>
         </li>
-        <li ng-show="isLoggedIn()" class="nav-item">
+        <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading">
           <!--ng-ng-class="{'selected-style':isActivePath('/particips')}"--> 
           <a class="btn btn-secondary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a>
         </li>
-        <li ng-show="isLoggedIn()" class="nav-item">
+        <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading">
           <a ng-click="logout()" class="btn btn-secondary nav-link" role="button" aria-disabled="true" href="">Выход</a>
         </li>
       </ul>
