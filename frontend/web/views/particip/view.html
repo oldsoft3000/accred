@@ -19,8 +19,8 @@
           <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
           <td>{{data.status}}</td>
           <td style="text-align: center;"> {{data.photo ? '' : 'Нет фото'}}
-            <button style="height:25px;width:50px;"
-                    class="btn btn-primary btn-lg"
+            <button style="height:25px;width:80%;"
+                    class="btn btn-secondary btn-lg"
                     ng-if="data.photo"
                     ng-click="showPhoto()"
                     data-toggle="modal" data-target="#myModal"></button>
@@ -60,6 +60,6 @@
     </table> 
   </div>
   <div>
-    <a class="btn btn-outline-secondary" href="#!/create" role="button">Добавить участника</a>
+    <a class="btn btn-secondary" href="#!/create" role="button">Добавить участника</a>
   </div>
 </div>

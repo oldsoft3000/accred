@@ -178,18 +178,10 @@ body {
     text-align: center;
 }
 
-.btn-outline-secondary {
+/*.btn-outline-secondary {
     color: #1a1c1e!important;
 }
 
-/*.btn-outline-secondary,
-.btn-outline-secondary:hover,
-.btn-outline-secondary:active,
-.btn-outline-secondary:visited,
-.btn-outline-secondary:focus {
-    background-color: #8064A2;
-    border-color: #8064A2;
-}*/
 
 .selected-style {
     box-shadow: 0 0 2px #313539!important;
@@ -210,9 +202,9 @@ body {
     border-color: #383d41!important;
     background-color: #818a93!important;
     color: #FFFFFF!important;
-}
+}*/
 
-
+ 
 .form-group.required .col-form-label:after {
   content:"*";
   color:red;
