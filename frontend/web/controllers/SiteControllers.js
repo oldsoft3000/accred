@@ -161,7 +161,7 @@ SiteApp.controller('AgreementController', ['$cookies', '$location', '$scope', 'S
         }
         $scope.agree = function () {
             SiteServices.agree();
-            $location.path('/particips').replace();
+            $location.path('/particip/view').replace();
         }
 
     }
