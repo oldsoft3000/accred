@@ -117,7 +117,7 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
        
         
         $scope.visaReuired = function(value) {
-            var el =angular.element( document.querySelector( '#visa-fieldset' ) );
+            var el = angular.element( document.querySelector( '#visa-fieldset' ) );
             if (value === 0) {
                 el.attr('disabled', 'true');
             } else {

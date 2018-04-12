@@ -12,7 +12,10 @@ class AngularAsset extends AssetBundle
         'angular/angular.min.js',
         'angular-route/angular-route.min.js',
         'angular-strap/dist/angular-strap.min.js',
-        'angular-cookies/angular-cookies.min.js'
+        'angular-cookies/angular-cookies.min.js',
+        'cleave-js/dist/cleave-angular.min.js',
+        'cleave-js/dist/addons/cleave-phone.ru.js',
+
     ];
    // public $jsOptions = [
    //     'position' => View::POS_HEAD,

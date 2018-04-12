@@ -23,7 +23,33 @@ AppAsset::register($this);
     <body ng-controller="MainController">
         <?php $this->beginBody() ?>
 
-        <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+          <div class="topnav">
+              <img class="logo" src="../images/logo_1.png" >
+          </div>
+          <div class="sidebar">
+              <li ng-class="{'sidebar-loaded': true}" ng-show="!isLoggedIn()" class="nav-item sidebar-loading">
+                <a  class="btn btn-primary nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
+              </li> 
+              <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
+                <a class="btn btn-primary nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
+              </li> 
+              <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
+                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
+              </li> 
+              <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
+                <a ng-click="logout()" class="btn btn-primary nav-link" role="button" aria-disabled="true" href="">Выход</a> 
+              </li> 
+          </div>
+
+
+        <div class="content">
+          <div ng-view class="container-fluid ">
+          </div>
+        </div>
+
+
+
+        <!-- <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
             <img class="logo" src="../images/logo_1.png" >
         </header>
 
@@ -31,15 +57,12 @@ AppAsset::register($this);
             <div class="row">
                 <div class="col-12 col-md-3 col-xl-3 bd-sidebar">
                         <li ng-class="{'sidebar-loaded': true}" ng-show="!isLoggedIn()" class="nav-item sidebar-loading"> 
-                          <!--ng-class="{'selected-style':isActivePath('/login')||isActivePath('/signup')}"--> 
                           <a  class="btn btn-secondary nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
                         </li> 
                         <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
-                          <!--ng-class="{'selected-style':isActivePath('/agreement')}"-->  
                           <a class="btn btn-secondary nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
                         </li> 
                         <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
-                          <!--ng-ng-class="{'selected-style':isActivePath('/particips')}"-->  
                           <a class="btn btn-secondary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
                         </li> 
                         <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
@@ -52,20 +75,23 @@ AppAsset::register($this);
                     </div>
                 </main>
             </div>
-        </div>
+        </div> -->
 
-        <!--<div class="main" id="main">
-          <div ng-view class="container-fluid">
-          </div>
-        </div>-->
 
         <?php $this->endBody() ?>
 
         <div class="device-sm" style="display:none;"></div>
 
         <script type="text/javascript">
-
-
+            
+            $( document ).ready(function() {
+              console.log("jquery " + $().jquery);
+              console.log( "ready!" );
+              /*$(function(){
+                  $('body').tooltip({ selector: '[data-toggle="tooltip"]' });
+              });*/
+            });
+                      
         </script>
     </body>
 </html>

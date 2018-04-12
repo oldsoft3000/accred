@@ -1,48 +1,48 @@
 
-<h1 class="block_title">Зарегистрироваться</h2>
+<h1 class="text-center">Зарегистрироваться</h2>
 <form class="common-block" name="signupForm" ng-submit="signup()" role="form">
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-2 col-lg-2 col-xl-2 col-form-label">Логин</label> 
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+  <div class="form-group row">
+    <label class="col-xs-2 col-sm-offset-1 col-form-label">Логин</label> 
+    <div class="col-sm-6">
       <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.username" type="text" class="form-control" id="inputLogin" placeholder="">
-      <div class="invalid-tooltip">
+      <div ng-if="error['username']" class="invalid-tooltip">
         {{ error['username']}}
       </div>
     </div>
   </div>
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-2 col-lg-2 col-xl-2 col-form-label">E-mail</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+  <div class="form-group row">
+    <label class="col-xs-2 col-sm-offset-1 col-form-label">E-mail</label>
+    <div class="col-sm-6">
       <input ng-click="error['email'] = ''" ng-class="{ 'is-invalid': error['email'] }" ng-model="userModel.email" type="text" class="form-control" id="inputEmail" placeholder="">
-      <div class="invalid-tooltip">
+      <div ng-if="error['email']" class="invalid-tooltip">
         {{ error['email']}}
       </div>
     </div>
   </div>
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-2 col-lg-2 col-xl-2 col-form-label">Пароль</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+  <div class="form-group row">
+    <label class="col-xs-2 col-sm-offset-1 col-form-label">Пароль</label>
+    <div class="col-sm-6">
       <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.password" type="password" class="form-control" id="inputPassword1" placeholder="">
-      <div class="invalid-tooltip">
+      <div ng-if="error['password']" class="invalid-tooltip">
         {{ error['password']}}
       </div>
     </div>
   </div> 
-  <div class="form-group row justify-content-center">
-    <label class="col-sm-3 col-md-2 col-lg-2 col-xl-2 col-form-label">Повтор пароля</label>
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+  <div class="form-group row">
+    <label class="col-xs-2 col-sm-offset-1 col-form-label">Повтор пароля</label>
+    <div class="col-sm-6">
       <input ng-click="error['password_verify'] = ''" ng-class="{ 'is-invalid': error['password_verify'] }" ng-model="password_verify" type="password" class="form-control" id="inputPassword2" placeholder="">
-      <div class="invalid-tooltip">
+      <div ng-if="error['password_verify']" class="invalid-tooltip">
         {{ error['password_verify']}}
       </div>
     </div>
   </div> 
 
-  <div class="form-group row justify-content-center common-block" style="text-align:center;">
-    <div class="col-10">
-      <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-secondary">Зарегистрироваться</button>
-      <a href="#!/login" class="btn btn-link text-dark">Отменить</a>
-      <img style="width: 20px; margin-top: 10px; position: fixed;" ng-show="dataLoading" src="images/loader.gif" />
+  <div class="form-group row" style="padding-top: 20px;">
+    <div class="col-sm-6 col-sm-offset-3">
+      <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Зарегистрироваться</button>
+      <a href="#!/login" class="btn btn-link">Отменить</a>
+      <img class="loader" ng-show="dataLoading" src="images/loader.gif" />
     </div>
   </div>
 </form>

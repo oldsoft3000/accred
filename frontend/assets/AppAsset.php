@@ -10,13 +10,15 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
        
-        'assets/bootstrap/css/bootstrap.min.css',
-        'css/styles.css',
+        'css/app.css',
+        //'css/styles.css',
+        'css/styles_.css',
     ];
     public $js = [
         //'assets/jquery/jquery.min.js',
-        'assets/popper.js/umd/popper.min.js',
-        'assets/bootstrap/js/bootstrap.min.js',
+        //'assets/jquery/jquery-3.3.1.min.js',
+        //'assets/popper.js/umd/popper.min.js',
+        //'assets/bootstrap/js/bootstrap.min.js',
         'assets/cleave/cleave-angular.min.js',
         'assets/cleave/addons/cleave-phone.ru.js',
         'App.js',
@@ -28,7 +30,7 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         //'yii\bootstrap\BootstrapAsset',
-        //'yii\bootstrap\BootstrapAssetPlugins',
+        'yii\bootstrap\BootstrapPluginAsset',
         'frontend\assets\AngularAsset',
     ];
 

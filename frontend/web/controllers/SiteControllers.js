@@ -118,12 +118,12 @@ SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteSe
 SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteServices',
     function($scope, $window, $location, SiteServices) {
         $scope.signup = function () {
+            $scope.error = {};
             if ($scope.userModel && $scope.userModel.password != $scope.password_verify) {
                 $scope.error["password_verify"] = "Пароли должны сопадать";
                 return;
             }
             $scope.dataLoading = true;
-            $scope.error = {};
             SiteServices.signup($scope.userModel)
                 .then(successHandler) 
                 .catch(errorHandler);

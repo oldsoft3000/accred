@@ -62,12 +62,6 @@ return [
             'password' => '818181',
             'charset' => 'utf8',
         ],
-        'assetManager' => [
-            //'bundles' => require(__DIR__ . '/AppAsset.php'),
-            'converter'=> [
-                'class'=>'nizsheanez\assetConverter\Converter',
-            ]
-        ],
     ],
     'params' => $params,
 ];
