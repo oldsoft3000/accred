@@ -82,4 +82,18 @@ class ParticipSearch extends Particip
 
         return $dataProvider;
     }
+
+    public function searchCreated() {
+        $query = Particip::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $query->andFilterWhere([
+            'created_by' => Yii::$app->user->id,
+        ]);
+
+        return $dataProvider;
+    }
 }

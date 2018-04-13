@@ -27,16 +27,16 @@ AppAsset::register($this);
               <img class="logo" src="../images/logo_1.png" >
           </div>
           <div class="sidebar">
-              <li ng-class="{'sidebar-loaded': true}" ng-show="!isLoggedIn()" class="nav-item sidebar-loading">
+              <li ng-class="{'sidebar-loaded': true}" ng-if="!isLoggedIn()" class="nav-item sidebar-loading">
                 <a  class="btn btn-primary nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
               </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
+              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
                 <a class="btn btn-primary nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
               </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
+              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
                 <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
               </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-show="isLoggedIn()" class="nav-item sidebar-loading"> 
+              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
                 <a ng-click="logout()" class="btn btn-primary nav-link" role="button" aria-disabled="true" href="">Выход</a> 
               </li> 
           </div>
@@ -91,7 +91,7 @@ AppAsset::register($this);
                   $('body').tooltip({ selector: '[data-toggle="tooltip"]' });
               });*/
             });
-                      
+   
         </script>
     </body>
 </html>

@@ -51,6 +51,14 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteSer
             return SiteServices.isLoggedIn();
         };
 
+        $scope.isLoggedIn = function() {
+            return SiteServices.isLoggedIn();
+        };
+
+        $scope.isUserAgreed = function() {
+            return SiteServices.isUserAgreed();
+        }
+
         $scope.logout = function () {
             SiteServices.logout();
             $location.path('/login').replace();

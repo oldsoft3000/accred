@@ -73,7 +73,7 @@
                     <option value="1">Мужской</option>
                     <option value="2">Женский</option>
                 </select>
-                <div ng-if="error['phone_number']" class="invalid-tooltip">
+                <div ng-if="error['gender']" class="invalid-tooltip">
                     {{ error['gender']}}
                 </div>
             </div>
@@ -717,7 +717,7 @@
             <label class="col-sm-3 required">Должность</label>
             <div class="col-sm-7">
                 <input ng-click="error['position'] = ''" ng-class="{'is-invalid': error['position'] }" ng-model="userModel.position" type="text" class="form-control" placeholder="">
-                <div ng-if="error['phone_number']" class="invalid-tooltip">
+                <div ng-if="error['position']" class="invalid-tooltip">
                     {{ error['position']}}
                 </div>
             </div>
@@ -775,3 +775,4 @@
         </div>
     </div>
 </form>
+<button class="btn btn-primary" ng-click="debugRequest()">Debug</button>

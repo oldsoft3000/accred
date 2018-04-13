@@ -8,7 +8,7 @@
 	],
 	"settings": {
         "xdebug": {
-             "url": "http://accred.frontend.server/",
+             "url": "accred.frontend.server",
         }
     }
 }

@@ -44,13 +44,13 @@ App.config(function($controllerProvider, $httpProvider) {
 
 App.service('ErrorService', function($location, $q) {
     this.handleError = function (response) {
-        if (response.status === 500) {
-            this.lastError = response.data.message;
-            $location.path("/error" ).replace(); 
-        } else {
-            return $q.reject(response);
+        if (response.status == 422) {
+             return $q.reject(response);
         }
-        
+
+        this.lastError = response.data;
+        $location.path("/error" ).replace(); 
+        return $q.reject(response);
     };
 });
 

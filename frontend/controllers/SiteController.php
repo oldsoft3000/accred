@@ -10,6 +10,7 @@ use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBearerAuth;
+use yii\web\ForbiddenHttpException;
 
 /**
  * Site controller

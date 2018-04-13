@@ -33,43 +33,40 @@ use Yii;
  * @property string $position_latin
  * @property resource $photo
  */
-class Particip extends \yii\db\ActiveRecord
-{
+class Particip extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'particip';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['title', 'gender', 'passport_series', 'passport_number', 'visa_required'], 'integer'],
-            [['title','first_name', 'last_name', 'gender', 'email', 'date_of_birth',
-              'registration_address', 'phone_number', 
-              'place_of_birth', 'first_name_latin', 'last_name_latin', 'position',
-              'position_latin','citizenship','passport_series','passport_number'], 'required'],
+            [['title', 'first_name', 'last_name', 'gender', 'email', 'date_of_birth',
+            'registration_address', 'phone_number',
+            'place_of_birth', 'first_name_latin', 'last_name_latin', 'position',
+            'position_latin', 'citizenship', 'passport_series', 'passport_number'], 'required'],
             [['visa_passport_validity', 'visa_country', 'visa_city'], 'required', 'when' => function($model) {
-                return $model->visa_required == '1';
-            }],
+                    return $model->visa_required == '1';
+                }],
             [['photo'], 'string'],
             [['first_name', 'middle_name', 'last_name', 'email', 'organization', 'registration_address',
-                'phone_number', 'visa_country', 'visa_city', 'place_of_birth', 'first_name_latin',
-                'last_name_latin','position', 'organization_latin', 'position_latin'], 'string', 'max' => 100],
-            [['citizenship','visa_country'], 'string', 'max' => 11],
+            'phone_number', 'visa_country', 'visa_city', 'place_of_birth', 'first_name_latin',
+            'last_name_latin', 'position', 'organization_latin', 'position_latin'], 'string', 'max' => 100],
+            [['citizenship', 'visa_country'], 'string', 'max' => 11],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'title' => 'Обращение',
@@ -98,19 +95,26 @@ class Particip extends \yii\db\ActiveRecord
             'photo' => 'Photo',
         ];
     }
-    
-    public function beforeValidate()
-    {
-        /*if ($this->isNewRecord)
-        {
-            $this->date_of_birth = Yii::$app->formatter->asDateTime($this->date_of_birth, 'yyyy-MM-dd HH:mm:ss');
-        }*/
+
+    public function beforeValidate() {
+        /* if ($this->isNewRecord)
+          {
+          $this->date_of_birth = Yii::$app->formatter->asDateTime($this->date_of_birth, 'yyyy-MM-dd HH:mm:ss');
+          } */
         return parent::beforeValidate();
     }
-    
-    public function afterFind()
-    {
+
+    public function afterFind() {
         //$this->date_of_birth = date('Y/m/d', strtotime($this->date_of_birth));
         //$this-> visa_passport_validity = date('Y/m/d', strtotime($this->visa_passport_validity));
     }
+
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            $this->created_by = Yii::$app->user->id;
+            return true;
+        }
+        return false;
+    }
+
 }

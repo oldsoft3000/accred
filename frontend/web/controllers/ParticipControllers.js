@@ -56,6 +56,7 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
 ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
     function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
+        $scope.userModel = {};
         $scope.userModel.visa_required = 1;
 
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
@@ -67,14 +68,13 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
             $scope.userModel.title = response.data.title.toString();
             $scope.userModel.gender = response.data.gender.toString();
             $scope.isCreation = false;
-        
+
         } else if ($route.current.$$route.originalPath === "/create") {
             console.log("create");
             $scope.button = "Добавить участника";
             $scope.isCreation = true;
         }
 
-        
         $scope.create = function () {
             $scope.dataLoading = true;
             $scope.error = {};
@@ -148,6 +148,31 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
             });
         };
         
+
+        $scope.debugRequest = function() {
+            $scope.userModel.title = 1;
+            $scope.userModel.first_name = "1asdaf";
+            $scope.userModel.last_name = "2as2daf";
+            $scope.userModel.middle_name = "3asdaf";
+            $scope.userModel.gender = "1";
+            $scope.userModel.email = "zcz@mail.ru";
+            $scope.userModel.date_of_birth = "03.04.2001";
+            $scope.userModel.citizenship = "TG";
+            $scope.userModel.passport_series = "1231";
+            $scope.userModel.passport_number = "123456";
+            $scope.userModel.registration_address = "sdg";
+            $scope.userModel.phone_number = "2523523525";
+            $scope.userModel.visa_required = "0";
+            $scope.userModel.place_of_birth = "cxvxcbxb";
+            $scope.userModel.first_name_latin = "sdfsfsfsdf";
+            $scope.userModel.last_name_latin = "dfnfjgjfgj";
+            $scope.userModel.position = "assadasd";
+            $scope.userModel.position_latin = "ytjtjgj";
+
+            $scope.create();
+
+        }
+
         $scope.$watch('userModel.visa_required', function(newVal, oldVal){
             $scope.visaReuired( newVal );
         }, true);

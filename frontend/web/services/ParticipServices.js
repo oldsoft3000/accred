@@ -5,7 +5,7 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q', 'ErrorService'
         var obj = {};
         
         obj.create = function (userModel) {
-            return $http.post('particip/create', userModel)
+            return $http.post('particips', userModel)
                 .then(successHandler)
                 .catch(errorHandler);
                 function successHandler(response) {
