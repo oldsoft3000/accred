@@ -82,7 +82,7 @@
             <label class="col-sm-3">Фотография</label>
             <div class="col-sm-7">
                 <label class="btn btn-primary">
-                    <input type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)"> Обзор
+                    <input type="file" id="photoFile" style="display:none" onchange="angular.element(this).scope().photoSelected()"> Обзор
                 </label>
                 <span class='' id="upload-file-info">{{fileName}}</span>
             </div>

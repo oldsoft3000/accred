@@ -143,7 +143,7 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
                     reader.onloadend = function () {
                          $scope.userModel.photo = reader.result;
                     }
-                    reader.readAsBinaryString(file);
+                    reader.readAsDataURL(file);
                 } 
             });
         };
