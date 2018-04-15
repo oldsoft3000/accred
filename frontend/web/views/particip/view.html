@@ -1,5 +1,5 @@
 <div>
-  <h1 class="subtitle">Список участников</h1>    
+  <h1 class="subtitle">Список участников</h1>
   <p>{{ message}}</p>
   <div class="" ng-show="particips.length > 0">
     <table class="table table-bordered table-hover">
@@ -13,8 +13,6 @@
         </tr>
       </thead>
       <tbody>
-        
-
         <tr ng-repeat="data in particips">
           <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
           <td>{{data.status}}</td>
@@ -25,46 +23,40 @@
                     ng-click="showPhoto()"
                     data-toggle="tooltip" data-target="#myModal"
                     title="Показать фото" ></button> -->
-
-            <a  class="action_icon_block"
-                data-toggle="tooltip" title="Показать фото"
-                ng-if="data.photo"
-                ng-click="showPhoto()">
+            <a class="action_icon_block" data-toggle="tooltip" title="Показать фото" ng-if="data.photo" ng-click="showPhoto()">
               <img class="action_icon" border="0" src="images/view.png" width=30 height=30 >
-            </a> 
-
+            </a>
             <div class="modal" id="myModal" role="dialog">
               <div class="modal-dialog modal-dialog-centered ">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
-                  <div class="modal-body">
-                    <img src="{{data.photo}}" width=200px height=200px/>
-                  </div>
+                  <!--<div class="modal-body">
+                          <!--<img-crop image="data.photo" result-image="photo_croped"></img-crop>
+                          <div>Cropped Image:</div>
+                          <div><img ng-src="{{photo_croped}}" /></div> -->
+                  <!--</div>-->
+                  <img ng-src="{{data.photo}}">
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                  </div> -
                 </div>
-                
               </div>
-            </div> 
-
+            </div>
           </td>
           <td>Оплата</td>
-
           <td style="text-align: center;">
             <a class="action_icon_block" href="#!/particip/view/{{data.id}}" data-toggle="tooltip" title="Редактировать">
               <img class="action_icon" border="0" src="images/edit.png" width=20 height=20 >
-            </a> 
+            </a>
             <a class="action_icon_block" ng-click="delete(data.id)" data-toggle="tooltip" title="Удалить">
               <img class="action_icon" border="0" src="images/delete.png" width=20 height=20>
-            </a> 
+            </a>
           </td>
-
         </tr>
       </tbody>
-    </table> 
+    </table>
   </div>
   <div class="row text-center">
     <a class="btn btn-primary" href="#!/create" role="button">Добавить участника</a>

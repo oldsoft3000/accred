@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e24fb7e6064d7d29a0148d864fd1f17",
+    "content-hash": "2033e378f2213904c7309145d6da0177",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -76,6 +76,25 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/angular/bower-angular/zipball/2d507370407cecd2aa5c339ba3140966bce6006b",
                 "reference": "2d507370407cecd2aa5c339ba3140966bce6006b",
+                "shasum": null
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-img-cropper",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AllanBishop/angular-img-cropper.git",
+                "reference": "f98eb6b8f803fa9e07fd36b7f1cb81d1e64ab205"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AllanBishop/angular-img-cropper/zipball/f98eb6b8f803fa9e07fd36b7f1cb81d1e64ab205",
+                "reference": "f98eb6b8f803fa9e07fd36b7f1cb81d1e64ab205",
                 "shasum": null
             },
             "type": "bower-asset",

@@ -224,3 +224,23 @@ label {
     /* Fade in tooltip */
     opacity: 0.75;
 }
+
+.modal-dialog {
+}
+
+.photo-editor {
+
+    margin-left: auto!important;
+    margin-right: auto!important;
+} 
+
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:500px;
+  height:350px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

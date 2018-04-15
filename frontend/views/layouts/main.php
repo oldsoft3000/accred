@@ -83,15 +83,7 @@ AppAsset::register($this);
         <div class="device-sm" style="display:none;"></div>
 
         <script type="text/javascript">
-            
-            $( document ).ready(function() {
-              console.log("jquery " + $().jquery);
-              console.log( "ready!" );
-              /*$(function(){
-                  $('body').tooltip({ selector: '[data-toggle="tooltip"]' });
-              });*/
-            });
-   
+
         </script>
     </body>
 </html>

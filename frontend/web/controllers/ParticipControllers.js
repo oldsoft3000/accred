@@ -3,46 +3,46 @@
 ParticipApp.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
-            when('/particip/view', {
-                templateUrl: 'views/particip/view.html',
-                controller: 'ViewController',
-                resolve: {
-                    response: function(ParticipServices) {
-                        return ParticipServices.view();
-                    }
+        when('/particip/view', {
+            templateUrl: 'views/particip/view.html',
+            controller: 'ViewController',
+            resolve: {
+                response: function(ParticipServices) {
+                    return ParticipServices.view();
                 }
-            }).
-            when('/particip/view/:id', {
-                templateUrl: 'views/particip/create.html',
-                controller: 'CreateController',
-                resolve: {
-                    response: function(ParticipServices, $route) {
-                        return ParticipServices.view($route.current.params.id);
-                    }
+            }
+        }).
+        when('/particip/view/:id', {
+            templateUrl: 'views/particip/create.html',
+            controller: 'CreateController',
+            resolve: {
+                response: function(ParticipServices, $route) {
+                    return ParticipServices.view($route.current.params.id);
                 }
-            }).
-            when('/create', {
-                templateUrl: 'views/particip/create.html',
-                controller: 'CreateController',
-                resolve: {
-                    response: function() {
-                        return undefined;
-                    }
+            }
+        }).
+        when('/create', {
+            templateUrl: 'views/particip/create.html',
+            controller: 'CreateController',
+            resolve: {
+                response: function() {
+                    return undefined;
                 }
-            }).
-            otherwise({
-                templateUrl: 'views/site/404.html'
-            });
+            }
+        }).
+        otherwise({
+            templateUrl: 'views/site/404.html'
+        });
         $httpProvider.interceptors.push('authInterceptor');
     }
 ]);
 
 ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
     function($scope, $http, $route, response, ParticipServices) {
-        $scope.particips = response.data;   
+        $scope.particips = response.data;
         $scope.delete = function(id) {
-            if(confirm("Удалить участника: " + id)==true && id>0){
-                ParticipServices.delete(id);    
+            if (confirm("Удалить участника: " + id) == true && id > 0) {
+                ParticipServices.delete(id);
                 $route.reload();
             }
         };
@@ -51,13 +51,23 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
             console.log("showPhoto");
             $('#myModal').modal('toggle')
         };
-}]);
+    }
+]);
 
-ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
+ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
     function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
         $scope.userModel = {};
         $scope.userModel.visa_required = 1;
+
+        $scope.cropper = {};
+        $scope.cropper.sourceImage = null;
+        $scope.cropper.croppedImage = null;
+        $scope.bounds = {};
+        $scope.bounds.left = 0;
+        $scope.bounds.right = 0;
+        $scope.bounds.top = 0;
+        $scope.bounds.bottom = 0;
 
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
             console.log("update");
@@ -75,49 +85,53 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
             $scope.isCreation = true;
         }
 
-        $scope.create = function () {
+        $scope.create = function() {
             $scope.dataLoading = true;
             $scope.error = {};
             ParticipServices.create($scope.userModel)
-                .then(successHandler) 
+                .then(successHandler)
                 .catch(errorHandler);
-                function successHandler(response) {
-                    $scope.dataLoading = false;
-                    $location.path('/particip/view').replace();
-                    return response;
-                }
-                function errorHandler(response) {
-                    $scope.dataLoading = false;
-                    angular.forEach(response.data, function (error) {
-                        $scope.error[error.field] = error.message;
-                    });
-                    return response;
-                }
+
+            function successHandler(response) {
+                $scope.dataLoading = false;
+                $location.path('/particip/view').replace();
+                return response;
+            }
+
+            function errorHandler(response) {
+                $scope.dataLoading = false;
+                angular.forEach(response.data, function(error) {
+                    $scope.error[error.field] = error.message;
+                });
+                return response;
+            }
         };
 
-        $scope.update = function () {
+        $scope.update = function() {
             $scope.dataLoading = true;
             $scope.error = {};
             ParticipServices.update($scope.userModel)
-                .then(successHandler) 
+                .then(successHandler)
                 .catch(errorHandler);
-                function successHandler(response) {
-                    $scope.dataLoading = false;
-                    $location.path('/particip/view').replace();
-                    return response;
-                }
-                function errorHandler(response) {
-                    $scope.dataLoading = false;
-                    angular.forEach(response.data, function (error) {
-                        $scope.error[error.field] = error.message;
-                    });
-                    return response;
-                }
+
+            function successHandler(response) {
+                $scope.dataLoading = false;
+                $location.path('/particip/view').replace();
+                return response;
+            }
+
+            function errorHandler(response) {
+                $scope.dataLoading = false;
+                angular.forEach(response.data, function(error) {
+                    $scope.error[error.field] = error.message;
+                });
+                return response;
+            }
         };
-       
-        
+
+
         $scope.visaReuired = function(value) {
-            var el = angular.element( document.querySelector( '#visa-fieldset' ) );
+            var el = angular.element(document.querySelector('#visa-fieldset'));
             if (value === 0) {
                 el.attr('disabled', 'true');
             } else {
@@ -136,18 +150,21 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
                 fileName = filePath.substring(filePath.lastIndexOf('\\')+1);
                 fileName = fileName.substring(fileName.lastIndexOf('/')+1);
                 $scope.fileName = fileName;*/
-                var file = document.querySelector( '#photoFile' ).files[0];
+                var file = document.querySelector('#photoFile').files[0];
                 if (typeof file !== 'undefined') {
                     $scope.fileName = file.name;
                     var reader = new FileReader();
-                    reader.onloadend = function () {
-                         $scope.userModel.photo = reader.result;
+                    reader.onloadend = function() {
+                        $scope.$apply(function($scope) {
+                            $scope.userModel.photo = reader.result; 
+                            $scope.editPhoto();
+                        });
                     }
                     reader.readAsDataURL(file);
-                } 
+                }
             });
         };
-        
+
 
         $scope.debugRequest = function() {
             $scope.userModel.title = 1;
@@ -173,14 +190,20 @@ ParticipApp.controller('CreateController', ['$timeout','$scope', '$rootScope', '
 
         }
 
-        $scope.$watch('userModel.visa_required', function(newVal, oldVal){
-            $scope.visaReuired( newVal );
+        $scope.$watch('userModel.visa_required', function(newVal, oldVal) {
+            $scope.visaReuired(newVal);
         }, true);
+
+        $scope.editPhoto = function() {
+            console.log("showPhoto");
+            $('#myModal').modal('toggle')
+        };
 
         /*$rootScope.$on('visaReuired', function(event, value) {
             $scope.visaReuired(value);
         });*/
 
-        
-        
-}]);
+
+
+    }
+]);

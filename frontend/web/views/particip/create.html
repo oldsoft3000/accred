@@ -1,778 +1,794 @@
 <form name="createForm" ng-submit="isCreation? create() : update()" role="form" novalidate>
-    <h1 class="subtitle">Персональная информация</h1>
-    <div class="subblock">
-        <div class="form-group row">
-            <label class="col-sm-3 form-label required">Обращение</label>
-            <div class="col-sm-7">
-                <select ng-focus="error['title'] = ''" ng-click="error['title'] = ''" ng-class="{'is-invalid': error['title'] }" ng-model="userModel.title" class="form-control">
-                    <option selected value="" style="display:none;">Выберите обращение</option>
-                    <option value='1'>Г-н</option>
-                    <option value='2'>Г-жа</option>
-                </select>
-                <div ng-if="error['title']" class="invalid-tooltip">
-                    {{ error['title']}}
-                </div>
-            </div>
+  <h1 class="subtitle">Персональная информация</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 form-label required">Обращение</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['title'] = ''" ng-click="error['title'] = ''" ng-class="{'is-invalid': error['title'] }" ng-model="userModel.title" class="form-control">
+          <option selected value="" style="display:none;">Выберите обращение</option>
+          <option value='1'>Г-н</option>
+          <option value='2'>Г-жа</option>
+        </select>
+        <div ng-if="error['title']" class="invalid-tooltip">
+          {{ error['title']}}
         </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Фамилия</label>
-            <div class="col-sm-7">
-                <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="userModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
-                <div ng-if="error['last_name']" class="invalid-tooltip">
-                    {{ error['last_name']}}
-                </div>
-            </div>
+      </div>
+    </div>  
+    <div class="form-group row">
+      <label class="col-sm-3 required">Фамилия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="userModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
         </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Имя</label>
-            <div class="col-sm-7">
-                <input ng-click="error['first_name'] = ''" ng-class="{'is-invalid': error['first_name'] }" ng-model="userModel.first_name" type="text" class="form-control" placeholder="">
-                <div ng-if="error['first_name']" class="invalid-tooltip">
-                    {{ error['first_name']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Отчество</label>
-            <div class="col-sm-7">
-                <input ng-click="error['middle_name'] = ''" ng-class="{'is-invalid': error['middle_name'] }" ng-model="userModel.middle_name" type="text" class="form-control" placeholder="">
-                <div ng-if="error['middle_name']" class="invalid-tooltip">
-                    {{ error['middle_name']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
-                <label class="col-form-label required" style="line-height: 50%">Фамилия</label>
-                <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
-            </div>
-            <div class="col-sm-7">
-                <input ng-click="error['last_name_latin'] = ''" ng-class="{'is-invalid': error['last_name_latin'] }" ng-model="userModel.last_name_latin" type="text" class="form-control" placeholder="" only-latin>
-                <div ng-if="error['last_name_latin']" class="invalid-tooltip">
-                    {{ error['last_name_latin']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
-                <label class="col-form-label required" style="line-height: 50%">Имя</label>
-                <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
-            </div>
-            <div class="col-sm-7">
-                <input ng-click="error['first_name_latin'] = ''" ng-class="{'is-invalid': error['first_name_latin'] }" ng-model="userModel.first_name_latin" type="text" class="form-control" placeholder="" only-latin>
-                <div ng-if="error['first_name_latin']" class="invalid-tooltip">
-                    {{ error['first_name_latin']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Пол</label>
-            <div class="col-sm-7">
-                <select ng-focus="error['gender'] = ''" ng-click="error['gender'] = ''" ng-class="{'is-invalid': error['gender'] }" ng-model="userModel.gender" type="text" class="form-control">
-                    <option selected value="" style="display:none;">Выберите пол</option>
-                    <option value="1">Мужской</option>
-                    <option value="2">Женский</option>
-                </select>
-                <div ng-if="error['gender']" class="invalid-tooltip">
-                    {{ error['gender']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3">Фотография</label>
-            <div class="col-sm-7">
-                <label class="btn btn-primary">
-                    <input type="file" id="photoFile" style="display:none" onchange="angular.element(this).scope().photoSelected()"> Обзор
-                </label>
-                <span class='' id="upload-file-info" style="padding-left:10px;">{{fileName}}</span>
-            </div>
-        </div>
+      </div>
     </div>
-    <h1 class="subtitle">Пасортные данные</h1>
-    <div class="subblock">
-        <div class="form-group row">
-            <label class="col-sm-3 required">Гражданство</label>
-            <div class="col-sm-7">
-                <select ng-focus="error['citizenship'] = ''" ng-click="error['citizenship'] = ''" ng-class="{'is-invalid': error['citizenship'] }" ng-model="userModel.citizenship" type="text" class="form-control" placeholder="">
-                    <option selected value="" style="display:none;">Выберите гражданство</option>
-                    <option value="AU">Австралия</option>
-                    <option value="AT">Австрия</option>
-                    <option value="AZ">Азербайджан</option>
-                    <option value="AX">Аландские о-ва</option>
-                    <option value="AL">Албания</option>
-                    <option value="DZ">Алжир</option>
-                    <option value="AS">Американское Самоа</option>
-                    <option value="AI">Ангилья</option>
-                    <option value="AO">Ангола</option>
-                    <option value="AD">Андорра</option>
-                    <option value="AQ">Антарктида</option>
-                    <option value="AG">Антигуа и Барбуда</option>
-                    <option value="AR">Аргентина</option>
-                    <option value="AM">Армения</option>
-                    <option value="AW">Аруба</option>
-                    <option value="AF">Афганистан</option>
-                    <option value="BS">Багамы</option>
-                    <option value="BD">Бангладеш</option>
-                    <option value="BB">Барбадос</option>
-                    <option value="BH">Бахрейн</option>
-                    <option value="BY">Беларусь</option>
-                    <option value="BZ">Белиз</option>
-                    <option value="BE">Бельгия</option>
-                    <option value="BJ">Бенин</option>
-                    <option value="BM">Бермуды</option>
-                    <option value="BG">Болгария</option>
-                    <option value="BO">Боливия</option>
-                    <option value="BQ">Бонэйр, Синт-Эстатиус и Саба</option>
-                    <option value="BA">Босния и Герцеговина</option>
-                    <option value="BW">Ботсвана</option>
-                    <option value="BR">Бразилия</option>
-                    <option value="IO">Британская территория в Индийском океане</option>
-                    <option value="BN">Бруней-Даруссалам</option>
-                    <option value="BF">Буркина-Фасо</option>
-                    <option value="BI">Бурунди</option>
-                    <option value="BT">Бутан</option>
-                    <option value="VU">Вануату</option>
-                    <option value="VA">Ватикан</option>
-                    <option value="GB">Великобритания</option>
-                    <option value="HU">Венгрия</option>
-                    <option value="VE">Венесуэла</option>
-                    <option value="VG">Виргинские о-ва (Британские)</option>
-                    <option value="VI">Виргинские о-ва (США)</option>
-                    <option value="UM">Внешние малые о-ва (США)</option>
-                    <option value="TL">Восточный Тимор</option>
-                    <option value="VN">Вьетнам</option>
-                    <option value="GA">Габон</option>
-                    <option value="HT">Гаити</option>
-                    <option value="GY">Гайана</option>
-                    <option value="GM">Гамбия</option>
-                    <option value="GH">Гана</option>
-                    <option value="GP">Гваделупа</option>
-                    <option value="GT">Гватемала</option>
-                    <option value="GN">Гвинея</option>
-                    <option value="GW">Гвинея-Бисау</option>
-                    <option value="DE">Германия</option>
-                    <option value="GG">Гернси</option>
-                    <option value="GI">Гибралтар</option>
-                    <option value="HN">Гондурас</option>
-                    <option value="HK">Гонконг (специальный административный район)</option>
-                    <option value="GD">Гренада</option>
-                    <option value="GL">Гренландия</option>
-                    <option value="GR">Греция</option>
-                    <option value="GE">Грузия</option>
-                    <option value="GU">Гуам</option>
-                    <option value="DK">Дания</option>
-                    <option value="JE">Джерси</option>
-                    <option value="DJ">Джибути</option>
-                    <option value="DG">Диего-Гарсия</option>
-                    <option value="DM">Доминика</option>
-                    <option value="DO">Доминиканская Республика</option>
-                    <option value="EG">Египет</option>
-                    <option value="ZM">Замбия</option>
-                    <option value="EH">Западная Сахара</option>
-                    <option value="ZW">Зимбабве</option>
-                    <option value="IL">Израиль</option>
-                    <option value="IN">Индия</option>
-                    <option value="ID">Индонезия</option>
-                    <option value="JO">Иордания</option>
-                    <option value="IQ">Ирак</option>
-                    <option value="IR">Иран</option>
-                    <option value="IE">Ирландия</option>
-                    <option value="IS">Исландия</option>
-                    <option value="ES">Испания</option>
-                    <option value="IT">Италия</option>
-                    <option value="YE">Йемен</option>
-                    <option value="CV">Кабо-Верде</option>
-                    <option value="KZ">Казахстан</option>
-                    <option value="KY">Каймановы о-ва</option>
-                    <option value="KH">Камбоджа</option>
-                    <option value="CM">Камерун</option>
-                    <option value="CA">Канада</option>
-                    <option value="IC">Канарские о-ва</option>
-                    <option value="QA">Катар</option>
-                    <option value="KE">Кения</option>
-                    <option value="CY">Кипр</option>
-                    <option value="KG">Киргизия</option>
-                    <option value="KI">Кирибати</option>
-                    <option value="CN">Китай</option>
-                    <option value="KP">КНДР</option>
-                    <option value="CC">Кокосовые о-ва</option>
-                    <option value="CO">Колумбия</option>
-                    <option value="KM">Коморы</option>
-                    <option value="CG">Конго - Браззавиль</option>
-                    <option value="CD">Конго - Киншаса</option>
-                    <option value="XK">Косово</option>
-                    <option value="CR">Коста-Рика</option>
-                    <option value="CI">Кот-д&rsquo;Ивуар</option>
-                    <option value="CU">Куба</option>
-                    <option value="KW">Кувейт</option>
-                    <option value="CW">Кюрасао</option>
-                    <option value="LA">Лаос</option>
-                    <option value="LV">Латвия</option>
-                    <option value="LS">Лесото</option>
-                    <option value="LR">Либерия</option>
-                    <option value="LB">Ливан</option>
-                    <option value="LY">Ливия</option>
-                    <option value="LT">Литва</option>
-                    <option value="LI">Лихтенштейн</option>
-                    <option value="LU">Люксембург</option>
-                    <option value="MU">Маврикий</option>
-                    <option value="MR">Мавритания</option>
-                    <option value="MG">Мадагаскар</option>
-                    <option value="YT">Майотта</option>
-                    <option value="MO">Макао (специальный административный район)</option>
-                    <option value="MK">Македония</option>
-                    <option value="MW">Малави</option>
-                    <option value="MY">Малайзия</option>
-                    <option value="ML">Мали</option>
-                    <option value="MV">Мальдивы</option>
-                    <option value="MT">Мальта</option>
-                    <option value="MA">Марокко</option>
-                    <option value="MQ">Мартиника</option>
-                    <option value="MH">Маршалловы Острова</option>
-                    <option value="MX">Мексика</option>
-                    <option value="MZ">Мозамбик</option>
-                    <option value="MD">Молдова</option>
-                    <option value="MC">Монако</option>
-                    <option value="MN">Монголия</option>
-                    <option value="MS">Монтсеррат</option>
-                    <option value="MM">Мьянма (Бирма)</option>
-                    <option value="NA">Намибия</option>
-                    <option value="NR">Науру</option>
-                    <option value="NP">Непал</option>
-                    <option value="NE">Нигер</option>
-                    <option value="NG">Нигерия</option>
-                    <option value="NL">Нидерланды</option>
-                    <option value="NI">Никарагуа</option>
-                    <option value="NU">Ниуэ</option>
-                    <option value="NZ">Новая Зеландия</option>
-                    <option value="NC">Новая Каледония</option>
-                    <option value="NO">Норвегия</option>
-                    <option value="AC">о-в Вознесения</option>
-                    <option value="IM">о-в Мэн</option>
-                    <option value="NF">о-в Норфолк</option>
-                    <option value="CX">о-в Рождества</option>
-                    <option value="SH">о-в Св. Елены</option>
-                    <option value="TC">о-ва Тёркс и Кайкос</option>
-                    <option value="AE">ОАЭ</option>
-                    <option value="OM">Оман</option>
-                    <option value="UN">Организация Объединенных Наций</option>
-                    <option value="CK">Острова Кука</option>
-                    <option value="PN">острова Питкэрн</option>
-                    <option value="PK">Пакистан</option>
-                    <option value="PW">Палау</option>
-                    <option value="PS">Палестинские территории</option>
-                    <option value="PA">Панама</option>
-                    <option value="PG">Папуа &ndash; Новая Гвинея</option>
-                    <option value="PY">Парагвай</option>
-                    <option value="PE">Перу</option>
-                    <option value="PL">Польша</option>
-                    <option value="PT">Португалия</option>
-                    <option value="PR">Пуэрто-Рико</option>
-                    <option value="KR">Республика Корея</option>
-                    <option value="RE">Реюньон</option>
-                    <option value="RU">Россия</option>
-                    <option value="RW">Руанда</option>
-                    <option value="RO">Румыния</option>
-                    <option value="SV">Сальвадор</option>
-                    <option value="WS">Самоа</option>
-                    <option value="SM">Сан-Марино</option>
-                    <option value="ST">Сан-Томе и Принсипи</option>
-                    <option value="SA">Саудовская Аравия</option>
-                    <option value="SZ">Свазиленд</option>
-                    <option value="MP">Северные Марианские о-ва</option>
-                    <option value="SC">Сейшельские Острова</option>
-                    <option value="BL">Сен-Бартелеми</option>
-                    <option value="MF">Сен-Мартен</option>
-                    <option value="PM">Сен-Пьер и Микелон</option>
-                    <option value="SN">Сенегал</option>
-                    <option value="VC">Сент-Винсент и Гренадины</option>
-                    <option value="KN">Сент-Китс и Невис</option>
-                    <option value="LC">Сент-Люсия</option>
-                    <option value="RS">Сербия</option>
-                    <option value="EA">Сеута и Мелилья</option>
-                    <option value="SG">Сингапур</option>
-                    <option value="SX">Синт-Мартен</option>
-                    <option value="SY">Сирия</option>
-                    <option value="SK">Словакия</option>
-                    <option value="SI">Словения</option>
-                    <option value="US">Соединенные Штаты</option>
-                    <option value="SB">Соломоновы Острова</option>
-                    <option value="SO">Сомали</option>
-                    <option value="SD">Судан</option>
-                    <option value="SR">Суринам</option>
-                    <option value="SL">Сьерра-Леоне</option>
-                    <option value="TJ">Таджикистан</option>
-                    <option value="TH">Таиланд</option>
-                    <option value="TW">Тайвань</option>
-                    <option value="TZ">Танзания</option>
-                    <option value="TG">Того</option>
-                    <option value="TK">Токелау</option>
-                    <option value="TO">Тонга</option>
-                    <option value="TT">Тринидад и Тобаго</option>
-                    <option value="TA">Тристан-да-Кунья</option>
-                    <option value="TV">Тувалу</option>
-                    <option value="TN">Тунис</option>
-                    <option value="TM">Туркменистан</option>
-                    <option value="TR">Турция</option>
-                    <option value="UG">Уганда</option>
-                    <option value="UZ">Узбекистан</option>
-                    <option value="UA">Украина</option>
-                    <option value="WF">Уоллис и Футуна</option>
-                    <option value="UY">Уругвай</option>
-                    <option value="FO">Фарерские о-ва</option>
-                    <option value="FM">Федеративные Штаты Микронезии</option>
-                    <option value="FJ">Фиджи</option>
-                    <option value="PH">Филиппины</option>
-                    <option value="FI">Финляндия</option>
-                    <option value="FK">Фолклендские о-ва</option>
-                    <option value="FR">Франция</option>
-                    <option value="GF">Французская Гвиана</option>
-                    <option value="PF">Французская Полинезия</option>
-                    <option value="TF">Французские Южные территории</option>
-                    <option value="HR">Хорватия</option>
-                    <option value="CF">ЦАР</option>
-                    <option value="TD">Чад</option>
-                    <option value="ME">Черногория</option>
-                    <option value="CZ">Чехия</option>
-                    <option value="CL">Чили</option>
-                    <option value="CH">Швейцария</option>
-                    <option value="SE">Швеция</option>
-                    <option value="SJ">Шпицберген и Ян-Майен</option>
-                    <option value="LK">Шри-Ланка</option>
-                    <option value="EC">Эквадор</option>
-                    <option value="GQ">Экваториальная Гвинея</option>
-                    <option value="ER">Эритрея</option>
-                    <option value="EE">Эстония</option>
-                    <option value="ET">Эфиопия</option>
-                    <option value="ZA">ЮАР</option>
-                    <option value="GS">Южная Георгия и Южные Сандвичевы о-ва</option>
-                    <option value="SS">Южный Судан</option>
-                    <option value="JM">Ямайка</option>
-                    <option value="JP">Япония</option>
-                    <option value="EZ">Eurozone</option>
-                </select>
-                <div ng-if="error['citizenship']" class="invalid-tooltip">
-                    {{ error['citizenship']}}
-                </div>
-            </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Имя</label>
+      <div class="col-sm-7">
+        <input ng-click="error['first_name'] = ''" ng-class="{'is-invalid': error['first_name'] }" ng-model="userModel.first_name" type="text" class="form-control" placeholder="">
+        <div ng-if="error['first_name']" class="invalid-tooltip">
+          {{ error['first_name']}}
         </div>
-        <div class="form-group row">
-            <label class="col-xs-12 col-sm-3 required">Серия и номер паспорта</label>
-            <div class="col-xs-4 col-sm-2">
-                <input ng-click="error['passport_series'] = ''" ng-class="{'is-invalid': error['passport_series'] }" ng-model="userModel.passport_series" type="text" class="form-control" placeholder="Серия" cleave="options.digits_4">
-                <div ng-if="error['passport_series']" class="invalid-tooltip">
-                    {{ error['passport_series']}}
-                </div>
-            </div>
-            <div class="col-xs-8 col-sm-5">
-                <input ng-click="error['passport_number'] = ''" ng-class="{'is-invalid': error['passport_number'] }" ng-model="userModel.passport_number" type="text" class="form-control" placeholder="Номер" cleave="options.digits_6">
-                <div ng-if="error['passport_number']" class="invalid-tooltip">
-                    {{ error['passport_number']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Дата рождения</label>
-            <div class="col-sm-7">
-                <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="userModel.date_of_birth" type="date" class="form-control" placeholder="">
-                <div ng-if="error['date_of_birth']" class="invalid-tooltip">
-                    {{ error['date_of_birth']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Место рождения</label>
-            <div class="col-sm-7">
-                <input ng-click="error['place_of_birth'] = ''" ng-class="{'is-invalid': error['place_of_birth'] }" ng-model="userModel.place_of_birth" type="text" class="form-control" placeholder="">
-                <div ng-if="error['place_of_birth']" class="invalid-tooltip">
-                    {{ error['place_of_birth']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Адрес регистрации</label>
-            <div class="col-sm-7">
-                <input ng-click="error['registration_address'] = ''" ng-class="{'is-invalid': error['registration_address'] }" ng-model="userModel.registration_address" type="text" class="form-control" placeholder="РФ,119213,г.Москва,ул.Ленина,д.10">
-                <div ng-if="error['registration_address']" class="invalid-tooltip">
-                    {{ error['registration_address']}}
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <h1 class="subtitle">Визовая поддержка</h1>
-    <div class="subblock">
-        <div class="form-group row">
-            <label class="col-sm-3 required">Требуется виза</label>
-            <div class="col-sm-7">
-                <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
-                    <input class="form-check-input" name="visa_required_0" type="radio" ng-value="0" ng-model="userModel.visa_required" ng-checked="!userModel.visa_required">
-                    <label class="form-check-label">
-                        Виза не требуется
-                    </label>
-                </div>
-                <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
-                    <input class="form-check-input" name="visa_required_1" type="radio" ng-value="1" ng-model="userModel.visa_required" ng-checked="userModel.visa_required === 1">
-                    <label class="form-check-label">
-                        Виза требуется
-                    </label>
-                </div>
-            </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Отчество</label>
+      <div class="col-sm-7">
+        <input ng-click="error['middle_name'] = ''" ng-class="{'is-invalid': error['middle_name'] }" ng-model="userModel.middle_name" type="text" class="form-control" placeholder="">
+        <div ng-if="error['middle_name']" class="invalid-tooltip">
+          {{ error['middle_name']}}
         </div>
-        <fieldset id="visa-fieldset">
-            <div class="form-group row">
-                <div class="col-sm-7 col-sm-offset-3 required_ext">
-                    <input type="date" placeholder='Паспорт действует до' class="form-control" ng-click="error['visa_passport_validity'] = ''" ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : userModel.visa_passport_validity }" ng-model="userModel.visa_passport_validity" />
-                    <div ng-if="error['visa_passport_validity']" class="invalid-tooltip">
-                        {{ error['visa_passport_validity']}}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-7 col-sm-offset-3 required_ext">
-                    <select ng-focus="error['visa_country'] = ''" ng-click="error['visa_country'] = ''" ng-class="{'is-invalid': error['visa_country'] }" ng-model="userModel.visa_country" type="text" class="form-control" placeholder="">
-                        <option selected value="" style="display:none;">Страна получения визы</option>
-                        <option value="AU">Австралия</option>
-                        <option value="AT">Австрия</option>
-                        <option value="AZ">Азербайджан</option>
-                        <option value="AX">Аландские о-ва</option>
-                        <option value="AL">Албания</option>
-                        <option value="DZ">Алжир</option>
-                        <option value="AS">Американское Самоа</option>
-                        <option value="AI">Ангилья</option>
-                        <option value="AO">Ангола</option>
-                        <option value="AD">Андорра</option>
-                        <option value="AQ">Антарктида</option>
-                        <option value="AG">Антигуа и Барбуда</option>
-                        <option value="AR">Аргентина</option>
-                        <option value="AM">Армения</option>
-                        <option value="AW">Аруба</option>
-                        <option value="AF">Афганистан</option>
-                        <option value="BS">Багамы</option>
-                        <option value="BD">Бангладеш</option>
-                        <option value="BB">Барбадос</option>
-                        <option value="BH">Бахрейн</option>
-                        <option value="BY">Беларусь</option>
-                        <option value="BZ">Белиз</option>
-                        <option value="BE">Бельгия</option>
-                        <option value="BJ">Бенин</option>
-                        <option value="BM">Бермуды</option>
-                        <option value="BG">Болгария</option>
-                        <option value="BO">Боливия</option>
-                        <option value="BQ">Бонэйр, Синт-Эстатиус и Саба</option>
-                        <option value="BA">Босния и Герцеговина</option>
-                        <option value="BW">Ботсвана</option>
-                        <option value="BR">Бразилия</option>
-                        <option value="IO">Британская территория в Индийском океане</option>
-                        <option value="BN">Бруней-Даруссалам</option>
-                        <option value="BF">Буркина-Фасо</option>
-                        <option value="BI">Бурунди</option>
-                        <option value="BT">Бутан</option>
-                        <option value="VU">Вануату</option>
-                        <option value="VA">Ватикан</option>
-                        <option value="GB">Великобритания</option>
-                        <option value="HU">Венгрия</option>
-                        <option value="VE">Венесуэла</option>
-                        <option value="VG">Виргинские о-ва (Британские)</option>
-                        <option value="VI">Виргинские о-ва (США)</option>
-                        <option value="UM">Внешние малые о-ва (США)</option>
-                        <option value="TL">Восточный Тимор</option>
-                        <option value="VN">Вьетнам</option>
-                        <option value="GA">Габон</option>
-                        <option value="HT">Гаити</option>
-                        <option value="GY">Гайана</option>
-                        <option value="GM">Гамбия</option>
-                        <option value="GH">Гана</option>
-                        <option value="GP">Гваделупа</option>
-                        <option value="GT">Гватемала</option>
-                        <option value="GN">Гвинея</option>
-                        <option value="GW">Гвинея-Бисау</option>
-                        <option value="DE">Германия</option>
-                        <option value="GG">Гернси</option>
-                        <option value="GI">Гибралтар</option>
-                        <option value="HN">Гондурас</option>
-                        <option value="HK">Гонконг (специальный административный район)</option>
-                        <option value="GD">Гренада</option>
-                        <option value="GL">Гренландия</option>
-                        <option value="GR">Греция</option>
-                        <option value="GE">Грузия</option>
-                        <option value="GU">Гуам</option>
-                        <option value="DK">Дания</option>
-                        <option value="JE">Джерси</option>
-                        <option value="DJ">Джибути</option>
-                        <option value="DG">Диего-Гарсия</option>
-                        <option value="DM">Доминика</option>
-                        <option value="DO">Доминиканская Республика</option>
-                        <option value="EG">Египет</option>
-                        <option value="ZM">Замбия</option>
-                        <option value="EH">Западная Сахара</option>
-                        <option value="ZW">Зимбабве</option>
-                        <option value="IL">Израиль</option>
-                        <option value="IN">Индия</option>
-                        <option value="ID">Индонезия</option>
-                        <option value="JO">Иордания</option>
-                        <option value="IQ">Ирак</option>
-                        <option value="IR">Иран</option>
-                        <option value="IE">Ирландия</option>
-                        <option value="IS">Исландия</option>
-                        <option value="ES">Испания</option>
-                        <option value="IT">Италия</option>
-                        <option value="YE">Йемен</option>
-                        <option value="CV">Кабо-Верде</option>
-                        <option value="KZ">Казахстан</option>
-                        <option value="KY">Каймановы о-ва</option>
-                        <option value="KH">Камбоджа</option>
-                        <option value="CM">Камерун</option>
-                        <option value="CA">Канада</option>
-                        <option value="IC">Канарские о-ва</option>
-                        <option value="QA">Катар</option>
-                        <option value="KE">Кения</option>
-                        <option value="CY">Кипр</option>
-                        <option value="KG">Киргизия</option>
-                        <option value="KI">Кирибати</option>
-                        <option value="CN">Китай</option>
-                        <option value="KP">КНДР</option>
-                        <option value="CC">Кокосовые о-ва</option>
-                        <option value="CO">Колумбия</option>
-                        <option value="KM">Коморы</option>
-                        <option value="CG">Конго - Браззавиль</option>
-                        <option value="CD">Конго - Киншаса</option>
-                        <option value="XK">Косово</option>
-                        <option value="CR">Коста-Рика</option>
-                        <option value="CI">Кот-д&rsquo;Ивуар</option>
-                        <option value="CU">Куба</option>
-                        <option value="KW">Кувейт</option>
-                        <option value="CW">Кюрасао</option>
-                        <option value="LA">Лаос</option>
-                        <option value="LV">Латвия</option>
-                        <option value="LS">Лесото</option>
-                        <option value="LR">Либерия</option>
-                        <option value="LB">Ливан</option>
-                        <option value="LY">Ливия</option>
-                        <option value="LT">Литва</option>
-                        <option value="LI">Лихтенштейн</option>
-                        <option value="LU">Люксембург</option>
-                        <option value="MU">Маврикий</option>
-                        <option value="MR">Мавритания</option>
-                        <option value="MG">Мадагаскар</option>
-                        <option value="YT">Майотта</option>
-                        <option value="MO">Макао (специальный административный район)</option>
-                        <option value="MK">Македония</option>
-                        <option value="MW">Малави</option>
-                        <option value="MY">Малайзия</option>
-                        <option value="ML">Мали</option>
-                        <option value="MV">Мальдивы</option>
-                        <option value="MT">Мальта</option>
-                        <option value="MA">Марокко</option>
-                        <option value="MQ">Мартиника</option>
-                        <option value="MH">Маршалловы Острова</option>
-                        <option value="MX">Мексика</option>
-                        <option value="MZ">Мозамбик</option>
-                        <option value="MD">Молдова</option>
-                        <option value="MC">Монако</option>
-                        <option value="MN">Монголия</option>
-                        <option value="MS">Монтсеррат</option>
-                        <option value="MM">Мьянма (Бирма)</option>
-                        <option value="NA">Намибия</option>
-                        <option value="NR">Науру</option>
-                        <option value="NP">Непал</option>
-                        <option value="NE">Нигер</option>
-                        <option value="NG">Нигерия</option>
-                        <option value="NL">Нидерланды</option>
-                        <option value="NI">Никарагуа</option>
-                        <option value="NU">Ниуэ</option>
-                        <option value="NZ">Новая Зеландия</option>
-                        <option value="NC">Новая Каледония</option>
-                        <option value="NO">Норвегия</option>
-                        <option value="AC">о-в Вознесения</option>
-                        <option value="IM">о-в Мэн</option>
-                        <option value="NF">о-в Норфолк</option>
-                        <option value="CX">о-в Рождества</option>
-                        <option value="SH">о-в Св. Елены</option>
-                        <option value="TC">о-ва Тёркс и Кайкос</option>
-                        <option value="AE">ОАЭ</option>
-                        <option value="OM">Оман</option>
-                        <option value="UN">Организация Объединенных Наций</option>
-                        <option value="CK">Острова Кука</option>
-                        <option value="PN">острова Питкэрн</option>
-                        <option value="PK">Пакистан</option>
-                        <option value="PW">Палау</option>
-                        <option value="PS">Палестинские территории</option>
-                        <option value="PA">Панама</option>
-                        <option value="PG">Папуа &ndash; Новая Гвинея</option>
-                        <option value="PY">Парагвай</option>
-                        <option value="PE">Перу</option>
-                        <option value="PL">Польша</option>
-                        <option value="PT">Португалия</option>
-                        <option value="PR">Пуэрто-Рико</option>
-                        <option value="KR">Республика Корея</option>
-                        <option value="RE">Реюньон</option>
-                        <option value="RU">Россия</option>
-                        <option value="RW">Руанда</option>
-                        <option value="RO">Румыния</option>
-                        <option value="SV">Сальвадор</option>
-                        <option value="WS">Самоа</option>
-                        <option value="SM">Сан-Марино</option>
-                        <option value="ST">Сан-Томе и Принсипи</option>
-                        <option value="SA">Саудовская Аравия</option>
-                        <option value="SZ">Свазиленд</option>
-                        <option value="MP">Северные Марианские о-ва</option>
-                        <option value="SC">Сейшельские Острова</option>
-                        <option value="BL">Сен-Бартелеми</option>
-                        <option value="MF">Сен-Мартен</option>
-                        <option value="PM">Сен-Пьер и Микелон</option>
-                        <option value="SN">Сенегал</option>
-                        <option value="VC">Сент-Винсент и Гренадины</option>
-                        <option value="KN">Сент-Китс и Невис</option>
-                        <option value="LC">Сент-Люсия</option>
-                        <option value="RS">Сербия</option>
-                        <option value="EA">Сеута и Мелилья</option>
-                        <option value="SG">Сингапур</option>
-                        <option value="SX">Синт-Мартен</option>
-                        <option value="SY">Сирия</option>
-                        <option value="SK">Словакия</option>
-                        <option value="SI">Словения</option>
-                        <option value="US">Соединенные Штаты</option>
-                        <option value="SB">Соломоновы Острова</option>
-                        <option value="SO">Сомали</option>
-                        <option value="SD">Судан</option>
-                        <option value="SR">Суринам</option>
-                        <option value="SL">Сьерра-Леоне</option>
-                        <option value="TJ">Таджикистан</option>
-                        <option value="TH">Таиланд</option>
-                        <option value="TW">Тайвань</option>
-                        <option value="TZ">Танзания</option>
-                        <option value="TG">Того</option>
-                        <option value="TK">Токелау</option>
-                        <option value="TO">Тонга</option>
-                        <option value="TT">Тринидад и Тобаго</option>
-                        <option value="TA">Тристан-да-Кунья</option>
-                        <option value="TV">Тувалу</option>
-                        <option value="TN">Тунис</option>
-                        <option value="TM">Туркменистан</option>
-                        <option value="TR">Турция</option>
-                        <option value="UG">Уганда</option>
-                        <option value="UZ">Узбекистан</option>
-                        <option value="UA">Украина</option>
-                        <option value="WF">Уоллис и Футуна</option>
-                        <option value="UY">Уругвай</option>
-                        <option value="FO">Фарерские о-ва</option>
-                        <option value="FM">Федеративные Штаты Микронезии</option>
-                        <option value="FJ">Фиджи</option>
-                        <option value="PH">Филиппины</option>
-                        <option value="FI">Финляндия</option>
-                        <option value="FK">Фолклендские о-ва</option>
-                        <option value="FR">Франция</option>
-                        <option value="GF">Французская Гвиана</option>
-                        <option value="PF">Французская Полинезия</option>
-                        <option value="TF">Французские Южные территории</option>
-                        <option value="HR">Хорватия</option>
-                        <option value="CF">ЦАР</option>
-                        <option value="TD">Чад</option>
-                        <option value="ME">Черногория</option>
-                        <option value="CZ">Чехия</option>
-                        <option value="CL">Чили</option>
-                        <option value="CH">Швейцария</option>
-                        <option value="SE">Швеция</option>
-                        <option value="SJ">Шпицберген и Ян-Майен</option>
-                        <option value="LK">Шри-Ланка</option>
-                        <option value="EC">Эквадор</option>
-                        <option value="GQ">Экваториальная Гвинея</option>
-                        <option value="ER">Эритрея</option>
-                        <option value="EE">Эстония</option>
-                        <option value="ET">Эфиопия</option>
-                        <option value="ZA">ЮАР</option>
-                        <option value="GS">Южная Георгия и Южные Сандвичевы о-ва</option>
-                        <option value="SS">Южный Судан</option>
-                        <option value="JM">Ямайка</option>
-                        <option value="JP">Япония</option>
-                        <option value="EZ">Eurozone</option>
-                    </select>
-                    <div ng-if="error['visa_country']" class="invalid-tooltip">
-                        {{ error['visa_country']}}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-7 col-sm-offset-3 required_ext">
-                    <input ng-click="error['visa_city'] = ''" ng-class="{'is-invalid': error['visa_city'] }" ng-model="userModel.visa_city" type="text" class="form-control test" placeholder="Город получения визы">
-                    <div ng-if="error['visa_city']" class="invalid-tooltip">
-                        {{ error['visa_city']}}
-                    </div>
-                </div>
-            </div>
-        </fieldset>
+      </div>
     </div>
-    <h1 class="subtitle">Профессиональная деятельность</h1>
-    <div class="subblock">
-        <div class="form-group row">
-            <label class="col-sm-3">Организация</label>
-            <div class="col-sm-7">
-                <input ng-click="error['organization'] = ''" ng-class="{'is-invalid': error['organization'] }" ng-model="userModel.organization" type="text" class="form-control" placeholder="">
-                <div ng-if="error['organization']" class="invalid-tooltip">
-                    {{ error['organization']}}
-                </div>
-            </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label required" style="line-height: 50%">Фамилия</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name_latin'] = ''" ng-class="{'is-invalid': error['last_name_latin'] }" ng-model="userModel.last_name_latin" type="text" class="form-control" placeholder="" only-latin>
+        <div ng-if="error['last_name_latin']" class="invalid-tooltip">
+          {{ error['last_name_latin']}}
         </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Должность</label>
-            <div class="col-sm-7">
-                <input ng-click="error['position'] = ''" ng-class="{'is-invalid': error['position'] }" ng-model="userModel.position" type="text" class="form-control" placeholder="">
-                <div ng-if="error['position']" class="invalid-tooltip">
-                    {{ error['position']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
-                <label class="col-form-label" style="line-height: 50%">Организация</label>
-                <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
-            </div>
-            <div class="col-sm-7">
-                <input ng-click="error['organization_latin'] = ''" ng-class="{'is-invalid': error['organization_latin'] }" ng-model="userModel.organization_latin" type="text" class="form-control" placeholder="" only-latin>
-                <div ng-if="error['organization_latin']" class="invalid-tooltip">
-                    {{ error['organization_latin']}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
-                <label class="col-form-label required" style="line-height: 50%">Должность</label>
-                <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
-            </div>
-            <div class="col-sm-7">
-                <input ng-click="error['position_latin'] = ''" ng-class="{'is-invalid': error['position_latin'] }" ng-model="userModel.position_latin" type="text" class="form-control" name="position_latin" placeholder="" only-latin>
-                <div ng-if="error['position_latin']" class="invalid-tooltip">
-                    {{ error['position_latin']}}
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <h1 class="subtitle">Контактная информация</h1>
-    <div class="subblock">
-        <div class="form-group row">
-            <label class="col-sm-3 required">E-mail</label>
-            <div class="col-sm-7">
-                <input ng-click="error['email'] = ''" ng-class="{'is-invalid': error['email'] }" ng-model="userModel.email" type="email" class="form-control" placeholder="">
-                <div ng-if="error['email']" class="invalid-tooltip">
-                    {{ error['email']}}
-                </div>
-            </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label required" style="line-height: 50%">Имя</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['first_name_latin'] = ''" ng-class="{'is-invalid': error['first_name_latin'] }" ng-model="userModel.first_name_latin" type="text" class="form-control" placeholder="" only-latin>
+        <div ng-if="error['first_name_latin']" class="invalid-tooltip">
+          {{ error['first_name_latin']}}
         </div>
-        <div class="form-group row">
-            <label class="col-sm-3 required">Мобильный телефон</label>
-            <div class="col-sm-7">
-                <input ng-click="error['phone_number'] = ''" ng-class="{'is-invalid': error['phone_number'] }" ng-model="userModel.phone_number" placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number" cleave="options.telephone">
-                <div ng-if="error['phone_number']" class="invalid-tooltip">
-                    {{ error['phone_number']}}
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="form-group row justify-content-center common-block" style="text-align:center;">
-        <div class="col-10">
-            <button type="submit" class="btn btn-primary">{{button}}</button>
-            <img class="loader" ng-show="dataLoading" src="images/loader.gif" />
+    <div class="form-group row">
+      <label class="col-sm-3 required">Пол</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['gender'] = ''" ng-click="error['gender'] = ''" ng-class="{'is-invalid': error['gender'] }" ng-model="userModel.gender" type="text" class="form-control">
+          <option selected value="" style="display:none;">Выберите пол</option>
+          <option value="1">Мужской</option>
+          <option value="2">Женский</option>
+        </select>
+        <div ng-if="error['gender']" class="invalid-tooltip">
+          {{ error['gender']}}
         </div>
+      </div>
     </div>
+    <div class="form-group row">
+      <label class="col-sm-3">Фотография</label>
+      <div class="col-sm-8">
+        <label class="btn btn-primary">
+          <input type="file" id="photoFile" style="display:none" onchange="angular.element(this).scope().photoSelected()"> Выбрать файл
+        </label>
+        <button type="button" ng-if="userModel.photo" ng-click="editPhoto()" class="btn btn-primary">Редактировать</button>
+        <!--<span class='' id="upload-file-info" style="padding-left:10px;">{{fileName}}</span> -->
+      </div>
+    </div>
+  </div>
+  <h1 class="subtitle">Пасортные данные</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 required">Гражданство</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['citizenship'] = ''" ng-click="error['citizenship'] = ''" ng-class="{'is-invalid': error['citizenship'] }" ng-model="userModel.citizenship" type="text" class="form-control" placeholder="">
+          <option selected value="" style="display:none;">Выберите гражданство</option>
+          <option value="AU">Австралия</option>
+          <option value="AT">Австрия</option>
+          <option value="AZ">Азербайджан</option>
+          <option value="AX">Аландские о-ва</option>
+          <option value="AL">Албания</option>
+          <option value="DZ">Алжир</option>
+          <option value="AS">Американское Самоа</option>
+          <option value="AI">Ангилья</option>
+          <option value="AO">Ангола</option>
+          <option value="AD">Андорра</option>
+          <option value="AQ">Антарктида</option>
+          <option value="AG">Антигуа и Барбуда</option>
+          <option value="AR">Аргентина</option>
+          <option value="AM">Армения</option>
+          <option value="AW">Аруба</option>
+          <option value="AF">Афганистан</option>
+          <option value="BS">Багамы</option>
+          <option value="BD">Бангладеш</option>
+          <option value="BB">Барбадос</option>
+          <option value="BH">Бахрейн</option>
+          <option value="BY">Беларусь</option>
+          <option value="BZ">Белиз</option>
+          <option value="BE">Бельгия</option>
+          <option value="BJ">Бенин</option>
+          <option value="BM">Бермуды</option>
+          <option value="BG">Болгария</option>
+          <option value="BO">Боливия</option>
+          <option value="BQ">Бонэйр, Синт-Эстатиус и Саба</option>
+          <option value="BA">Босния и Герцеговина</option>
+          <option value="BW">Ботсвана</option>
+          <option value="BR">Бразилия</option>
+          <option value="IO">Британская территория в Индийском океане</option>
+          <option value="BN">Бруней-Даруссалам</option>
+          <option value="BF">Буркина-Фасо</option>
+          <option value="BI">Бурунди</option>
+          <option value="BT">Бутан</option>
+          <option value="VU">Вануату</option>
+          <option value="VA">Ватикан</option>
+          <option value="GB">Великобритания</option>
+          <option value="HU">Венгрия</option>
+          <option value="VE">Венесуэла</option>
+          <option value="VG">Виргинские о-ва (Британские)</option>
+          <option value="VI">Виргинские о-ва (США)</option>
+          <option value="UM">Внешние малые о-ва (США)</option>
+          <option value="TL">Восточный Тимор</option>
+          <option value="VN">Вьетнам</option>
+          <option value="GA">Габон</option>
+          <option value="HT">Гаити</option>
+          <option value="GY">Гайана</option>
+          <option value="GM">Гамбия</option>
+          <option value="GH">Гана</option>
+          <option value="GP">Гваделупа</option>
+          <option value="GT">Гватемала</option>
+          <option value="GN">Гвинея</option>
+          <option value="GW">Гвинея-Бисау</option>
+          <option value="DE">Германия</option>
+          <option value="GG">Гернси</option>
+          <option value="GI">Гибралтар</option>
+          <option value="HN">Гондурас</option>
+          <option value="HK">Гонконг (специальный административный район)</option>
+          <option value="GD">Гренада</option>
+          <option value="GL">Гренландия</option>
+          <option value="GR">Греция</option>
+          <option value="GE">Грузия</option>
+          <option value="GU">Гуам</option>
+          <option value="DK">Дания</option>
+          <option value="JE">Джерси</option>
+          <option value="DJ">Джибути</option>
+          <option value="DG">Диего-Гарсия</option>
+          <option value="DM">Доминика</option>
+          <option value="DO">Доминиканская Республика</option>
+          <option value="EG">Египет</option>
+          <option value="ZM">Замбия</option>
+          <option value="EH">Западная Сахара</option>
+          <option value="ZW">Зимбабве</option>
+          <option value="IL">Израиль</option>
+          <option value="IN">Индия</option>
+          <option value="ID">Индонезия</option>
+          <option value="JO">Иордания</option>
+          <option value="IQ">Ирак</option>
+          <option value="IR">Иран</option>
+          <option value="IE">Ирландия</option>
+          <option value="IS">Исландия</option>
+          <option value="ES">Испания</option>
+          <option value="IT">Италия</option>
+          <option value="YE">Йемен</option>
+          <option value="CV">Кабо-Верде</option>
+          <option value="KZ">Казахстан</option>
+          <option value="KY">Каймановы о-ва</option>
+          <option value="KH">Камбоджа</option>
+          <option value="CM">Камерун</option>
+          <option value="CA">Канада</option>
+          <option value="IC">Канарские о-ва</option>
+          <option value="QA">Катар</option>
+          <option value="KE">Кения</option>
+          <option value="CY">Кипр</option>
+          <option value="KG">Киргизия</option>
+          <option value="KI">Кирибати</option>
+          <option value="CN">Китай</option>
+          <option value="KP">КНДР</option>
+          <option value="CC">Кокосовые о-ва</option>
+          <option value="CO">Колумбия</option>
+          <option value="KM">Коморы</option>
+          <option value="CG">Конго - Браззавиль</option>
+          <option value="CD">Конго - Киншаса</option>
+          <option value="XK">Косово</option>
+          <option value="CR">Коста-Рика</option>
+          <option value="CI">Кот-д&rsquo;Ивуар</option>
+          <option value="CU">Куба</option>
+          <option value="KW">Кувейт</option>
+          <option value="CW">Кюрасао</option>
+          <option value="LA">Лаос</option>
+          <option value="LV">Латвия</option>
+          <option value="LS">Лесото</option>
+          <option value="LR">Либерия</option>
+          <option value="LB">Ливан</option>
+          <option value="LY">Ливия</option>
+          <option value="LT">Литва</option>
+          <option value="LI">Лихтенштейн</option>
+          <option value="LU">Люксембург</option>
+          <option value="MU">Маврикий</option>
+          <option value="MR">Мавритания</option>
+          <option value="MG">Мадагаскар</option>
+          <option value="YT">Майотта</option>
+          <option value="MO">Макао (специальный административный район)</option>
+          <option value="MK">Македония</option>
+          <option value="MW">Малави</option>
+          <option value="MY">Малайзия</option>
+          <option value="ML">Мали</option>
+          <option value="MV">Мальдивы</option>
+          <option value="MT">Мальта</option>
+          <option value="MA">Марокко</option>
+          <option value="MQ">Мартиника</option>
+          <option value="MH">Маршалловы Острова</option>
+          <option value="MX">Мексика</option>
+          <option value="MZ">Мозамбик</option>
+          <option value="MD">Молдова</option>
+          <option value="MC">Монако</option>
+          <option value="MN">Монголия</option>
+          <option value="MS">Монтсеррат</option>
+          <option value="MM">Мьянма (Бирма)</option>
+          <option value="NA">Намибия</option>
+          <option value="NR">Науру</option>
+          <option value="NP">Непал</option>
+          <option value="NE">Нигер</option>
+          <option value="NG">Нигерия</option>
+          <option value="NL">Нидерланды</option>
+          <option value="NI">Никарагуа</option>
+          <option value="NU">Ниуэ</option>
+          <option value="NZ">Новая Зеландия</option>
+          <option value="NC">Новая Каледония</option>
+          <option value="NO">Норвегия</option>
+          <option value="AC">о-в Вознесения</option>
+          <option value="IM">о-в Мэн</option>
+          <option value="NF">о-в Норфолк</option>
+          <option value="CX">о-в Рождества</option>
+          <option value="SH">о-в Св. Елены</option>
+          <option value="TC">о-ва Тёркс и Кайкос</option>
+          <option value="AE">ОАЭ</option>
+          <option value="OM">Оман</option>
+          <option value="UN">Организация Объединенных Наций</option>
+          <option value="CK">Острова Кука</option>
+          <option value="PN">острова Питкэрн</option>
+          <option value="PK">Пакистан</option>
+          <option value="PW">Палау</option>
+          <option value="PS">Палестинские территории</option>
+          <option value="PA">Панама</option>
+          <option value="PG">Папуа &ndash; Новая Гвинея</option>
+          <option value="PY">Парагвай</option>
+          <option value="PE">Перу</option>
+          <option value="PL">Польша</option>
+          <option value="PT">Португалия</option>
+          <option value="PR">Пуэрто-Рико</option>
+          <option value="KR">Республика Корея</option>
+          <option value="RE">Реюньон</option>
+          <option value="RU">Россия</option>
+          <option value="RW">Руанда</option>
+          <option value="RO">Румыния</option>
+          <option value="SV">Сальвадор</option>
+          <option value="WS">Самоа</option>
+          <option value="SM">Сан-Марино</option>
+          <option value="ST">Сан-Томе и Принсипи</option>
+          <option value="SA">Саудовская Аравия</option>
+          <option value="SZ">Свазиленд</option>
+          <option value="MP">Северные Марианские о-ва</option>
+          <option value="SC">Сейшельские Острова</option>
+          <option value="BL">Сен-Бартелеми</option>
+          <option value="MF">Сен-Мартен</option>
+          <option value="PM">Сен-Пьер и Микелон</option>
+          <option value="SN">Сенегал</option>
+          <option value="VC">Сент-Винсент и Гренадины</option>
+          <option value="KN">Сент-Китс и Невис</option>
+          <option value="LC">Сент-Люсия</option>
+          <option value="RS">Сербия</option>
+          <option value="EA">Сеута и Мелилья</option>
+          <option value="SG">Сингапур</option>
+          <option value="SX">Синт-Мартен</option>
+          <option value="SY">Сирия</option>
+          <option value="SK">Словакия</option>
+          <option value="SI">Словения</option>
+          <option value="US">Соединенные Штаты</option>
+          <option value="SB">Соломоновы Острова</option>
+          <option value="SO">Сомали</option>
+          <option value="SD">Судан</option>
+          <option value="SR">Суринам</option>
+          <option value="SL">Сьерра-Леоне</option>
+          <option value="TJ">Таджикистан</option>
+          <option value="TH">Таиланд</option>
+          <option value="TW">Тайвань</option>
+          <option value="TZ">Танзания</option>
+          <option value="TG">Того</option>
+          <option value="TK">Токелау</option>
+          <option value="TO">Тонга</option>
+          <option value="TT">Тринидад и Тобаго</option>
+          <option value="TA">Тристан-да-Кунья</option>
+          <option value="TV">Тувалу</option>
+          <option value="TN">Тунис</option>
+          <option value="TM">Туркменистан</option>
+          <option value="TR">Турция</option>
+          <option value="UG">Уганда</option>
+          <option value="UZ">Узбекистан</option>
+          <option value="UA">Украина</option>
+          <option value="WF">Уоллис и Футуна</option>
+          <option value="UY">Уругвай</option>
+          <option value="FO">Фарерские о-ва</option>
+          <option value="FM">Федеративные Штаты Микронезии</option>
+          <option value="FJ">Фиджи</option>
+          <option value="PH">Филиппины</option>
+          <option value="FI">Финляндия</option>
+          <option value="FK">Фолклендские о-ва</option>
+          <option value="FR">Франция</option>
+          <option value="GF">Французская Гвиана</option>
+          <option value="PF">Французская Полинезия</option>
+          <option value="TF">Французские Южные территории</option>
+          <option value="HR">Хорватия</option>
+          <option value="CF">ЦАР</option>
+          <option value="TD">Чад</option>
+          <option value="ME">Черногория</option>
+          <option value="CZ">Чехия</option>
+          <option value="CL">Чили</option>
+          <option value="CH">Швейцария</option>
+          <option value="SE">Швеция</option>
+          <option value="SJ">Шпицберген и Ян-Майен</option>
+          <option value="LK">Шри-Ланка</option>
+          <option value="EC">Эквадор</option>
+          <option value="GQ">Экваториальная Гвинея</option>
+          <option value="ER">Эритрея</option>
+          <option value="EE">Эстония</option>
+          <option value="ET">Эфиопия</option>
+          <option value="ZA">ЮАР</option>
+          <option value="GS">Южная Георгия и Южные Сандвичевы о-ва</option>
+          <option value="SS">Южный Судан</option>
+          <option value="JM">Ямайка</option>
+          <option value="JP">Япония</option>
+          <option value="EZ">Eurozone</option>
+        </select>
+        <div ng-if="error['citizenship']" class="invalid-tooltip">
+          {{ error['citizenship']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-xs-12 col-sm-3 required">Серия и номер паспорта</label>
+      <div class="col-xs-4 col-sm-2">
+        <input ng-click="error['passport_series'] = ''" ng-class="{'is-invalid': error['passport_series'] }" ng-model="userModel.passport_series" type="text" class="form-control" placeholder="Серия" cleave="options.digits_4">
+        <div ng-if="error['passport_series']" class="invalid-tooltip">
+          {{ error['passport_series']}}
+        </div>
+      </div>
+      <div class="col-xs-8 col-sm-5">
+        <input ng-click="error['passport_number'] = ''" ng-class="{'is-invalid': error['passport_number'] }" ng-model="userModel.passport_number" type="text" class="form-control" placeholder="Номер" cleave="options.digits_6">
+        <div ng-if="error['passport_number']" class="invalid-tooltip">
+          {{ error['passport_number']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Дата рождения</label>
+      <div class="col-sm-7">
+        <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="userModel.date_of_birth" type="date" class="form-control" placeholder="">
+        <div ng-if="error['date_of_birth']" class="invalid-tooltip">
+          {{ error['date_of_birth']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Место рождения</label>
+      <div class="col-sm-7">
+        <input ng-click="error['place_of_birth'] = ''" ng-class="{'is-invalid': error['place_of_birth'] }" ng-model="userModel.place_of_birth" type="text" class="form-control" placeholder="">
+        <div ng-if="error['place_of_birth']" class="invalid-tooltip">
+          {{ error['place_of_birth']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Адрес регистрации</label>
+      <div class="col-sm-7">
+        <input ng-click="error['registration_address'] = ''" ng-class="{'is-invalid': error['registration_address'] }" ng-model="userModel.registration_address" type="text" class="form-control" placeholder="РФ,119213,г.Москва,ул.Ленина,д.10">
+        <div ng-if="error['registration_address']" class="invalid-tooltip">
+          {{ error['registration_address']}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="subtitle">Визовая поддержка</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 required">Требуется виза</label>
+      <div class="col-sm-7">
+        <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
+          <input class="form-check-input" name="visa_required_0" type="radio" ng-value="0" ng-model="userModel.visa_required" ng-checked="!userModel.visa_required">
+          <label class="form-check-label">
+            Виза не требуется
+          </label>
+        </div>
+        <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
+          <input class="form-check-input" name="visa_required_1" type="radio" ng-value="1" ng-model="userModel.visa_required" ng-checked="userModel.visa_required === 1">
+          <label class="form-check-label">
+            Виза требуется
+          </label>
+        </div>
+      </div>
+    </div>
+    <fieldset id="visa-fieldset">
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-3 required_ext">
+          <input type="date" placeholder='Паспорт действует до' class="form-control" ng-click="error['visa_passport_validity'] = ''" ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : userModel.visa_passport_validity }" ng-model="userModel.visa_passport_validity" />
+          <div ng-if="error['visa_passport_validity']" class="invalid-tooltip">
+            {{ error['visa_passport_validity']}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-3 required_ext">
+          <select ng-focus="error['visa_country'] = ''" ng-click="error['visa_country'] = ''" ng-class="{'is-invalid': error['visa_country'] }" ng-model="userModel.visa_country" type="text" class="form-control" placeholder="">
+            <option selected value="" style="display:none;">Страна получения визы</option>
+            <option value="AU">Австралия</option>
+            <option value="AT">Австрия</option>
+            <option value="AZ">Азербайджан</option>
+            <option value="AX">Аландские о-ва</option>
+            <option value="AL">Албания</option>
+            <option value="DZ">Алжир</option>
+            <option value="AS">Американское Самоа</option>
+            <option value="AI">Ангилья</option>
+            <option value="AO">Ангола</option>
+            <option value="AD">Андорра</option>
+            <option value="AQ">Антарктида</option>
+            <option value="AG">Антигуа и Барбуда</option>
+            <option value="AR">Аргентина</option>
+            <option value="AM">Армения</option>
+            <option value="AW">Аруба</option>
+            <option value="AF">Афганистан</option>
+            <option value="BS">Багамы</option>
+            <option value="BD">Бангладеш</option>
+            <option value="BB">Барбадос</option>
+            <option value="BH">Бахрейн</option>
+            <option value="BY">Беларусь</option>
+            <option value="BZ">Белиз</option>
+            <option value="BE">Бельгия</option>
+            <option value="BJ">Бенин</option>
+            <option value="BM">Бермуды</option>
+            <option value="BG">Болгария</option>
+            <option value="BO">Боливия</option>
+            <option value="BQ">Бонэйр, Синт-Эстатиус и Саба</option>
+            <option value="BA">Босния и Герцеговина</option>
+            <option value="BW">Ботсвана</option>
+            <option value="BR">Бразилия</option>
+            <option value="IO">Британская территория в Индийском океане</option>
+            <option value="BN">Бруней-Даруссалам</option>
+            <option value="BF">Буркина-Фасо</option>
+            <option value="BI">Бурунди</option>
+            <option value="BT">Бутан</option>
+            <option value="VU">Вануату</option>
+            <option value="VA">Ватикан</option>
+            <option value="GB">Великобритания</option>
+            <option value="HU">Венгрия</option>
+            <option value="VE">Венесуэла</option>
+            <option value="VG">Виргинские о-ва (Британские)</option>
+            <option value="VI">Виргинские о-ва (США)</option>
+            <option value="UM">Внешние малые о-ва (США)</option>
+            <option value="TL">Восточный Тимор</option>
+            <option value="VN">Вьетнам</option>
+            <option value="GA">Габон</option>
+            <option value="HT">Гаити</option>
+            <option value="GY">Гайана</option>
+            <option value="GM">Гамбия</option>
+            <option value="GH">Гана</option>
+            <option value="GP">Гваделупа</option>
+            <option value="GT">Гватемала</option>
+            <option value="GN">Гвинея</option>
+            <option value="GW">Гвинея-Бисау</option>
+            <option value="DE">Германия</option>
+            <option value="GG">Гернси</option>
+            <option value="GI">Гибралтар</option>
+            <option value="HN">Гондурас</option>
+            <option value="HK">Гонконг (специальный административный район)</option>
+            <option value="GD">Гренада</option>
+            <option value="GL">Гренландия</option>
+            <option value="GR">Греция</option>
+            <option value="GE">Грузия</option>
+            <option value="GU">Гуам</option>
+            <option value="DK">Дания</option>
+            <option value="JE">Джерси</option>
+            <option value="DJ">Джибути</option>
+            <option value="DG">Диего-Гарсия</option>
+            <option value="DM">Доминика</option>
+            <option value="DO">Доминиканская Республика</option>
+            <option value="EG">Египет</option>
+            <option value="ZM">Замбия</option>
+            <option value="EH">Западная Сахара</option>
+            <option value="ZW">Зимбабве</option>
+            <option value="IL">Израиль</option>
+            <option value="IN">Индия</option>
+            <option value="ID">Индонезия</option>
+            <option value="JO">Иордания</option>
+            <option value="IQ">Ирак</option>
+            <option value="IR">Иран</option>
+            <option value="IE">Ирландия</option>
+            <option value="IS">Исландия</option>
+            <option value="ES">Испания</option>
+            <option value="IT">Италия</option>
+            <option value="YE">Йемен</option>
+            <option value="CV">Кабо-Верде</option>
+            <option value="KZ">Казахстан</option>
+            <option value="KY">Каймановы о-ва</option>
+            <option value="KH">Камбоджа</option>
+            <option value="CM">Камерун</option>
+            <option value="CA">Канада</option>
+            <option value="IC">Канарские о-ва</option>
+            <option value="QA">Катар</option>
+            <option value="KE">Кения</option>
+            <option value="CY">Кипр</option>
+            <option value="KG">Киргизия</option>
+            <option value="KI">Кирибати</option>
+            <option value="CN">Китай</option>
+            <option value="KP">КНДР</option>
+            <option value="CC">Кокосовые о-ва</option>
+            <option value="CO">Колумбия</option>
+            <option value="KM">Коморы</option>
+            <option value="CG">Конго - Браззавиль</option>
+            <option value="CD">Конго - Киншаса</option>
+            <option value="XK">Косово</option>
+            <option value="CR">Коста-Рика</option>
+            <option value="CI">Кот-д&rsquo;Ивуар</option>
+            <option value="CU">Куба</option>
+            <option value="KW">Кувейт</option>
+            <option value="CW">Кюрасао</option>
+            <option value="LA">Лаос</option>
+            <option value="LV">Латвия</option>
+            <option value="LS">Лесото</option>
+            <option value="LR">Либерия</option>
+            <option value="LB">Ливан</option>
+            <option value="LY">Ливия</option>
+            <option value="LT">Литва</option>
+            <option value="LI">Лихтенштейн</option>
+            <option value="LU">Люксембург</option>
+            <option value="MU">Маврикий</option>
+            <option value="MR">Мавритания</option>
+            <option value="MG">Мадагаскар</option>
+            <option value="YT">Майотта</option>
+            <option value="MO">Макао (специальный административный район)</option>
+            <option value="MK">Македония</option>
+            <option value="MW">Малави</option>
+            <option value="MY">Малайзия</option>
+            <option value="ML">Мали</option>
+            <option value="MV">Мальдивы</option>
+            <option value="MT">Мальта</option>
+            <option value="MA">Марокко</option>
+            <option value="MQ">Мартиника</option>
+            <option value="MH">Маршалловы Острова</option>
+            <option value="MX">Мексика</option>
+            <option value="MZ">Мозамбик</option>
+            <option value="MD">Молдова</option>
+            <option value="MC">Монако</option>
+            <option value="MN">Монголия</option>
+            <option value="MS">Монтсеррат</option>
+            <option value="MM">Мьянма (Бирма)</option>
+            <option value="NA">Намибия</option>
+            <option value="NR">Науру</option>
+            <option value="NP">Непал</option>
+            <option value="NE">Нигер</option>
+            <option value="NG">Нигерия</option>
+            <option value="NL">Нидерланды</option>
+            <option value="NI">Никарагуа</option>
+            <option value="NU">Ниуэ</option>
+            <option value="NZ">Новая Зеландия</option>
+            <option value="NC">Новая Каледония</option>
+            <option value="NO">Норвегия</option>
+            <option value="AC">о-в Вознесения</option>
+            <option value="IM">о-в Мэн</option>
+            <option value="NF">о-в Норфолк</option>
+            <option value="CX">о-в Рождества</option>
+            <option value="SH">о-в Св. Елены</option>
+            <option value="TC">о-ва Тёркс и Кайкос</option>
+            <option value="AE">ОАЭ</option>
+            <option value="OM">Оман</option>
+            <option value="UN">Организация Объединенных Наций</option>
+            <option value="CK">Острова Кука</option>
+            <option value="PN">острова Питкэрн</option>
+            <option value="PK">Пакистан</option>
+            <option value="PW">Палау</option>
+            <option value="PS">Палестинские территории</option>
+            <option value="PA">Панама</option>
+            <option value="PG">Папуа &ndash; Новая Гвинея</option>
+            <option value="PY">Парагвай</option>
+            <option value="PE">Перу</option>
+            <option value="PL">Польша</option>
+            <option value="PT">Португалия</option>
+            <option value="PR">Пуэрто-Рико</option>
+            <option value="KR">Республика Корея</option>
+            <option value="RE">Реюньон</option>
+            <option value="RU">Россия</option>
+            <option value="RW">Руанда</option>
+            <option value="RO">Румыния</option>
+            <option value="SV">Сальвадор</option>
+            <option value="WS">Самоа</option>
+            <option value="SM">Сан-Марино</option>
+            <option value="ST">Сан-Томе и Принсипи</option>
+            <option value="SA">Саудовская Аравия</option>
+            <option value="SZ">Свазиленд</option>
+            <option value="MP">Северные Марианские о-ва</option>
+            <option value="SC">Сейшельские Острова</option>
+            <option value="BL">Сен-Бартелеми</option>
+            <option value="MF">Сен-Мартен</option>
+            <option value="PM">Сен-Пьер и Микелон</option>
+            <option value="SN">Сенегал</option>
+            <option value="VC">Сент-Винсент и Гренадины</option>
+            <option value="KN">Сент-Китс и Невис</option>
+            <option value="LC">Сент-Люсия</option>
+            <option value="RS">Сербия</option>
+            <option value="EA">Сеута и Мелилья</option>
+            <option value="SG">Сингапур</option>
+            <option value="SX">Синт-Мартен</option>
+            <option value="SY">Сирия</option>
+            <option value="SK">Словакия</option>
+            <option value="SI">Словения</option>
+            <option value="US">Соединенные Штаты</option>
+            <option value="SB">Соломоновы Острова</option>
+            <option value="SO">Сомали</option>
+            <option value="SD">Судан</option>
+            <option value="SR">Суринам</option>
+            <option value="SL">Сьерра-Леоне</option>
+            <option value="TJ">Таджикистан</option>
+            <option value="TH">Таиланд</option>
+            <option value="TW">Тайвань</option>
+            <option value="TZ">Танзания</option>
+            <option value="TG">Того</option>
+            <option value="TK">Токелау</option>
+            <option value="TO">Тонга</option>
+            <option value="TT">Тринидад и Тобаго</option>
+            <option value="TA">Тристан-да-Кунья</option>
+            <option value="TV">Тувалу</option>
+            <option value="TN">Тунис</option>
+            <option value="TM">Туркменистан</option>
+            <option value="TR">Турция</option>
+            <option value="UG">Уганда</option>
+            <option value="UZ">Узбекистан</option>
+            <option value="UA">Украина</option>
+            <option value="WF">Уоллис и Футуна</option>
+            <option value="UY">Уругвай</option>
+            <option value="FO">Фарерские о-ва</option>
+            <option value="FM">Федеративные Штаты Микронезии</option>
+            <option value="FJ">Фиджи</option>
+            <option value="PH">Филиппины</option>
+            <option value="FI">Финляндия</option>
+            <option value="FK">Фолклендские о-ва</option>
+            <option value="FR">Франция</option>
+            <option value="GF">Французская Гвиана</option>
+            <option value="PF">Французская Полинезия</option>
+            <option value="TF">Французские Южные территории</option>
+            <option value="HR">Хорватия</option>
+            <option value="CF">ЦАР</option>
+            <option value="TD">Чад</option>
+            <option value="ME">Черногория</option>
+            <option value="CZ">Чехия</option>
+            <option value="CL">Чили</option>
+            <option value="CH">Швейцария</option>
+            <option value="SE">Швеция</option>
+            <option value="SJ">Шпицберген и Ян-Майен</option>
+            <option value="LK">Шри-Ланка</option>
+            <option value="EC">Эквадор</option>
+            <option value="GQ">Экваториальная Гвинея</option>
+            <option value="ER">Эритрея</option>
+            <option value="EE">Эстония</option>
+            <option value="ET">Эфиопия</option>
+            <option value="ZA">ЮАР</option>
+            <option value="GS">Южная Георгия и Южные Сандвичевы о-ва</option>
+            <option value="SS">Южный Судан</option>
+            <option value="JM">Ямайка</option>
+            <option value="JP">Япония</option>
+            <option value="EZ">Eurozone</option>
+          </select>
+          <div ng-if="error['visa_country']" class="invalid-tooltip">
+            {{ error['visa_country']}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-3 required_ext">
+          <input ng-click="error['visa_city'] = ''" ng-class="{'is-invalid': error['visa_city'] }" ng-model="userModel.visa_city" type="text" class="form-control test" placeholder="Город получения визы">
+          <div ng-if="error['visa_city']" class="invalid-tooltip">
+            {{ error['visa_city']}}
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <h1 class="subtitle">Профессиональная деятельность</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3">Организация</label>
+      <div class="col-sm-7">
+        <input ng-click="error['organization'] = ''" ng-class="{'is-invalid': error['organization'] }" ng-model="userModel.organization" type="text" class="form-control" placeholder="">
+        <div ng-if="error['organization']" class="invalid-tooltip">
+          {{ error['organization']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Должность</label>
+      <div class="col-sm-7">
+        <input ng-click="error['position'] = ''" ng-class="{'is-invalid': error['position'] }" ng-model="userModel.position" type="text" class="form-control" placeholder="">
+        <div ng-if="error['position']" class="invalid-tooltip">
+          {{ error['position']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label" style="line-height: 50%">Организация</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['organization_latin'] = ''" ng-class="{'is-invalid': error['organization_latin'] }" ng-model="userModel.organization_latin" type="text" class="form-control" placeholder="" only-latin>
+        <div ng-if="error['organization_latin']" class="invalid-tooltip">
+          {{ error['organization_latin']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label required" style="line-height: 50%">Должность</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['position_latin'] = ''" ng-class="{'is-invalid': error['position_latin'] }" ng-model="userModel.position_latin" type="text" class="form-control" name="position_latin" placeholder="" only-latin>
+        <div ng-if="error['position_latin']" class="invalid-tooltip">
+          {{ error['position_latin']}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="subtitle">Контактная информация</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 required">E-mail</label>
+      <div class="col-sm-7">
+        <input ng-click="error['email'] = ''" ng-class="{'is-invalid': error['email'] }" ng-model="userModel.email" type="email" class="form-control" placeholder="">
+        <div ng-if="error['email']" class="invalid-tooltip">
+          {{ error['email']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Мобильный телефон</label>
+      <div class="col-sm-7">
+        <input ng-click="error['phone_number'] = ''" ng-class="{'is-invalid': error['phone_number'] }" ng-model="userModel.phone_number" placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number" cleave="options.telephone">
+        <div ng-if="error['phone_number']" class="invalid-tooltip">
+          {{ error['phone_number']}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary">{{button}}</button>
+      <img class="loader" ng-show="dataLoading" src="images/loader.gif" />
+    </div>
+  </div>
 </form>
+<div class="modal" id="myModal" role="dialog">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      </div>
+      <div class="cropArea">
+        <canvas width="500" height="300" id="canvas" image-cropper image="userModel.photo" cropped-image="cropper.croppedImage" crop-width="400" crop-height="200" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
 <button class="btn btn-primary" ng-click="debugRequest()">Debug</button>

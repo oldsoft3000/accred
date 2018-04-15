@@ -22,9 +22,10 @@
         "bower-asset/angular": "*",
         "bower-asset/angular-route": "*",
         "bower-asset/angular-strap": "*",
-	"bower-asset/cleave-js": "*",
-	"bower-asset/pace": "*",
-	"yii2mod/yii2-rbac": "*"
+    	"bower-asset/cleave-js": "*",
+    	"bower-asset/pace": "*",
+    	"yii2mod/yii2-rbac": "*",
+        "bower-asset/angular-img-cropper": "*"
 
     },
     "require-dev": {

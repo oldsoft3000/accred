@@ -5,7 +5,8 @@ var App = angular.module('App', [
     'mgcrea.ngStrap',
     'SiteApp',
     'ParticipApp',
-    'cleave.js'
+    'cleave.js',
+    'angular-img-cropper'
 ]);
 
 var SiteApp = angular.module('SiteApp', ['ngRoute', 'ngCookies']);
