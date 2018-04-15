@@ -9,6 +9,8 @@ class AngularAsset extends AssetBundle
 {
     public $sourcePath = '@bower';
     public $css = [
+        'croppie/croppie.css',
+        //'ngCroppie/ng-croppie.min.css'
     ];
     public $js = [
         'angular/angular.min.js',
@@ -17,9 +19,8 @@ class AngularAsset extends AssetBundle
         'angular-cookies/angular-cookies.min.js',
         'cleave-js/dist/cleave-angular.min.js',
         'cleave-js/dist/addons/cleave-phone.ru.js',
-        'angular-img-cropper/dist/angular-img-cropper.min.js',
-        
-        //'angular-image-crop/image-crop.js'
+        'croppie/croppie.min.js',
+        'ngCroppie/ng-croppie.min.js',
 
     ];
    // public $jsOptions = [

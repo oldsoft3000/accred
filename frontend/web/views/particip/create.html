@@ -360,13 +360,13 @@
     <div class="form-group row">
       <label class="col-xs-12 col-sm-3 required">Серия и номер паспорта</label>
       <div class="col-xs-4 col-sm-2">
-        <input ng-click="error['passport_series'] = ''" ng-class="{'is-invalid': error['passport_series'] }" ng-model="userModel.passport_series" type="text" class="form-control" placeholder="Серия" cleave="options.digits_4">
+        <input ng-click="error['passport_series'] = ''" ng-class="{'is-invalid': error['passport_series'] }" ng-model="userModel.passport_series" type="text" class="form-control" placeholder="Серия" cleave="cleave_options.digits_4">
         <div ng-if="error['passport_series']" class="invalid-tooltip">
           {{ error['passport_series']}}
         </div>
       </div>
       <div class="col-xs-8 col-sm-5">
-        <input ng-click="error['passport_number'] = ''" ng-class="{'is-invalid': error['passport_number'] }" ng-model="userModel.passport_number" type="text" class="form-control" placeholder="Номер" cleave="options.digits_6">
+        <input ng-click="error['passport_number'] = ''" ng-class="{'is-invalid': error['passport_number'] }" ng-model="userModel.passport_number" type="text" class="form-control" placeholder="Номер" cleave="cleave_options.digits_6">
         <div ng-if="error['passport_number']" class="invalid-tooltip">
           {{ error['passport_number']}}
         </div>
@@ -762,7 +762,7 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Мобильный телефон</label>
       <div class="col-sm-7">
-        <input ng-click="error['phone_number'] = ''" ng-class="{'is-invalid': error['phone_number'] }" ng-model="userModel.phone_number" placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number" cleave="options.telephone">
+        <input ng-click="error['phone_number'] = ''" ng-class="{'is-invalid': error['phone_number'] }" ng-model="userModel.phone_number" placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number" cleave="cleave_options.telephone">
         <div ng-if="error['phone_number']" class="invalid-tooltip">
           {{ error['phone_number']}}
         </div>
@@ -776,20 +776,26 @@
     </div>
   </div>
 </form>
-<div class="modal" id="myModal" role="dialog">
+<div class="modal" id="photoEditor" role="dialog">
   <div class="modal-dialog modal-dialog-centered ">
     <div class="modal-content">
       <div class="modal-header">
         Редактор фотографии
-        <!--<h1 class="subtitle-nopadding">Профессиональная деятельность</h1> -->
-      </div>
-      <div class="crop-area">
-        <canvas width="300" height="300" id="canvas" image-cropper image="userModel.photo" cropped-image="cropper.croppedImage" crop-width="100" crop-height="100" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+        <button type="button" class="close" data-dismiss="modal">&times;</button> 
       </div>
 
-      <div class="croped-area">
-        <img class="croped-image" ng-src="{{cropper.croppedImage}}" /><
-      </div>
+        <div class="crop-area">
+          <ng-croppie   src="cropped.source"
+              ng-model='cropped.image'
+              boundry="{w: 400, h: 400}"
+              viewport="{w: 300, h: 200}"
+              orientation="true"
+              rotation="90"
+              type="square">
+       </ng-croppie>
+          
+        </div>
+
 
       <div class="modal-footer text-center">
         <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Сохранить</button>

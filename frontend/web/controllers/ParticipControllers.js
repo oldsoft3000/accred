@@ -47,8 +47,8 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
             }
         };
 
-        $scope.showPhoto = function() {
-            console.log("showPhoto");
+        $scope.showPhoto = function(userModel) {
+            $scope.userModel = userModel;
             $('#myModal').modal('toggle')
         };
     }
@@ -60,14 +60,9 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
         $scope.userModel = {};
         $scope.userModel.visa_required = 1;
 
-        $scope.cropper = {};
-        $scope.cropper.sourceImage = null;
-        $scope.cropper.croppedImage = null;
-        $scope.bounds = {};
-        $scope.bounds.left = 0;
-        $scope.bounds.right = 0;
-        $scope.bounds.top = 0;
-        $scope.bounds.bottom = 0;
+        $scope.cropped = {};
+        $scope.cropped.source = '';
+        $scope.cropped.image = '';
 
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
             console.log("update");
@@ -157,6 +152,7 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
                     reader.onloadend = function() {
                         $scope.$apply(function($scope) {
                             $scope.userModel.photo = reader.result; 
+                            $scope.cropped.source = reader.result; 
                             $scope.editPhoto();
                         });
                     }
@@ -195,8 +191,7 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
         }, true);
 
         $scope.editPhoto = function() {
-            console.log("showPhoto");
-            $('#myModal').modal('toggle')
+            $('#photoEditor').modal('toggle');
         };
 
         /*$rootScope.$on('visaReuired', function(event, value) {

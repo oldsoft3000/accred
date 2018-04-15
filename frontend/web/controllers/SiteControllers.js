@@ -75,7 +75,7 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteSer
             digits_6: ''
         };
 
-        $scope.options = {
+        $scope.cleave_options = {
             telephone: {
                 numericOnly: true,
                 blocks: [2, 3, 3, 2, 2],

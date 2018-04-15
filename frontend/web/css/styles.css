@@ -243,37 +243,25 @@ label {
   height:300px;*/
 }
 
-.crop-area {
-  background: #E4E4E4;
+.view-area {
   overflow: hidden;
-  /*width:300px;
-  height:300px;
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;*/
 }
 
-.crop-area canvas {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+.modal-content {
+
 }
 
-.croped-area {
-  padding-top: 30px;
-  width:100%;
-  height:!00%;
-}
-
-.croped-image {
-  display: block;
-  width:300px;
-  height:300px;
+.crop-area {
+  display:block;
+  position: relative;
+  width: 500px;
+  height: 400px;
+  z-index: 1000;
   margin-left: auto;
   margin-right: auto;
-  border: 4px double black;
 }
+
 
 .crop-button {
   width: 120px;
@@ -290,3 +278,12 @@ label {
     padding:0;
 
 }
+
+.modal-content {
+
+}
+
+.modal-footer {
+  padding-top:50px;
+}
+

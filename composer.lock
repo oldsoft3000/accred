@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2033e378f2213904c7309145d6da0177",
+    "content-hash": "7e24fb7e6064d7d29a0148d864fd1f17",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -84,25 +84,6 @@
             ]
         },
         {
-            "name": "bower-asset/angular-img-cropper",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/AllanBishop/angular-img-cropper.git",
-                "reference": "f98eb6b8f803fa9e07fd36b7f1cb81d1e64ab205"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/AllanBishop/angular-img-cropper/zipball/f98eb6b8f803fa9e07fd36b7f1cb81d1e64ab205",
-                "reference": "f98eb6b8f803fa9e07fd36b7f1cb81d1e64ab205",
-                "shasum": null
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
             "name": "bower-asset/angular-route",
             "version": "v1.6.9",
             "source": {
@@ -167,16 +148,16 @@
         },
         {
             "name": "bower-asset/cleave-js",
-            "version": "v1.2.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nosir/cleave.js.git",
-                "reference": "2e2ac778309132963a554be65ca3bb73748ca0a5"
+                "reference": "c5c1b704bbc812a90dc6eb3c99192ca5432a8d7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nosir/cleave.js/zipball/2e2ac778309132963a554be65ca3bb73748ca0a5",
-                "reference": "2e2ac778309132963a554be65ca3bb73748ca0a5",
+                "url": "https://api.github.com/repos/nosir/cleave.js/zipball/c5c1b704bbc812a90dc6eb3c99192ca5432a8d7e",
+                "reference": "c5c1b704bbc812a90dc6eb3c99192ca5432a8d7e",
                 "shasum": null
             },
             "type": "bower-asset",

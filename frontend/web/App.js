@@ -6,7 +6,8 @@ var App = angular.module('App', [
     'SiteApp',
     'ParticipApp',
     'cleave.js',
-    'angular-img-cropper'
+    //'angularCroppie'
+    'ngCroppie'
 ]);
 
 var SiteApp = angular.module('SiteApp', ['ngRoute', 'ngCookies']);
