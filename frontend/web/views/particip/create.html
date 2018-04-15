@@ -780,13 +780,20 @@
   <div class="modal-dialog modal-dialog-centered ">
     <div class="modal-content">
       <div class="modal-header">
-        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        Редактор фотографии
+        <!--<h1 class="subtitle-nopadding">Профессиональная деятельность</h1> -->
       </div>
-      <div class="cropArea">
-        <canvas width="500" height="300" id="canvas" image-cropper image="userModel.photo" cropped-image="cropper.croppedImage" crop-width="400" crop-height="200" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+      <div class="crop-area">
+        <canvas width="300" height="300" id="canvas" image-cropper image="userModel.photo" cropped-image="cropper.croppedImage" crop-width="100" crop-height="100" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+
+      <div class="croped-area">
+        <img class="croped-image" ng-src="{{cropper.croppedImage}}" /><
+      </div>
+
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Закрыть</button>
       </div>
     </div>
   </div>

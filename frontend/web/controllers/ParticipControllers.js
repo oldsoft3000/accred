@@ -173,7 +173,7 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
             $scope.userModel.middle_name = "3asdaf";
             $scope.userModel.gender = "1";
             $scope.userModel.email = "zcz@mail.ru";
-            $scope.userModel.date_of_birth = "03.04.2001";
+            $scope.userModel.date_of_birth = new Date("2005-08-09");
             $scope.userModel.citizenship = "TG";
             $scope.userModel.passport_series = "1231";
             $scope.userModel.passport_number = "123456";
