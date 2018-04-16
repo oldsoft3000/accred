@@ -21,12 +21,21 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/create', {
+        when('/particip/create', {
             templateUrl: 'views/particip/create.html',
             controller: 'CreateController',
             resolve: {
                 response: function() {
                     return undefined;
+                }
+            }
+        }).
+        when('/particip/hotel_reserv', {
+            templateUrl: 'views/particip/hotel_reserv.html',
+            controller: 'HotelController',
+            resolve: {
+                response: function(ParticipServices) {
+                    return ParticipServices.view_hotel_reserv();
                 }
             }
         }).
@@ -78,7 +87,7 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
             $scope.userModel.gender = response.data.gender.toString();
             $scope.isCreation = false;
 
-        } else if ($route.current.$$route.originalPath === "/create") {
+        } else if ($route.current.$$route.originalPath === "/particip/create") {
             console.log("create");
             $scope.userModel.date_of_birth = '';
             $scope.userModel.visa_passport_validity = ''
@@ -216,15 +225,11 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
                 });
             });
         }
+    }
+]);
 
-
-
-
-        /*$rootScope.$on('visaReuired', function(event, value) {
-            $scope.visaReuired(value);
-        });*/
-
-
-
+ParticipApp.controller('HotelController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
+    function($scope, $http, $route, response, ParticipServices) {
+        $scope.particips = response.data;
     }
 ]);

@@ -33,6 +33,9 @@ AppAsset::register($this);
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
                 <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
               </li> 
+              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
+                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/particip/hotel_reserv">Размещение</a> 
+              </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
                 <a ng-click="logout()" class="btn btn-primary nav-link" role="button" aria-disabled="true" href="">Выход</a> 
               </li> 

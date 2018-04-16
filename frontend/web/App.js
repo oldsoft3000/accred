@@ -14,7 +14,11 @@ var ParticipApp = angular.module('ParticipApp', ['ngRoute', 'ngCookies']);
 /// Token injector
 
 App.factory('authInterceptor', function ($q, $window, $location) {
+    var data = {
+        lastError: ''
+    };
     return {
+        data,
         request: function (config) {
             if ($window.sessionStorage.access_token) {
                 //HttpBearerAuth
@@ -22,49 +26,25 @@ App.factory('authInterceptor', function ($q, $window, $location) {
             }
             return config;
         },
-        responseError: function (rejection) {
-            if (rejection.status === 401) {
-                $location.path('/login').replace();
+        responseError: function (response) {
+            if (response.status == 422) {
+                return $q.reject(response);
             }
-            return $q.reject(rejection);
-        }
-    };
-});
-
-
-/// Error handler
-
-App.config(function($controllerProvider, $httpProvider) {
-    $controllerProvider.register('ErrorController', ['$scope', '$rootScope', '$location','ErrorService',
-        function($scope, $rootScope, $location, ErrorService) {
-            if (ErrorService.lastError) {
-                $scope.errorMessage = ErrorService.lastError;
+            else if (response.status === 401) {
+                $location.path('/login').replace();
+            } else if (response.status === 404) {
+                $location.path("views/site/404.html" ).replace();
+                return $q.reject(response);
             } else {
-                $location.path('/').replace();
-            }   
-        }]);
-    $httpProvider.interceptors.push('authInterceptor');
-});
-
-App.service('ErrorService', function($location, $q) {
-    this.handleError = function (response) {
-        if (response.status == 422) {
-             return $q.reject(response);
+                data.lastError = response.data;  
+                $location.path("/error" ).replace(); 
+            }
+            
+            return $q.reject(response);
         }
-
-        this.lastError = response.data;
-        $location.path("/error" ).replace(); 
-        return $q.reject(response);
+      
     };
 });
-
-App.run(["$rootScope", "ErrorService", function($rootScope, ErrorService) {
-        return $rootScope.ErrorService = ErrorService;
-    }
-]);
-
-
-
 
 
 App.directive('onlyLatin', function () {

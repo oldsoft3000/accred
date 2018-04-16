@@ -1,19 +1,13 @@
 'use strict';
 
-SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookies', 'ErrorService',
-    function($http, $window, $location, $q, $cookies, ErrorService) {
+SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookies', 
+    function($http, $window, $location, $q, $cookies) {
         var obj = {};
         obj.login = function (userModel) {
-            return $http.post('site/login', userModel)
-                .then(successHandler)
-                .catch(errorHandler);
-                function successHandler(response) {
-                    $window.sessionStorage.access_token = response.data.access_token;
-                    return response;
-                }
-                function errorHandler(response) {
-                    return ErrorService.handleError(response); 
-                }  
+            return $http.post('site/login', userModel).then(function(response) {
+                $window.sessionStorage.access_token = response.data.access_token;
+                return response;
+            });
         };
         
         obj.logout = function () {
@@ -21,55 +15,28 @@ SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookie
         };
 
         obj.signup = function (userModel) {
-            return $http.post('site/signup', userModel)
-                .then(successHandler)
-                .catch(errorHandler);
-                function successHandler(response) {
-                    return response;
-                }
-                function errorHandler(response) {
-                    return ErrorService.handleError(response); 
-                }
+            return $http.post('site/signup', userModel).then(function(response) {
+                return response;
+            });
         }; 
         
         obj.dashboard = function () {
-            return $http.get('site/dashboard')
-                .then(successHandler)
-                .catch(errorHandler);
-                function successHandler(response) {
-                    return response;
-                }
-                function errorHandler(response) {
-                    ErrorService.printError(response);
-                    return ErrorService.handleError(response); 
-                }
+            return $http.get('site/dashboard').then(function(response) {
+                return response;
+            });
         };
         
         obj.contact = function ( contactModel ) {
-            return $http.post('site/contact', contactModel)  
-                .then(successHandler)
-                .catch(errorHandler);
-                function successHandler(response) {
-                    return response;
-                }
-                function errorHandler(response) {
-                    //return response;
-                    //ErrorService.printError(response);
-                    return ErrorService.handleError(response); 
-                }
+            return $http.post('site/contact', contactModel).then(function(response) {
+                return response;
+            });
         };
         
         
         obj.refreshCaptcha = function() {
-            return $http.get('site/captcha?refresh=1')
-                .then(successHandler)
-                .catch(errorHandler);
-                function successHandler(response) {
-                    return response;
-                }
-                function errorHandler(response) {
-                    return ErrorService.handleError(response); 
-                }
+            return $http.get('site/captcha?refresh=1').then(function(response) {
+                return response;
+            });
         };  
         
         obj.isLoggedIn = function() {

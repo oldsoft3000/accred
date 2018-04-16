@@ -147,9 +147,6 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
                             SiteServices.resetAgree();
                             $location.path('/agreement').replace();
                         }
-                        function errorHandler(response) {
-                            $scope.ErrorService.printError(response);
-                        }
                     //$location.path('/login').replace();
                 }
                 function errorHandler(response) {
@@ -212,4 +209,11 @@ SiteApp.controller('ContactController', ['$scope', '$window', 'SiteServices',
                 }
         };
 }]);
+
+
+SiteApp.controller('ErrorController', ['$scope', 'authInterceptor',
+    function ($scope, authInterceptor) {
+        $scope.errorMessage = authInterceptor.data.lastError;  
+    }
+]);
 

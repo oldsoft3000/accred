@@ -266,7 +266,7 @@ label {
   height: 400px;
 }
 
-.crop-button {
+.crop-button {*
   width: 120px;
 }
 
