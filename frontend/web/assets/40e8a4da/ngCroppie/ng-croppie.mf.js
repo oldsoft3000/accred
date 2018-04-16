@@ -30,7 +30,8 @@
                 orientation: '@',
                 update: '=',
                 ngModel: '=',
-                mobile: '@'
+                mobile: '@',
+                control: '=',
             },
             link: function (scope, elem, attr) {
                 // defaults
@@ -150,6 +151,8 @@
                     clearInterval(intervalID);
                 });
 
+
+
                 // image rotation
                 scope.$watch('rotation', function(newValue, oldValue) {
                     if (scope.orientation === 'false' || typeof scope.orientation === 'undefined') {
@@ -179,6 +182,12 @@
                         }, 0);
                     }
                 });
+
+                scope.internalControl = scope.control || {};
+                scope.internalControl.getCroppie = function() {
+                    return c;
+                }
+
             }
         };
     }]);

@@ -777,29 +777,33 @@
   </div>
 </form>
 <div class="modal" id="photoEditor" role="dialog">
-  <div class="modal-dialog modal-dialog-centered ">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         Редактор фотографии
         <button type="button" class="close" data-dismiss="modal">&times;</button> 
       </div>
-
+        <div style="display:none">{{croppie.croppieControl}}</div>
         <div class="crop-area">
-          <ng-croppie   src="cropped.source"
-              ng-model='cropped.image'
-              boundry="{w: 400, h: 400}"
-              viewport="{w: 300, h: 200}"
-              orientation="true"
-              rotation="90"
-              type="square">
+          <ng-croppie id="croppie" src="userModel.photo"
+              control="croppie.croppieControl"
+              ng-model='croppie.croppedImage'
+              boundry="{w: 460, h: 300}"
+              viewport="{w: 200, h: 125}"
+              orientation="false"
+              type="square"
+              enforceBoundary="false"
+              exif = "true"
+              zoom="true">
        </ng-croppie>
           
         </div>
 
 
       <div class="modal-footer text-center">
-        <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Сохранить</button>
+        <button type="button" ng-click='saveCropResult()' class="btn btn-primary crop-button" data-dismiss="modal">Сохранить</button>
         <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Закрыть</button>
+        
       </div>
     </div>
   </div>

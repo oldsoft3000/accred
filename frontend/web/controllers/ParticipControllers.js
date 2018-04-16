@@ -58,11 +58,11 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
     function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
         $scope.userModel = {};
-        $scope.userModel.visa_required = 1;
+        $scope.userModel.visa_passport_validity = '';
 
-        $scope.cropped = {};
-        $scope.cropped.source = '';
-        $scope.cropped.image = '';
+        $scope.croppie = {};
+        $scope.croppie.croppedImage = '';
+        $scope.croppie.croppieControl = {};
 
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
             console.log("update");
@@ -76,6 +76,8 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
 
         } else if ($route.current.$$route.originalPath === "/create") {
             console.log("create");
+            $scope.userModel.date_of_birth = '';
+            $scope.userModel.visa_passport_validity = ''
             $scope.button = "Добавить участника";
             $scope.isCreation = true;
         }
@@ -150,11 +152,14 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
                     $scope.fileName = file.name;
                     var reader = new FileReader();
                     reader.onloadend = function() {
-                        $scope.$apply(function($scope) {
+                        $timeout( function() {
                             $scope.userModel.photo = reader.result; 
-                            $scope.cropped.source = reader.result; 
                             $scope.editPhoto();
                         });
+                        /*$scope.$apply(function($scope) {
+                            $scope.userModel.photo = reader.result; 
+                            $scope.editPhoto();
+                        });*/
                     }
                     reader.readAsDataURL(file);
                 }
@@ -191,8 +196,29 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
         }, true);
 
         $scope.editPhoto = function() {
+            document.querySelector('#photoFile').value = "";
             $('#photoEditor').modal('toggle');
+        
+             //$scope.zoomValue(0.3);
+            //$('#croppie').croppie('setZoom', 0.8);
         };
+
+        $scope.saveCropResult = function() {
+            console.log($scope.cropped_image);
+            $scope.userModel.photo = $scope.croppie.croppedImage; 
+            $timeout( function() {
+                            $scope.croppie.croppieControl.getCroppie().setZoom(1.0);
+                        }, 100);
+            
+        }
+
+        $scope.testFunc = function() {  
+            $scope.croppie.scale = 1;
+            $scope.angle = 270;
+             //$scope.zoomValue(0.3);
+            //$('#croppie').croppie('setZoom', 0.8);
+        };
+
 
         /*$rootScope.$on('visaReuired', function(event, value) {
             $scope.visaReuired(value);

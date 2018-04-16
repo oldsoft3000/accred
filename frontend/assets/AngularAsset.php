@@ -19,8 +19,8 @@ class AngularAsset extends AssetBundle
         'angular-cookies/angular-cookies.min.js',
         'cleave-js/dist/cleave-angular.min.js',
         'cleave-js/dist/addons/cleave-phone.ru.js',
-        'croppie/croppie.min.js',
-        'ngCroppie/ng-croppie.min.js',
+        'croppie/croppie.js',
+        'ngCroppie/ng-croppie.mf.js',
 
     ];
    // public $jsOptions = [

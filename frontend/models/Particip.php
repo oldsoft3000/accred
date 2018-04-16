@@ -99,8 +99,13 @@ class Particip extends \yii\db\ActiveRecord {
 
     public function beforeValidate() {
 
-        $this->date_of_birth = Yii::$app->formatter->asDate($this->date_of_birth, 'yyyy-MM-dd');
-        $this->visa_passport_validity = Yii::$app->formatter->asDate($this->visa_passport_validity, 'yyyy-MM-dd');
+        if ($this->date_of_birth) {
+            $this->date_of_birth = Yii::$app->formatter->asDate($this->date_of_birth, 'yyyy-MM-dd');
+        }
+        if ($this->visa_passport_validity) {
+            $this->visa_passport_validity = Yii::$app->formatter->asDate($this->visa_passport_validity, 'yyyy-MM-dd');  
+        }
+        
 
         return parent::beforeValidate();
     }
