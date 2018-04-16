@@ -37,9 +37,13 @@ App.factory('authInterceptor', function ($q, $window, $location) {
 /// Error handler
 
 App.config(function($controllerProvider, $httpProvider) {
-    $controllerProvider.register('ErrorController', ['$scope', '$rootScope', 'ErrorService',
-        function($scope, $rootScope, ErrorService) {
-            $scope.errorMessage = ErrorService.lastError;
+    $controllerProvider.register('ErrorController', ['$scope', '$rootScope', '$location','ErrorService',
+        function($scope, $rootScope, $location, ErrorService) {
+            if (ErrorService.lastError) {
+                $scope.errorMessage = ErrorService.lastError;
+            } else {
+                $location.path('/').replace();
+            }   
         }]);
     $httpProvider.interceptors.push('authInterceptor');
 });
