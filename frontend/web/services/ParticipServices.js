@@ -1,6 +1,6 @@
 'use strict';
 
-ParticipApp.factory('ParticipServices', ['$http', '$route', '$q',
+ParticipControllers.factory('ParticipServices', ['$http', '$route', '$q',
     function($http, $route, $q) {
         var obj = {};
 
@@ -49,14 +49,6 @@ ParticipApp.factory('ParticipServices', ['$http', '$route', '$q',
             return $http.delete("particips/" + id).then(function(response) {
                 $route.reload();
             });
-        };
-
-        obj.view_hotel_reserv = function(id) {
-            console.log("view_hotel_reserv");
-            return $http.delete("particips/hotel_reserv").then(function(response) {
-                return response;
-            });
-
         };
 
         return obj;

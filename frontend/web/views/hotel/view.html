@@ -1,0 +1,27 @@
+<div>
+  <h1 class="subtitle">Размещение</h1>
+  <p>{{ message}}</p>
+  <div class="" ng-show="particips.length > 0">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Фамилия Имя Отчество</th>
+          <th>Категория номера</th>
+          <th>Бронирование</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="data in particips">
+          <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
+          <td>{{(data.reservation_hotel) ? data.reservation_hotel : ''}}</td>
+          <td>
+            <a  href="#!/hotel/reserve/{{data.id}}"
+                ng-class="{disabled: data.reservation_hotel}"   
+                class="btn btn-primary"
+                role="button">Забронировать</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

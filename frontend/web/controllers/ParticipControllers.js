@@ -1,6 +1,6 @@
 'use strict';
 
-ParticipApp.config(['$routeProvider', '$httpProvider',
+ParticipControllers.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
         when('/particip/view', {
@@ -30,15 +30,6 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/particip/hotel_reserv', {
-            templateUrl: 'views/particip/hotel_reserv.html',
-            controller: 'HotelController',
-            resolve: {
-                response: function(ParticipServices) {
-                    return ParticipServices.view_hotel_reserv();
-                }
-            }
-        }).
         otherwise({
             templateUrl: 'views/site/404.html'
         });
@@ -46,7 +37,7 @@ ParticipApp.config(['$routeProvider', '$httpProvider',
     }
 ]);
 
-ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
+ParticipControllers.controller('ViewController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
     function($scope, $http, $route, response, ParticipServices) {
         $scope.particips = response.data;
         $scope.delete = function(id) {
@@ -63,7 +54,7 @@ ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response
     }
 ]);
 
-ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
+ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
     function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
         $scope.userModel = {};
@@ -225,11 +216,5 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
                 });
             });
         }
-    }
-]);
-
-ParticipApp.controller('HotelController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
-    function($scope, $http, $route, response, ParticipServices) {
-        $scope.particips = response.data;
     }
 ]);

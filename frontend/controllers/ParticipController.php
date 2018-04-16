@@ -37,14 +37,9 @@ class ParticipController extends Controller {
 
     public function actionView($id = null) {
         if ($id == null) {
-            if ( \Yii::$app->user->can('admin') ) {
-                $model = new Particip();
-                return $model->find()->all();
-            } else {
-                $model_search = new ParticipSearch();
-                $dataProvider = $model_search->searchCreated();
-                return $dataProvider->query->all(); 
-            }
+            $model_search = new ParticipSearch();
+            $dataProvider = $model_search->searchCreated();
+            return $dataProvider->query->all(); 
         } else {
             $model = $this->findModel($id);
             if (!\Yii::$app->user->can('view', ['particip' => $model])) {

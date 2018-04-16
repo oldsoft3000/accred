@@ -1,6 +1,6 @@
 'use strict';
 
-SiteApp.config(['$routeProvider', '$httpProvider',
+SiteControllers.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/', {
@@ -45,7 +45,7 @@ SiteApp.config(['$routeProvider', '$httpProvider',
     }
 ]);
 
-SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteServices',
+SiteControllers.controller('MainController', ['$scope', '$location', '$window', 'SiteServices',
     function ($scope, $location, $window, SiteServices) {
         $scope.isLoggedIn = function() {
             return SiteServices.isLoggedIn();
@@ -95,7 +95,7 @@ SiteApp.controller('MainController', ['$scope', '$location', '$window', 'SiteSer
     }
 ]); 
 
-SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteServices', 
+SiteControllers.controller('LoginController', ['$scope', '$window', '$location', 'SiteServices', 
     function($scope, $window, $location, SiteServices) {
         $scope.login = function () {
             $scope.dataLoading = true;
@@ -123,7 +123,7 @@ SiteApp.controller('LoginController', ['$scope', '$window', '$location', 'SiteSe
     }
 ]);
 
-SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteServices',
+SiteControllers.controller('SignupController', ['$scope', '$window', '$location', 'SiteServices',
     function($scope, $window, $location, SiteServices) {
         $scope.signup = function () {
             $scope.error = {};
@@ -159,7 +159,7 @@ SiteApp.controller('SignupController', ['$scope', '$window', '$location', 'SiteS
     }
 ]);
 
-SiteApp.controller('AgreementController', ['$cookies', '$location', '$scope', 'SiteServices',
+SiteControllers.controller('AgreementController', ['$cookies', '$location', '$scope', 'SiteServices',
     function ($cookies, $location, $scope, SiteServices) {
         $scope.isUserAgreed = function () {
             return SiteServices.isUserAgreed();
@@ -172,13 +172,13 @@ SiteApp.controller('AgreementController', ['$cookies', '$location', '$scope', 'S
     }
 ]);
 
-SiteApp.controller('DashboardController', ['$scope', 'response',
+SiteControllers.controller('DashboardController', ['$scope', 'response',
     function ($scope, response) {
         $scope.dashboard = response.data;
     }
 ]);
 
-SiteApp.controller('ContactController', ['$scope', '$window', 'SiteServices',
+SiteControllers.controller('ContactController', ['$scope', '$window', 'SiteServices',
     function($scope, $window, SiteServices) {
         $scope.captchaUrl = 'site/captcha';
         $scope.contact = function () {
@@ -211,9 +211,13 @@ SiteApp.controller('ContactController', ['$scope', '$window', 'SiteServices',
 }]);
 
 
-SiteApp.controller('ErrorController', ['$scope', 'authInterceptor',
-    function ($scope, authInterceptor) {
+SiteControllers.controller('ErrorController', ['$scope', '$location','authInterceptor', 
+    function ($scope, $location, authInterceptor) {
         $scope.errorMessage = authInterceptor.data.lastError;  
+
+        if (!$scope.errorMessage) {
+            $location.path('/').replace();
+        }
     }
 ]);
 

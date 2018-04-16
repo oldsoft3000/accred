@@ -1,6 +1,6 @@
 'use strict';
 
-SiteApp.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookies', 
+SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookies', 
     function($http, $window, $location, $q, $cookies) {
         var obj = {};
         obj.login = function (userModel) {

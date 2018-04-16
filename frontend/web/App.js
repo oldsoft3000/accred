@@ -3,14 +3,15 @@
 var App = angular.module('App', [
     'ngRoute',
     'mgcrea.ngStrap',
-    'SiteApp',
-    'ParticipApp',
+    'SiteControllers',
+    'ParticipControllers',
+    'HotelControllers',
     'cleave.js',
 ]);
 
-var SiteApp = angular.module('SiteApp', ['ngRoute', 'ngCookies']);
-var ParticipApp = angular.module('ParticipApp', ['ngRoute', 'ngCookies']);
-
+var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
+var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies']);
+var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies']);
 /// Token injector
 
 App.factory('authInterceptor', function ($q, $window, $location) {

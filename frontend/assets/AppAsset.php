@@ -16,8 +16,10 @@ class AppAsset extends AssetBundle
         'App.js',
         'controllers/SiteControllers.js',
         'controllers/ParticipControllers.js',
+        'controllers/HotelControllers.js',
         'services/SiteServices.js',
         'services/ParticipServices.js',
+        'services/HotelServices.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

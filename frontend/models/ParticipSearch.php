@@ -90,9 +90,12 @@ class ParticipSearch extends Particip
             'query' => $query,
         ]);
 
-        $query->andFilterWhere([
-            'created_by' => Yii::$app->user->id,
-        ]);
+
+        if ( !\Yii::$app->user->can('admin') ) {
+            $query->andFilterWhere([
+                'created_by' => Yii::$app->user->id,
+            ]);
+        }
 
         return $dataProvider;
     }
