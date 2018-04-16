@@ -14,11 +14,8 @@ AppAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>My Angular Yii Application</title>
-        <?php $this->head() ?>
-
         <script>paceOptions = {ajax: {trackMethods: ['GET', 'POST']}};</script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/red/pace-theme-minimal.css" rel="stylesheet" />
+        <?php $this->head() ?>
     </head>
     <body ng-controller="MainController">
         <?php $this->beginBody() ?>

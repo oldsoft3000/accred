@@ -24,7 +24,8 @@
         "bower-asset/angular-strap": "*",
     	"bower-asset/cleave-js": "*",
     	"bower-asset/pace": "*",
-    	"yii2mod/yii2-rbac": "*"
+    	"yii2mod/yii2-rbac": "*",
+        "bower-asset/croppie": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

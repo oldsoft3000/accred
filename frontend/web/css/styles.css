@@ -256,19 +256,15 @@ label {
 
 
 .modal-content {
-
+  
 }
 
 .crop-area {
   display:block;
   position: relative;
-  /*width: 500px;
-  height: 400px;*/
-  z-index: 1000;
-  margin-left: auto;
-  margin-right: auto;
+  width: 400px;
+  height: 400px;
 }
-
 
 .crop-button {
   width: 120px;

@@ -62,6 +62,20 @@ return [
             'password' => '818181',
             'charset' => 'utf8',
         ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web',
+                    'css' => ['css/bootstrap.css'],
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'sourcePath' => '@bower/bootstrap/dist',
+                    'js' => ['js/bootstrap.min.js']
+                ]
+            ],
+        ],
     ],
     'params' => $params,
 ];

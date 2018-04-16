@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e24fb7e6064d7d29a0148d864fd1f17",
+    "content-hash": "8016b87a6525e60b77c3c67acebea5e2",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -163,6 +163,25 @@
             "type": "bower-asset",
             "license": [
                 "Apache-2.0"
+            ]
+        },
+        {
+            "name": "bower-asset/croppie",
+            "version": "v2.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Foliotek/Croppie.git",
+                "reference": "c2ac6335a74254b6e17d00449c6f3c30201de734"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Foliotek/Croppie/zipball/c2ac6335a74254b6e17d00449c6f3c30201de734",
+                "reference": "c2ac6335a74254b6e17d00449c6f3c30201de734",
+                "shasum": null
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
             ]
         },
         {

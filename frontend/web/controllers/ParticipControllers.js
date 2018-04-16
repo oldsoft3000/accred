@@ -60,9 +60,13 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
         $scope.userModel = {};
         $scope.userModel.visa_passport_validity = '';
 
-        $scope.croppie = {};
-        $scope.croppie.croppedImage = '';
-        $scope.croppie.croppieControl = {};
+        var el = document.querySelector(".crop-area");
+
+        $scope.croppie = new Croppie(el, {
+            viewport: { width: 100, height: 100 },
+            showZoomer: false
+        });
+
 
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
             console.log("update");
@@ -197,27 +201,23 @@ ParticipApp.controller('CreateController', ['$timeout', '$scope', '$rootScope', 
 
         $scope.editPhoto = function() {
             document.querySelector('#photoFile').value = "";
+            $scope.croppie.bind({
+                url: $scope.userModel.photo,
+            });
             $('#photoEditor').modal('toggle');
-        
-             //$scope.zoomValue(0.3);
-            //$('#croppie').croppie('setZoom', 0.8);
+            $scope.croppie.setZoom(1.0);
         };
 
         $scope.saveCropResult = function() {
-            console.log($scope.cropped_image);
-            $scope.userModel.photo = $scope.croppie.croppedImage; 
-            $timeout( function() {
-                            $scope.croppie.croppieControl.getCroppie().setZoom(1.0);
-                        }, 100);
-            
+            $scope.croppie.result('base64').then(function(base64) {
+                $scope.userModel.photo = base64;
+                $scope.croppie.bind({
+                    url: base64
+                });
+            });
         }
 
-        $scope.testFunc = function() {  
-            $scope.croppie.scale = 1;
-            $scope.angle = 270;
-             //$scope.zoomValue(0.3);
-            //$('#croppie').croppie('setZoom', 0.8);
-        };
+
 
 
         /*$rootScope.$on('visaReuired', function(event, value) {

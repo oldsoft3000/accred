@@ -10,6 +10,7 @@ class AngularAsset extends AssetBundle
     public $sourcePath = '@bower';
     public $css = [
         'croppie/croppie.css',
+        'pace/themes/black/pace-theme-minimal.css'
         //'ngCroppie/ng-croppie.min.css'
     ];
     public $js = [
@@ -19,11 +20,12 @@ class AngularAsset extends AssetBundle
         'angular-cookies/angular-cookies.min.js',
         'cleave-js/dist/cleave-angular.min.js',
         'cleave-js/dist/addons/cleave-phone.ru.js',
-        'croppie/croppie.js',
-        'ngCroppie/ng-croppie.mf.js',
-
+        'croppie/croppie.min.js',
+        'pace/pace.min.js',
     ];
-   // public $jsOptions = [
-   //     'position' => View::POS_HEAD,
-    //];
+
+
+    /*public $jsOptions = [
+        'position' => View::POS_HEAD,
+    ];*/
 }
