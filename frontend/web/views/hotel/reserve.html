@@ -1,14 +1,70 @@
 <div>
   <h1 class="subtitle">{{hotel_name}}</h1>
-  <h4 class="text-center">{{hotel_description}}</h4>
+  <h4 class="text-center" style="font-size: 16px;">
+        {{hotel_description}}</h4>
   <div ng-show="rooms.length > 0" class="subblock">
-    <div class="row" ng-repeat="room in rooms">
-      <div class="col-xs-6">
+    <div class="row" ng-repeat="room in rooms" style="padding: 10px; margin:10px 0;background-color: #CDCDCD; width:70%;">
+      <div class="col-xs-10">
         {{room_types[room.type - 1] + " номер " + room_categories[room.category - 1]}}
       </div>
-      <div class="col-xs-3">
-        {{room.cost}}
+      <div class="col-xs-2">
+        {{room.cost}}р
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+<form name="reservationForm" ng-submit="reserveHotel()" role="form" novalidate>
+  <div class="subblock-lr">
+    <div class="form-group row">
+      <label class="col-sm-3 form-label required">Обращение</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['title'] = ''" ng-click="error['title'] = ''" ng-class="{'is-invalid': error['title'] }" ng-model="userModel.title" class="form-control">
+          <option selected value="" style="display:none;">Выберите обращение</option>
+          <option value='1'>Г-н</option>
+          <option value='2'>Г-жа</option>
+        </select>
+        <div ng-if="error['title']" class="invalid-tooltip">
+          {{ error['title']}}
+        </div>
+      </div>
+    </div>  
+    <div class="form-group row">
+      <label class="col-sm-3 required">Фамилия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="userModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Имя</label>
+      <div class="col-sm-7">
+        <input ng-click="error['first_name'] = ''" ng-class="{'is-invalid': error['first_name'] }" ng-model="userModel.first_name" type="text" class="form-control" placeholder="">
+        <div ng-if="error['first_name']" class="invalid-tooltip">
+          {{ error['first_name']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Отчество</label>
+      <div class="col-sm-7">
+        <input ng-click="error['middle_name'] = ''" ng-class="{'is-invalid': error['middle_name'] }" ng-model="userModel.middle_name" type="text" class="form-control" placeholder="">
+        <div ng-if="error['middle_name']" class="invalid-tooltip">
+          {{ error['middle_name']}}
+        </div>
+      </div>
+    </div>
+ 
+
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary">Получить форму бронирования</button>
+      <img class="loader" ng-show="dataLoading" src="images/loader.gif" />
+    </div>
+  </div>
+</form>

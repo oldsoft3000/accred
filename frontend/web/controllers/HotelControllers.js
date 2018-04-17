@@ -12,9 +12,9 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/hotel/reserve_tutor/:id', {
-            templateUrl: 'views/hotel/reserve_tutor.html',
-            controller: 'ReserveHotelController',
+        when('/hotel/reserve_tutorial/:id', {
+            templateUrl: 'views/hotel/reserve_tutorial.html',
+            controller: 'ReserveHotelTutorialController',
             resolve: {
                 response: function(HotelServices) {
                     return HotelServices.getHotels();
@@ -44,6 +44,28 @@ HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'resp
     }
 ]);
 
+HotelControllers.factory("reservationInfo",function() {
+        return {
+            particip: 0,
+            hotel: 0,
+        };
+});
+
+
+HotelControllers.controller('ReserveHotelTutorialController', ['$location',
+                                                               '$scope',
+                                                               '$route',
+                                                               '$cookies',
+                                                               'response',
+                                                               'HotelServices', 
+                                                               'reservationInfo',
+    function ($location, $scope, $route, $cookies, response,  HotelServices, reservationInfo) {
+        reservationInfo.particip = $route.current.params.id;
+        $scope.hotels = response.data;
+        $cookies.putObject('reservation_info', reservationInfo);
+
+    }
+]);
 
 HotelControllers.controller('ReserveHotelController', ['$location',
                                                        '$scope',
@@ -51,11 +73,8 @@ HotelControllers.controller('ReserveHotelController', ['$location',
                                                        '$cookies',
                                                        'response',
                                                        'HotelServices', 
-    function ($location, $scope, $route, $cookies, response,  HotelServices) {
-        var reservation_info = {
-            particip: 0,
-            hotel: 0,
-        };
+                                                       'reservationInfo',
+    function ($location, $scope, $route, $cookies, response,  HotelServices, reservationInfo) {
 
         var room_categories = [
             'Стандартный',
@@ -70,26 +89,24 @@ HotelControllers.controller('ReserveHotelController', ['$location',
             'Трехместный'
         ];
 
+        reservationInfo.hotel = $route.current.params.id;
+
         $scope.room_categories = room_categories;
         $scope.room_types = room_types;
+        $scope.hotel_name = response[0].data.name;
+        $scope.hotel_description = response[0].data.description;
+        $scope.rooms = response[1].data;
 
-
-        var cookie = $cookies.getObject('reservation_info');
-        if (typeof cookie != 'undefined') {
-            reservation_info = cookie;
+        if (reservationInfo.particip == 0) {
+            var cookie = $cookies.getObject('reservation_info');
+            if (cookie.particip != 0) {
+                reservationInfo.particip = cookie.particip;
+            } else {
+                $location.path('/hotel/view').replace();
+            }
         }
-
-        if ($route.current.$$route.originalPath === "/hotel/reserve_tutor/:id") {
-            reservation_info.particip = $route.current.params.id;
-            $scope.hotels = response.data;
-        } else if ($route.current.$$route.originalPath === "/hotel/reserve/:id") {
-            reservation_info.hotel = $route.current.params.id;
-            $scope.hotel_name = response[0].data.name;
-            $scope.hotel_description = response[0].data.description;
-            $scope.rooms = response[1].data;
-        }
-
-        $cookies.putObject('reservation_info', reservation_info);
+   
+        $cookies.putObject('reservation_info', reservationInfo);
 
     }
 ]);
