@@ -8,23 +8,6 @@ ParticipControllers.factory('ParticipServices', ['$http', '$route', '$q',
             return $http.post('particips', userModel).then(function(response) {
                 return response;
             });
-
-            ParticipApp.controller('ViewController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
-                function($scope, $http, $route, response, ParticipServices) {
-                    $scope.particips = response.data;
-                    $scope.delete = function(id) {
-                        if (confirm("Удалить участника: " + id) == true && id > 0) {
-                            ParticipServices.delete(id);
-                            $route.reload();
-                        }
-                    };
-
-                    $scope.showPhoto = function(userModel) {
-                        $scope.userModel = userModel;
-                        $('#myModal').modal('toggle')
-                    };
-                }
-            ]);
         };
 
         obj.update = function(userModel) {

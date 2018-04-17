@@ -31,10 +31,24 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
   `arrival_date` DATE NOT NULL,
   `departure_date` DATE NOT NULL, /*одноместный, двухместный тд*/
   `guests` int(2) NOT NULL, /*стандартный, супериор и тд*/
-  `id_room` int(11) NOT NULL,
+  `type` int(2) NOT NULL,
+  `category` int(2) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS room_category;
+CREATE TABLE IF NOT EXISTS `room_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS room_type;
+CREATE TABLE IF NOT EXISTS `room_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
 /*Типы номеров*/
 /*
@@ -50,8 +64,20 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
 2 - Полулюкс
 3 - Люкс
 4 - Супериор
-
 */
+
+
+INSERT INTO `room_category` (`name`) VALUES 
+('Стандартный'),
+('Полулюкс'),
+('Люкс'),
+('Супериор');
+
+INSERT INTO `room_type` (`name`) VALUES 
+('Одноместный'),
+('Двухместный'),
+('Трехместный');
+
 
 INSERT INTO `hotel_room` (`hotel`, `type`, `category`, `cost`) VALUES 
 (1, 1, 1, 4000),

@@ -26,7 +26,7 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
             controller: 'ReserveHotelController',
             resolve: {
                 response: function(HotelServices, $route) {
-                    return HotelServices.getHotelRooms($route.current.params.id);
+                    return HotelServices.getHotelInfo($route.current.params.id);
                 }
             }
         }).
@@ -46,8 +46,8 @@ HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'resp
 
 HotelControllers.factory("reservationInfo",function() {
         return {
-            particip: 0,
-            hotel: 0,
+            idParticip: 0,
+            idHotel: 0,
         };
 });
 
@@ -60,7 +60,7 @@ HotelControllers.controller('ReserveHotelTutorialController', ['$location',
                                                                'HotelServices', 
                                                                'reservationInfo',
     function ($location, $scope, $route, $cookies, response,  HotelServices, reservationInfo) {
-        reservationInfo.particip = $route.current.params.id;
+        reservationInfo.idParticip = $route.current.params.id;
         $scope.hotels = response.data;
         $cookies.putObject('reservation_info', reservationInfo);
 
@@ -75,38 +75,53 @@ HotelControllers.controller('ReserveHotelController', ['$location',
                                                        'HotelServices', 
                                                        'reservationInfo',
     function ($location, $scope, $route, $cookies, response,  HotelServices, reservationInfo) {
-
-        var room_categories = [
-            'Стандартный',
-            'Полулюкс',
-            'Люкс',
-            'Супериор'
-        ];
-
-        var room_types = [
-            'Одноместный',
-            'Двухместный',
-            'Трехместный'
-        ];
-
-        reservationInfo.hotel = $route.current.params.id;
-
-        $scope.room_categories = room_categories;
-        $scope.room_types = room_types;
-        $scope.hotel_name = response[0].data.name;
-        $scope.hotel_description = response[0].data.description;
+        $scope.reservModel = {};
+        reservationInfo.idHotel = $route.current.params.id;
+        $scope.hotel = response[0].data;
         $scope.rooms = response[1].data;
+        $scope.categories = response[2].data;
+        $scope.types = response[3].data;
 
-        if (reservationInfo.particip == 0) {
+        $scope.getName = function(arr, id) {
+            for ( var i = 0; i < arr.length; i++ )
+                if (arr[i]["id"] === id)                    
+                    return arr[i]["name"];
+            return false
+        };
+
+
+        if (reservationInfo.idParticip == 0) {
             var cookie = $cookies.getObject('reservation_info');
-            if (cookie.particip != 0) {
-                reservationInfo.particip = cookie.particip;
+            if (cookie.idParticip != 0) {
+                reservationInfo.idParticip = cookie.idParticip;
             } else {
                 $location.path('/hotel/view').replace();
             }
         }
-   
         $cookies.putObject('reservation_info', reservationInfo);
+
+
+        $scope.reserveHotel = function() {
+            $scope.dataLoading = true;
+            $scope.error = {};
+            HotelServices.reserve($scope.reservModel, reservationInfo.idParticip)
+                .then(successHandler)
+                .catch(errorHandler);
+
+            function successHandler(response) {
+                $scope.dataLoading = false;
+                $location.path('/hotel/view').replace();
+                return response;
+            }
+
+            function errorHandler(response) {
+                $scope.dataLoading = false;
+                angular.forEach(response.data, function(error) {
+                    $scope.error[error.field] = error.message;
+                });
+                return response;
+            }
+        };
 
     }
 ]);
