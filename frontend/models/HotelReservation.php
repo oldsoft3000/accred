@@ -11,7 +11,8 @@ use Yii;
  * @property string $arrival_date
  * @property string $departure_date
  * @property int $guests
- * @property int $room_id
+ * @property int $type_id
+ * @property int $category_id
  */
 class HotelReservation extends \yii\db\ActiveRecord
 {
@@ -29,9 +30,9 @@ class HotelReservation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['arrival_date', 'departure_date', 'guests', 'room_id'], 'required'],
+            [['arrival_date', 'departure_date', 'guests', 'type_id', 'category_id'], 'required'],
             [['arrival_date', 'departure_date'], 'safe'],
-            [['guests', 'room_id'], 'integer'],
+            [['guests', 'type_id', 'category_id'], 'integer'],
         ];
     }
 
@@ -42,10 +43,11 @@ class HotelReservation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'arrival_date' => 'Arrival Date',
-            'departure_date' => 'Departure Date',
-            'guests' => 'Guests',
-            'room_id' => 'Room ID',
+            'arrival_date' => 'Дата заезда',
+            'departure_date' => 'Дата выезда',
+            'guests' => 'Количество гостей',
+            'type_id' => 'Тип размещения',
+            'category_id' => 'Категория номера',
         ];
     }
 }

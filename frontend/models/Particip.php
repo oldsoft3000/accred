@@ -117,7 +117,9 @@ class Particip extends \yii\db\ActiveRecord {
 
     public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
-            $this->created_by = Yii::$app->user->id;
+            if ($insert) {
+                $this->created_by = Yii::$app->user->id;
+            }
             return true;
         }
         return false;

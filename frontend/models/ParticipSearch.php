@@ -101,9 +101,7 @@ class ParticipSearch extends Particip
     }
 
     public function searchHotelReservation() {
-
-
-        $rows = Yii::$app->db->createCommand('
+        $str = '
             SELECT  particip.id,
                     first_name,
                     middle_name,
@@ -113,12 +111,14 @@ class ParticipSearch extends Particip
                     room_type.name as type_name 
             FROM `particip`
             LEFT JOIN hotel_reservation ON (hotel_reservation.id = particip.hotel_reservation_id)
-            LEFT JOIN hotel_room ON (hotel_room.id = hotel_reservation.room_id)
-            LEFT JOIN room_category ON (room_category.id=hotel_room.category_id)
-            LEFT JOIN room_type ON (room_type.id=hotel_room.type_id)')
-            ->queryAll(); 
+            LEFT JOIN room_category ON (room_category.id=hotel_reservation.category_id)
+            LEFT JOIN room_type ON (room_type.id=hotel_reservation.type_id)';
 
-
+        if ( !\Yii::$app->user->can('admin') ) {
+            $str = $str . 'WHERE particip.created_by = :id'; 
+        }
+        $command = Yii::$app->db->createCommand($str);
+        $rows = $command->bindValue(':id', Yii::$app->user->id)->queryAll();
 
         return $rows;
     }

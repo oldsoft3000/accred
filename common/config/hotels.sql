@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `hotel_reservation` (
   `arrival_date` DATE NOT NULL,
   `departure_date` DATE NOT NULL, /*одноместный, двухместный тд*/
   `guests` int(2) NOT NULL, /*стандартный, супериор и тд*/
-  `room_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL, 
+  `category_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
 

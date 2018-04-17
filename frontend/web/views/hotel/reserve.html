@@ -52,16 +52,16 @@
     <div class="form-group row">
       <label class="col-sm-3 form-label required">Тип размещения</label>
       <div class="col-sm-7">
-        <select ng-focus="error['type'] = ''"
-                ng-click="error['type'] = ''"
-                ng-class="{'is-invalid': error['type'] }"
-                ng-model="reservModel.type"
+        <select ng-focus="error['type_id'] = ''"
+                ng-click="error['type_id'] = ''"
+                ng-class="{'is-invalid': error['type_id'] }"
+                ng-model="reservModel.type_id"
                 class="form-control"
                 ng-options="type['id'] as type['name'] for type in types track by type.id">
           <option selected value="" style="display:none;">Выберите тип размещения</option>
         </select>
-        <div ng-if="error['type']" class="invalid-tooltip">
-          {{ error['type']}}
+        <div ng-if="error['type_id']" class="invalid-tooltip">
+          {{ error['type_id']}}
         </div>
       </div>
     </div>  
@@ -69,16 +69,16 @@
     <div class="form-group row">
       <label class="col-sm-3 form-label required">Категория номера</label>
       <div class="col-sm-7">
-        <select ng-focus="error['category'] = ''"
-                ng-click="error['category'] = ''"
-                ng-class="{'is-invalid': error['category'] }"
-                ng-model="reservModel.category"
+        <select ng-focus="error['category_id'] = ''"
+                ng-click="error['category_id'] = ''"
+                ng-class="{'is-invalid': error['category_id'] }"
+                ng-model="reservModel.category_id"
                 class="form-control"
                 ng-options="category['id'] as category['name'] for category in categories track by category.id">
           <option selected value="" style="display:none;">Выберите категорию номера</option>
         </select>
-        <div ng-if="error['category']" class="invalid-tooltip">
-          {{ error['category']}}
+        <div ng-if="error['category_id']" class="invalid-tooltip">
+          {{ error['category_id']}}
         </div>
       </div>
     </div>  

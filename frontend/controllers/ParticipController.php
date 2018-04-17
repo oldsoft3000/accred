@@ -42,7 +42,7 @@ class ParticipController extends Controller {
         } else {
             $model = $this->findModel($id);
             if (!\Yii::$app->user->can('view', ['particip' => $model])) {
-                throw new ForbiddenHttpException('Access denied index');
+                throw new ForbiddenHttpException('Access denied');
             }
             return $model;
         }
@@ -63,7 +63,7 @@ class ParticipController extends Controller {
         $model = $this->findModel($id);
 
         if (!\Yii::$app->user->can('update', ['particip' => $model])) {
-            throw new ForbiddenHttpException('Access denied update');
+            throw new ForbiddenHttpException('Access denied');
         }
 
         if ($model->load(Yii::$app->request->post(), '') && $model->save()) {
@@ -79,7 +79,7 @@ class ParticipController extends Controller {
         $model = $this->findModel($id);
 
         if (!\Yii::$app->user->can('delete', ['particip' => $model])) {
-            throw new ForbiddenHttpException('Access denied delete');
+            throw new ForbiddenHttpException('Access denied');
         }
 
         $model->delete();
