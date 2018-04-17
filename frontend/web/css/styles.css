@@ -160,10 +160,15 @@
 }
 
 
-.subblock {
+.subblock-lr {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.subblock {
+  padding: 20px;;
+}
+
 
 /*Required asterisk*/
 
@@ -192,10 +197,8 @@ label {
 .action_icon_block {
   display: inline-block;
   width: 30px;
-  height: 30px;
+  height: 27px;
   vertical-align: middle;
-  margin-left: 5px;
-    margin-right: 5px;
 }
 
 .action_icon { 
@@ -291,3 +294,23 @@ label {
   padding:15;
 }
 
+.hotel-button {
+  padding: 10px; 
+  margin: 20px;
+  background: white;
+  border-color: grey;
+  width: 200px;
+  height: 100px;
+  white-space: normal;
+  display: inline-table; 
+}
+
+.hotel-button p {
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: center; 
+}
+
+.hotel-button:active {
+    box-shadow:none;
+}

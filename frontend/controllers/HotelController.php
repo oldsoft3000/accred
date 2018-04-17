@@ -8,6 +8,8 @@ use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBearerAuth;
+use app\models\Hotel;
+use app\models\HotelSearch;
 use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ForbiddenHttpException;
@@ -43,9 +45,23 @@ class HotelController extends Controller {
     }
 
     // Список отелей
-    public function actionHotels() {
-        $model_search = new ParticipSearch();
-        $dataProvider = $model_search->searchCreated();
-        return $dataProvider->query->all(); 
+    public function actionHotels($id = null) {
+        if ($id == null) {
+            return Hotel::find()->all();
+        } else {
+            return Hotel::findOne($id); 
+        }
+    }
+
+    // Список Номеров
+    public function actionRooms($hotel) {
+        $rows = (new \yii\db\Query())
+            ->select(['*'])
+            ->from('hotel_room')
+            ->where(['hotel' => $hotel])
+            ->all();
+
+        return $rows;
+        
     }
 }

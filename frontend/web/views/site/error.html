@@ -1,3 +1,13 @@
-<h1>Error</h1>
 
-<div ng-if="errorMessage">{{ errorMessage }}</div>
+<div class="site-error">
+
+  <h1>{{ errorMessage.statusText +" (#" + errorMessage.status + ")" }}</h1>
+
+  <div class="alert alert-danger">
+    {{ errorMessage.data.message }}      
+  </div>
+
+  <div ng-if="errorMessage">{{ errorMessage.data }}</div>
+
+</div>
+

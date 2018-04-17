@@ -25,7 +25,7 @@ class AngularAsset extends AssetBundle
     ];
 
 
-    /*public $jsOptions = [
+    public $jsOptions = [
         'position' => View::POS_HEAD,
-    ];*/
+    ];
 }

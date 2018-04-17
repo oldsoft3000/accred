@@ -19,7 +19,7 @@ App.factory('authInterceptor', function ($q, $window, $location) {
         lastError: ''
     };
     return {
-        data,
+        data: data,
         request: function (config) {
             if ($window.sessionStorage.access_token) {
                 //HttpBearerAuth
@@ -37,7 +37,7 @@ App.factory('authInterceptor', function ($q, $window, $location) {
                 $location.path("views/site/404.html" ).replace();
                 return $q.reject(response);
             } else {
-                data.lastError = response.data;  
+                data.lastError = response;  
                 $location.path("/error" ).replace(); 
             }
             

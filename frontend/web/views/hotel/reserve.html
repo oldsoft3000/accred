@@ -1,28 +1,14 @@
 <div>
-  <h1 class="subtitle">Бронирование отеля</h1>
-  <p>{{ message}}</p>
-  <div class="" ng-show="particips.length > 0">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>Фамилия Имя Отчество</th>
-          <th>Категория номера</th>
-          <th>Бронирование</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="data in particips">
-          <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
-          <td>{{(data.reservation_hotel) ? data.reservation_hotel : ''}}</td>
-          <td>
-            <button ng-class="{disabled: data.reservation_hotel}"
-                    type="button"
-                    class="btn btn-primary"
-                    ng-click="reserve(data.id)">Забронировать</button>
-
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <h1 class="subtitle">{{hotel_name}}</h1>
+  <h4 class="text-center">{{hotel_description}}</h4>
+  <div ng-show="rooms.length > 0" class="subblock">
+    <div class="row" ng-repeat="room in rooms">
+      <div class="col-xs-6">
+        {{room_types[room.type - 1] + " номер " + room_categories[room.category - 1]}}
+      </div>
+      <div class="col-xs-3">
+        {{room.cost}}
+      </div>
+    </div>
   </div>
 </div>

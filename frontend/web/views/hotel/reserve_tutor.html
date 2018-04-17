@@ -1,0 +1,18 @@
+<div>
+  <h1 class="subtitle">Бронирование отеля</h1>
+  <div class="subblock">
+    <p>1. По окончании ввода данных нажмите кнопку "Получить форму бронирования" для получения заявки на Вашу электронную почту.</p>
+    <p>2. Вам будет направлено подтверждение о бронировании.</p>
+    <p>3. С Вами свяжется представитель отеля для завершения процедуры бронирования.</p>
+    <p>4. В случае возникновения вопросов по размещению, пожалуйства, свяжитесь с нами accommodation@wgforum.ru</p>
+  </div>
+  <h4 class="text-center">Вы можете забронировать номер в одной из гостиниц.</h4>
+  <div ng-show="hotels.length > 0" class="subblock">
+    <a  ng-repeat="hotel in hotels"
+        href="#!/hotel/reserve/{{hotel.id}}" 
+        class="btn btn-default hotel-button"
+        role="button">
+        <p>{{hotel.name}}</p>
+    </a>        
+  </div>
+</div>

@@ -16,7 +16,7 @@
         <tr ng-repeat="data in particips">
           <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
           <td>{{data.status}}</td>
-          <td style="text-align: center;"> {{data.photo ? '' : 'Нет фото'}}
+          <td style="padding:0px 10px; vertical-align: middle;"> {{data.photo ? '' : 'Нет фото'}}
             <!-- <button style="height:25px;width:80%;"
                     class="btn btn-secondary btn-lg"
                     ng-if="data.photo"
@@ -24,11 +24,11 @@
                     data-toggle="tooltip" data-target="#myModal"
                     title="Показать фото" ></button> -->
             <a class="action_icon_block" data-toggle="tooltip" title="Показать фото" ng-if="data.photo" ng-click="showPhoto(data)">
-              <img class="action_icon" border="0" src="images/view.png" width=30 height=30 >
+              <img class="action_icon" border="0" src="images/view.png">
             </a>
             <div class="modal" id="myModal" role="dialog">
               <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content view-area">
+                <div class="modal-content view-area text-center">
                   <div class="modal-header">
                     Фотография участника
                   </div>
@@ -41,12 +41,12 @@
             </div>
           </td>
           <td>Оплата</td>
-          <td style="text-align: center;">
+          <td style="padding:0px 10px; vertical-align: middle;">
             <a class="action_icon_block" href="#!/particip/view/{{data.id}}" data-toggle="tooltip" title="Редактировать">
-              <img class="action_icon" border="0" src="images/edit.png" width=20 height=20 >
+              <img class="action_icon" border="0" src="images/edit.png" >
             </a>
             <a class="action_icon_block" ng-click="delete(data.id)" data-toggle="tooltip" title="Удалить">
-              <img class="action_icon" border="0" src="images/delete.png" width=20 height=20>
+              <img class="action_icon" border="0" src="images/delete.png">
             </a>
           </td>
         </tr>
