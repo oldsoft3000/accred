@@ -40,9 +40,20 @@ class HotelController extends Controller {
 
     // Список участников
     public function actionView() {
-        $model_search = new ParticipSearch();
-        $dataProvider = $model_search->searchCreated();
-        return $dataProvider->query->all(); 
+        $rows = Yii::$app->db->createCommand('
+            SELECT  particip.id,
+                    first_name,
+                    middle_name,
+                    last_name,
+                    reservation_hotel.id as reservation_id,
+                    room_category.name as category_name,
+                    room_type.name as type_name 
+            FROM `particip`
+            LEFT JOIN reservation_hotel ON (particip.reservation_hotel=reservation_hotel.id)
+            LEFT JOIN room_category ON (room_category.id=reservation_hotel.category)
+            LEFT JOIN room_type ON (room_type.id=reservation_hotel.type)')
+            ->queryAll(); 
+        return $rows;
     }
 
     // Список отелей
