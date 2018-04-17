@@ -83,7 +83,7 @@ class ParticipSearch extends Particip
         return $dataProvider;
     }
 
-    public function searchCreated() {
+    public function searchAll() {
         $query = Particip::find();
 
         $dataProvider = new ActiveDataProvider([
@@ -97,6 +97,29 @@ class ParticipSearch extends Particip
             ]);
         }
 
-        return $dataProvider;
+        return $query->all();
+    }
+
+    public function searchHotelReservation() {
+
+
+        $rows = Yii::$app->db->createCommand('
+            SELECT  particip.id,
+                    first_name,
+                    middle_name,
+                    last_name,
+                    hotel_reservation.id as reservation_id,
+                    room_category.name as category_name,
+                    room_type.name as type_name 
+            FROM `particip`
+            LEFT JOIN hotel_reservation ON (hotel_reservation.id = particip.hotel_reservation_id)
+            LEFT JOIN hotel_room ON (hotel_room.id = hotel_reservation.room_id)
+            LEFT JOIN room_category ON (room_category.id=hotel_room.category_id)
+            LEFT JOIN room_type ON (room_type.id=hotel_room.type_id)')
+            ->queryAll(); 
+
+
+
+        return $rows;
     }
 }

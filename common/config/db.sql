@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `particip` (
   `position_latin` varchar(100) NOT NULL,
   `photo` LONGBLOB NULL,
   `created_by` int(11) NOT NULL,
-  `reservation_hotel` int(11) NOT NULL, 
+  `hotel_reservation_id` int(11) NOT NULL, 
   PRIMARY KEY (`id`)
 );
 /*$2y$13$uqe3LPW9ya3RZhynJpPN5um9fvdxUmoqjOqQBJDdIDXSKxRZB5bPu*/

@@ -40,20 +40,8 @@ class HotelController extends Controller {
 
     // Список участников
     public function actionView() {
-        $rows = Yii::$app->db->createCommand('
-            SELECT  particip.id,
-                    first_name,
-                    middle_name,
-                    last_name,
-                    reservation_hotel.id as reservation_id,
-                    room_category.name as category_name,
-                    room_type.name as type_name 
-            FROM `particip`
-            LEFT JOIN reservation_hotel ON (particip.reservation_hotel=reservation_hotel.id)
-            LEFT JOIN room_category ON (room_category.id=reservation_hotel.category)
-            LEFT JOIN room_type ON (room_type.id=reservation_hotel.type)')
-            ->queryAll(); 
-        return $rows;
+        $model_search = new ParticipSearch();
+        return $model_search->searchHotelReservation();
     }
 
     // Список отелей
@@ -67,70 +55,25 @@ class HotelController extends Controller {
 
     // Список Номеров
     public function actionRooms($hotel) {
-        /*$rows = (new \yii\db\Query())
-            ->select(['*'])
-            ->from('hotel_room')
-            ->join('JOIN', 'room_category', 'room_category.id = hotel_room.category')
-            ->join('JOIN', 'room_type', 'room_type.id = hotel_room.type')
-            ->where(['hotel' => $hotel])
-            ->all();*/
-
-        /*$rows = Yii::$app->db->createCommand('
-            SELECT  hotel_room.id,
-                    hotel_room.cost,
-                    room_category.id as category_id,
-                    room_category.name as category_name,
-                    room_type.id as type_id,
-                    room_type.name as type_name
-            FROM `hotel_room`
-            JOIN room_category ON room_category.id = hotel_room.category
-            JOIN room_type ON room_type.id = hotel_room.type
-            WHERE hotel_room.hotel=:id')
-            ->bindValue(':id', $hotel)
-            ->queryAll();*/
-        $rows = Yii::$app->db->createCommand('
-            SELECT  *
-            FROM `hotel_room`
-            WHERE hotel_room.hotel=:id')
-            ->bindValue(':id', $hotel)
-            ->queryAll();
-
-        return $rows;
-        
+        return HotelSearch::getRoomsByHotel($hotel);
     }
 
     public function actionRoomCategories($hotel) {
-        $rows = Yii::$app->db->createCommand('
-            SELECT  DISTINCT room_category.id, room_category.name
-            FROM `hotel_room`
-            JOIN room_category ON room_category.id = hotel_room.category
-            WHERE hotel_room.hotel=:id')
-            ->bindValue(':id', $hotel)
-            ->queryAll();
-
-        return $rows;
+        return HotelSearch::getRoomCategoriesByHotel($hotel);
     }
 
     public function actionRoomTypes($hotel) {
-        $rows = Yii::$app->db->createCommand('
-            SELECT  DISTINCT room_type.id, room_type.name
-            FROM `hotel_room`
-            JOIN room_type ON room_type.id = hotel_room.type
-            WHERE hotel_room.hotel=:id')
-            ->bindValue(':id', $hotel)
-            ->queryAll();
-
-        return $rows;
+        return HotelSearch::getRoomTypesByHotel($hotel);
     }
-    /* Particip id */
-    public function actionReserve($id) {
-        $reserv_model = new ReservationHotel();
+    
+    public function actionReserve($id /* Particip id */) {
+        $reserv_model = new HotelReservation();
         $particip_model = particip::findOne($id);
 
         if ($particip_model &&
             $reserv_model->load(Yii::$app->getRequest()->getBodyParams(), '') &&
             $reserv_model->save()) {
-                $particip_model->reservation_hotel = $reserv_model->id;
+                $particip_model->hotel_reservation_id = $reserv_model->id;
                 $particip_model->save();
                 return ['access_token' => Yii::$app->user->identity->getAuthKey()];
         } else {

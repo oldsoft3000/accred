@@ -122,5 +122,4 @@ class Particip extends \yii\db\ActiveRecord {
         }
         return false;
     }
-
 }

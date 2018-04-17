@@ -18,21 +18,20 @@ CREATE TABLE IF NOT EXISTS `hotel` (
 DROP TABLE IF EXISTS hotel_room;
 CREATE TABLE IF NOT EXISTS `hotel_room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hotel` int(11) NOT NULL,
-  `type` int(2) NOT NULL, /*одноместный, двухместный тд*/
-  `category` int(2) NOT NULL, /*стандартный, супериор и тд*/
+  `hotel_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL, /*одноместный, двухместный тд*/
+  `category_id` int(11) NOT NULL, /*стандартный, супериор и тд*/
   `cost` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS reservation_hotel;
-CREATE TABLE IF NOT EXISTS `reservation_hotel` (
+DROP TABLE IF EXISTS hotel_reservation;
+CREATE TABLE IF NOT EXISTS `hotel_reservation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `arrival_date` DATE NOT NULL,
   `departure_date` DATE NOT NULL, /*одноместный, двухместный тд*/
   `guests` int(2) NOT NULL, /*стандартный, супериор и тд*/
-  `type` int(2) NOT NULL,
-  `category` int(2) NOT NULL,
+  `room_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -79,7 +78,7 @@ INSERT INTO `room_type` (`name`) VALUES
 ('Трехместный');
 
 
-INSERT INTO `hotel_room` (`hotel`, `type`, `category`, `cost`) VALUES 
+INSERT INTO `hotel_room` (`hotel_id`, `type_id`, `category_id`, `cost`) VALUES 
 (1, 1, 1, 4000),
 (1, 1, 2, 5000),
 (1, 2, 2, 6000),

@@ -5,23 +5,22 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "reservation_hotel".
+ * This is the model class for table "hotel_reservation".
  *
  * @property int $id
  * @property string $arrival_date
  * @property string $departure_date
  * @property int $guests
- * @property int $type
- * @property int $category
+ * @property int $room_id
  */
-class ReservationHotel extends \yii\db\ActiveRecord
+class HotelReservation extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'reservation_hotel';
+        return 'hotel_reservation';
     }
 
     /**
@@ -30,9 +29,9 @@ class ReservationHotel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['arrival_date', 'departure_date', 'guests', 'type', 'category'], 'required'],
+            [['arrival_date', 'departure_date', 'guests', 'room_id'], 'required'],
             [['arrival_date', 'departure_date'], 'safe'],
-            [['guests', 'type', 'category'], 'integer'],
+            [['guests', 'room_id'], 'integer'],
         ];
     }
 
@@ -46,8 +45,7 @@ class ReservationHotel extends \yii\db\ActiveRecord
             'arrival_date' => 'Arrival Date',
             'departure_date' => 'Departure Date',
             'guests' => 'Guests',
-            'type' => 'Type',
-            'category' => 'Category',
+            'room_id' => 'Room ID',
         ];
     }
 }
