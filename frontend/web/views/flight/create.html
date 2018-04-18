@@ -1,0 +1,128 @@
+<form name="createForm" ng-submit="create()" role="form" novalidate>
+  <h1 class="subtitle">Прибытие в {{flightModel.arrival_place}} </h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 form-label required">Место прибытия</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['arrival_place'] = ''" 
+                ng-click="error['arrival_place'] = ''"
+                ng-class="{'is-invalid': error['arrival_place'] }"
+                ng-model="flightModel.arrival_place"
+                class="form-control"
+                ng-options="citie['name'] as citie['name'] for citie in cities track by citie.name">
+          <option selected value="" style="display:none;">Выберите место прибытия</option>
+        </select>
+        <div ng-if="error['arrival_place']" class="invalid-tooltip">
+          {{ error['arrival_place']}}
+        </div>
+      </div>
+    </div>  
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Дата прибытия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="flightModel.date_of_birth" type="date" class="form-control" placeholder="">
+        <div ng-if="error['date_of_birth']" class="invalid-tooltip">
+          {{ error['date_of_birth']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Время прибытия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="flightModel.date_of_birth" type="time" class="form-control" placeholder="">
+        <div ng-if="error['date_of_birth']" class="invalid-tooltip">
+          {{ error['date_of_birth']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Номер рейса / номер поезда</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="flightModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Терминал</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="flightModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
+        </div>
+      </div>
+    </div>
+    <h1 class="subtitle">Отправление из {{flightModel.departure_place}} </h1>
+    <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 form-label required">Место прибытия</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['departure_place'] = ''" 
+                ng-click="error['departure_place'] = ''"
+                ng-class="{'is-invalid': error['departure_place'] }"
+                ng-model="flightModel.departure_place"
+                class="form-control"
+                ng-options="citie['name'] as citie['name'] for citie in cities track by citie.name">
+          <option selected value="" style="display:none;">Выберите место прибытия</option>
+        </select>
+        <div ng-if="error['departure_place']" class="invalid-tooltip">
+          {{ error['departure_place']}}
+        </div>
+      </div>
+    </div>  
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Дата прибытия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="flightModel.date_of_birth" type="date" class="form-control" placeholder="">
+        <div ng-if="error['date_of_birth']" class="invalid-tooltip">
+          {{ error['date_of_birth']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Время прибытия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="flightModel.date_of_birth" type="time" class="form-control" placeholder="">
+        <div ng-if="error['date_of_birth']" class="invalid-tooltip">
+          {{ error['date_of_birth']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Номер рейса / номер поезда</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="flightModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 required">Терминал</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="flightModel.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+      <img class="loader" ng-show="dataLoading" src="images/loader.gif" />
+    </div>
+  </div>
+</form>

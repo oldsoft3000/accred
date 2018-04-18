@@ -14,6 +14,7 @@ use app\models\HotelReservation;
 use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ForbiddenHttpException;
+use yii\web\ServerErrorHttpException;
 
 class HotelController extends Controller {
 
@@ -70,18 +71,20 @@ class HotelController extends Controller {
         $reserv_model = new HotelReservation();
         $particip_model = particip::findOne($id);
 
+        ParticipController::checkAccess('update', $particip_model);
+
         if ($particip_model &&
             $reserv_model->load(Yii::$app->getRequest()->getBodyParams(), '') &&
             $reserv_model->save()) {
                 $particip_model->hotel_reservation_id = $reserv_model->id;
-                if (!\Yii::$app->user->can('update', ['particip' => $particip_model])) {
-                    throw new ForbiddenHttpException('Access denied');
+                if ($particip_model->save()) {
+                    return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+                } else {
+                    throw new ServerErrorHttpException('Server error.');
                 }
-                $particip_model->save();
-                return ['access_token' => Yii::$app->user->identity->getAuthKey()];
         } else {
-            $reserv_model->validate();
-            return $reserv_model;
+            $reserv_model->validate(); 
+            return $reserv_model; 
         }
     }
 }

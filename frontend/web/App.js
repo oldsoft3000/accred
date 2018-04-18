@@ -6,12 +6,14 @@ var App = angular.module('App', [
     'SiteControllers',
     'ParticipControllers',
     'HotelControllers',
+    'FlightControllers',
     'cleave.js',
 ]);
 
 var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
 var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies']);
 var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies']);
+var FlightControllers = angular.module('FlightControllers', ['ngRoute', 'ngCookies']);
 /// Token injector
 
 App.factory('authInterceptor', function ($q, $window, $location) {
@@ -33,9 +35,6 @@ App.factory('authInterceptor', function ($q, $window, $location) {
             }
             else if (response.status === 401) {
                 $location.path('/login').replace();
-            } else if (response.status === 404) {
-                $location.path("views/site/404.html" ).replace();
-                return $q.reject(response);
             } else {
                 data.lastError = response;  
                 $location.path("/error" ).replace(); 

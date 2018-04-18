@@ -122,4 +122,24 @@ class ParticipSearch extends Particip
 
         return $rows;
     }
+
+    public function searchFlight() {
+        $str = '
+            SELECT  particip.id,
+                    first_name,
+                    middle_name,
+                    last_name,
+                    flight.arrival_date,
+                    flight.departure_date
+            FROM particip
+            LEFT JOIN flight ON (flight.id = particip.flight_id)';
+
+        if ( !\Yii::$app->user->can('admin') ) {
+            $str = $str . 'WHERE particip.created_by = :id'; 
+        }
+        $command = Yii::$app->db->createCommand($str);
+        $rows = $command->bindValue(':id', Yii::$app->user->id)->queryAll();
+
+        return $rows;
+    }
 }

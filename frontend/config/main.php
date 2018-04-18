@@ -6,11 +6,28 @@ $params = array_merge(
     require(__DIR__ . '/params-local.php')
 );
 
+use yii\web\Response;
+
 return [
     'language' => 'ru-RU',
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [ 
+        /*[
+            'class' => 'yii\filters\ContentNegotiator',
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+                'application/xml' => Response::FORMAT_XML,
+            ],
+
+            'languages' => [
+                'ru',
+                'en',
+            ],
+
+        ],*/
+        'log'
+    ],
     'controllerNamespace' => 'frontend\controllers',
 
     'components' => [
@@ -34,7 +51,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['particip', 'hotel'],
+                    'controller' => ['particip', 'hotel', 'flight'],
                 ],
                 '/' => 'site/index',
                 '<action:\w+>' => 'site/<action>',

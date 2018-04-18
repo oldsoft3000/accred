@@ -1,0 +1,39 @@
+<div>
+  <h1 class="subtitle">Полетные данные</h1>
+  <div class="subblock">
+    <p>Уважаемые участники II Всемирного зернового форума!</p>
+    <p>Просим корректно заполнить Ваши полетные данные.</p>
+    <p>Для всех участников II-го Всемирного зернового форума будет организован трансфер до мест проживания участников и обратно. Трансфер осуществляется только в аккредитованные отлели Форума.</p>
+    <p>Участников встречают сотрудники Форума в залах прибытия аэропорта и ж/д вокзалов, провожают до шаттла или помогают вызвать такси.</p>
+    <p>С наилучшими пожеланиями,
+      <br>Рабочая группа II Всемирного зернового форума</p>
+  </div>  
+  <div class="subblock">
+    <div class="" ng-show="particips.length > 0">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Фамилия Имя Отчество</th>
+            <th>Прибытие</th>
+            <th>Вылет</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="data in particips">
+            <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
+            <td width=20%>{{data.arrival_date}}</td>
+            <td width=20%>{{data.departure_date}}</td>
+            <td style="padding:0px 10px;  vertical-align: middle;">
+              <a  href="#!/flight/view/{{data.id}}"
+                  ng-class="{disabled: ( data.departure_date && data.arrival_date ) }"
+                  class="btn btn-primary"
+                  style="padding:2px 10px; margin:0px 0px;"
+                  role="button">Заполнить</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

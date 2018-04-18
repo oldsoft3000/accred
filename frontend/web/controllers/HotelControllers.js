@@ -45,10 +45,10 @@ HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'resp
 ]);
 
 HotelControllers.factory("reservationInfo",function() {
-        return {
-            idParticip: 0,
-            idHotel: 0,
-        };
+    return {
+        idParticip: 0,
+        idHotel: 0,
+    };
 });
 
 

@@ -39,7 +39,7 @@ SiteControllers.config(['$routeProvider', '$httpProvider',
                 controller: 'ErrorController'
             }).
             otherwise({
-                templateUrl: 'views/site/404.html'
+                templateUrl: 'views/site/error.html'
             });
         $httpProvider.interceptors.push('authInterceptor');
     }

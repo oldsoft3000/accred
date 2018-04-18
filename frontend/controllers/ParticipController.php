@@ -11,6 +11,7 @@ use yii\filters\auth\HttpBearerAuth;
 use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 
 class ParticipController extends Controller {
 
@@ -41,9 +42,7 @@ class ParticipController extends Controller {
             return $model_search->searchAll();
         } else {
             $model = $this->findModel($id);
-            if (!\Yii::$app->user->can('view', ['particip' => $model])) {
-                throw new ForbiddenHttpException('Access denied');
-            }
+            ParticipController::checkAccess('view', $model);
             return $model;
         }
     }
@@ -62,9 +61,7 @@ class ParticipController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
-        if (!\Yii::$app->user->can('update', ['particip' => $model])) {
-            throw new ForbiddenHttpException('Access denied');
-        }
+        ParticipController::checkAccess('update', $model);
 
         if ($model->load(Yii::$app->request->post(), '') && $model->save()) {
             return ['access_token' => Yii::$app->user->identity->getAuthKey()];
@@ -78,21 +75,32 @@ class ParticipController extends Controller {
 
         $model = $this->findModel($id);
 
-        if (!\Yii::$app->user->can('delete', ['particip' => $model])) {
-            throw new ForbiddenHttpException('Access denied');
-        }
+        ParticipController::checkAccess('delete', $model);
 
         $model->delete();
 
         return $model;
     }
 
-    protected function findModel($id) {
+    protected static function findModel($id) {
         if (($model = particip::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public static function checkAccess($action, $model = null, $params = []) {
+        if ($model == null && !empty($params)) {
+            foreach ($params as $key => $value) {
+                if ($key == 'id') {
+                    $model = ParticipController::findModel($value); 
+                }  
+            }
+           
+        } 
+        if ($model && !\Yii::$app->user->can($action, ['particip' => $model])) {
+            throw new ForbiddenHttpException('Access denied');
+        }
     }
 
 }

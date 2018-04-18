@@ -50,9 +50,9 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'error' => [
+            /*'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
+            ],*/
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
@@ -126,5 +126,29 @@ class SiteController extends Controller
         }
         $model->validate();
         return $model;
+    }
+
+    public function actionCities()
+    {
+
+        $str = '
+            SELECT name
+            FROM bigcities
+            WHERE population > 100000
+            ORDER BY NAME';
+
+        $command = Yii::$app->db->createCommand($str);
+        $rows = $command->queryAll();
+
+        return $rows;
+    }
+
+    public function actionError()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+            return $this->render('error', ['exception' => $exception]);
+        }
     }
 }
