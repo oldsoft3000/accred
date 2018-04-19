@@ -69,7 +69,7 @@ SiteControllers.controller('MainController', ['$scope', '$location', '$window', 
         }; 
         
 
-        $scope.userModel = {
+        $scope.modelUser = {
             telephone: '',
             digits_4: '',
             digits_6: ''
@@ -100,7 +100,7 @@ SiteControllers.controller('LoginController', ['$scope', '$window', '$location',
         $scope.login = function () {
             $scope.dataLoading = true;
             $scope.error = {};
-            SiteServices.login($scope.userModel)
+            SiteServices.login($scope.modelUser)
                 .then(successHandler) 
                 .catch(errorHandler);
                 function successHandler(response) {
@@ -127,20 +127,20 @@ SiteControllers.controller('SignupController', ['$scope', '$window', '$location'
     function($scope, $window, $location, SiteServices) {
         $scope.signup = function () {
             $scope.error = {};
-            if ($scope.userModel && $scope.userModel.password != $scope.password_verify) {
+            if ($scope.modelUser && $scope.modelUser.password != $scope.password_verify) {
                 $scope.error["password_verify"] = "Пароли должны сопадать";
                 return;
             }
             $scope.dataLoading = true;
-            SiteServices.signup($scope.userModel)
+            SiteServices.signup($scope.modelUser)
                 .then(successHandler) 
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
-                    var userModel = {};
-                    userModel.username = $scope.userModel.username;
-                    userModel.password = $scope.userModel.password;
-                    SiteServices.login(userModel)
+                    var modelUser = {};
+                    modelUser.username = $scope.modelUser.username;
+                    modelUser.password = $scope.modelUser.password;
+                    SiteServices.login(modelUser)
                         .then(successHandler) 
                         .catch(errorHandler);
                         function successHandler(response) {

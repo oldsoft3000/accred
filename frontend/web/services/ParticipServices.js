@@ -4,14 +4,14 @@ ParticipControllers.factory('ParticipServices', ['$http', '$route', '$q',
     function($http, $route, $q) {
         var obj = {};
 
-        obj.create = function(userModel) {
-            return $http.post('particips', userModel).then(function(response) {
+        obj.create = function(modelUser) {
+            return $http.post('particips', modelUser).then(function(response) {
                 return response;
             });
         };
 
-        obj.update = function(userModel) {
-            return $http.put('particips/' + userModel.id, userModel).then(function(response) {
+        obj.update = function(modelUser) {
+            return $http.put('particips/' + modelUser.id, modelUser).then(function(response) {
                 return response;
             });
         };

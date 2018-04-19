@@ -47,8 +47,8 @@ ParticipControllers.controller('ViewController', ['$scope', '$http', '$route', '
             }
         };
 
-        $scope.showPhoto = function(userModel) {
-            $scope.userModel = userModel;
+        $scope.showPhoto = function(modelUser) {
+            $scope.modelUser = modelUser;
             $('#myModal').modal('toggle')
         };
     }
@@ -57,8 +57,8 @@ ParticipControllers.controller('ViewController', ['$scope', '$http', '$route', '
 ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
     function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
-        $scope.userModel = {};
-        $scope.userModel.visa_passport_validity = '';
+        $scope.modelUser = {};
+        $scope.modelUser.visa_passport_validity = '';
 
         var el = document.querySelector(".crop-area");
 
@@ -71,17 +71,17 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
             console.log("update");
             $scope.button = "Обновить данные";
-            $scope.userModel = response.data;
-            $scope.userModel.date_of_birth = new Date(response.data.date_of_birth);
-            $scope.userModel.visa_passport_validity = new Date(response.data.visa_passport_validity);
-            $scope.userModel.title = response.data.title.toString();
-            $scope.userModel.gender = response.data.gender.toString();
+            $scope.modelUser = response.data;
+            $scope.modelUser.date_of_birth = new Date(response.data.date_of_birth);
+            $scope.modelUser.visa_passport_validity = new Date(response.data.visa_passport_validity);
+            $scope.modelUser.title = response.data.title.toString();
+            $scope.modelUser.gender = response.data.gender.toString();
             $scope.isCreation = false;
 
         } else if ($route.current.$$route.originalPath === "/particip/create") {
             console.log("create");
-            $scope.userModel.date_of_birth = '';
-            $scope.userModel.visa_passport_validity = ''
+            $scope.modelUser.date_of_birth = '';
+            $scope.modelUser.visa_passport_validity = ''
             $scope.button = "Добавить участника";
             $scope.isCreation = true;
         }
@@ -89,7 +89,7 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
         $scope.create = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-            ParticipServices.create($scope.userModel)
+            ParticipServices.create($scope.modelUser)
                 .then(successHandler)
                 .catch(errorHandler);
 
@@ -111,7 +111,7 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
         $scope.update = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-            ParticipServices.update($scope.userModel)
+            ParticipServices.update($scope.modelUser)
                 .then(successHandler)
                 .catch(errorHandler);
 
@@ -157,11 +157,11 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
                     var reader = new FileReader();
                     reader.onloadend = function() {
                         $timeout( function() {
-                            $scope.userModel.photo = reader.result; 
+                            $scope.modelUser.photo = reader.result; 
                             $scope.editPhoto();
                         });
                         /*$scope.$apply(function($scope) {
-                            $scope.userModel.photo = reader.result; 
+                            $scope.modelUser.photo = reader.result; 
                             $scope.editPhoto();
                         });*/
                     }
@@ -172,37 +172,37 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
 
 
         $scope.debugRequest = function() {
-            $scope.userModel.title = 1;
-            $scope.userModel.first_name = "1asdaf";
-            $scope.userModel.last_name = "2as2daf";
-            $scope.userModel.middle_name = "3asdaf";
-            $scope.userModel.gender = "1";
-            $scope.userModel.email = "zcz@mail.ru";
-            $scope.userModel.date_of_birth = new Date("2005-08-09");
-            $scope.userModel.citizenship = "TG";
-            $scope.userModel.passport_series = "1231";
-            $scope.userModel.passport_number = "123456";
-            $scope.userModel.registration_address = "sdg";
-            $scope.userModel.phone_number = "2523523525";
-            $scope.userModel.visa_required = "0";
-            $scope.userModel.place_of_birth = "cxvxcbxb";
-            $scope.userModel.first_name_latin = "sdfsfsfsdf";
-            $scope.userModel.last_name_latin = "dfnfjgjfgj";
-            $scope.userModel.position = "assadasd";
-            $scope.userModel.position_latin = "ytjtjgj";
+            $scope.modelUser.title = 1;
+            $scope.modelUser.first_name = "1asdaf";
+            $scope.modelUser.last_name = "2as2daf";
+            $scope.modelUser.middle_name = "3asdaf";
+            $scope.modelUser.gender = "1";
+            $scope.modelUser.email = "zcz@mail.ru";
+            $scope.modelUser.date_of_birth = new Date("2005-08-09");
+            $scope.modelUser.citizenship = "TG";
+            $scope.modelUser.passport_series = "1231";
+            $scope.modelUser.passport_number = "123456";
+            $scope.modelUser.registration_address = "sdg";
+            $scope.modelUser.phone_number = "2523523525";
+            $scope.modelUser.visa_required = "0";
+            $scope.modelUser.place_of_birth = "cxvxcbxb";
+            $scope.modelUser.first_name_latin = "sdfsfsfsdf";
+            $scope.modelUser.last_name_latin = "dfnfjgjfgj";
+            $scope.modelUser.position = "assadasd";
+            $scope.modelUser.position_latin = "ytjtjgj";
 
             $scope.create();
 
         }
 
-        $scope.$watch('userModel.visa_required', function(newVal, oldVal) {
+        $scope.$watch('modelUser.visa_required', function(newVal, oldVal) {
             $scope.visaReuired(newVal);
         }, true);
 
         $scope.editPhoto = function() {
             document.querySelector('#photoFile').value = "";
             $scope.croppie.bind({
-                url: $scope.userModel.photo,
+                url: $scope.modelUser.photo,
             });
             $('#photoEditor').modal('toggle');
             $scope.croppie.setZoom(1.0);
@@ -210,7 +210,7 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
 
         $scope.saveCropResult = function() {
             $scope.croppie.result('base64').then(function(base64) {
-                $scope.userModel.photo = base64;
+                $scope.modelUser.photo = base64;
                 $scope.croppie.bind({
                     url: base64
                 });

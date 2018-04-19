@@ -4,7 +4,7 @@
   <div class="form-group row">
     <label class="col-xs-2 col-sm-offset-1 col-form-label">Логин</label>
     <div class="col-sm-6">
-      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="userModel.username" type="text" class="form-control" id="inputEmail1" placeholder="">
+      <input ng-click="error['username'] = ''" ng-class="{ 'is-invalid': error['username'] }" ng-model="modelUser.username" type="text" class="form-control" id="inputEmail1" placeholder="">
       <div ng-if="error['username']" class="invalid-tooltip">
         {{ error['username']}}
       </div>
@@ -13,7 +13,7 @@
   <div class="form-group row">
     <label class="col-xs-2 col-sm-offset-1 col-form-label">Пароль</label>
     <div class="col-sm-6">
-      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="userModel.password" type="password" class="form-control" id="inputPassword2" placeholder="">
+      <input ng-click="error['password'] = ''" ng-class="{ 'is-invalid': error['password'] }" ng-model="modelUser.password" type="password" class="form-control" id="inputPassword2" placeholder="">
       <div ng-if="error['password']" class="invalid-tooltip">
         {{ error['password']}}
       </div>

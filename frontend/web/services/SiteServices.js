@@ -3,8 +3,8 @@
 SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', '$cookies', 
     function($http, $window, $location, $q, $cookies) {
         var obj = {};
-        obj.login = function (userModel) {
-            return $http.post('site/login', userModel).then(function(response) {
+        obj.login = function (modelUser) {
+            return $http.post('site/login', modelUser).then(function(response) {
                 $window.sessionStorage.access_token = response.data.access_token;
                 return response;
             });
@@ -14,8 +14,8 @@ SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', 
             delete $window.sessionStorage.access_token;
         };
 
-        obj.signup = function (userModel) {
-            return $http.post('site/signup', userModel).then(function(response) {
+        obj.signup = function (modelUser) {
+            return $http.post('site/signup', modelUser).then(function(response) {
                 return response;
             });
         }; 
