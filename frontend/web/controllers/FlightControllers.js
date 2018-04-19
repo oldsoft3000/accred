@@ -12,12 +12,12 @@ FlightControllers.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/flight/view/:id', {
+        when('/flight/view/:idParticip', {
             templateUrl: 'views/flight/create.html',
             controller: 'CreateFlightController',
             resolve: {
                 response: function(FlightServices, $route) {
-                    return FlightServices.view($route.current.params.id);
+                    return FlightServices.view($route.current.params.idParticip);
                 }
             }
         }).
@@ -31,25 +31,46 @@ FlightControllers.config(['$routeProvider', '$httpProvider',
 
 FlightControllers.controller('ViewFlightController', [  '$location',
                                                         '$scope',
+                                                        '$route',
                                                         'response',
                                                         'FlightServices',
-    function ($location, $scope, response, FlightServices) {
+    function ($location, $scope, $route, response, FlightServices) {
+        $scope.idParticip = $route.current.params.idParticip;
         $scope.particips = response.data;
     }
 ]);
 
 FlightControllers.controller('CreateFlightController', [  '$location',
                                                           '$scope',
+                                                          '$route',
                                                           'response',
                                                           'FlightServices',
-    function ($location, $scope, response, FlightServices) {
-        $scope.flightModel = response[0].data;
+    function ($location, $scope, $route, response, FlightServices) {
         $scope.cities = response[1].data;
+        var isUpdate = false;
+        if (response[0].data === '') {
+            $scope.modelFlight = {};
+        } else {
+            var offset = new Date().getTimezoneOffset();
+            var ad = new Date(response[0].data.arrival_date);
+            var dd = new Date(response[0].data.departure_date);
+
+            $scope.modelFlight = response[0].data;
+            $scope.modelFlight.arrival_date = ad;
+            $scope.modelFlight.arrival_time = ad;
+            $scope.modelFlight.arrival_time.setHours(ad.getHours());
+            $scope.modelFlight.arrival_time.setMinutes(ad.getMinutes());
+            $scope.modelFlight.departure_date = dd;
+            $scope.modelFlight.departure_time = dd;
+            $scope.modelFlight.departure_time.setHours(dd.getHours());
+            $scope.modelFlight.departure_time.setMinutes(dd.getMinutes());
+            isUpdate = true;
+        }
 
         $scope.create = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-            HotelServices.create($scope.flightModel, 1)
+            FlightServices.create($route.current.params.idParticip, $scope.modelFlight, isUpdate)
                 .then(successHandler)
                 .catch(errorHandler);
 

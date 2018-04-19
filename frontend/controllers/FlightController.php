@@ -32,36 +32,49 @@ class FlightController extends Controller {
 
     public function actionView($id = null) {
         if ($id == null) {
-            $model_search = new ParticipSearch();
-            return $model_search->searchFlight();     
+            $modelParticipSearch = new ParticipSearch();
+            return $modelParticipSearch->searchFlight();     
         } else {
             ParticipController::checkAccess('view', null, ['id' => $id]);
 
-            return $this->findModel($id);
+            return $this->findModelByParticip($id);
         }
     }
 
     public function actionCreate() {
-        $model = new Flight();
+        $idParticip = Yii::$app->getRequest()->getBodyParam("idParticip");
 
-        if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->save()) {
-            return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+        $modelParticip = ParticipController::findModel($idParticip);
+
+        ParticipController::checkAccess('update', $modelParticip);
+
+        $modelFlight = new Flight();
+        if ($modelFlight->load(Yii::$app->getRequest()->getBodyParams(), '') && $modelFlight->save()) {
+            $modelParticip->flight_id = $modelFlight->id;
+            if ($modelParticip->save()) {
+                return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+            } else {
+                throw new ServerErrorHttpException('Server error.');
+            }
         } else {
-            $model->validate();
-            return $model;
+            $modelFlight->validate();
+            return $modelFlight;
         }
     }
 
-    public function actionUpdate($id_flight, $id_particip) {
-        $particip_model = ParticipController::findModel($id_particip);
+    public function actionUpdate($id) {
+        $modelParticip = ParticipController::findModel($id);
 
-        ParticipController::checkAccess('update', $particip_model);
+        ParticipController::checkAccess('update', $modelParticip);
 
-        $flight_model = $this->findModel($id_flight); 
-        if ($flight_model->load(Yii::$app->getRequest()->getBodyParams(), '') &&
-            $flight_model->save()) {
-                $particip_model->flight_id = $flight_model->id;
-                if ($particip_model->save()) {
+        $modelFlight = $this->findModelByParticip($id); 
+        if ($modelFlight == null) {
+            throw new NotFoundHttpException('Cant find flight model by particip id = ' . $id);
+        }
+
+        if ($modelFlight->load(Yii::$app->getRequest()->getBodyParams(), '') &&
+            $modelFlight->save()) {
+                if ($modelParticip->save()) {
                     return ['access_token' => Yii::$app->user->identity->getAuthKey()];
                 } else {
                     throw new ServerErrorHttpException('Server error.');
@@ -72,11 +85,16 @@ class FlightController extends Controller {
         }
     }
 
-    protected function findModel($id) {
-        if (($model = flight::findOne($id)) !== null) {
-            return $model;
+    protected function findModelByParticip($id) {
+        if (($modelParticip = particip::findOne($id)) !== null) {
+            if ($modelParticip->flight_id != null) {
+                if (($modelFlight = flight::findOne($modelParticip->flight_id)) !== null) {
+                    return $modelFlight;
+                }
+            }
+            return null;
         }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return null;
     }
 
 

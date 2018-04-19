@@ -4,10 +4,10 @@ FlightControllers.factory('FlightServices', ['$http', '$route', '$q',
     function($http, $route, $q) {
         var obj = {};
 
-        obj.view = function(id) {
+        obj.view = function(idParticip) {
             var route = '';
-            if (typeof id !== 'undefined') {
-                var p_0 = $http.get("flights/" + id);
+            if (typeof idParticip !== 'undefined') {
+                var p_0 = $http.get("flights/" + idParticip);
                 var p_1 = $http.get("site/cities");
 
                 return $q.all([p_0, p_1]).then(function(response) {
@@ -20,22 +20,29 @@ FlightControllers.factory('FlightServices', ['$http', '$route', '$q',
             }
         };
 
-        obj.update = function(id_flight, id_particip, flightModel) {
-            /*return $http.put('flight/update/?id_flight=' + id_flight + '&' +
-                                            'id_particip=' + id_particip, flightModel).then(function(response) {
-                return response;
-            });*/
+        obj.create = function(idParticip, modelFlight, isUpdate) {
+            var ad = modelFlight.arrival_date;
+            var at = modelFlight.arrival_time;
+            var dd = modelFlight.departure_date;
+            var dt = modelFlight.departure_time;
+            
+            var offset = new Date().getTimezoneOffset();
+            ad.setHours( at.getHours() - offset / 60 );
+            ad.setMinutes( at.getMinutes() );
+            dd.setHours( dt.getHours() - offset /60 );
+            dd.setMinutes( dt.getMinutes());
 
-            return $http.put('flights/' + id_flight + '?id_particip=' + id_particip, flightModel ).then(function(response) {
-                return response;
-            });
-        };
+            if (isUpdate) {
+                return $http.put('flights/' + idParticip, modelFlight).then(function(response) {
+                    return response;
+                });
+            } else {
+                modelFlight.idParticip = idParticip;
 
-        obj.create = function(id_particip, flightModel) {
-            flightModel.id_particip = id_particip;
-            return $http.put('flights', flightModel).then(function(response) {
-                return response;
-            });
+                return $http.post('flights', modelFlight).then(function(response) {
+                    return response;
+                });
+            }
         };
 
         return obj;

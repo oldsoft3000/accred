@@ -22,7 +22,7 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата заезда</label>
       <div class="col-sm-7">
-        <input ng-click="error['arrival_date'] = ''" ng-class="{'is-invalid': error['arrival_date'] }" ng-model="reservModel.arrival_date" type="date" class="form-control" placeholder="">
+        <input ng-click="error['arrival_date'] = ''" ng-class="{'is-invalid': error['arrival_date'] }" ng-model="modelReserv.arrival_date" type="date" class="form-control" placeholder="">
         <div ng-if="error['arrival_date']" class="invalid-tooltip">
           {{ error['arrival_date']}}
         </div>
@@ -32,7 +32,7 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата выезда</label>
       <div class="col-sm-7">
-        <input ng-click="error['departure_date'] = ''" ng-class="{'is-invalid': error['departure_date'] }" ng-model="reservModel.departure_date" type="date" class="form-control" placeholder="">
+        <input ng-click="error['departure_date'] = ''" ng-class="{'is-invalid': error['departure_date'] }" ng-model="modelReserv.departure_date" type="date" class="form-control" placeholder="">
         <div ng-if="error['departure_date']" class="invalid-tooltip">
           {{ error['departure_date']}}
         </div>
@@ -42,7 +42,7 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Количство гостей</label>
       <div class="col-sm-7">
-        <input ng-click="error['guests'] = ''" ng-class="{'is-invalid': error['guests'] }" ng-model="reservModel.guests" type="text" class="form-control" placeholder="" id="inputLastName">
+        <input ng-click="error['guests'] = ''" ng-class="{'is-invalid': error['guests'] }" ng-model="modelReserv.guests" type="text" class="form-control" placeholder="" id="inputLastName">
         <div ng-if="error['guests']" class="invalid-tooltip">
           {{ error['guests']}}
         </div>
@@ -55,7 +55,7 @@
         <select ng-focus="error['type_id'] = ''"
                 ng-click="error['type_id'] = ''"
                 ng-class="{'is-invalid': error['type_id'] }"
-                ng-model="reservModel.type_id"
+                ng-model="modelReserv.type_id"
                 class="form-control"
                 ng-options="type['id'] as type['name'] for type in types track by type.id">
           <option selected value="" style="display:none;">Выберите тип размещения</option>
@@ -72,7 +72,7 @@
         <select ng-focus="error['category_id'] = ''"
                 ng-click="error['category_id'] = ''"
                 ng-class="{'is-invalid': error['category_id'] }"
-                ng-model="reservModel.category_id"
+                ng-model="modelReserv.category_id"
                 class="form-control"
                 ng-options="category['id'] as category['name'] for category in categories track by category.id">
           <option selected value="" style="display:none;">Выберите категорию номера</option>

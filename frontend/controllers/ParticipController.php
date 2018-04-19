@@ -82,11 +82,11 @@ class ParticipController extends Controller {
         return $model;
     }
 
-    protected static function findModel($id) {
+    public static function findModel($id) {
         if (($model = particip::findOne($id)) !== null) {
             return $model;
         }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('Cant find particip model by id = ' . $id);
     }
 
     public static function checkAccess($action, $model = null, $params = []) {

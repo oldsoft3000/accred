@@ -20,13 +20,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="data in particips">
-            <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
-            <td width=20%>{{data.arrival_date}}</td>
-            <td width=20%>{{data.departure_date}}</td>
+          <tr ng-repeat="particip in particips">
+            <td>{{particip.last_name + ' ' + particip.first_name + ' ' + particip.middle_name}}</td>
+            <td width=20%>{{particip.arrival_date}}</td>
+            <td width=20%>{{particip.departure_date}}</td>
             <td style="padding:0px 10px;  vertical-align: middle;">
-              <a  href="#!/flight/view/{{data.id}}"
-                  ng-class="{disabled: ( data.departure_date && data.arrival_date ) }"
+              <a  href="#!/flight/view/{{particip.id}}"
                   class="btn btn-primary"
                   style="padding:2px 10px; margin:0px 0px;"
                   role="button">Заполнить</a>

@@ -10,14 +10,12 @@ use Yii;
  * @property int $id
  * @property string $arrival_place
  * @property string $arrival_date
- * @property string $arrival_time
  * @property string $arrival_flight_number
  * @property string $arrival_terminal
  * @property string $departure_place
  * @property string $departure_date
- * @property string $departurel_time
- * @property string $departurel_flight_number
- * @property string $departurel_terminal
+ * @property string $departure_flight_number
+ * @property string $departure_terminal
  */
 class Flight extends \yii\db\ActiveRecord
 {
@@ -35,8 +33,16 @@ class Flight extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['arrival_date', 'arrival_time', 'departure_date', 'departurel_time'], 'safe'],
-            [['arrival_place', 'arrival_flight_number', 'arrival_terminal', 'departure_place', 'departurel_flight_number', 'departurel_terminal'], 'string', 'max' => 100],
+            [['arrival_date', 'departure_date'], 'safe'],
+            [[  'arrival_place',
+                'arrival_date',
+                'arrival_flight_number',
+                'arrival_terminal',
+                'departure_place',
+                'departure_date',
+                'departure_flight_number',
+                'departure_terminal'], 'required'],
+            [['arrival_place', 'arrival_flight_number', 'arrival_terminal', 'departure_place', 'departure_flight_number', 'departure_terminal'], 'string', 'max' => 100],
         ];
     }
 
@@ -47,16 +53,14 @@ class Flight extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'arrival_place' => 'Arrival Place',
-            'arrival_date' => 'Arrival Date',
-            'arrival_time' => 'Arrival Time',
-            'arrival_flight_number' => 'Arrival Flight Number',
-            'arrival_terminal' => 'Arrival Terminal',
-            'departure_place' => 'Departure Place',
-            'departure_date' => 'Departure Date',
-            'departurel_time' => 'Departurel Time',
-            'departurel_flight_number' => 'Departurel Flight Number',
-            'departurel_terminal' => 'Departurel Terminal',
+            'arrival_place' => 'Место прибытия',
+            'arrival_date' => 'Дата прибытия',
+            'arrival_flight_number' => 'Номер рейса / номер поезда',
+            'arrival_terminal' => 'Терминал',
+            'departure_place' => 'Место отправления',
+            'departure_date' => 'Дата отправления',
+            'departure_flight_number' => 'Номер рейса / номер поезда',
+            'departure_terminal' => 'Терминал',
         ];
     }
 }

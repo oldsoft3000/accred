@@ -12,7 +12,7 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/hotel/reserve_tutorial/:id', {
+        when('/hotel/reserve_tutorial/:idParticip', {
             templateUrl: 'views/hotel/reserve_tutorial.html',
             controller: 'ReserveHotelTutorialController',
             resolve: {
@@ -21,12 +21,12 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/hotel/reserve/:id', {
+        when('/hotel/reserve/:idParticip/:idHotel', {
             templateUrl: 'views/hotel/reserve.html',
             controller: 'ReserveHotelController',
             resolve: {
                 response: function(HotelServices, $route) {
-                    return HotelServices.getHotelInfo($route.current.params.id);
+                    return HotelServices.getHotelInfo($route.current.params.idHotel);
                 }
             }
         }).
@@ -44,25 +44,14 @@ HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'resp
     }
 ]);
 
-HotelControllers.factory("reservationInfo",function() {
-    return {
-        idParticip: 0,
-        idHotel: 0,
-    };
-});
-
-
 HotelControllers.controller('ReserveHotelTutorialController', ['$location',
                                                                '$scope',
                                                                '$route',
-                                                               '$cookies',
                                                                'response',
                                                                'HotelServices', 
-                                                               'reservationInfo',
-    function ($location, $scope, $route, $cookies, response,  HotelServices, reservationInfo) {
-        reservationInfo.idParticip = $route.current.params.id;
+    function ($location, $scope, $route, response,  HotelServices) {
+        $scope.idParticip = $route.current.params.idParticip;
         $scope.hotels = response.data;
-        $cookies.putObject('reservation_info', reservationInfo);
 
     }
 ]);
@@ -70,13 +59,10 @@ HotelControllers.controller('ReserveHotelTutorialController', ['$location',
 HotelControllers.controller('ReserveHotelController', ['$location',
                                                        '$scope',
                                                        '$route',
-                                                       '$cookies',
                                                        'response',
                                                        'HotelServices', 
-                                                       'reservationInfo',
-    function ($location, $scope, $route, $cookies, response,  HotelServices, reservationInfo) {
-        $scope.reservModel = {};
-        reservationInfo.idHotel = $route.current.params.id;
+    function ($location, $scope, $route, response,  HotelServices) {
+        $scope.modelReserv = {};
         $scope.hotel = response[0].data;
         $scope.rooms = response[1].data;
         $scope.categories = response[2].data;
@@ -89,22 +75,10 @@ HotelControllers.controller('ReserveHotelController', ['$location',
             return false
         };
 
-
-        if (reservationInfo.idParticip == 0) {
-            var cookie = $cookies.getObject('reservation_info');
-            if (cookie.idParticip != 0) {
-                reservationInfo.idParticip = cookie.idParticip;
-            } else {
-                $location.path('/hotel/view').replace();
-            }
-        }
-        $cookies.putObject('reservation_info', reservationInfo);
-
-
         $scope.reserveHotel = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-            HotelServices.reserve($scope.reservModel, reservationInfo.idParticip)
+            HotelServices.reserve($scope.modelReserv, $route.current.params.idParticip)
                 .then(successHandler)
                 .catch(errorHandler);
 

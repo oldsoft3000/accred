@@ -105,7 +105,6 @@ class Particip extends \yii\db\ActiveRecord {
         if ($this->visa_passport_validity) {
             $this->visa_passport_validity = Yii::$app->formatter->asDate($this->visa_passport_validity, 'yyyy-MM-dd');  
         }
-        
 
         return parent::beforeValidate();
     }
