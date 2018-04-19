@@ -70,6 +70,14 @@ FlightControllers.controller('CreateFlightController', [  '$location',
         $scope.create = function() {
             $scope.dataLoading = true;
             $scope.error = {};
+
+            if ($scope.modelFlight.arrival_time == null) {
+                $scope.error['arrival_time'] = 'Неободимо заполнить «Время прибытия»';
+            }
+            if ($scope.modelFlight.departure_time == null) {
+                $scope.error['departure_time'] = 'Неободимо заполнить «Время отправления';
+            }
+
             FlightServices.create($route.current.params.idParticip, $scope.modelFlight, isUpdate)
                 .then(successHandler)
                 .catch(errorHandler);

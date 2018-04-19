@@ -27,10 +27,14 @@ FlightControllers.factory('FlightServices', ['$http', '$route', '$q',
             var dt = modelFlight.departure_time;
             
             var offset = new Date().getTimezoneOffset();
-            ad.setHours( at.getHours() - offset / 60 );
-            ad.setMinutes( at.getMinutes() );
-            dd.setHours( dt.getHours() - offset /60 );
-            dd.setMinutes( dt.getMinutes());
+            if (ad && at) {
+                ad.setHours( at.getHours() - offset / 60 );
+                ad.setMinutes( at.getMinutes() );
+            }
+            if (dd && dt) {
+                dd.setHours( dt.getHours() - offset /60 );
+                dd.setMinutes( dt.getMinutes());
+            }
 
             if (isUpdate) {
                 return $http.put('flights/' + idParticip, modelFlight).then(function(response) {
