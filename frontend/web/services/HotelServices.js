@@ -17,13 +17,17 @@ HotelControllers.factory('HotelServices', ['$http', '$route', '$q',
         };
 
 
-        obj.getHotelInfo = function(idHotel) {
+        obj.getHotelInfo = function(idHotel, idParticip, isReserved) {
             var p_0 = $http.get("hotel/hotels/" + idHotel);
             var p_1 = $http.get("hotel/rooms/?hotel=" + idHotel);
             var p_2 = $http.get("hotel/room-categories/?hotel=" + idHotel);
             var p_3 = $http.get("hotel/room-types/?hotel=" + idHotel);
+            var p_4 = null;
+            if (isReserved == "true") {
+                p_4 = $http.get("hotels/" + idParticip);
+            } 
 
-            return $q.all([p_0, p_1, p_2, p_3]).then(function(response) {
+            return $q.all([p_0, p_1, p_2, p_3, p_4]).then(function(response) {
                 return response;   
             });
         };

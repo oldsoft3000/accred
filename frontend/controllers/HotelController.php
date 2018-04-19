@@ -40,9 +40,15 @@ class HotelController extends Controller {
     }
 
     // Список участников
-    public function actionView() {
-        $model_search = new ParticipSearch();
-        return $model_search->searchHotelReservation();
+    public function actionView($id = null) {
+        if ($id == null) {
+            $model_search = new ParticipSearch();
+            return $model_search->searchHotelReservation();   
+        } else {
+            ParticipController::checkAccess('view', null, ['id' => $id]);
+
+            return $this->findModelByParticip($id);
+        }
     }
 
     // Список отелей
@@ -86,5 +92,17 @@ class HotelController extends Controller {
             $reserv_model->validate(); 
             return $reserv_model; 
         }
+    }
+
+    protected function findModelByParticip($id) {
+        if (($modelParticip = particip::findOne($id)) !== null) {
+            if ($modelParticip->hotel_reservation_id != null) {
+                if (($modelHotelReservation = hotelReservation::findOne($modelParticip->hotel_reservation_id)) !== null) {
+                    return $modelHotelReservation;
+                }
+            }
+            return null;
+        }
+        return null;
     }
 }

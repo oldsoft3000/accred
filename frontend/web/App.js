@@ -10,9 +10,10 @@ var App = angular.module('App', [
     'cleave.js',
 ]);
 
+var Utils = angular.module('Utils', []);
 var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
 var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies']);
-var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies']);
+var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies', 'Utils']);
 var FlightControllers = angular.module('FlightControllers', ['ngRoute', 'ngCookies']);
 /// Token injector
 

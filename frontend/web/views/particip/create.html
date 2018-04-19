@@ -406,7 +406,7 @@
       <label class="col-sm-3 required">Требуется виза</label>
       <div class="col-sm-7">
         <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
-          <input class="form-check-input" name="visa_required_0" type="radio" ng-value="0" ng-model="modelUser.visa_required" ng-checked="!modelUser.visa_required">
+          <input class="form-check-input" name="visa_required_0" type="radio" ng-value="0" ng-model="modelUser.visa_required" ng-checked="modelUser.visa_required === 0">
           <label class="form-check-label">
             Виза не требуется
           </label>

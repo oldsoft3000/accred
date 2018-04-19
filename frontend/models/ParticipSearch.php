@@ -107,10 +107,12 @@ class ParticipSearch extends Particip
                     middle_name,
                     last_name,
                     hotel_reservation.id as reservation_id,
+                    hotel.id as hotel_id,
                     room_category.name as category_name,
                     room_type.name as type_name 
             FROM `particip`
             LEFT JOIN hotel_reservation ON (hotel_reservation.id = particip.hotel_reservation_id)
+            LEFT JOIN hotel ON (hotel.id = hotel_reservation.hotel_id)
             LEFT JOIN room_category ON (room_category.id=hotel_reservation.category_id)
             LEFT JOIN room_type ON (room_type.id=hotel_reservation.type_id)';
 

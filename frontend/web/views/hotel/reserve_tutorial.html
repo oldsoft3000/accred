@@ -9,8 +9,9 @@
   <h4 class="text-center">Вы можете забронировать номер в одной из гостиниц.</h4>
   <div ng-show="hotels.length > 0" class="subblock">
     <a  ng-repeat="hotel in hotels"
-        href="#!/hotel/reserve/{{idParticip}}/{{hotel.id}}" 
+        href="#!/hotel/reserve/{{idParticip}}/{{hotel.id}}/?reserved={{hotel.id == checked}}" 
         class="btn btn-default hotel-button"
+        ng-class="{'checked-button': {{hotel.id == checked}}}"
         role="button">
         <p>{{hotel.name}}</p>
     </a>        

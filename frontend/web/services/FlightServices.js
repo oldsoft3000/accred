@@ -21,22 +21,7 @@ FlightControllers.factory('FlightServices', ['$http', '$route', '$q',
         };
 
         obj.create = function(idParticip, modelFlight, isUpdate) {
-            var ad = modelFlight.arrival_date;
-            var at = modelFlight.arrival_time;
-            var dd = modelFlight.departure_date;
-            var dt = modelFlight.departure_time;
-            
-            var offset = new Date().getTimezoneOffset();
-            if (ad && at) {
-                ad.setHours( at.getHours() - offset / 60 );
-                ad.setMinutes( at.getMinutes() );
-            }
-            if (dd && dt) {
-                dd.setHours( dt.getHours() - offset /60 );
-                dd.setMinutes( dt.getMinutes());
-            }
-
-            if (isUpdate) {
+             if (isUpdate) {
                 return $http.put('flights/' + idParticip, modelFlight).then(function(response) {
                     return response;
                 });

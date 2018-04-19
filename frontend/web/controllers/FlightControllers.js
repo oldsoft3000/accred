@@ -45,7 +45,8 @@ FlightControllers.controller('CreateFlightController', [  '$location',
                                                           '$route',
                                                           'response',
                                                           'FlightServices',
-    function ($location, $scope, $route, response, FlightServices) {
+                                                          'Utils',
+    function ($location, $scope, $route, response, FlightServices, Utils) {
         $scope.cities = response[1].data;
         var isUpdate = false;
         if (response[0].data === '') {
@@ -58,12 +59,12 @@ FlightControllers.controller('CreateFlightController', [  '$location',
             $scope.modelFlight = response[0].data;
             $scope.modelFlight.arrival_date = ad;
             $scope.modelFlight.arrival_time = ad;
-            $scope.modelFlight.arrival_time.setHours(ad.getHours());
-            $scope.modelFlight.arrival_time.setMinutes(ad.getMinutes());
+            //$scope.modelFlight.arrival_time.setHours(ad.getHours());
+            //$scope.modelFlight.arrival_time.setMinutes(ad.getMinutes());
             $scope.modelFlight.departure_date = dd;
             $scope.modelFlight.departure_time = dd;
-            $scope.modelFlight.departure_time.setHours(dd.getHours());
-            $scope.modelFlight.departure_time.setMinutes(dd.getMinutes());
+            //$scope.modelFlight.departure_time.setHours(dd.getHours());
+            //$scope.modelFlight.departure_time.setMinutes(dd.getMinutes());
             isUpdate = true;
         }
 
@@ -77,6 +78,23 @@ FlightControllers.controller('CreateFlightController', [  '$location',
             if ($scope.modelFlight.departure_time == null) {
                 $scope.error['departure_time'] = 'Неободимо заполнить «Время отправления';
             }
+
+            var ad = $scope.modelFlight.arrival_date;
+            var at = $scope.modelFlight.arrival_time;
+            var dd = $scope.modelFlight.departure_date;
+            var dt = $scope.modelFlight.departure_time;
+            
+            if (ad && at) {
+                ad.setHours( at.getHours() );
+                ad.setMinutes( at.getMinutes() );
+            }
+            if (dd && dt) {
+                dd.setHours( dt.getHours() );
+                dd.setMinutes( dt.getMinutes());
+            }
+
+            Utils.toUTC($scope.modelFlight.arrival_date);
+            Utils.toUTC($scope.modelFlight.departure_date);
 
             FlightServices.create($route.current.params.idParticip, $scope.modelFlight, isUpdate)
                 .then(successHandler)

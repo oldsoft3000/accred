@@ -54,11 +54,20 @@ ParticipControllers.controller('ViewController', ['$scope', '$http', '$route', '
     }
 ]);
 
-ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$rootScope', '$http', '$route', '$location', 'response', 'ParticipServices',
-    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
+ParticipControllers.controller('CreateController', ['$timeout',
+                                                    '$scope',
+                                                    '$rootScope',
+                                                    '$http',
+                                                    '$route',
+                                                    '$location',
+                                                    'response',
+                                                    'ParticipServices',
+                                                    'Utils',
+    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices, Utils) {
         $scope.fileName = "Выберите файл";
         $scope.modelUser = {};
         $scope.modelUser.visa_passport_validity = '';
+        $scope.modelUser.visa_required = 1;
 
         var el = document.querySelector(".crop-area");
 
@@ -89,6 +98,10 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
         $scope.create = function() {
             $scope.dataLoading = true;
             $scope.error = {};
+
+            Utils.toUTC($scope.modelUser.date_of_birth);
+            Utils.toUTC($scope.modelUser.visa_passport_validity);
+
             ParticipServices.create($scope.modelUser)
                 .then(successHandler)
                 .catch(errorHandler);
@@ -111,6 +124,10 @@ ParticipControllers.controller('CreateController', ['$timeout', '$scope', '$root
         $scope.update = function() {
             $scope.dataLoading = true;
             $scope.error = {};
+
+            Utils.toUTC($scope.modelUser.date_of_birth);
+            Utils.toUTC($scope.modelUser.visa_passport_validity);
+
             ParticipServices.update($scope.modelUser)
                 .then(successHandler)
                 .catch(errorHandler);

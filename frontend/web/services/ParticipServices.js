@@ -5,7 +5,7 @@ ParticipControllers.factory('ParticipServices', ['$http', '$route', '$q',
         var obj = {};
 
         obj.create = function(modelUser) {
-            return $http.post('particips', modelUser).then(function(response) {
+              return $http.post('particips', modelUser).then(function(response) {
                 return response;
             });
         };

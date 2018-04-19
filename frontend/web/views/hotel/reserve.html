@@ -57,7 +57,7 @@
                 ng-class="{'is-invalid': error['type_id'] }"
                 ng-model="modelReserv.type_id"
                 class="form-control"
-                ng-options="type['id'] as type['name'] for type in types track by type.id">
+                ng-options="type['id'] as type['name'] for type in types">
           <option selected value="" style="display:none;">Выберите тип размещения</option>
         </select>
         <div ng-if="error['type_id']" class="invalid-tooltip">
@@ -74,7 +74,7 @@
                 ng-class="{'is-invalid': error['category_id'] }"
                 ng-model="modelReserv.category_id"
                 class="form-control"
-                ng-options="category['id'] as category['name'] for category in categories track by category.id">
+                ng-options="category['id'] as category['name'] for category in categories">
           <option selected value="" style="display:none;">Выберите категорию номера</option>
         </select>
         <div ng-if="error['category_id']" class="invalid-tooltip">

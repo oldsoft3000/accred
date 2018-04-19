@@ -11,21 +11,19 @@ use Yii;
  * @property string $name
  * @property string $description
  */
-class Hotel extends \yii\db\ActiveRecord
-{
+class Hotel extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'hotel';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'name', 'description'], 'required'],
             [['id'], 'integer'],
@@ -37,12 +35,12 @@ class Hotel extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
         ];
     }
+
 }

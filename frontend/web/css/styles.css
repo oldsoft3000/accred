@@ -303,6 +303,13 @@ label {
   display: inline-table; 
 }
 
+.checked-button:after {
+    content: url('../images/check_mark.png');
+    position: absolute;
+    margin-left: -20px;
+    margin-top: -10px;
+}
+
 .hotel-button p {
   display: table-cell; 
   vertical-align: middle; 
