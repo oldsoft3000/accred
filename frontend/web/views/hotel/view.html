@@ -15,8 +15,13 @@
           <tr ng-repeat="data in particips">
             <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
             <td>{{(data.reservation_id) ? data.type_name + ' ' + data.category_name : ''}}</td>
-            <td style="padding:0px 10px;  vertical-align: middle;">
-              <a href="#!/hotel/reserve_tutorial/{{data.id}}/?checked={{data.hotel_id}}" class="btn btn-primary" style="padding:2px 10px; margin:0px 0px;" role="button">Забронировать</a>
+            <td style="padding:0px 10px; vertical-align: middle;">
+              <a class="action_icon_block" href="#!/hotel/reserve_tutorial/{{data.id}}/?checked={{data.hotel_id}}" data-toggle="tooltip" title="Заполнить">
+              <img class="action_icon" border="0" src="images/edit.png" >
+            </a>
+              <a ng-show="{{data.hotel_id}}" class="action_icon_block" ng-click="delete(data.id)" data-toggle="tooltip" title="Удалить бронирование">
+              <img class="action_icon" border="0" src="images/delete.png">
+            </a>
             </td>
           </tr>
         </tbody>

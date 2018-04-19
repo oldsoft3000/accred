@@ -43,6 +43,12 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
 HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'response', 'HotelServices',
     function ($location, $scope, response, HotelServices) {
         $scope.particips = response.data;
+        $scope.delete = function(id) {
+            if (confirm("Удалить бронирование") == true && id > 0) {
+                HotelServices.delete(id);
+                $route.reload();
+            }
+        };
     }
 ]);
 

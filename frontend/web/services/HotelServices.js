@@ -38,6 +38,12 @@ HotelControllers.factory('HotelServices', ['$http', '$route', '$q',
             });
         };
 
+        obj.delete = function(id) {
+            return $http.delete("hotels/" + id).then(function(response) {
+                $route.reload();
+            });
+        };
+
         return obj;
     }
 ]);

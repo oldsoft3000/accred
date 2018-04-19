@@ -24,11 +24,13 @@
             <td>{{particip.last_name + ' ' + particip.first_name + ' ' + particip.middle_name}}</td>
             <td width=20%>{{particip.arrival_date}}</td>
             <td width=20%>{{particip.departure_date}}</td>
-            <td style="padding:0px 10px;  vertical-align: middle;">
-              <a  href="#!/flight/view/{{particip.id}}"
-                  class="btn btn-primary"
-                  style="padding:2px 10px; margin:0px 0px;"
-                  role="button">Заполнить</a>
+            <td style="padding:0px 10px; vertical-align: middle;">
+              <a class="action_icon_block" href="#!/flight/view/{{particip.id}}"  data-toggle="tooltip" title="Заполнить">
+              <img class="action_icon" border="0" src="images/edit.png" >
+            </a>
+              <a ng-show="{{particip.arrival_date}}" class="action_icon_block" ng-click="delete(particip.id)" data-toggle="tooltip" title="Удалить">
+              <img class="action_icon" border="0" src="images/delete.png">
+            </a>
             </td>
           </tr>
         </tbody>

@@ -74,24 +74,37 @@ class HotelController extends Controller {
     }
     
     public function actionReserve($id /* Particip id */) {
-        $reserv_model = new HotelReservation();
-        $particip_model = particip::findOne($id);
+        $modelParticip = particip::findOne($id);
+        ParticipController::checkAccess('update', $modelParticip);
+        $modelReserve = $this->findModelByParticip($id); 
+        if ($modelReserve == null) {
+            $modelReserve = new HotelReservation();
+        }
 
-        ParticipController::checkAccess('update', $particip_model);
-
-        if ($particip_model &&
-            $reserv_model->load(Yii::$app->getRequest()->getBodyParams(), '') &&
-            $reserv_model->save()) {
-                $particip_model->hotel_reservation_id = $reserv_model->id;
-                if ($particip_model->save()) {
+        if ($modelReserve->load(Yii::$app->getRequest()->getBodyParams(), '') &&
+            $modelReserve->save()) {
+                $modelParticip->hotel_reservation_id = $modelReserve->id;
+                if ($modelParticip->save()) {
                     return ['access_token' => Yii::$app->user->identity->getAuthKey()];
                 } else {
                     throw new ServerErrorHttpException('Server error.');
                 }
         } else {
-            $reserv_model->validate(); 
-            return $reserv_model; 
+            $modelReserve->validate(); 
+            return $modelReserve; 
         }
+    }
+
+    public function actionDelete($id) {
+        $modelParticip = particip::findOne($id);
+        ParticipController::checkAccess('delete', $modelParticip);
+        $modelReserve = $this->findModelByParticip($id); 
+        if ($modelReserve) {
+            $modelReserve->delete();
+            $modelParticip->hotel_reservation_id = 0;
+            $modelParticip->save();
+        }
+        return $modelReserve;
     }
 
     protected function findModelByParticip($id) {

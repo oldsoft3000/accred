@@ -66,7 +66,7 @@ ParticipControllers.controller('CreateController', ['$timeout',
     function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices, Utils) {
         $scope.fileName = "Выберите файл";
         $scope.modelUser = {};
-        $scope.modelUser.visa_passport_validity = '';
+        $scope.modelUser.visa_passport_validity = null;
         $scope.modelUser.visa_required = 1;
 
         var el = document.querySelector(".crop-area");
@@ -89,8 +89,8 @@ ParticipControllers.controller('CreateController', ['$timeout',
 
         } else if ($route.current.$$route.originalPath === "/particip/create") {
             console.log("create");
-            $scope.modelUser.date_of_birth = '';
-            $scope.modelUser.visa_passport_validity = ''
+            $scope.modelUser.date_of_birth = null;
+            $scope.modelUser.visa_passport_validity = null
             $scope.button = "Добавить участника";
             $scope.isCreation = true;
         }

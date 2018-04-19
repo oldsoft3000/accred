@@ -7,10 +7,7 @@ FlightControllers.factory('FlightServices', ['$http', '$route', '$q',
         obj.view = function(idParticip) {
             var route = '';
             if (typeof idParticip !== 'undefined') {
-                var p_0 = $http.get("flights/" + idParticip);
-                var p_1 = $http.get("site/cities");
-
-                return $q.all([p_0, p_1]).then(function(response) {
+                return $http.get("flights/" + idParticip).then(function(response) {
                     return response;   
                 });    
             } else {
@@ -32,6 +29,12 @@ FlightControllers.factory('FlightServices', ['$http', '$route', '$q',
                     return response;
                 });
             }
+        };
+
+        obj.delete = function(id) {
+            return $http.delete("flights/" + id).then(function(response) {
+                $route.reload();
+            });
         };
 
         return obj;

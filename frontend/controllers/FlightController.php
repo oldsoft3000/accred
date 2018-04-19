@@ -85,6 +85,18 @@ class FlightController extends Controller {
         }
     }
 
+    public function actionDelete($id) {
+        $modelParticip = particip::findOne($id);
+        ParticipController::checkAccess('delete', $modelParticip);
+        $modelFlight = $this->findModelByParticip($id); 
+        if ($modelFlight) {
+            $modelFlight->delete();
+            $modelParticip->flight_id = 0;
+            $modelParticip->save();
+        }
+        return $modelFlight;
+    }
+
     protected function findModelByParticip($id) {
         if (($modelParticip = particip::findOne($id)) !== null) {
             if ($modelParticip->flight_id != null) {
