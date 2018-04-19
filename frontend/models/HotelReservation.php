@@ -29,7 +29,6 @@ class HotelReservation extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['arrival_date', 'departure_date', 'guests', 'type_id', 'category_id', 'hotel_id'], 'required'],
-            [['arrival_date', 'departure_date'], 'safe'],
             [['guests', 'type_id', 'category_id'], 'integer'],
         ];
     }
@@ -47,10 +46,6 @@ class HotelReservation extends \yii\db\ActiveRecord {
             'category_id' => 'Категория номера',
             'hotel_id' => 'Отель',
         ];
-    }
-
-    public function beforeSave($insert) {
-        return parent::beforeSave($insert);
     }
 
 }

@@ -76,15 +76,16 @@ class HotelController extends Controller {
     public function actionReserve($id /* Particip id */) {
         $modelParticip = particip::findOne($id);
         ParticipController::checkAccess('update', $modelParticip);
-        $modelReserve = $this->findModelByParticip($id); 
-        if ($modelReserve == null) {
-            $modelReserve = new HotelReservation();
-        }
+        $modelReserveOld = $this->findModelByParticip($id); 
+        $modelReserve = new HotelReservation();
 
         if ($modelReserve->load(Yii::$app->getRequest()->getBodyParams(), '') &&
             $modelReserve->save()) {
                 $modelParticip->hotel_reservation_id = $modelReserve->id;
                 if ($modelParticip->save()) {
+                    if ($modelReserveOld) {
+                        $modelReserveOld->delete();
+                    }
                     return ['access_token' => Yii::$app->user->identity->getAuthKey()];
                 } else {
                     throw new ServerErrorHttpException('Server error.');
