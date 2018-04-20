@@ -1,9 +1,14 @@
 <h1 class="text-center subtitle">Соглашение</h1>
-
-<p class="lead common-text-block">Дамы и господа,<br>Спасибо за интерес, проявленный ко II Всемирному зерновому форуму!</p>
-<div ng-hide="isUserAgreed()" class="text-center">
-	<input ng-click="agree()"
-  				style="width:20px;height:20px;vertical-align: middle;position: relative;bottom: 3px;"
-  				type="checkbox">
-  	<label>Согласие на обработку персональных данных</label>
+<div class="subblock">
+  <p>Дамы и господа,</p>
+  <p>Спасибо за интерес, проявленный ко II Всемирному зерновому форуму!</p>
+  <p>Для активации Личного кабинета необходимо подтвердить участие в Форуме</p>
+  <p>Подробную информацию об условиях участия в Форуме можно найти на сайте <a class="dark-link" href="">www.wgforum.ru</a></p>
+  <p>Организационный комитет оставляет за собой правоиспользования данных (ФИО, организация и должность) для публикации списка участников на сайте Форума.</p>
+</div>
+<div class="subblock">
+  <div ng-hide="isUserAgreed()">
+    <input ng-click="agree()" style="width:20px;height:20px;vertical-align: middle;position: relative;bottom: 3px;" type="checkbox">
+    <label>Согласие на обработку персональных данных</label>
+  </div>
 </div>
