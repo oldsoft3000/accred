@@ -10,7 +10,8 @@ class AngularAsset extends AssetBundle
     public $sourcePath = '@bower';
     public $css = [
         'croppie/croppie.css',
-        'pace/themes/black/pace-theme-minimal.css'
+        'pace/themes/black/pace-theme-minimal.css',
+        'angular-moment-picker/dist/angular-moment-picker.min.css'
         //'ngCroppie/ng-croppie.min.css'
     ];
     public $js = [
@@ -22,6 +23,9 @@ class AngularAsset extends AssetBundle
         'cleave-js/dist/addons/cleave-phone.ru.js',
         'croppie/croppie.min.js',
         'pace/pace.min.js',
+        'moment/min/moment-with-locales.js',
+        'angular-moment-picker/dist/angular-moment-picker.min.js'
+
     ];
 
 

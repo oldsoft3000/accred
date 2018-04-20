@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use common\helpers\Formater;
 /**
  * This is the model class for table "particip".
  *
@@ -52,7 +52,7 @@ class Particip extends \yii\db\ActiveRecord {
             'registration_address', 'phone_number',
             'place_of_birth', 'first_name_latin', 'last_name_latin', 'position',
             'position_latin', 'citizenship', 'passport_series', 'passport_number'], 'required'],
-            [['date_of_birth', 'visa_passport_validity'], 'date', 'format' => 'yyyy-MM-dd'],
+            //[['date_of_birth', 'visa_passport_validity'], 'date', 'format' => 'yyyy-MM-dd'],
             [['visa_passport_validity', 'visa_country', 'visa_city'], 'required', 'when' => function($model) {
                     return $model->visa_required == '1';
                 }],
@@ -98,13 +98,8 @@ class Particip extends \yii\db\ActiveRecord {
     }
 
     public function beforeValidate() {
-
-        if ($this->date_of_birth) {
-            $this->date_of_birth = Yii::$app->formatter->asDate($this->date_of_birth, 'yyyy-MM-dd');
-        }
-        if ($this->visa_passport_validity) {
-            $this->visa_passport_validity = Yii::$app->formatter->asDate($this->visa_passport_validity, 'yyyy-MM-dd');  
-        }
+        $this->date_of_birth = Formater::convertInput($this->date_of_birth);
+        $this->visa_passport_validity = Formater::convertInput($this->visa_passport_validity);
 
         return parent::beforeValidate();
     }

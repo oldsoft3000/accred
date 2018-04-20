@@ -18,10 +18,12 @@ class AppAsset extends AssetBundle
         'controllers/ParticipControllers.js',
         'controllers/HotelControllers.js',
         'controllers/FlightControllers.js',
+        'controllers/TicketControllers.js',
         'services/FlightServices.js',
         'services/SiteServices.js',
         'services/ParticipServices.js',
         'services/HotelServices.js',
+        'services/TicketServices.js',
         'services/Utils.js',
     ];
     public $depends = [

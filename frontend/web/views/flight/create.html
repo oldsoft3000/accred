@@ -22,9 +22,21 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата прибытия</label>
       <div class="col-sm-7">
-        <input ng-click="error['arrival_date'] = ''" ng-class="{'is-invalid': error['arrival_date'] }" ng-model="modelFlight.arrival_date" type="date" class="form-control" placeholder="">
+        <div class="input-group"
+             moment-picker="modelFlight.arrival_date"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="дд.мм.гг"
+                   ng-click="error['arrival_date'] = ''" 
+                   ng-model="modelFlight.arrival_date"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
         <div ng-if="error['arrival_date']" class="invalid-tooltip">
-          {{ error['arrival_date']}}
+            {{ error['arrival_date']}}
         </div>
       </div>
     </div>
@@ -32,9 +44,22 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Время прибытия</label>
       <div class="col-sm-7">
-        <input ng-click="error['arrival_time'] = ''" ng-class="{'is-invalid': error['arrival_time'] }" ng-model="modelFlight.arrival_time" type="time" class="form-control" placeholder="">
+        <div class="input-group"
+             moment-picker="modelFlight.arrival_time"
+             format="HH:mm"
+             locale="ru"
+             show-header="false">   
+            <input class="form-control"
+                   placeholder="__:__"
+                   ng-click="error['arrival_time'] = ''" 
+                   ng-model="modelFlight.arrival_time"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/clock.png" >
+            </span>
+        </div>
         <div ng-if="error['arrival_time']" class="invalid-tooltip">
-          {{ error['arrival_time']}}
+            {{ error['arrival_time']}}
         </div>
       </div>
     </div>
@@ -81,19 +106,44 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата отправления</label>
       <div class="col-sm-7">
-        <input ng-click="error['departure_date'] = ''" ng-class="{'is-invalid': error['departure_date'] }" ng-model="modelFlight.departure_date" type="date" class="form-control" placeholder="">
-        <div ng-if="error['departure_date']" class="invalid-tooltip">
-          {{ error['departure_date']}}
+      <div class="input-group"
+             moment-picker="modelFlight.departure_date"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="дд.мм.гг"
+                   ng-click="error['departure_date'] = ''" 
+                   ng-model="modelFlight.departure_date"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
         </div>
-      </div>
+        <div ng-if="error['departure_date']" class="invalid-tooltip">
+            {{ error['departure_date']}}
+        </div>
+      </div>  
     </div>
 
     <div class="form-group row">
       <label class="col-sm-3 required">Время отправления</label>
       <div class="col-sm-7">
-        <input ng-click="error['departure_time'] = ''" ng-class="{'is-invalid': error['departure_time'] }" ng-model="modelFlight.departure_time" type="time" class="form-control" placeholder="">
+        <div class="input-group"
+             moment-picker="modelFlight.departure_time"
+             format="HH:mm"
+             locale="ru"
+             show-header="false">   
+            <input class="form-control"
+                   placeholder="__:__"
+                   ng-click="error['departure_time'] = ''" 
+                   ng-model="modelFlight.departure_time"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/clock.png" >
+            </span>
+        </div>
         <div ng-if="error['departure_time']" class="invalid-tooltip">
-          {{ error['departure_time']}}
+            {{ error['departure_time']}}
         </div>
       </div>
     </div>

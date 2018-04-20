@@ -3,18 +3,22 @@
 var App = angular.module('App', [
     'ngRoute',
     'mgcrea.ngStrap',
+    'cleave.js',
+    'moment-picker',
     'SiteControllers',
     'ParticipControllers',
     'HotelControllers',
     'FlightControllers',
-    'cleave.js',
+    'TicketControllers',
+    
 ]);
 
 var Utils = angular.module('Utils', []);
 var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
 var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies']);
-var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies', 'Utils']);
+var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies']);
 var FlightControllers = angular.module('FlightControllers', ['ngRoute', 'ngCookies']);
+var TicketControllers = angular.module('TicketControllers', ['ngRoute', 'ngCookies']);
 /// Token injector
 
 App.factory('authInterceptor', function ($q, $window, $location) {

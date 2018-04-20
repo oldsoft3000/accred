@@ -33,6 +33,7 @@ return [
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
+            //'on afterLogin' => ['app\events\AfterLoginEvent', 'handleNewUser'],
             'enableSession' => false,
             'loginUrl' => null,
 
@@ -51,7 +52,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['particip', 'hotel', 'flight'],
+                    'controller' => ['particip', 'hotel', 'flight', 'ticket'],
                 ],
                 '/' => 'site/index',
                 '<action:\w+>' => 'site/<action>',

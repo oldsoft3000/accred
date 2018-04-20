@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use common\helpers\Formater;
 /**
  * This is the model class for table "hotel_reservation".
  *
@@ -46,6 +46,12 @@ class HotelReservation extends \yii\db\ActiveRecord {
             'category_id' => 'Категория номера',
             'hotel_id' => 'Отель',
         ];
+    }
+
+    public function beforeValidate() {
+        $this->arrival_date = Formater::convertInput($this->arrival_date);
+        $this->departure_date = Formater::convertInput($this->departure_date);
+        return parent::beforeValidate();
     }
 
 }

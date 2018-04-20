@@ -22,9 +22,21 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата заезда</label>
       <div class="col-sm-7">
-        <input ng-click="error['arrival_date'] = ''" ng-class="{'is-invalid': error['arrival_date'] }" ng-model="modelReserv.arrival_date" type="date" class="form-control" placeholder="">
+        <div class="input-group"
+             moment-picker="modelReserv.arrival_date"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="дд.мм.гг"
+                   ng-click="error['arrival_date'] = ''" 
+                   ng-model="modelReserv.arrival_date"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
         <div ng-if="error['arrival_date']" class="invalid-tooltip">
-          {{ error['arrival_date']}}
+            {{ error['arrival_date']}}
         </div>
       </div>
     </div>
@@ -32,9 +44,21 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата выезда</label>
       <div class="col-sm-7">
-        <input ng-click="error['departure_date'] = ''" ng-class="{'is-invalid': error['departure_date'] }" ng-model="modelReserv.departure_date" type="date" class="form-control" placeholder="">
+        <div class="input-group"
+             moment-picker="modelReserv.departure_date"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="дд.мм.гг"
+                   ng-click="error['departure_date'] = ''" 
+                   ng-model="modelReserv.departure_date"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
         <div ng-if="error['departure_date']" class="invalid-tooltip">
-          {{ error['departure_date']}}
+            {{ error['departure_date']}}
         </div>
       </div>
     </div>

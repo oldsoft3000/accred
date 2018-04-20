@@ -1,0 +1,174 @@
+<form name="createForm" ng-submit="create()" role="form" novalidate>
+  <h1 class="subtitle">Прибытие в Сочи</h1>
+  <div class="subblock">
+
+    <div class="form-group row">
+      <label class="col-sm-3">Тип транспорта</label>
+      <div class="col-sm-7">
+        <div  class="form-check" style="padding-top:5px;padding-bottom:5px;">
+          <input class="form-check-input" name="ticket_type" type="radio" ng-value="0" ng-model="modelTicket.ticket_type" >
+          <label class="form-check-label">
+            Железнодорожный билет
+          </label>
+        </div>
+        <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
+          <input class="form-check-input" name="ticket_type" type="radio" ng-value="1" ng-model="modelTicket.ticket_type">
+          <label class="form-check-label">
+            Авиационный билет
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <div class="input-group"
+             moment-picker="modelTicket.departure_date"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="Дата отправления"
+                   ng-click="error['departure_date'] = ''" 
+                   ng-model="modelTicket.departure_date"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
+        <div ng-if="error['departure_date']" class="invalid-tooltip">
+            {{ error['departure_date']}}
+        </div>
+      </div> 
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <input  ng-click="error['flight_number'] = ''"
+                ng-class="{'is-invalid': error['flight_number'] }"
+                ng-model="modelTicket.flight_number"
+                type="text"
+                class="form-control"
+                placeholder="№ рейса / поезда (если применимо)">
+        <div ng-if="error['flight_number']" class="invalid-tooltip">
+          {{ error['flight_number']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <input  ng-click="error['from'] = ''"
+                ng-class="{'is-invalid': error['from'] }"
+                ng-model="modelTicket.from"
+                type="text"
+                class="form-control"
+                placeholder="Откуда">
+        <div ng-if="error['from']" class="invalid-tooltip">
+          {{ error['from']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <input  ng-click="error['where'] = ''"
+                ng-class="{'is-invalid': error['where'] }"
+                ng-model="modelTicket.where"
+                type="text"
+                class="form-control"
+                placeholder="Куда">
+        <div ng-if="error['where']" class="invalid-tooltip">
+          {{ error['where']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <input  ng-click="error['class'] = ''"
+                ng-class="{'is-invalid': error['class'] }"
+                ng-model="modelTicket.class"
+                type="text"
+                class="form-control"
+                placeholder="Класс (бизнес, эконом, 1-й класс)">
+        <div ng-if="error['class']" class="invalid-tooltip">
+          {{ error['class']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3">Загран паспорт</label>
+      <div class="col-sm-4">
+        <input  ng-click="error['passport_number'] = ''"
+                ng-class="{'is-invalid': error['passport_number'] }"
+                ng-model="modelTicket.passport_number"
+                type="text"
+                class="form-control"
+                placeholder="Номер загран паспорта">
+        <div ng-if="error['passport_number']" class="invalid-tooltip">
+          {{ error['passport_number']}}
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="input-group"
+             moment-picker="modelTicket.passport_validity"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="Годен до"
+                   ng-click="error['passport_validity'] = ''" 
+                   ng-model="modelTicket.passport_validity"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
+        <div ng-if="error['passport_validity']" class="invalid-tooltip">
+            {{ error['passport_validity']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3">Наличие бонусной карты</label>
+      <div class="col-sm-7">
+        <input  ng-click="error['bonus_card'] = ''"
+                ng-class="{'is-invalid': error['bonus_card'] }"
+                ng-model="modelTicket.bonus_card"
+                type="text"
+                class="form-control"
+                placeholder="Номер карты">
+        <div ng-if="error['bonus_card']" class="invalid-tooltip">
+          {{ error['bonus_card']}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <input  ng-click="error['company_name'] = ''"
+                ng-class="{'is-invalid': error['company_name'] }"
+                ng-model="modelTicket.company_name"
+                type="text"
+                class="form-control"
+                placeholder="Название авиакомпании">
+        <div ng-if="error['company_name']" class="invalid-tooltip">
+          {{ error['company_name']}}
+        </div>
+      </div>
+    </div>
+
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </div>
+</form>

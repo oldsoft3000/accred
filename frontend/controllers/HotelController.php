@@ -15,6 +15,7 @@ use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ForbiddenHttpException;
 use yii\web\ServerErrorHttpException;
+use common\helpers\Formater;
 
 class HotelController extends Controller {
 
@@ -42,12 +43,16 @@ class HotelController extends Controller {
     // Список участников
     public function actionView($id = null) {
         if ($id == null) {
-            $model_search = new ParticipSearch();
-            return $model_search->searchHotelReservation();   
+            $modelSearch = new ParticipSearch();
+            return $modelSearch->searchHotelReservation();   
         } else {
             ParticipController::checkAccess('view', null, ['id' => $id]);
-
-            return $this->findModelByParticip($id);
+            $modelReserve = $this->findModelByParticip($id);
+            if ($modelReserve) {
+                $modelReserve->arrival_date = Formater::convertOutput($modelReserve->arrival_date);
+                $modelReserve->departure_date = Formater::convertOutput($modelReserve->departure_date);
+            }
+            return $modelReserve;
         }
     }
 
@@ -101,9 +106,9 @@ class HotelController extends Controller {
         ParticipController::checkAccess('delete', $modelParticip);
         $modelReserve = $this->findModelByParticip($id); 
         if ($modelReserve) {
-            $modelReserve->delete();
             $modelParticip->hotel_reservation_id = 0;
             $modelParticip->save();
+            $modelReserve->delete();
         }
         return $modelReserve;
     }

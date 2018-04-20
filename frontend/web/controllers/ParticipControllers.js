@@ -62,8 +62,7 @@ ParticipControllers.controller('CreateController', ['$timeout',
                                                     '$location',
                                                     'response',
                                                     'ParticipServices',
-                                                    'Utils',
-    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices, Utils) {
+    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
         $scope.modelUser = {};
         $scope.modelUser.visa_passport_validity = null;
@@ -81,8 +80,6 @@ ParticipControllers.controller('CreateController', ['$timeout',
             console.log("update");
             $scope.button = "Обновить данные";
             $scope.modelUser = response.data;
-            $scope.modelUser.date_of_birth = new Date(response.data.date_of_birth);
-            $scope.modelUser.visa_passport_validity = new Date(response.data.visa_passport_validity);
             $scope.modelUser.title = response.data.title.toString();
             $scope.modelUser.gender = response.data.gender.toString();
             $scope.isCreation = false;
@@ -98,9 +95,6 @@ ParticipControllers.controller('CreateController', ['$timeout',
         $scope.create = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-
-            Utils.toUTC($scope.modelUser.date_of_birth);
-            Utils.toUTC($scope.modelUser.visa_passport_validity);
 
             ParticipServices.create($scope.modelUser)
                 .then(successHandler)
@@ -124,9 +118,6 @@ ParticipControllers.controller('CreateController', ['$timeout',
         $scope.update = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-
-            Utils.toUTC($scope.modelUser.date_of_birth);
-            Utils.toUTC($scope.modelUser.visa_passport_validity);
 
             ParticipServices.update($scope.modelUser)
                 .then(successHandler)
@@ -164,10 +155,6 @@ ParticipControllers.controller('CreateController', ['$timeout',
 
         $scope.photoSelected = function() {
             $timeout(function() {
-                /*var fileName = "";
-                fileName = filePath.substring(filePath.lastIndexOf('\\')+1);
-                fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-                $scope.fileName = fileName;*/
                 var file = document.querySelector('#photoFile').files[0];
                 if (typeof file !== 'undefined') {
                     $scope.fileName = file.name;
@@ -177,10 +164,6 @@ ParticipControllers.controller('CreateController', ['$timeout',
                             $scope.modelUser.photo = reader.result; 
                             $scope.editPhoto();
                         });
-                        /*$scope.$apply(function($scope) {
-                            $scope.modelUser.photo = reader.result; 
-                            $scope.editPhoto();
-                        });*/
                     }
                     reader.readAsDataURL(file);
                 }

@@ -30,5 +30,6 @@ CREATE TABLE IF NOT EXISTS `particip` (
   `created_by` int(11) NOT NULL,
   `hotel_reservation_id` int(11) NOT NULL, 
   `flight_id` int(11) NOT NULL, 
+  `ticket_id` int(11) NOT NULL, 
   PRIMARY KEY (`id`)
 );

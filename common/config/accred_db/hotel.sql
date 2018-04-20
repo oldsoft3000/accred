@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `hotel_room` (
 DROP TABLE IF EXISTS hotel_reservation;
 CREATE TABLE IF NOT EXISTS `hotel_reservation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `arrival_date` TIMESTAMP NOT NULL,
-  `departure_date` TIMESTAMP NOT NULL, /*одноместный, двухместный тд*/
+  `arrival_date` DATE NOT NULL,
+  `departure_date` DATE NOT NULL, /*одноместный, двухместный тд*/
   `guests` int(2) NOT NULL, /*стандартный, супериор и тд*/
   `type_id` int(11) NOT NULL, 
   `category_id` int(11) NOT NULL,

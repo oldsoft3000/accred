@@ -70,8 +70,7 @@ HotelControllers.controller('ReserveHotelController', ['$location',
                                                        '$route',
                                                        'response',
                                                        'HotelServices',
-                                                       'Utils',
-    function ($location, $scope, $route, response,  HotelServices, Utils) {
+    function ($location, $scope, $route, response,  HotelServices) {
         $scope.modelReserv = {};
         $scope.hotel = response[0].data;
         $scope.rooms = response[1].data;
@@ -87,8 +86,6 @@ HotelControllers.controller('ReserveHotelController', ['$location',
 
         if ( $route.current.params.reserved == "true" ) {
             $scope.modelReserv = response[4].data;
-            $scope.modelReserv.arrival_date = new Date(response[4].data.arrival_date);
-            $scope.modelReserv.departure_date = new Date(response[4].data.departure_date);
             $scope.modelReserv.category_id = response[4].data.category_id.toString();
             $scope.modelReserv.type_id = response[4].data.type_id.toString();
         }
@@ -97,9 +94,6 @@ HotelControllers.controller('ReserveHotelController', ['$location',
             $scope.dataLoading = true;
             $scope.error = {};
             $scope.modelReserv.hotel_id = $scope.hotel.id;
-
-            Utils.toUTC($scope.modelReserv.arrival_date);
-            Utils.toUTC($scope.modelReserv.departure_date);
 
             HotelServices.reserve($scope.modelReserv, $route.current.params.idParticip)
                 .then(successHandler)

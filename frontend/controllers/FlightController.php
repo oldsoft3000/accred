@@ -12,19 +12,20 @@ use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ServerErrorHttpException;
 use yii\web\ForbiddenHttpException;
+use common\helpers\Formater;
 
 class FlightController extends Controller {
 
     /**
      * @inheritdoc
      */
-    public function behaviors() {
+    /*public function behaviors() {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::className(),
         ];
         return $behaviors;
-    }
+    }*/
 
     public function actionIndex() {
         return $this->actionView();
@@ -37,7 +38,12 @@ class FlightController extends Controller {
         } else {
             ParticipController::checkAccess('view', null, ['id' => $id]);
 
-            return $this->findModelByParticip($id);
+            $modelFlight = $this->findModelByParticip($id);
+            if ($modelFlight) {
+                $modelFlight->arrival_date = Formater::convertOutput($modelFlight->arrival_date);
+                $modelFlight->departure_date = Formater::convertOutput($modelFlight->departure_date);
+            }
+            return $modelFlight;
         }
     }
 
@@ -80,8 +86,8 @@ class FlightController extends Controller {
                     throw new ServerErrorHttpException('Server error.');
                 }
         } else {
-            $flight->validate(); 
-            return $flight; 
+            $modelFlight->validate(); 
+            return $modelFlight; 
         }
     }
 

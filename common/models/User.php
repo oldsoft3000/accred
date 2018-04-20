@@ -6,7 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use common\components\utils\Formater;
 /**
  * User model
  *
@@ -55,6 +55,19 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
+
+     public function init() { 
+        parent::init(); 
+        //Yii::$app->user->on(Yii\web\User::EVENT_AFTER_LOGIN, [$this, 'onAfterLogin']); 
+        Yii::$app->user->on(Yii\web\User::EVENT_BEFORE_LOGIN, [$this, 'onBeforeLogin']); 
+    } 
+ 
+    protected function onBeforeLogin() { 
+
+        /* $this->last_visit = gmdate('Y-m-d H:i:s'); 
+          $this->ip_address = Yii::$app->request->getUserIP(); 
+          $this->save(false); */ 
+    } 
 
     /**
      * {@inheritdoc}
@@ -193,9 +206,11 @@ class User extends ActiveRecord implements IdentityInterface
     {
         parent::afterSave($insert, $changedAttributes);
 
-        $auth = Yii::$app->authManager;
-        $editor = $auth->getRole('editor'); 
-        $auth->assign($editor, $this->id); 
+        if ($insert) {
+            $auth = Yii::$app->authManager;
+            $editor = $auth->getRole('editor'); 
+            $auth->assign($editor, $this->id); 
+        }
     }
 
 }

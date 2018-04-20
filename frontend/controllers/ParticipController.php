@@ -12,6 +12,7 @@ use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
+use common\helpers\Formater;
 
 class ParticipController extends Controller {
 
@@ -38,11 +39,15 @@ class ParticipController extends Controller {
 
     public function actionView($id = null) {
         if ($id == null) {
-            $model_search = new ParticipSearch();
-            return $model_search->searchAll();
+            $modelSearch = new ParticipSearch();
+            return $modelSearch->searchAll();
         } else {
             $model = $this->findModel($id);
             ParticipController::checkAccess('view', $model);
+
+            $model->date_of_birth = Formater::convertOutput($model->date_of_birth);
+            $model->visa_passport_validity = Formater::convertOutput($model->visa_passport_validity);
+
             return $model;
         }
     }

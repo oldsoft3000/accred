@@ -14,12 +14,20 @@ class UtilsController extends Controller
         return ['password'];
     }
 
-    public function actionIndex()
+    public function actionPasswordHash()
     {
         echo $this->password . "\n";
         $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
         echo $hash . "\n";
     }
+
+    public function actionGenerateString()
+    {
+        echo \Yii::$app->security->generateRandomString() . "\n";
+    }
+
+
+
 
     public function actionRbac() {
         $authManager = Yii::$app->authManager;

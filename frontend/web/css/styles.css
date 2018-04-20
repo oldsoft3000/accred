@@ -192,14 +192,14 @@ label {
 }
 
 
-.action_icon_block {
+.action-icon-block {
   display: inline-block;
   width: 30px;
   height: 27px;
   vertical-align: middle;
 }
 
-.action_icon { 
+.action-icon { 
     display: block;
     opacity: 0.6;
     width: 28px;
@@ -207,13 +207,24 @@ label {
     left: 5px;
 }
 
-.action_icon:hover {
+.action-icon:hover {
     opacity: 0.7;
     margin-top:-1px;
     margin-left:-1px;
     width: 30px;
     height: 30px;
 }
+
+.date-time-icon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+}
+
+
 
 .loader {
 	 width: 20px;
@@ -232,7 +243,7 @@ label {
 
     /* Position the tooltip text */
     position: absolute;
-    z-index: 1;
+    z-index: 1000;
     display: inline-block;
 
     /* Fade in tooltip */
@@ -318,4 +329,12 @@ label {
 
 .hotel-button:active {
     box-shadow:none;
+}
+
+.dark-link  {
+  color: #000000!important;
+}
+
+.dark-link:active  {
+  color: #000000!important;
 }

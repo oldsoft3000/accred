@@ -241,7 +241,7 @@ input[type="date"]:not(.has-value):before{
     content: "Обзор"!important;
 }
 
-.action_icon_block {
+.action-icon_block {
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -250,7 +250,7 @@ input[type="date"]:not(.has-value):before{
     margin-right: 5px;
 }
 
-.action_icon { 
+.action-icon { 
     display: block;
     opacity: 0.6;
     width: 28px;
@@ -258,13 +258,20 @@ input[type="date"]:not(.has-value):before{
     left: 5px;
 }
 
-.action_icon:hover {
+.action-icon:hover {
     opacity: 0.7;
     margin-top:-1px;
     margin-left:-1px;
     width: 30px;
     height: 30px;
 }
+
+.date-time-icon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
 
 td {
   padding: 10px!important;

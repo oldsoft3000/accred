@@ -144,4 +144,23 @@ class ParticipSearch extends Particip
 
         return $rows;
     }
+
+    public function searchTicket() {
+        $str = '
+            SELECT  particip.id,
+                    first_name,
+                    middle_name,
+                    last_name,
+                    ticket.id as ticket_id
+            FROM particip
+            LEFT JOIN ticket ON (ticket.id = particip.ticket_id)';
+
+        if ( !\Yii::$app->user->can('admin') ) {
+            $str = $str . 'WHERE particip.created_by = :id'; 
+        }
+        $command = Yii::$app->db->createCommand($str);
+        $rows = $command->bindValue(':id', Yii::$app->user->id)->queryAll();
+
+        return $rows;
+    }
 }

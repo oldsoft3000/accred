@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-3 required">Отчество</label>
+      <label class="col-sm-3">Отчество</label>
       <div class="col-sm-7">
         <input ng-click="error['middle_name'] = ''" ng-class="{'is-invalid': error['middle_name'] }" ng-model="modelUser.middle_name" type="text" class="form-control" placeholder="">
         <div ng-if="error['middle_name']" class="invalid-tooltip">
@@ -375,9 +375,21 @@
     <div class="form-group row">
       <label class="col-sm-3 required">Дата рождения</label>
       <div class="col-sm-7">
-        <input ng-click="error['date_of_birth'] = ''" ng-class="{'is-invalid': error['date_of_birth'] }" ng-model="modelUser.date_of_birth" type="date" class="form-control" placeholder="">
+        <div class="input-group"
+             moment-picker="modelUser.date_of_birth"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="дд.мм.гг"
+                   ng-click="error['date_of_birth'] = ''" 
+                   ng-model="modelUser.date_of_birth"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
         <div ng-if="error['date_of_birth']" class="invalid-tooltip">
-          {{ error['date_of_birth']}}
+            {{ error['date_of_birth']}}
         </div>
       </div>
     </div>
@@ -422,7 +434,20 @@
     <fieldset id="visa-fieldset">
       <div class="form-group row">
         <div class="col-sm-7 col-sm-offset-3 required_ext">
-          <input type="date" placeholder='Паспорт действует до' class="form-control" ng-click="error['visa_passport_validity'] = ''" ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : modelUser.visa_passport_validity }" ng-model="modelUser.visa_passport_validity" />
+          <div class="input-group"
+               moment-picker="modelUser.visa_passport_validity"
+               format="DD.MM.YYYY"
+               locale="ru">
+              <input class="form-control"
+                     placeholder="Паспорт действует до"
+                     ng-click="error['visa_passport_validity'] = ''" 
+                     ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : modelUser.visa_passport_validity }"
+                     ng-model="modelUser.visa_passport_validity"
+                     ng-model-options="{ updateOn: 'blur' }"> 
+              <span class="input-group-addon">
+                  <img class="date-time-icon" border="0" src="images/calendar.png" >
+              </span>
+          </div>
           <div ng-if="error['visa_passport_validity']" class="invalid-tooltip">
             {{ error['visa_passport_validity']}}
           </div>

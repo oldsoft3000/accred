@@ -71,6 +71,9 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->login()) {
+
+            Yii::$app->user->identity->generateAuthKey();
+            Yii::$app->user->identity->save();
             return ['access_token' => Yii::$app->user->identity->getAuthKey()];
         } else {
             $model->validate();

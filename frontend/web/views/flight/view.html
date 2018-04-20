@@ -8,7 +8,7 @@
     <p>С наилучшими пожеланиями,
       <br>Рабочая группа II Всемирного зернового форума</p>
   </div>  
-  <div class="subblock">
+  <div class="subblock" style="padding-top: 0;">
     <div class="" ng-show="particips.length > 0">
       <table class="table table-bordered table-hover">
         <thead>
@@ -25,11 +25,11 @@
             <td width=20%>{{particip.arrival_date}}</td>
             <td width=20%>{{particip.departure_date}}</td>
             <td style="padding:0px 10px; vertical-align: middle;">
-              <a class="action_icon_block" href="#!/flight/view/{{particip.id}}"  data-toggle="tooltip" title="Заполнить">
-              <img class="action_icon" border="0" src="images/edit.png" >
+              <a class="action-icon-block" href="#!/flight/view/{{particip.id}}"  data-toggle="tooltip" title="Заполнить">
+              <img class="action-icon" border="0" src="images/edit.png" >
             </a>
-              <a ng-show="{{particip.arrival_date}}" class="action_icon_block" ng-click="delete(particip.id)" data-toggle="tooltip" title="Удалить">
-              <img class="action_icon" border="0" src="images/delete.png">
+              <a ng-show="{{particip.arrival_date}}" class="action-icon-block" ng-click="delete(particip.id)" data-toggle="tooltip" title="Удалить">
+              <img class="action-icon" border="0" src="images/delete.png">
             </a>
             </td>
           </tr>
