@@ -7,14 +7,14 @@ use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBearerAuth;
-use app\models\Flight;
+use app\models\Car;
 use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ServerErrorHttpException;
 use yii\web\ForbiddenHttpException;
 use common\helpers\Formater;
 
-class FlightController extends Controller {
+class CarController extends Controller {
 
     /**
      * @inheritdoc
@@ -34,16 +34,15 @@ class FlightController extends Controller {
     public function actionView($id = null) {
         if ($id == null) {
             $modelParticipSearch = new ParticipSearch();
-            return $modelParticipSearch->searchFlight();     
+            return $modelParticipSearch->searchCar();     
         } else {
             ParticipController::checkAccess('view', null, ['id' => $id]);
 
-            $modelFlight = $this->findModelByParticip($id);
-            if ($modelFlight) {
-                $modelFlight->arrival_date = Formater::convertOutput($modelFlight->arrival_date);
-                $modelFlight->departure_date = Formater::convertOutput($modelFlight->departure_date);
+            $modelCar = $this->findModelByParticip($id);
+            if ($modelCar) {
+                $modelCar->date_of_birth = Formater::convertOutput($modelCar->date_of_birth);
             }
-            return $modelFlight;
+            return $modelCar;
         }
     }
 
@@ -54,17 +53,17 @@ class FlightController extends Controller {
 
         ParticipController::checkAccess('update', $modelParticip);
 
-        $modelFlight = new Flight();
-        if ($modelFlight->load(Yii::$app->getRequest()->getBodyParams(), '') && $modelFlight->save()) {
-            $modelParticip->flight_id = $modelFlight->id;
+        $modelCar = new Car();
+        if ($modelCar->load(Yii::$app->getRequest()->getBodyParams(), '') && $modelCar->save()) {
+            $modelParticip->car_id = $modelCar->id;
             if ($modelParticip->save()) {
                 return ['access_token' => Yii::$app->user->identity->getAuthKey()];
             } else {
                 throw new ServerErrorHttpException('Server error.');
             }
         } else {
-            $modelFlight->validate();
-            return $modelFlight;
+            $modelCar->validate();
+            return $modelCar;
         }
     }
 
@@ -73,41 +72,41 @@ class FlightController extends Controller {
 
         ParticipController::checkAccess('update', $modelParticip);
 
-        $modelFlight = $this->findModelByParticip($id); 
-        if ($modelFlight == null) {
-            throw new NotFoundHttpException('Cant find flight model by particip id = ' . $id);
+        $modelCar = $this->findModelByParticip($id); 
+        if ($modelCar == null) {
+            throw new NotFoundHttpException('Cant find car model by particip id = ' . $id);
         }
 
-        if ($modelFlight->load(Yii::$app->getRequest()->getBodyParams(), '') &&
-            $modelFlight->save()) {
+        if ($modelCar->load(Yii::$app->getRequest()->getBodyParams(), '') &&
+            $modelCar->save()) {
                 if ($modelParticip->save()) {
                     return ['access_token' => Yii::$app->user->identity->getAuthKey()];
                 } else {
                     throw new ServerErrorHttpException('Server error.');
                 }
         } else {
-            $modelFlight->validate(); 
-            return $modelFlight; 
+            $modelCar->validate(); 
+            return $modelCar; 
         }
     }
 
     public function actionDelete($id) {
         $modelParticip = particip::findOne($id);
         ParticipController::checkAccess('delete', $modelParticip);
-        $modelFlight = $this->findModelByParticip($id); 
-        if ($modelFlight) {
-            $modelFlight->delete();
-            $modelParticip->flight_id = 0;
+        $modelCar = $this->findModelByParticip($id); 
+        if ($modelCar) {
+            $modelCar->delete();
+            $modelParticip->car_id = 0;
             $modelParticip->save();
         }
-        return $modelFlight;
+        return $modelCar;
     }
 
     protected function findModelByParticip($id) {
         if (($modelParticip = particip::findOne($id)) !== null) {
-            if ($modelParticip->flight_id != null) {
-                if (($modelFlight = flight::findOne($modelParticip->flight_id)) !== null) {
-                    return $modelFlight;
+            if ($modelParticip->car_id != null) {
+                if (($modelCar = car::findOne($modelParticip->car_id)) !== null) {
+                    return $modelCar;
                 }
             }
             return null;

@@ -1,0 +1,34 @@
+<div>
+  <h1 class="subtitle">Аккредитация личного автотранспорта</h1>
+  <div class="subblock">
+    <p>Заявки на регистрацию личного автотранспорта принимаются сроком до 1 ноября. Ваша заявка будет рассмотрена в ближайшее время.</p>
+
+  </div>  
+  <div class="subblock" style="padding-top: 0;">
+    <div class="" ng-show="particips.length > 0">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Фамилия Имя Отчество</th>
+            <th>Статус заявки</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="particip in particips">
+            <td>{{particip.last_name + ' ' + particip.first_name + ' ' + particip.middle_name}}</td>
+            <td width=20%>{{(particip.car_id) ? "Заполнена" : "Не заполнена"}}</td>
+            <td style="padding:0px 10px; vertical-align: middle;">
+              <a class="action-icon-block" href="#!/car/view/{{particip.id}}"  data-toggle="tooltip" title="Заполнить">
+              <img class="action-icon" border="0" src="images/edit.png" >
+            </a>
+              <a ng-show="{{particip.car_id}}" class="action-icon-block" ng-click="delete(particip.id)" data-toggle="tooltip" title="Удалить">
+              <img class="action-icon" border="0" src="images/delete.png">
+            </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

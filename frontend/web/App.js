@@ -10,7 +10,7 @@ var App = angular.module('App', [
     'HotelControllers',
     'FlightControllers',
     'TicketControllers',
-    
+    'CarControllers',
 ]);
 
 var Utils = angular.module('Utils', []);
@@ -19,7 +19,8 @@ var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngC
 var HotelControllers = angular.module('HotelControllers', ['ngRoute', 'ngCookies']);
 var FlightControllers = angular.module('FlightControllers', ['ngRoute', 'ngCookies']);
 var TicketControllers = angular.module('TicketControllers', ['ngRoute', 'ngCookies']);
-/// Token injector
+var CarControllers = angular.module('CarControllers', ['ngRoute', 'ngCookies']);
+/// Token injectors
 
 App.factory('authInterceptor', function ($q, $window, $location) {
     var data = {

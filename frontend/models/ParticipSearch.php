@@ -163,4 +163,23 @@ class ParticipSearch extends Particip
 
         return $rows;
     }
+
+    public function searchCar() {
+        $str = '
+            SELECT  particip.id,
+                    particip.first_name,
+                    particip.middle_name,
+                    particip.last_name,
+                    car.id as car_id
+            FROM particip
+            LEFT JOIN car ON (car.id = particip.car_id)';
+
+        if ( !\Yii::$app->user->can('admin') ) {
+            $str = $str . 'WHERE particip.created_by = :id'; 
+        }
+        $command = Yii::$app->db->createCommand($str);
+        $rows = $command->bindValue(':id', Yii::$app->user->id)->queryAll();
+
+        return $rows;
+    }
 }

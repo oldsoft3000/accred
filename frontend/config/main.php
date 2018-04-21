@@ -52,7 +52,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['particip', 'hotel', 'flight', 'ticket'],
+                    'controller' => ['particip', 'hotel', 'flight', 'ticket', 'car'],
                 ],
                 '/' => 'site/index',
                 '<action:\w+>' => 'site/<action>',
