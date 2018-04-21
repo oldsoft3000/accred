@@ -56,6 +56,7 @@ TicketControllers.controller('CreateTicketController', [  '$location',
         $scope.modelTicket = {};
         if (response.data === '') {
             $scope.modelTicket = {};
+            $scope.modelTicket.ticket_type = 1;
         } else {
             $scope.modelTicket = response.data;
 

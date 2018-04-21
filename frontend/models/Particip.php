@@ -48,7 +48,7 @@ class Particip extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['title', 'gender', 'passport_series', 'passport_number', 'visa_required'], 'integer'],
-            [['title', 'first_name', 'last_name', 'gender', 'email', 'date_of_birth',
+            [['title', 'first_name', 'last_name', 'middle_name', 'gender', 'email', 'date_of_birth',
             'registration_address', 'phone_number',
             'place_of_birth', 'first_name_latin', 'last_name_latin', 'position',
             'position_latin', 'citizenship', 'passport_series', 'passport_number'], 'required'],

@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-3">Отчество</label>
+      <label class="col-sm-3 required">Отчество</label>
       <div class="col-sm-7">
         <input ng-click="error['middle_name'] = ''" ng-class="{'is-invalid': error['middle_name'] }" ng-model="modelUser.middle_name" type="text" class="form-control" placeholder="">
         <div ng-if="error['middle_name']" class="invalid-tooltip">
