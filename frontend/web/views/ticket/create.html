@@ -22,7 +22,7 @@
 
     <div class="form-group row">
       <label class="col-sm-3"></label>
-      <div class="col-sm-7">
+      <div class="col-sm-7 required_ext">
         <div class="input-group"
              moment-picker="modelTicket.departure_date"
              format="DD.MM.YYYY"
@@ -44,7 +44,7 @@
 
     <div class="form-group row">
       <label class="col-sm-3"></label>
-      <div class="col-sm-7">
+      <div class="col-sm-7 required_ext">
         <input  ng-click="error['flight_number'] = ''"
                 ng-class="{'is-invalid': error['flight_number'] }"
                 ng-model="modelTicket.flight_number"
@@ -59,7 +59,7 @@
 
     <div class="form-group row">
       <label class="col-sm-3"></label>
-      <div class="col-sm-7">
+      <div class="col-sm-7 required_ext">
         <input  ng-click="error['from'] = ''"
                 ng-class="{'is-invalid': error['from'] }"
                 ng-model="modelTicket.from"
@@ -74,7 +74,7 @@
 
     <div class="form-group row">
       <label class="col-sm-3"></label>
-      <div class="col-sm-7">
+      <div class="col-sm-7 required_ext">
         <input  ng-click="error['where'] = ''"
                 ng-class="{'is-invalid': error['where'] }"
                 ng-model="modelTicket.where"
@@ -89,7 +89,7 @@
 
     <div class="form-group row">
       <label class="col-sm-3"></label>
-      <div class="col-sm-7">
+      <div class="col-sm-7 required_ext">
         <input  ng-click="error['class'] = ''"
                 ng-class="{'is-invalid': error['class'] }"
                 ng-model="modelTicket.class"

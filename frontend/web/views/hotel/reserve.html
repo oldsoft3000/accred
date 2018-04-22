@@ -76,16 +76,16 @@
     <div class="form-group row">
       <label class="col-sm-3 form-label required">Тип размещения</label>
       <div class="col-sm-7">
-        <select ng-focus="error['type_id'] = ''"
-                ng-click="error['type_id'] = ''"
-                ng-class="{'is-invalid': error['type_id'] }"
+        <select ng-focus="error['type_name'] = ''"
+                ng-click="error['type_name'] = ''"
+                ng-class="{'is-invalid': error['type_name'] }"
                 ng-model="modelReserv.type_name"
                 class="form-control"
                 ng-options="o as o for o in types">
           <option selected value="" style="display:none;">Выберите тип размещения</option>
         </select>
-        <div ng-if="error['type_id']" class="invalid-tooltip">
-          {{ error['type_id']}}
+        <div ng-if="error['type_name']" class="invalid-tooltip">
+          {{ error['type_name']}}
         </div>
       </div>
     </div>  
@@ -93,16 +93,16 @@
     <div class="form-group row">
       <label class="col-sm-3 form-label required">Категория номера</label>
       <div class="col-sm-7">
-        <select ng-focus="error['category_id'] = ''"
-                ng-click="error['category_id'] = ''"
-                ng-class="{'is-invalid': error['category_id'] }"
+        <select ng-focus="error['category_name'] = ''"
+                ng-click="error['category_name'] = ''"
+                ng-class="{'is-invalid': error['category_name'] }"
                 ng-model="modelReserv.category_name"
                 class="form-control"
                 ng-options="o as o for o in categories">
           <option selected value="" style="display:none;">Выберите категорию номера</option>
         </select>
-        <div ng-if="error['category_id']" class="invalid-tooltip">
-          {{ error['category_id']}}
+        <div ng-if="error['category_name']" class="invalid-tooltip">
+          {{ error['category_name']}}
         </div>
       </div>
     </div>  

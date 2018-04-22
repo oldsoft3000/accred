@@ -36,6 +36,7 @@ class Ticket extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['ticket_type', 'departure_date', 'flight_number', 'from', 'where', 'class'], 'required'],
             /*[['ticket_type', 'departure_date', 'flight_number', 'from', 'where', 'class', 'passport_number', 'passport_validity', 'bonus_card', 'company_name'], 'required'],*/
             [['ticket_type'], 'integer'],
             [['departure_date', 'passport_validity'], 'safe'],
