@@ -3,11 +3,11 @@
   <h4 class="subblock" style="font-size: 16px;">
         {{hotels[idHotel].description}}</h4>
   <div ng-show="hotels[idHotel].rooms.length > 0" class="subblock" style="padding-top: 0;">
-    <div class="row" ng-repeat="room in hotels[idHotel].rooms" style="padding: 10px; margin:10px 0;background-color: #CDCDCD; width:70%; border-radius: .25rem;">
-      <div class="col-xs-10">
+    <div class="row" ng-repeat="room in hotels[idHotel].rooms" style="padding: 10px; margin:10px 0;background-color: #CDCDCD; width:80%; border-radius: .25rem;">
+      <div class="col-xs-9">
         {{room.type + " номер " + room.category}}
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-3" style="text-align: right;">
         {{room.cost}}р
       </div>
     </div>
