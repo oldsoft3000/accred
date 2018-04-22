@@ -25,28 +25,28 @@ AppAsset::register($this);
           </div>
           <div class="sidebar">
               <li ng-class="{'sidebar-loaded': true}" ng-if="!isLoggedIn()" class="nav-item sidebar-loading">
-                <a  class="btn btn-primary nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
+                <a  class="btn nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
-                <a class="btn btn-primary nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
+                <a class="nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/hotel/view">Размещение</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/hotel/view">Размещение</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/flight/view">Полетные данные</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/flight/view">Полетные данные</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование билетов</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование билетов</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="btn btn-primary nav-link " role="button" aria-disabled="true" href="#!/car/view">Аккредитация автотранспорта</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/car/view">Аккредитация личного автотранспорта</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
-                <a ng-click="logout()" class="btn btn-primary nav-link" role="button" aria-disabled="true" href="">Выход</a> 
+                <a ng-click="logout()" class="nav-link" role="button" aria-disabled="true" href="">Выход</a> 
               </li> 
           </div>
 

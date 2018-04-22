@@ -32,5 +32,6 @@ CREATE TABLE IF NOT EXISTS `particip` (
   `flight_id` int(11) NOT NULL, 
   `ticket_id` int(11) NOT NULL, 
   `car_id` int(11) NOT NULL, 
+  `payment` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 );
