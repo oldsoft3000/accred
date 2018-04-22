@@ -19,6 +19,8 @@ class AngularAsset extends AssetBundle
         'angular-route/angular-route.min.js',
         'angular-strap/dist/angular-strap.min.js',
         'angular-cookies/angular-cookies.min.js',
+        'angular-resource/angular-resource.min.js',
+        'angular-sanitize/angular-sanitize.min.js',
         'cleave-js/dist/cleave-angular.min.js',
         'cleave-js/dist/addons/cleave-phone.ru.js',
         'croppie/croppie.min.js',

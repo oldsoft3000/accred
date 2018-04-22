@@ -82,6 +82,11 @@ class ParticipController extends Controller {
 
         ParticipController::checkAccess('delete', $model);
 
+        Yii::$app->runAction('car/delete', ['id' => $id]);
+        Yii::$app->runAction('flight/delete', ['id' => $id]);
+        Yii::$app->runAction('hotel/delete', ['id' => $id]);
+        Yii::$app->runAction('ticket/delete', ['id' => $id]);
+
         $model->delete();
 
         return $model;

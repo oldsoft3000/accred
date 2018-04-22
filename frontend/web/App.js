@@ -2,6 +2,8 @@
 
 var App = angular.module('App', [
     'ngRoute',
+    'ngResource',
+    'ngSanitize',
     'mgcrea.ngStrap',
     'cleave.js',
     'moment-picker',
@@ -51,6 +53,10 @@ App.factory('authInterceptor', function ($q, $window, $location) {
       
     };
 });
+
+App.factory('ViewData', ['$resource', function($resource) {
+    return $resource('views/view.json');
+}]);
 
 
 App.directive('onlyLatin', function () {

@@ -22,6 +22,8 @@
         "bower-asset/angular": "*",
         "bower-asset/angular-route": "*",
         "bower-asset/angular-strap": "*",
+        "bower-asset/angular-resource": "*",
+        "bower-asset/angular-sanitize": "*",
     	"bower-asset/cleave-js": "*",
     	"bower-asset/pace": "*",
     	"yii2mod/yii2-rbac": "*",

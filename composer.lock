@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8016b87a6525e60b77c3c67acebea5e2",
+    "content-hash": "85e6c0484fb7c7cf3b03eb8a7b89a56c",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -84,6 +84,28 @@
             ]
         },
         {
+            "name": "bower-asset/angular-resource",
+            "version": "v1.6.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular-resource.git",
+                "reference": "534f78d1eaaad1efcbbebc7966620219d3351b0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-resource/zipball/534f78d1eaaad1efcbbebc7966620219d3351b0e",
+                "reference": "534f78d1eaaad1efcbbebc7966620219d3351b0e",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/angular": "1.6.9"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "bower-asset/angular-route",
             "version": "v1.6.9",
             "source": {
@@ -95,6 +117,28 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/angular/bower-angular-route/zipball/93b5dc381eeccf1e3c74dffb9bf8d4df45c95819",
                 "reference": "93b5dc381eeccf1e3c74dffb9bf8d4df45c95819",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/angular": "1.6.9"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-sanitize",
+            "version": "v1.6.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular-sanitize.git",
+                "reference": "ddd35b767b340de4233b2c7a52b89f0ae793a1d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-sanitize/zipball/ddd35b767b340de4233b2c7a52b89f0ae793a1d5",
+                "reference": "ddd35b767b340de4233b2c7a52b89f0ae793a1d5",
                 "shasum": null
             },
             "require": {
@@ -1734,23 +1778,23 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.7.5",
+            "version": "1.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401"
+                "reference": "33a7e3c4fda54e912ff6338c48823bd5c0f0b712"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/dfd6be44111a7c41c2e884a336cc4f461b3b2401",
-                "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/33a7e3c4fda54e912ff6338c48823bd5c0f0b712",
+                "reference": "33a7e3c4fda54e912ff6338c48823bd5c0f0b712",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
-                "sebastian/comparator": "^1.1|^2.0",
+                "sebastian/comparator": "^1.1|^2.0|^3.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
@@ -1793,7 +1837,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-02-19T10:16:54+00:00"
+            "time": "2018-04-18T13:57:24+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

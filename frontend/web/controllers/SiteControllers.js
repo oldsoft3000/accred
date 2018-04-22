@@ -45,8 +45,17 @@ SiteControllers.config(['$routeProvider', '$httpProvider',
     }
 ]);
 
-SiteControllers.controller('MainController', ['$scope', '$location', '$window', 'SiteServices',
-    function ($scope, $location, $window, SiteServices) {
+SiteControllers.controller('MainController',    ['$scope',
+                                                '$location',
+                                                '$window',
+                                                'SiteServices',
+                                                'ViewData',
+    function ($scope, $location, $window, SiteServices, ViewData) {
+        var note = ViewData.get().$promise.then(function(viewdata) {
+            $scope.viewdata = viewdata;
+            var x = 0;
+        });
+
         $scope.isLoggedIn = function() {
             return SiteServices.isLoggedIn();
         };

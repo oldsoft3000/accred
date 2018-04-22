@@ -148,7 +148,7 @@ class SiteController extends Controller
 
     public function actionError()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
         $exception = Yii::$app->errorHandler->exception;
         if ($exception !== null) {
             return $this->render('error', ['exception' => $exception]);
