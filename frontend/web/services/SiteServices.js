@@ -64,7 +64,11 @@ SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', 
         };*/
 
         obj.isUserAgreed = function() {
-            return $window.sessionStorage.is_agreed;
+            if ($window.sessionStorage.is_agreed == 1) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         obj.resetUserAgreed = function() {
@@ -73,7 +77,7 @@ SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', 
 
         obj.getUserAgreed = function() {
             if ($window.sessionStorage.is_agreed !== '') {
-                return $q.resolve( $window.sessionStorage.is_agreed );
+                return $q.resolve( isUserAgreed() );
             } else {
                 return $http.post('site/get-agreed').then(function(response) {
                     $window.sessionStorage.is_agreed = response.data.is_agreed;

@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\filters\ContentNegotiator;
 use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
@@ -19,13 +20,19 @@ class FlightController extends Controller {
     /**
      * @inheritdoc
      */
-    /*public function behaviors() {
+    public function behaviors() {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::className(),
         ];
+        $behaviors['contentNegotiator'] = [
+            'class' => ContentNegotiator::className(),
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+            ],
+        ];
         return $behaviors;
-    }*/
+    }
 
     public function actionIndex() {
         return $this->actionView();
