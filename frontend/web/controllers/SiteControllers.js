@@ -51,13 +51,18 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 'SiteServices',
                                                 'ViewData',
                                                 'HotelData',
-    function ($scope, $location, $window, SiteServices, ViewData, HotelData) {
+                                                'Countries',
+    function ($scope, $location, $window, SiteServices, ViewData, HotelData, Countries) {
         ViewData.get().$promise.then(function(viewdata) {
             $scope.viewdata = viewdata;
         });
 
         HotelData.get().$promise.then(function(hoteldata) {
             $scope.hotels = hoteldata.hotels;
+        });
+
+        Countries.get().$promise.then(function(countries) {
+            $scope.countries = countries;
         });
 
         $scope.isLoggedIn = function() {

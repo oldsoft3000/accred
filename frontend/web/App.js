@@ -63,6 +63,11 @@ App.factory('HotelData', ['$resource', function($resource) {
     return $resource('views/hotel.json');
 }]);
 
+App.factory('Countries', ['$resource', function($resource) {
+    return $resource('views/country.json');
+}]);
+
+
 
 App.directive('onlyLatin', function () {
     return {
