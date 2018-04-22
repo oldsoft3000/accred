@@ -50,10 +50,14 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 '$window',
                                                 'SiteServices',
                                                 'ViewData',
-    function ($scope, $location, $window, SiteServices, ViewData) {
-        var note = ViewData.get().$promise.then(function(viewdata) {
+                                                'HotelData',
+    function ($scope, $location, $window, SiteServices, ViewData, HotelData) {
+        ViewData.get().$promise.then(function(viewdata) {
             $scope.viewdata = viewdata;
-            var x = 0;
+        });
+
+        HotelData.get().$promise.then(function(hoteldata) {
+            $scope.hotels = hoteldata.hotels;
         });
 
         $scope.isLoggedIn = function() {

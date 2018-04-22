@@ -12,26 +12,25 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
-        when('/hotel/reserve_tutorial/:idParticip', {
+        when('/hotel/reserve_tutorial/:idParticip/:idReserved', {
             templateUrl: 'views/hotel/reserve_tutorial.html',
-            controller: 'ReserveHotelTutorialController',
-            resolve: {
-                response: function(HotelServices) {
-                    return HotelServices.getHotels();
-                }
-            }
+            controller: 'HotelTutorialController',
         }).
         when('/hotel/reserve/:idParticip/:idHotel', {
             templateUrl: 'views/hotel/reserve.html',
-            controller: 'ReserveHotelController',
+            controller: 'HotelController',
             resolve: {
                 response: function(HotelServices, $route) {
-                    return HotelServices.getHotelInfo($route.current.params.idHotel,
-                                                      $route.current.params.idParticip,  
-                                                      $route.current.params.reserved);
+                    if ($route.current.params.isReserved == 'true') {
+                        return HotelServices.getReservationInfo($route.current.params.idParticip);
+                    } else {
+                        return null;
+                    }
                 }
             }
         }).
+
+        
         otherwise({
             templateUrl: 'views/site/404.html'
         });
@@ -40,8 +39,8 @@ HotelControllers.config(['$routeProvider', '$httpProvider',
 ]);
 
 
-HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'response', 'HotelServices',
-    function ($location, $scope, response, HotelServices) {
+HotelControllers.controller('ViewHotelController', ['$location', '$scope', '$route', 'response', 'HotelServices',
+    function ($location, $scope, $route, response, HotelServices) {
         $scope.particips = response.data;
         $scope.delete = function(id) {
             if (confirm("Удалить бронирование") == true && id > 0) {
@@ -52,30 +51,37 @@ HotelControllers.controller('ViewHotelController', ['$location', '$scope', 'resp
     }
 ]);
 
-HotelControllers.controller('ReserveHotelTutorialController', ['$location',
-                                                               '$scope',
-                                                               '$route',
-                                                               'response',
-                                                               'HotelServices', 
-    function ($location, $scope, $route, response,  HotelServices) {
+HotelControllers.controller('HotelTutorialController', ['$location',
+                                                       '$scope',
+                                                       '$route',
+                                                       'HotelServices', 
+    function ($location, $scope, $route, HotelServices) {
         $scope.idParticip = $route.current.params.idParticip;
-        $scope.hotels = response.data;
-        $scope.checked = $route.current.params.checked;
-
+        $scope.idReserved = $route.current.params.idReserved;
     }
 ]);
 
-HotelControllers.controller('ReserveHotelController', ['$location',
-                                                       '$scope',
-                                                       '$route',
-                                                       'response',
-                                                       'HotelServices',
-    function ($location, $scope, $route, response,  HotelServices) {
+HotelControllers.controller('HotelController', ['$location',
+                                                   '$scope',
+                                                   '$route',
+                                                   'response',
+                                                   'HotelServices',
+    function ($location, $scope, $route, response, HotelServices) {
         $scope.modelReserv = {};
-        $scope.hotel = response[0].data;
-        $scope.rooms = response[1].data;
-        $scope.categories = response[2].data;
-        $scope.types = response[3].data;
+        $scope.idHotel = $route.current.params.idHotel;
+        $scope.categories = [];
+        $scope.types = [];
+
+
+        $scope.hotels[$scope.idHotel].rooms.forEach(function(room) {
+            var i = $scope.categories.indexOf[room.category];
+            if ($scope.categories.indexOf(room.category) == -1) {
+                $scope.categories.push(room.category);
+            }
+            if ($scope.types.indexOf(room.type) == -1) {
+                $scope.types.push(room.type);
+            }
+        });
 
         $scope.getName = function(arr, id) {
             for ( var i = 0; i < arr.length; i++ )
@@ -84,16 +90,14 @@ HotelControllers.controller('ReserveHotelController', ['$location',
             return false
         };
 
-        if ( $route.current.params.reserved == "true" ) {
-            $scope.modelReserv = response[4].data;
-            $scope.modelReserv.category_id = response[4].data.category_id.toString();
-            $scope.modelReserv.type_id = response[4].data.type_id.toString();
+        if ( $route.current.params.isReserved == "true" ) {
+            $scope.modelReserv = response.data;
         }
 
         $scope.reserveHotel = function() {
             $scope.dataLoading = true;
             $scope.error = {};
-            $scope.modelReserv.hotel_id = $scope.hotel.id;
+            $scope.modelReserv.hotel_index = $scope.idHotel;
 
             HotelServices.reserve($scope.modelReserv, $route.current.params.idParticip)
                 .then(successHandler)

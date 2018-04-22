@@ -59,6 +59,11 @@ App.factory('ViewData', ['$resource', function($resource) {
 }]);
 
 
+App.factory('HotelData', ['$resource', function($resource) {
+    return $resource('views/hotel.json');
+}]);
+
+
 App.directive('onlyLatin', function () {
     return {
       require: 'ngModel',

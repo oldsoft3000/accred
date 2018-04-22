@@ -9,8 +9,6 @@ use yii\filters\AccessControl;
 use yii\rest\Controller;
 use yii\filters\auth\HttpBearerAuth;
 use app\models\Hotel;
-use app\models\HotelSearch;
-use app\models\HotelReservation;
 use app\models\Particip;
 use app\models\ParticipSearch;
 use yii\web\ForbiddenHttpException;
@@ -44,80 +42,58 @@ class HotelController extends Controller {
     public function actionView($id = null) {
         if ($id == null) {
             $modelSearch = new ParticipSearch();
-            return $modelSearch->searchHotelReservation();   
+            return $modelSearch->searchHotel();   
         } else {
             ParticipController::checkAccess('view', null, ['id' => $id]);
-            $modelReserve = $this->findModelByParticip($id);
-            if ($modelReserve) {
-                $modelReserve->arrival_date = Formater::convertOutput($modelReserve->arrival_date);
-                $modelReserve->departure_date = Formater::convertOutput($modelReserve->departure_date);
+            $modelHotel = $this->findModelByParticip($id);
+            if ($modelHotel) {
+                $modelHotel->arrival_date = Formater::convertOutput($modelHotel->arrival_date);
+                $modelHotel->departure_date = Formater::convertOutput($modelHotel->departure_date);
             }
-            return $modelReserve;
+            return $modelHotel;
         }
     }
 
-    // Список отелей
-    public function actionHotels($id = null) {
-        if ($id == null) {
-            return Hotel::find()->all();
-        } else {
-            return Hotel::findOne($id); 
-        }
-    }
-
-    // Список Номеров
-    public function actionRooms($hotel) {
-        return HotelSearch::getRoomsByHotel($hotel);
-    }
-
-    public function actionRoomCategories($hotel) {
-        return HotelSearch::getRoomCategoriesByHotel($hotel);
-    }
-
-    public function actionRoomTypes($hotel) {
-        return HotelSearch::getRoomTypesByHotel($hotel);
-    }
-    
     public function actionReserve($id /* Particip id */) {
         $modelParticip = particip::findOne($id);
         ParticipController::checkAccess('update', $modelParticip);
-        $modelReserveOld = $this->findModelByParticip($id); 
-        $modelReserve = new HotelReservation();
+        $modelHotelOld = $this->findModelByParticip($id); 
+        $modelHotel = new Hotel();
 
-        if ($modelReserve->load(Yii::$app->getRequest()->getBodyParams(), '') &&
-            $modelReserve->save()) {
-                $modelParticip->hotel_reservation_id = $modelReserve->id;
+        if ($modelHotel->load(Yii::$app->getRequest()->getBodyParams(), '') &&
+            $modelHotel->save()) {
+                $modelParticip->hotel_id = $modelHotel->id;
                 if ($modelParticip->save()) {
-                    if ($modelReserveOld) {
-                        $modelReserveOld->delete();
+                    if ($modelHotelOld) {
+                        $modelHotelOld->delete();
                     }
                     return ['access_token' => Yii::$app->user->identity->getAuthKey()];
                 } else {
                     throw new ServerErrorHttpException('Server error.');
                 }
         } else {
-            $modelReserve->validate(); 
-            return $modelReserve; 
+            $modelHotel->validate(); 
+            return $modelHotel; 
         }
     }
 
     public function actionDelete($id) {
         $modelParticip = particip::findOne($id);
         ParticipController::checkAccess('delete', $modelParticip);
-        $modelReserve = $this->findModelByParticip($id); 
-        if ($modelReserve) {
-            $modelParticip->hotel_reservation_id = 0;
+        $modelHotel = $this->findModelByParticip($id); 
+        if ($modelHotel) {
+            $modelParticip->hotel_id = 0;
             $modelParticip->save();
-            $modelReserve->delete();
+            $modelHotel->delete();
         }
-        return $modelReserve;
+        return $modelHotel;
     }
 
     protected function findModelByParticip($id) {
         if (($modelParticip = particip::findOne($id)) !== null) {
-            if ($modelParticip->hotel_reservation_id != null) {
-                if (($modelHotelReservation = hotelReservation::findOne($modelParticip->hotel_reservation_id)) !== null) {
-                    return $modelHotelReservation;
+            if ($modelParticip->hotel_id != null) {
+                if (($modelHotel = hotel::findOne($modelParticip->hotel_id)) !== null) {
+                    return $modelHotel;
                 }
             }
             return null;

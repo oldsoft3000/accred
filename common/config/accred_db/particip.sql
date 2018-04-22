@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `particip` (
   `position_latin` varchar(100) NOT NULL,
   `photo` LONGBLOB NULL,
   `created_by` int(11) NOT NULL,
-  `hotel_reservation_id` int(11) NOT NULL, 
+  `hotel_id` int(11) NOT NULL, 
   `flight_id` int(11) NOT NULL, 
   `ticket_id` int(11) NOT NULL, 
   `car_id` int(11) NOT NULL, 
