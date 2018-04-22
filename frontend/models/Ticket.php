@@ -51,16 +51,16 @@ class Ticket extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ticket_type' => 'Ticket Type',
-            'departure_date' => 'Departure Date',
-            'flight_number' => 'Flight Number',
-            'from' => 'From',
-            'where' => 'Where',
-            'class' => 'Class',
-            'passport_number' => 'Passport Number',
-            'passport_validity' => 'Passport Validity',
-            'bonus_card' => 'Bonus Card',
-            'company_name' => 'Company Name',
+            'ticket_type' => 'Тип транспорта',
+            'departure_date' => 'Дата отправления',
+            'flight_number' => 'Номер рейса',
+            'from' => 'Откуда',
+            'where' => 'Куда',
+            'class' => 'Класс',
+            'passport_number' => 'Номер загран паспорта',
+            'passport_validity' => 'Годен до',
+            'bonus_card' => 'Бонусная карта',
+            'company_name' => 'Название авиакомпании',
         ];
     }
 

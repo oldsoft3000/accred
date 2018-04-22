@@ -93,6 +93,7 @@ return [
                     'js' => ['js/bootstrap.min.js']
                 ]
             ],
+            'appendTimestamp' => true,
         ],
     ],
     'params' => $params,

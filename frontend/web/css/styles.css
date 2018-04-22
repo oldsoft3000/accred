@@ -317,7 +317,7 @@ label {
 .checked-button:after {
     content: url('../images/check_mark.png');
     position: absolute;
-    margin-left: -10px;
+    margin-left: -22px;
     margin-top: -10px;
 }
 
@@ -339,9 +339,11 @@ label {
   color: #001158!important;
 }
 
-
-
 select {
+  color: #999!important;
+}
+
+select.ng-empty {
   color: #999!important;
 }
 
