@@ -27,6 +27,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
 
+
     /**
      * {@inheritdoc}
      */
@@ -211,6 +212,12 @@ class User extends ActiveRecord implements IdentityInterface
             $editor = $auth->getRole('editor'); 
             $auth->assign($editor, $this->id); 
         }
+    }
+
+    public function setAgreed()
+    {
+        $this->is_agreed = 1;
+        $this->save();
     }
 
 }

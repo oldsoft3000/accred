@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` int(11) NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
+  `is_agreed` int(1) NULL,
   PRIMARY KEY (`id`)
 );
 

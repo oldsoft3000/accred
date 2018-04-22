@@ -23,7 +23,6 @@ SiteControllers.config(['$routeProvider', '$httpProvider',
             }).    
             when('/agreement', {
                 templateUrl: 'views/site/agreement.html',
-                controller: 'AgreementController',
             }).               
             when('/dashboard', {
                 templateUrl: 'views/site/dashboard.html',
@@ -73,10 +72,6 @@ SiteControllers.controller('MainController',    ['$scope',
             return SiteServices.isLoggedIn();
         };
 
-        $scope.isUserAgreed = function() {
-            return SiteServices.isUserAgreed();
-        }
-
         $scope.logout = function () {
             SiteServices.logout();
             $location.path('/login').replace();
@@ -85,6 +80,15 @@ SiteControllers.controller('MainController',    ['$scope',
         $scope.isActivePath = function (route) {
             return route === $location.path();
         }; 
+
+        $scope.isUserAgreed = function () {
+            return SiteServices.isUserAgreed();
+        }
+
+        $scope.agree = function () {
+            SiteServices.setUserAgreed();
+            $location.path('/particip/view').replace();
+        }
         
 
         $scope.modelUser = {
@@ -123,11 +127,15 @@ SiteControllers.controller('LoginController', ['$scope', '$window', '$location',
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
-                    if (SiteServices.isUserAgreed()) {
-                        $location.path('/particip/view').replace();
-                    } else {
-                        $location.path('/agreement').replace();
-                    }
+                    SiteServices.resetUserAgreed();
+                    SiteServices.getUserAgreed().then(function(is_agreed) {
+                        if (is_agreed) {
+                            $location.path('/particip/view').replace();
+                        } else {
+                            $location.path('/agreement').replace();
+                        }
+                    });
+                    
                     return response;
                 }
                 function errorHandler(response) {
@@ -162,7 +170,7 @@ SiteControllers.controller('SignupController', ['$scope', '$window', '$location'
                         .then(successHandler) 
                         .catch(errorHandler);
                         function successHandler(response) {
-                            SiteServices.resetAgree();
+                            SiteServices.resetUserAgreed();
                             $location.path('/agreement').replace();
                         }
                     //$location.path('/login').replace();
@@ -177,18 +185,6 @@ SiteControllers.controller('SignupController', ['$scope', '$window', '$location'
     }
 ]);
 
-SiteControllers.controller('AgreementController', ['$cookies', '$location', '$scope', 'SiteServices',
-    function ($cookies, $location, $scope, SiteServices) {
-        $scope.isUserAgreed = function () {
-            return SiteServices.isUserAgreed();
-        }
-        $scope.agree = function () {
-            SiteServices.agree();
-            $location.path('/particip/view').replace();
-        }
-
-    }
-]);
 
 SiteControllers.controller('DashboardController', ['$scope', 'response',
     function ($scope, response) {

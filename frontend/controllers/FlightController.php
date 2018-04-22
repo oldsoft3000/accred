@@ -19,13 +19,13 @@ class FlightController extends Controller {
     /**
      * @inheritdoc
      */
-    public function behaviors() {
+    /*public function behaviors() {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::className(),
         ];
         return $behaviors;
-    }
+    }*/
 
     public function actionIndex() {
         return $this->actionView();

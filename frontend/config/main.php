@@ -34,7 +34,8 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             //'on afterLogin' => ['app\events\AfterLoginEvent', 'handleNewUser'],
-            'enableSession' => false,
+            'enableSession' => true,
+            'enableAutoLogin' => true,
             'loginUrl' => null,
 
         ],

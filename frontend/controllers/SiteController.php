@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use Yii;
@@ -15,17 +16,16 @@ use yii\web\ForbiddenHttpException;
 /**
  * Site controller
  */
-class SiteController extends Controller
-{
+class SiteController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::className(),
-            'only' => ['dashboard'],
+            'only' => ['dashboard', 'agreed'],
         ];
         $behaviors['contentNegotiator'] = [
             'class' => ContentNegotiator::className(),
@@ -46,13 +46,12 @@ class SiteController extends Controller
         ];
         return $behaviors;
     }
-    
-    public function actions()
-    {
+
+    public function actions() {
         return [
-            /*'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],*/
+            /* 'error' => [
+              'class' => 'yii\web\ErrorAction',
+              ], */
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
@@ -60,29 +59,37 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
+    public function actionIndex() {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
         return $this->renderContent(null);
     }
 
-    public function actionLogin()
-    {
+    public function actionLogin() {
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->login()) {
 
             Yii::$app->user->identity->generateAuthKey();
             Yii::$app->user->identity->save();
-            return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+            return ['access_token' => Yii::$app->user->identity->getAuthKey(),
+                'is_agreed' => Yii::$app->user->identity->is_agreed];
         } else {
             $model->validate();
             return $model;
         }
     }
 
-    public function actionDashboard()
-    {
+    public function actionGetAgreed() {
+        return ['is_agreed' => Yii::$app->user->identity->is_agreed];
+
+    }
+
+    public function actionSetAgreed() {
+        Yii::$app->user->identity->setAgreed();
+        return ['is_agreed' => Yii::$app->user->identity->is_agreed];
+    }
+
+    public function actionDashboard() {
         $response = [
             'username' => Yii::$app->user->identity->username,
             'access_token' => Yii::$app->user->identity->getAuthKey(),
@@ -91,8 +98,7 @@ class SiteController extends Controller
         return $response;
     }
 
-    public function actionContact()
-    {
+    public function actionContact() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -116,9 +122,8 @@ class SiteController extends Controller
             return $model;
         }
     }
-    
-    public function actionSignup()
-    {
+
+    public function actionSignup() {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post(), '')) {
             if ($user = $model->signup()) {
@@ -131,8 +136,7 @@ class SiteController extends Controller
         return $model;
     }
 
-    public function actionCities()
-    {
+    public function actionCities() {
 
         $str = '
             SELECT name
@@ -146,12 +150,12 @@ class SiteController extends Controller
         return $rows;
     }
 
-    public function actionError()
-    {
+    public function actionError() {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_HTML;
         $exception = Yii::$app->errorHandler->exception;
         if ($exception !== null) {
             return $this->render('error', ['exception' => $exception]);
         }
     }
+
 }

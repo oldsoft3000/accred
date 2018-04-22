@@ -43,7 +43,7 @@ SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', 
             return Boolean($window.sessionStorage.access_token);
         };
         
-        obj.isUserAgreed = function() {
+        /*obj.isUserAgreed = function() {
             var user_agreed = $cookies.get('user_agreed');
             if (user_agreed === "1") {
                 return true;
@@ -61,6 +61,32 @@ SiteControllers.factory('SiteServices', ['$http', '$window', '$location', '$q', 
             var v = new Date();
             v.setDate(d.getDate() + 365);
             $cookies.put('user_agreed', '1', {expires: v});
+        };*/
+
+        obj.isUserAgreed = function() {
+            return $window.sessionStorage.is_agreed;
+        }
+
+        obj.resetUserAgreed = function() {
+             $window.sessionStorage.is_agreed = '';
+        };
+
+        obj.getUserAgreed = function() {
+            if ($window.sessionStorage.is_agreed !== '') {
+                return $q.resolve( $window.sessionStorage.is_agreed );
+            } else {
+                return $http.post('site/get-agreed').then(function(response) {
+                    $window.sessionStorage.is_agreed = response.data.is_agreed;
+                    return response.data.is_agreed;
+                });
+            }
+        };
+
+        obj.setUserAgreed = function() {
+            return $http.post('site/set-agreed').then(function(response) {
+                $window.sessionStorage.is_agreed = 1;
+                return response;
+            });
         };
 
         return obj; 
