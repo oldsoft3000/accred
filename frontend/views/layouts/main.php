@@ -46,7 +46,7 @@ AppAsset::register($this);
                 <a class="nav-link " role="button" aria-disabled="true" href="#!/car/view">Аккредитация личного автотранспорта</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
-                <a ng-click="logout()" class="nav-link login-button" role="button" aria-disabled="true" href="">Выход</a> 
+                <a ng-click="logout()" class="nav-link login-button" role="button" aria-disabled="true" href="" style="">Выход</a> 
               </li> 
           </div>
 
