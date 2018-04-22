@@ -338,3 +338,18 @@ label {
 .dark-link:active  {
   color: #001158!important;
 }
+
+
+
+select {
+  color: #999!important;
+}
+
+select.ng-not-empty {
+  color: #555555!important;
+}
+
+option {
+  color: #555555!important;
+}
+
