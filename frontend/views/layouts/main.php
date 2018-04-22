@@ -25,7 +25,7 @@ AppAsset::register($this);
           </div>
           <div class="sidebar">
               <li ng-class="{'sidebar-loaded': true}" ng-if="!isLoggedIn()" class="nav-item sidebar-loading">
-                <a  class="btn nav-link" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
+                <a  class="nav-link login-button" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
                 <a class="nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
@@ -40,13 +40,13 @@ AppAsset::register($this);
                 <a class="nav-link " role="button" aria-disabled="true" href="#!/flight/view">Полетные данные</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование билетов</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование авиа и ж/д билетов</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
                 <a class="nav-link " role="button" aria-disabled="true" href="#!/car/view">Аккредитация личного автотранспорта</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
-                <a ng-click="logout()" class="nav-link" role="button" aria-disabled="true" href="">Выход</a> 
+                <a ng-click="logout()" class="nav-link login-button" role="button" aria-disabled="true" href="">Выход</a> 
               </li> 
           </div>
 
