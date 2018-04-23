@@ -13,7 +13,7 @@ AppAsset::register($this);
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>My Angular Yii Application</title>
+        <title></title>
         <script>paceOptions = {ajax: {trackMethods: ['GET', 'POST']}};</script>
         <?php $this->head() ?>
     </head>
@@ -40,7 +40,7 @@ AppAsset::register($this);
                 <a class="nav-link " role="button" aria-disabled="true" href="#!/flight/view">Полетные данные</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование авиа и ж/д билетов</a> 
+                <a class="nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование авиа и <br>ж/д билетов</a> 
               </li> 
               <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
                 <a class="nav-link " role="button" aria-disabled="true" href="#!/car/view">Аккредитация личного автотранспорта</a> 
