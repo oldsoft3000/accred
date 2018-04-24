@@ -14,7 +14,7 @@
         <tbody>
           <tr ng-repeat="data in particips">
             <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
-            <td>{{(data.hotel_id != 0) ? data.type_name + ' ' + data.category_name : ''}}</td>
+            <td>{{(data.hotel_id) ? (data.type_name + ' ' + data.category_name) : ''}}</td>
             <td style="padding:0px 10px; vertical-align: middle;">
               <a class="action-icon-block" href="#!/hotel/reserve_tutorial/{{data.id}}/{{(data.hotel_index)?data.hotel_index:-1}}" data-toggle="tooltip" title="Заполнить">
               <img class="action-icon" border="0" src="images/edit.png" >

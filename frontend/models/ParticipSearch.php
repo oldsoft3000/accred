@@ -106,7 +106,7 @@ class ParticipSearch extends Particip
                     first_name,
                     middle_name,
                     last_name,
-                    hotel_id,
+                    hotel.id as hotel_id,
                     category_name,
                     type_name,
                     hotel_index 

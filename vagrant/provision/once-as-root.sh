@@ -53,7 +53,7 @@ sed -i 's/user www-data/user vagrant/g' /etc/nginx/nginx.conf
 echo "Done!"
 
 info "Enabling site configuration"
-ln -s /app/vagrant/nginx/app.conf /etc/nginx/sites-enabled/app.conf
+ln -s /vagrant/nginx/app.conf /etc/nginx/sites-enabled/app.conf
 echo "Done!"
 
 info "Initailize databases for MySQL"
@@ -61,5 +61,5 @@ mysql -uroot <<< "CREATE DATABASE yii2advanced"
 mysql -uroot <<< "CREATE DATABASE yii2advanced_test"
 echo "Done!"
 
-info "Install composer"
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#info "Install composer"
+#curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

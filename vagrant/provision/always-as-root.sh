@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source /app/vagrant/provision/common.sh
+source /vagrant/provision/common.sh
 
 #== Provision script ==
 
