@@ -8,15 +8,15 @@ github_token=$(echo "$1")
 
 #== Provision script ==
 
-info "Provision-script user: `whoami`"
+#info "Provision-script user: `whoami`"
 
-info "Configure composer"
-composer config --global github-oauth.github.com ${github_token}
-echo "Done!"
+#info "Configure composer"
+#composer config --global github-oauth.github.com ${github_token}
+#echo "Done!"
 
-info "Install project dependencies"
-cd /app
-composer --no-progress --prefer-dist install
+#info "Install project dependencies"
+#cd /app
+#composer --no-progress --prefer-dist install
 
 #info "Init project"
 #./init --env=Development --overwrite=y
