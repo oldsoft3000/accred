@@ -61,7 +61,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8002
 
   # sync: folder 'yii2-app-advanced' (host machine) -> folder '/app' (guest machine)
-  config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant', disabled: true
+  config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant', disabled: false
 
   # disable folder '/vagrant' (guest machine)
   config.vm.synced_folder './vagrant', '/vagrant', disabled: false
