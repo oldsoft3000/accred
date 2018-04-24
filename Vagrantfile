@@ -42,7 +42,8 @@ Vagrant.configure(2) do |config|
     vb.memory = options['memory']
     # machine name (for VirtualBox UI)
     vb.name = options['machine_name']
-
+    
+    vb.gui = true
     #vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     #vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
   end
@@ -54,11 +55,13 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = options['machine_name']
 
   # network settings
-  #config.vm.network 'private_network', ip: options['ip']
-  config.vm.network :public_network
+  config.vm.network 'private_network', ip: options['ip']
+  #config.vm.network :public_network
+
+  config.vm.network "forwarded_port", guest: 80, host: 8002
 
   # sync: folder 'yii2-app-advanced' (host machine) -> folder '/app' (guest machine)
-  config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant'
+  config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant', disabled: true
 
   # disable folder '/vagrant' (guest machine)
   config.vm.synced_folder '.', '/vagrant', disabled: true
