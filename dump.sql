@@ -16,6 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `accred`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `accred`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `accred` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `accred`;
+
+--
 -- Table structure for table `auth_assignment`
 --
 
@@ -480,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-25  1:31:22
+-- Dump completed on 2018-04-25  1:56:56
