@@ -188,7 +188,7 @@ CREATE TABLE `car` (
   `passport_number` int(11) DEFAULT NULL,
   `place_of_birth` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +377,7 @@ CREATE TABLE `particip` (
   `car_id` int(11) DEFAULT NULL,
   `payment` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -460,10 +460,10 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `auth_key` varchar(32) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `password_reset_token` varchar(255) NOT NULL,
+  `password_reset_token` varchar(255) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
-  `status` smallint(10) NOT NULL,
-  `role` int(11) NOT NULL,
+  `status` smallint(10) DEFAULT NULL,
+  `role` int(11) DEFAULT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   `is_agreed` int(1) DEFAULT NULL,
@@ -490,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-25  1:56:56
+-- Dump completed on 2018-04-25 13:16:12
