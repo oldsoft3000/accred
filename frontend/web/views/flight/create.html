@@ -1,5 +1,5 @@
 <form name="createForm" ng-submit="create()" role="form" novalidate>
-  <h1 class="subtitle">Прибытие в Сочи</h1>
+  <h1 class="subtitle">Прибытие в {{viewdata.flight.city}}</h1>
   <div class="subblock">
     <div class="form-group row">
       <label class="col-sm-3 form-label required">Место прибытия</label>
@@ -8,10 +8,9 @@
                 ng-click="error['arrival_place'] = ''"
                 ng-class="{'is-invalid': error['arrival_place'] }"
                 ng-model="modelFlight.arrival_place"
-                class="form-control">
+                class="form-control"
+                ng-options="o as o for o in viewdata.flight.stations">
           <option selected value="" style="display:none;">Выберите место прибытия</option>
-          <option value='Ж/д вокзал "Сочи"'>Ж/д вокзал "Сочи"</option>
-          <option value='Международный аэропорт Сочи'>Международный аэропорт Сочи</option>
         </select>
         <div ng-if="error['arrival_place']" class="invalid-tooltip">
           {{ error['arrival_place']}}
@@ -93,7 +92,8 @@
                 ng-click="error['departure_place'] = ''"
                 ng-class="{'is-invalid': error['departure_place'] }"
                 ng-model="modelFlight.departure_place"
-                class="form-control">
+                class="form-control"
+                ng-options="o as o for o in viewdata.flight.stations">
           <option selected value="" style="display:none;">Выберите место отправления</option>
           <option value='Ж/д вокзал "Сочи"'>Ж/д вокзал "Сочи"</option>
           <option value='Международный аэропорт Сочи'>Международный аэропорт Сочи</option>
