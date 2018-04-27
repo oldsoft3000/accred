@@ -41,7 +41,7 @@ return [
         ],
         'request' => [
             'class' => '\yii\web\Request',
-            'enableCookieValidation' => false,
+            'enableCookieValidation' => true,
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ],

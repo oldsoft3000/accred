@@ -17,9 +17,21 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
+            //'identityClass' => 'common\models\User',
+            //'enableAutoLogin' => true,
+            //'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+
             'identityClass' => 'common\models\User',
+            'enableSession' => true,
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'loginUrl' => null,
+        ],
+        'request' => [
+            'class' => '\yii\web\Request',
+            'enableCookieValidation' => true,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
@@ -52,6 +64,13 @@ return [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
+        ],
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=accred',
+            'username' => 'root',
+            'password' => '818181',
+            'charset' => 'utf8',
         ],
     ],
     'params' => $params,
