@@ -58,11 +58,21 @@ Vagrant.configure(2) do |config|
   config.vm.network 'private_network', ip: options['ip']
   #config.vm.network :public_network
 
-  config.vm.network "forwarded_port", guest: 80, host: 8002
+  config.vm.network "forwarded_port", guest: 8001, host: 8001
+  config.vm.network "forwarded_port", guest: 8002, host: 8002
+  config.vm.network "forwarded_port", guest: 8003, host: 8003
+  config.vm.network "forwarded_port", guest: 8004, host: 8004
+  config.vm.network "forwarded_port", guest: 8005, host: 8005
+  
+
 
   # sync: folder 'yii2-app-advanced' (host machine) -> folder '/app' (guest machine)
   config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant', disabled: false
-
+  config.vm.synced_folder '/var/www/accred.dev1', '/www.dev1', owner: 'vagrant', group: 'vagrant', disabled: false
+  config.vm.synced_folder '/var/www/accred.dev1', '/www.dev2', owner: 'vagrant', group: 'vagrant', disabled: false
+  config.vm.synced_folder '/var/www/accred.dev3', '/www.dev3', owner: 'vagrant', group: 'vagrant', disabled: false
+  config.vm.synced_folder '/var/www/accred.dev4', '/www.dev4', owner: 'vagrant', group: 'vagrant', disabled: false
+  config.vm.synced_folder '/var/www/accred.dev5', '/www.dev5', owner: 'vagrant', group: 'vagrant', disabled: false
   # disable folder '/vagrant' (guest machine)
   config.vm.synced_folder './vagrant', '/vagrant', disabled: false
 
