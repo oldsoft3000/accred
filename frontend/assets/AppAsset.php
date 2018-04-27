@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\assets;
+namespace app\assets;
 
 use yii\web\AssetBundle;
 
@@ -32,7 +32,7 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'frontend\assets\AngularAsset',
+        'app\assets\AngularAsset',
     ];
 
     

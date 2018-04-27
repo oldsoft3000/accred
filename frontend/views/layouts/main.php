@@ -1,7 +1,7 @@
 
 
 <?php
-use frontend\assets\AppAsset;
+use app\assets\AppAsset;
 
 /* @var $this \yii\web\View */
 
