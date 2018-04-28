@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "85e6c0484fb7c7cf3b03eb8a7b89a56c",
+    "content-hash": "5435ce754699d54f6bdde07ff85911cf",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -82,6 +82,22 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/angular-datatables",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/l-lin/angular-datatables.git",
+                "reference": "5b853d7af1ac3eefe6508fbc5e1b1e30510363ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/l-lin/angular-datatables/zipball/5b853d7af1ac3eefe6508fbc5e1b1e30510363ea",
+                "reference": "5b853d7af1ac3eefe6508fbc5e1b1e30510363ea",
+                "shasum": null
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/angular-resource",
@@ -938,16 +954,16 @@
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "563570c9aa19ca47c1b22e3032983229378e9274"
+                "reference": "fd917fbe63b7ea796c52902143b83b98e65bfb73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/563570c9aa19ca47c1b22e3032983229378e9274",
-                "reference": "563570c9aa19ca47c1b22e3032983229378e9274",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/fd917fbe63b7ea796c52902143b83b98e65bfb73",
+                "reference": "fd917fbe63b7ea796c52902143b83b98e65bfb73",
                 "shasum": ""
             },
             "require": {
@@ -957,12 +973,12 @@
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "yii\\swiftmailer\\": ""
+                    "yii\\swiftmailer\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -984,7 +1000,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2017-08-04T10:48:17+00:00"
+            "time": "2018-04-24T23:17:42+00:00"
         }
     ],
     "packages-dev": [
