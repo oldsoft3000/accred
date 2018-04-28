@@ -52,18 +52,22 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 'HotelData',
                                                 'Countries',
     function ($scope, $location, $window, SiteServices, ViewData, HotelData, Countries) {
-        ViewData.get().$promise.then(function(viewdata) {
-            $scope.viewdata = viewdata;
-        });
-
-        HotelData.get().$promise.then(function(hoteldata) {
-            $scope.hotels = hoteldata.hotels;
-        });
-
-        Countries.get().$promise.then(function(countries) {
-            $scope.countries = countries;
-        });
-
+        
+        if (typeof $scope.viewdata == 'undefined') {
+            ViewData.get().$promise.then(function(viewdata) {
+                $scope.viewdata = viewdata;
+            });
+        }
+        if (typeof $scope.hotels == 'undefined') {
+            HotelData.get().$promise.then(function(hoteldata) {
+                $scope.hotels = hoteldata.hotels;
+            });
+        }
+        if (typeof $scope.countries == 'undefined') {
+            Countries.get().$promise.then(function(countries) {
+                $scope.countries = countries;
+            });
+        }
         $scope.isLoggedIn = function() {
             return SiteServices.isLoggedIn();
         };
