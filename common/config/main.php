@@ -12,5 +12,30 @@ return [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=accred',
+            'username' => 'root',
+            'password' => '818181',
+            'charset' => 'utf8',
+        ],
+        'user' => [
+            'identityClass' => 'common\models\User',
+            //'on afterLogin' => ['app\events\AfterLoginEvent', 'handleNewUser'],
+            'enableSession' => true,
+            'enableAutoLogin' => true,
+            'loginUrl' => null,
+
+        ],
+        'request' => [
+            'class' => '\yii\web\Request',
+            'enableCookieValidation' => true,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
     ],
 ];
