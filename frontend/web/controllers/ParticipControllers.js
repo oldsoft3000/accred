@@ -139,7 +139,7 @@ ParticipControllers.controller('CreateController', ['$timeout',
         };
 
 
-        $scope.visaReuired = function(value) {
+        $scope.visaRequired = function(value) {
             var el = angular.element(document.querySelector('#visa-fieldset'));
             if (value === 0) {
                 el.attr('disabled', 'true');
@@ -196,7 +196,7 @@ ParticipControllers.controller('CreateController', ['$timeout',
         }
 
         $scope.$watch('modelUser.visa_required', function(newVal, oldVal) {
-            $scope.visaReuired(newVal);
+            $scope.visaRequired(newVal);
         }, true);
 
         $scope.editPhoto = function() {
