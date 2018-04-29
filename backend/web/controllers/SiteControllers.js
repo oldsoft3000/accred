@@ -6,19 +6,9 @@ SiteControllers.config(['$routeProvider', '$httpProvider',
             when('/', {
                 templateUrl: 'views/site/index.html'
             }).
-            when('/about', {
-                templateUrl: 'views/site/about.html'
-            }). 
             when('/login', {
                 templateUrl: 'views/site/login.html',
                 controller: 'LoginController',
-            }).
-            when('/signup', {
-                templateUrl: 'views/site/signup.html',
-                controller: 'SignupController',
-            }).    
-            when('/agreement', {
-                templateUrl: 'views/site/agreement.html',
             }).               
             when('/error', {
                 templateUrl: 'views/site/error.html',
@@ -48,20 +38,7 @@ SiteControllers.controller('MainController',    ['$scope',
             SiteServices.logout();
             $location.path('/login').replace();
         };
-        
-        $scope.isActivePath = function (route) {
-            return route === $location.path();
-        }; 
 
-        $scope.isUserAgreed = function () {
-            return SiteServices.isUserAgreed();
-        }
-
-        $scope.agree = function () {
-            SiteServices.setUserAgreed();
-            $location.path('/particip/view').replace();
-        }
-        
 
         $scope.modelUser = {
             telephone: '',
@@ -99,15 +76,7 @@ SiteControllers.controller('LoginController', ['$scope', '$window', '$location',
                 .catch(errorHandler);
                 function successHandler(response) {
                     $scope.dataLoading = false;
-                    SiteServices.resetUserAgreed();
-                    SiteServices.getUserAgreed().then(function(is_agreed) {
-                        if (is_agreed) {
-                            $location.path('/particip/view').replace();
-                        } else {
-                            $location.path('/agreement').replace();
-                        }
-                    });
-                    
+                    $location.path('/particip/view').replace();
                     return response;
                 }
                 function errorHandler(response) {
@@ -120,47 +89,6 @@ SiteControllers.controller('LoginController', ['$scope', '$window', '$location',
         };
     }
 ]);
-
-SiteControllers.controller('SignupController', ['$scope', '$window', '$location', 'SiteServices',
-    function($scope, $window, $location, SiteServices) {
-        $scope.signup = function () {
-            $scope.error = {};
-            if ($scope.modelUser &&
-                $scope.modelUser.username &&
-                $scope.modelUser.password &&
-                $scope.modelUser.email &&
-                $scope.modelUser.password != $scope.password_verify) {
-                $scope.error["password_verify"] = "Пароли должны совпадать";
-                return;
-            }
-            $scope.dataLoading = true;
-            SiteServices.signup($scope.modelUser)
-                .then(successHandler) 
-                .catch(errorHandler);
-                function successHandler(response) {
-                    $scope.dataLoading = false;
-                    var modelUser = {};
-                    modelUser.username = $scope.modelUser.username;
-                    modelUser.password = $scope.modelUser.password;
-                    SiteServices.login(modelUser)
-                        .then(successHandler) 
-                        .catch(errorHandler);
-                        function successHandler(response) {
-                            SiteServices.resetUserAgreed();
-                            $location.path('/agreement').replace();
-                        }
-                    //$location.path('/login').replace();
-                }
-                function errorHandler(response) {
-                    $scope.dataLoading = false;
-                    angular.forEach(response.data, function (error) {
-                        $scope.error[error.field] = error.message;
-                    });
-                }
-        };
-    }
-]);
-
 
 
 SiteControllers.controller('ErrorController', ['$scope', '$location','authInterceptor', 

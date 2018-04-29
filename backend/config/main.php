@@ -33,7 +33,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'api/user',
+                    'controller' => ['particip'],
                 ],
                 '/' => 'site/index',
                 '<action:\w+>' => 'site/<action>',

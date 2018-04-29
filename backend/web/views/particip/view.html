@@ -1,0 +1,61 @@
+<div>
+  <h1 class="subtitle">Список участников</h1>
+  <div class="subblock">
+    <p>{{ message}}</p>
+    <div class="" ng-show="particips.length > 0">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="sorting">Фамилия Имя Отчество</th>
+            <th class="sorting">Категория</th>
+            <th>Фото</th>
+            <th>Оплата</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="data in particips">
+            <td>{{data.last_name + ' ' + data.first_name + ' ' + data.middle_name}}</td>
+            <td>{{data.status}}</td>
+            <td style="padding:0px 10px; vertical-align: middle;"> {{data.photo ? '' : 'Нет фото'}}
+              <!-- <button style="height:25px;width:80%;"
+                    class="btn btn-secondary btn-lg"
+                    ng-if="data.photo"
+                    ng-click="showPhoto()"
+                    data-toggle="tooltip" data-target="#myModal"
+                    title="Показать фото" ></button> -->
+              <a class="action-icon-block" data-toggle="tooltip" title="Показать фото" ng-if="data.photo" ng-click="showPhoto(data)">
+              <img class="action-icon" border="0" src="images/view.png">
+            </a>
+              <div class="modal" id="myModal" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                  <div class="modal-content view-area text-center">
+                    <div class="modal-header">
+                      Фотография участника
+                    </div>
+                    <img ng-src="{{modelUser.photo}}"></img>
+                    <div class="modal-footer text-center">
+                      <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Закрыть</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>{{(data.paymant) ? data.paymant : ''}}</td>
+            <td style="padding:0px 10px; vertical-align: middle;">
+              <a class="action-icon-block" href="#!/particip/view/{{data.id}}" data-toggle="tooltip" title="Редактировать">
+              <img class="action-icon" border="0" src="images/edit.png" >
+            </a>
+              <a class="action-icon-block" ng-click="delete(data.id)" data-toggle="tooltip" title="Удалить">
+              <img class="action-icon" border="0" src="images/delete.png">
+            </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row text-center">
+    <a class="btn btn-primary" href="#!/particip/create" role="button">Добавить участника</a>
+  </div>
+</div>

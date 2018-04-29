@@ -8,10 +8,12 @@ var App = angular.module('App', [
     'cleave.js',
     'moment-picker',
     'SiteControllers',
+    'ParticipControllers',
 ]);
 
 
 var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
+var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies']);
 
 App.factory('authInterceptor', function ($q, $window, $location) {
     var data = {
@@ -54,22 +56,3 @@ App.config(function($httpProvider){
   $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
 });
 
-
-
-App.directive('onlyLatin', function () {
-    return {
-      require: 'ngModel',
-      link: function (scope, element, attr, ctrl) {
-        function inputValue(val) {
-            var transformedInput = val.replace(/[^/.,:0-9a-zA-Z\s]/g, '');
-            //console.log(transformedInput);
-            if (transformedInput !== val) {
-              ctrl.$setViewValue(transformedInput);
-              ctrl.$render();
-            }
-            return transformedInput;
-        }            
-        ctrl.$parsers.push(inputValue);
-      }
-    };
-});
