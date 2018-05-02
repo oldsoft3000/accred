@@ -1,1 +1,402 @@
-../../../frontend/web/css/styles.css
+
+
+
+.topnav {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 80px;
+  background: white;
+	background: linear-gradient(to right,#FFFFFF,#727a82)!important;  
+  	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  	z-index:1030;
+}
+
+.login-button {
+  border-top: 3px solid #ADA7A7;
+  border-bottom: 3px solid #ADA7A7;
+  text-align: center;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+
+.sidebar {
+	display: block;
+	position: fixed;
+	top: 80px;
+	width: 230px;
+	height: calc(100vh - 100px);
+	
+	padding-top: 30px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+  
+
+  background-color: #727a82;
+	/*-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;sq
+	-o-transition: all .5s ease;
+	transition: all .5s ease;*/
+
+  border-right: 1px solid #474747;
+}
+
+.sidebar .nav-item {
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+
+  width: 100%;
+  list-style: none;
+  display: block;
+
+  font-size: 16px;
+  font-weight: 400;
+
+}
+
+.sidebar .nav-link {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.sidebar .nav-link.active {
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  
+}
+
+.sidebar li {
+
+}
+
+.sidebar li a {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.sidebar li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+
+
+.sidebar-loading {
+  visibility: hidden;
+}
+
+.sidebar-loaded {
+  visibility: visible!important;
+}
+
+
+
+.content {
+	display: block;
+	padding-top: 100px;
+
+	/*-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;*/
+}
+
+
+.subblock-lr {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.subblock {
+  padding: 20px;;
+}
+
+
+@media (max-width: 950px) {
+	.topnav {
+		position: relative;
+	}
+
+	.sidebar {
+	  position: relative; 
+	  top: 0px;
+	  padding-top: 20px;
+	  width: 100%; 
+	  height: auto; 
+    border-right: 0;
+	}
+	.content {
+	  top: 0px;
+    padding-top: 0px;
+	  margin-left: 0px;
+	}
+
+  .subblock-lr {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .subblock {
+    padding: 0px;;
+  }
+
+}
+
+
+.logo {
+  display:block;
+  position: absolute;
+  top:-10px;
+  left: 10px;
+  opacity: 0.9;
+  height: 100px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.common-block {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+
+.common-text-block {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    text-align: center;
+}
+
+.subtitle {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 0px 0px 1px #000000; 
+    /*background: linear-gradient(to right,#b1beca,#818a93,#b1beca); */
+    background: #727a82;
+    border-radius: .25rem;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: -30px;
+    padding-right: -30px;
+    text-align: center;
+}
+
+.subtitle-nopadding {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 0px 0px 1px #000000; 
+    background: #727a82;
+    border-radius: .25rem;
+    text-align: center;
+    margin:0;
+    padding:0;
+}
+
+
+
+/*Required asterisk*/
+
+label.required:after {
+  content:"*";
+  color:red;
+}
+
+
+.required_ext:after {
+  content: "*";
+  position: absolute;
+  top: 0px;
+  right: 6px;
+  color:red;
+}
+
+
+label {
+	font-size: 1.5rem;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.action-icon-block {
+  display: inline-block;
+  width: 30px;
+  height: 27px;
+  vertical-align: middle;
+}
+
+.action-icon { 
+    display: block;
+    opacity: 0.6;
+    width: 28px;
+    height: 28px;
+    left: 0px;
+}
+
+.action-icon:hover {
+    opacity: 0.7;
+    margin-top:-1px;
+    margin-left:-1px;
+    width: 30px;
+    height: 30px;
+}
+
+.date-time-icon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+}
+
+
+
+.loader {
+	 width: 20px;
+	 margin-left: 0px;
+	 margin-top: 5px;
+	 position: fixed;
+}
+
+
+.invalid-tooltip {
+    background-color: #D92A3B;
+    color: #fff;
+    text-align: center;
+    padding: 5px 5px;
+    border-radius: 3px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1000;
+    display: inline-block;
+
+    /* Fade in tooltip */
+    opacity: 0.75;
+}
+
+.modal-dialog {
+  /*width:300px;
+  height:300px;*/
+  top: 10rem;
+   position: relative;
+    display: table; /* This is important */ 
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px; 
+}
+
+.view-area {
+  overflow: hidden;
+}
+
+
+.modal-content {
+  
+}
+
+.crop-area {
+  display:block;
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.crop-button {*
+  width: 120px;
+}
+
+.modal-header {
+  background-color: lightslategrey;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 0px 0px 1px #000000; 
+    background: #818a93;
+    text-align: center;
+    margin:0;
+    padding:0;
+
+}
+
+.modal-content {
+
+}
+
+.modal-footer {
+  margin:0;
+  padding:15;
+}
+
+.hotel-button {
+  padding: 10px; 
+  margin: 10px;
+  background: white;
+  border-color: grey;
+  width: 180px;
+  height: 100px;
+  white-space: normal;
+  display: inline-table; 
+}
+
+.checked-button:after {
+    content: url('../images/check_mark.png');
+    position: absolute;
+    margin-left: -22px;
+    margin-top: -10px;
+}
+
+.hotel-button p {
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: center; 
+}
+
+.hotel-button:active {
+    box-shadow:none;
+}
+
+.dark-link  {
+  color: #001158!important;
+}
+
+.dark-link:active  {
+  color: #001158!important;
+}
+
+select {
+  color: #999!important;
+}
+
+select.ng-empty {
+  color: #999!important;
+}
+
+select.ng-not-empty {
+  color: #555555!important;
+}
+
+option {
+  color: #555555!important;
+}
+

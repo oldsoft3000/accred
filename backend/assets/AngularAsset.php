@@ -11,7 +11,9 @@ class AngularAsset extends AssetBundle
     public $css = [
         'croppie/croppie.css',
         'pace/themes/black/pace-theme-minimal.css',
-        'angular-moment-picker/dist/angular-moment-picker.min.css'
+        'angular-moment-picker/dist/angular-moment-picker.min.css',
+        'datatables.net-dt/css/jquery.dataTables.css',
+        'angular-datatables/dist/css/angular-datatables.css'
         //'ngCroppie/ng-croppie.min.css'
     ];
     public $js = [
@@ -26,12 +28,14 @@ class AngularAsset extends AssetBundle
         'croppie/croppie.min.js',
         'pace/pace.min.js',
         'moment/min/moment-with-locales.js',
-        'angular-moment-picker/dist/angular-moment-picker.min.js'
+        'angular-moment-picker/dist/angular-moment-picker.min.js',
+        'datatables.net/js/jquery.dataTables.js',
+        'angular-datatables/dist/angular-datatables.min.js'
 
     ];
 
 
     public $jsOptions = [
-        'position' => View::POS_HEAD,
+        //'position' => View::POS_HEAD,
     ];
 }

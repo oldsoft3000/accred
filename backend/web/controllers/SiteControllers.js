@@ -4,7 +4,8 @@ SiteControllers.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'views/site/index.html'
+                templateUrl: 'views/site/login.html',
+                controller: 'LoginController',
             }).
             when('/login', {
                 templateUrl: 'views/site/login.html',

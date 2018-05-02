@@ -9,6 +9,7 @@ var App = angular.module('App', [
     'moment-picker',
     'SiteControllers',
     'ParticipControllers',
+    'datatables'
 ]);
 
 
