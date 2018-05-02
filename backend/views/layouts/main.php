@@ -23,32 +23,7 @@ AppAsset::register($this);
           <div class="topnav">
               <img class="logo" src="../images/logo_1.png" >
           </div>
-          <div class="sidebar">
-              <li ng-class="{'sidebar-loaded': true}" ng-if="!isLoggedIn()" class="nav-item sidebar-loading">
-                <a  class="nav-link login-button" role="button" aria-disabled="true" href="#!/login">Вход в личный кабинет</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
-                <a class="nav-link" role="button" aria-disabled="true" href="#!/agreement">Соглашение</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/particip/view">Список участников</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/hotel/view">Размещение</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/flight/view">Полетные данные</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/ticket/view">Бронирование авиа и <br>ж/д билетов</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn() && isUserAgreed()" class="nav-item sidebar-loading"> 
-                <a class="nav-link " role="button" aria-disabled="true" href="#!/car/view">Аккредитация личного автотранспорта</a> 
-              </li> 
-              <li ng-class="{'sidebar-loaded': true}" ng-if="isLoggedIn()" class="nav-item sidebar-loading"> 
-                <a ng-click="logout()" class="nav-link login-button" role="button" aria-disabled="true" href="" style="">Выход</a> 
-              </li> 
-          </div>
+
 
 
         <div class="content">
