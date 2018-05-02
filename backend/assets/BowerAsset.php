@@ -9,7 +9,7 @@ class BowerAsset extends AssetBundle
 {
     public $sourcePath = '@bower';
     public $css = [
-        'croppie/croppie.min.css',
+        'croppie/croppie.css',
         'pace/themes/black/pace-theme-minimal.css',
         'angular-moment-picker/dist/angular-moment-picker.min.css',
         'datatables.net-dt/css/jquery.dataTables.css',
