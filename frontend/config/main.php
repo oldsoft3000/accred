@@ -70,7 +70,11 @@ return [
                 'yii\bootstrap\BootstrapPluginAsset' => [
                     'sourcePath' => '@bower/bootstrap/dist',
                     'js' => ['js/bootstrap.min.js']
-                ]
+                ],
+                'yii\web\JqueryAsset' => [
+                    'js' => ['jquery.min.js'],
+                    'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD ],
+                ],
             ],
             'appendTimestamp' => true,
         ],

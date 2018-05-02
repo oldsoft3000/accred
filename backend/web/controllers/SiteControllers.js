@@ -26,7 +26,7 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 '$location',
                                                 '$window',
                                                 'SiteServices',
-    function ($scope, $location, $window, SiteServices, ) {
+    function ($scope, $location, $window, SiteServices) {
         $scope.isLoggedIn = function() {
             return SiteServices.isLoggedIn();
         };

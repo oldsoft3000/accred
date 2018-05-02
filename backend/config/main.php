@@ -42,6 +42,25 @@ return [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
         ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web',
+                    'css' => ['css/bootstrap.css'],
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'sourcePath' => '@bower/bootstrap/dist',
+                    'js' => ['js/bootstrap.min.js']
+                ],
+                'yii\web\JqueryAsset' => [
+                    'js' => ['jquery.min.js'],
+                    'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD ],
+                ],
+            ],
+            'appendTimestamp' => true,
+        ],
 
     ],
     'params' => $params,

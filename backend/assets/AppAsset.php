@@ -9,7 +9,6 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/bootstrap.css',
         'css/styles.css',
     ];
     public $js = [
@@ -20,10 +19,11 @@ class AppAsset extends AssetBundle
         'services/ParticipServices.js',
     ];
     public $depends = [
+        'yii\web\JqueryAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'app\assets\AngularAsset'
+        'app\assets\BowerAsset'
     ];
 
 }

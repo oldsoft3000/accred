@@ -5,11 +5,11 @@ namespace app\assets;
 use yii\web\AssetBundle;
 use yii\web\View;
 
-class AngularAsset extends AssetBundle
+class BowerAsset extends AssetBundle
 {
     public $sourcePath = '@bower';
     public $css = [
-        'croppie/croppie.css',
+        'croppie/croppie.min.css',
         'pace/themes/black/pace-theme-minimal.css',
         'angular-moment-picker/dist/angular-moment-picker.min.css'
         //'ngCroppie/ng-croppie.min.css'
@@ -25,13 +25,13 @@ class AngularAsset extends AssetBundle
         'cleave-js/dist/addons/cleave-phone.ru.js',
         'croppie/croppie.min.js',
         'pace/pace.min.js',
-        'moment/min/moment-with-locales.js',
+        'moment/min/moment-with-locales.min.js',
         'angular-moment-picker/dist/angular-moment-picker.min.js'
 
     ];
 
 
     public $jsOptions = [
-        'position' => View::POS_HEAD,
+        //'position' => View::POS_HEAD,
     ];
 }
