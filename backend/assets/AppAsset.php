@@ -10,6 +10,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/styles.css',
+        'css/datatable.css',
     ];
     public $js = [
         'App.js',
@@ -17,6 +18,7 @@ class AppAsset extends AssetBundle
         'controllers/ParticipControllers.js',
         'services/SiteServices.js',
         'services/ParticipServices.js',
+        'services/Utils.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',

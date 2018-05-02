@@ -29,6 +29,26 @@ Utils.factory('Utils', [
             return dt;
         };
 
+        obj.createUniqueList = function(table, field_name) {
+            var result = [];
+
+            result.push({'value': null, 'label': null});
+
+            var m = new Map(); ;
+
+            table.forEach(function(row) {
+                if (row[field_name] != null) {
+                    m.set( row[field_name], row[field_name] );
+                }
+            });
+
+            m.forEach(function(value, key, mapObj) {
+                result.push({'value': value, 'label': value});
+            });
+
+            console.log(result);
+            return result;
+        }
 
         return obj;
     }

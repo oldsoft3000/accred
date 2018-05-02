@@ -1,15 +1,13 @@
 <div>
   <h1 class="subtitle">Список участников</h1>
-  <div class="subblock">
-    <p>{{ message}}</p>
-    <table datatable="ng" class="row-border hover">
-      <thead>
+
+    <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
+      <!-- <thead>
         <tr>
           <th class="sorting">Фамилия Имя Отчество</th>
           <th class="sorting">Категория</th>
           <th>Фото</th>
           <th>Оплата</th>
-          <th>Действия</th>
         </tr>
       </thead>
       <tbody>
@@ -35,16 +33,8 @@
             </div>
           </td>
           <td>{{(data.paymant) ? data.paymant : ''}}</td>
-          <td style="padding:0px 10px; vertical-align: middle;">
-            <a class="action-icon-block" href="#!/particip/view/{{data.id}}" data-toggle="tooltip" title="Редактировать">
-            <img class="action-icon" border="0" src="images/edit.png" >
-          </a>
-            <a class="action-icon-block" ng-click="delete(data.id)" data-toggle="tooltip" title="Удалить">
-            <img class="action-icon" border="0" src="images/delete.png">
-          </a>
-          </td>
         </tr>
-      </tbody>
+      </tbody>-->
   </table>
 
     <!--<div class="" ng-show="particips.length > 0">
@@ -93,5 +83,5 @@
         </tbody>
       </table>
     </div>-->
-  </div>
+
 </div>

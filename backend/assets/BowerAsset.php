@@ -12,7 +12,7 @@ class BowerAsset extends AssetBundle
         'croppie/croppie.css',
         'pace/themes/black/pace-theme-minimal.css',
         'angular-moment-picker/dist/angular-moment-picker.min.css',
-        'datatables.net-dt/css/jquery.dataTables.css',
+        'datatables/media/css/jquery.dataTables.min.css',
         'angular-datatables/dist/css/angular-datatables.min.css'
         //'ngCroppie/ng-croppie.min.css'
     ];
@@ -29,8 +29,12 @@ class BowerAsset extends AssetBundle
         'pace/pace.min.js',
         'moment/min/moment-with-locales.min.js',
         'angular-moment-picker/dist/angular-moment-picker.min.js',
-        'datatables.net/js/jquery.dataTables.js',
-        'angular-datatables/dist/angular-datatables.min.js'
+        'datatables/media/js/jquery.dataTables.min.js',
+        'datatables-light-columnfilter/dist/dataTables.lightColumnFilter.min.js',
+        //'jquery-datatables-columnfilter/jquery.dataTables.columnFilter.js',
+        'angular-datatables/dist/angular-datatables.min.js',
+        //'angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.min.js'
+        'angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.min.js'
 
     ];
 

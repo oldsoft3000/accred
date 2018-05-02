@@ -9,12 +9,13 @@ var App = angular.module('App', [
     'moment-picker',
     'SiteControllers',
     'ParticipControllers',
-    'datatables'
+    'datatables',
+    'datatables.light-columnfilter'
 ]);
 
-
+var Utils = angular.module('Utils', []);
 var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
-var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies']);
+var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies', 'Utils']);
 
 App.factory('authInterceptor', function ($q, $window, $location) {
     var data = {
