@@ -26,7 +26,14 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 '$location',
                                                 '$window',
                                                 'SiteServices',
-    function ($scope, $location, $window, SiteServices) {
+                                                'BadgeData',
+    function ($scope, $location, $window, SiteServices, BadgeData) {
+        if (typeof $scope.badge == 'undefined') {
+            BadgeData.get().$promise.then(function(badge) {
+                $scope.badge = badge;
+            });
+        }
+
         $scope.isLoggedIn = function() {
             return SiteServices.isLoggedIn();
         };

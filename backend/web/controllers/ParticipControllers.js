@@ -7,6 +7,19 @@ ParticipControllers.config(['$routeProvider', '$httpProvider',
             templateUrl: 'views/particip/view.html',
             controller: 'ViewController',
         }).
+        when('/particip', {
+            templateUrl: 'views/particip/view.html',
+            controller: 'ViewController',
+        }).
+        when('/particip/view/:id', {
+            templateUrl: 'views/particip/card.html',
+            controller: 'CardController',
+            resolve: {
+                response: function(ParticipServices, $route) {
+                    return ParticipServices.view($route.current.params.id);
+                }
+            }
+        }).
         otherwise({
             templateUrl: 'views/site/404.html'
         });
@@ -18,6 +31,7 @@ ParticipControllers.controller('ViewController', ['$scope',
                                                   '$http',
                                                   '$route',
                                                   '$q',
+                                                  '$location',
                                                   'ParticipServices',
                                                   'DTOptionsBuilder',
                                                   'DTColumnBuilder',
@@ -26,6 +40,7 @@ ParticipControllers.controller('ViewController', ['$scope',
                 $http,
                 $route,
                 $q,
+                $location,
                 ParticipServices,
                 DTOptionsBuilder,
                 DTColumnBuilder,
@@ -54,8 +69,17 @@ ParticipControllers.controller('ViewController', ['$scope',
         }
 
         function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //console.log(aData);
+            $('td', nRow).unbind('click');
+            $('td', nRow).bind('click', function() {
+                $scope.$apply(function() {
+                    $scope.clickHandler(aData);
+                });
+            });
             return nRow;
+        }
+
+        $scope.clickHandler = function(row) {
+            $location.path('/particip/view/' + row.id);
         }
 
         $scope.delete = function(id) {
@@ -99,56 +123,9 @@ ParticipControllers.controller('ViewController', ['$scope',
             })
             .withDataProp('data')
             .withPaginationType('full_numbers')
-            .withDisplayLength(25)
+            .withDisplayLength(-1)
+            .withOption('rowCallback', rowCallback)
             .withLanguage(language);
-            //.withOption('fnRowCallback', rowCallback)
-            /*.withLightColumnFilter({
-            '0' : {
-                html: 'input',
-                type: 'text',
-                attr: {}
-            },
-            '1' : {
-                html: 'select',
-                type : 'text',
-                values: [{
-                    value: 'Yoda', label: 'Yoda foobar'
-                }, {
-                    value: 'Titi', label: 'Titi foobar'
-                }, {
-                    value: 'Kyle', label: 'Kyle foobar'
-                }, {
-                    value: 'Bar', label: 'Bar foobar'
-                }, {
-                    value: 'Whateveryournameis', label: 'Whateveryournameis foobar'
-                }]
-            }
-        });*/
-          /*.withLightColumnFilter({
-            '0' : {
-                type : 'text'
-            },
-            '1' : {
-                type : 'text'
-            },
-            '2' : {
-                type : 'select',
-                values: [{
-                    value: 'Yoda', label: 'Yoda foobar'
-                }, {
-                    value: 'Titi', label: 'Titi foobar'
-                }, {
-                    value: 'Kyle', label: 'Kyle foobar'
-                }, {
-                    value: 'Bar', label: 'Bar foobar'
-                }, {
-                    value: 'Whateveryournameis', label: 'Whateveryournameis foobar'
-                }]
-            }
-        });*/
-
-
-
 
         $scope.dtColumns = [
 
@@ -163,5 +140,106 @@ ParticipControllers.controller('ViewController', ['$scope',
     
 
         ];
+    }
+]);
+
+
+ParticipControllers.controller('CardController', ['$timeout',
+                                                    '$scope',
+                                                    '$rootScope',
+                                                    '$http',
+                                                    '$route',
+                                                    '$location',
+                                                    'response',
+                                                    'ParticipServices',
+    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
+        var el = document.querySelector(".crop-area");
+
+        $scope.croppie = new Croppie(el, {
+            viewport: { width: 100, height: 100 },
+            showZoomer: false
+        });
+
+        $scope.modelUser.visa_passport_validity = null;
+        $scope.modelUser.visa_required = 1;
+        $scope.modelUser = response.data;
+        $scope.modelUser.title = response.data.title.toString();
+        $scope.modelUser.gender = response.data.gender.toString();
+
+        $scope.update = function() {
+            $scope.dataLoading = true;
+            $scope.error = {};
+
+            ParticipServices.update($scope.modelUser)
+                .then(successHandler)
+                .catch(errorHandler);
+
+            function successHandler(response) {
+                $scope.dataLoading = false;
+                $location.path('/particip/view').replace();
+                return response;
+            }
+
+            function errorHandler(response) {
+                $scope.dataLoading = false;
+                angular.forEach(response.data, function(error) {
+                    $scope.error[error.field] = error.message;
+                });
+                return response;
+            }
+        };
+
+        $scope.visaRequired = function(value) {
+            var el = angular.element(document.querySelector('#visa-fieldset'));
+            if (value === 0) {
+                el.attr('disabled', 'true');
+            } else {
+                el.removeAttr('disabled');
+            }
+            if (typeof $scope.error !== 'undefined') {
+                $scope.error['visa_passport_validity'] = '';
+                $scope.error['visa_country'] = '';
+                $scope.error['visa_city'] = '';
+            }
+        };
+
+        $scope.photoSelected = function() {
+            $timeout(function() {
+                var file = document.querySelector('#photoFile').files[0];
+                if (typeof file !== 'undefined') {
+                    $scope.fileName = file.name;
+                    var reader = new FileReader();
+                    reader.onloadend = function() {
+                        $timeout( function() {
+                            $scope.modelUser.photo = reader.result; 
+                            $scope.editPhoto();
+                        });
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        };
+
+        $scope.$watch('modelUser.visa_required', function(newVal, oldVal) {
+            $scope.visaRequired(newVal);
+        }, true);
+
+        $scope.editPhoto = function() {
+            document.querySelector('#photoFile').value = "";
+            $scope.croppie.bind({
+                url: $scope.modelUser.photo,
+            });
+            $('#photoEditor').modal('toggle');
+            $scope.croppie.setZoom(1.0);
+        };
+
+        $scope.saveCropResult = function() {
+            $scope.croppie.result('base64').then(function(base64) {
+                $scope.modelUser.photo = base64;
+                $scope.croppie.bind({
+                    url: base64
+                });
+            });
+        }
     }
 ]);

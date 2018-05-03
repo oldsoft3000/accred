@@ -71,7 +71,7 @@ ParticipControllers.controller('CreateController', ['$timeout',
         var el = document.querySelector(".crop-area");
 
         $scope.croppie = new Croppie(el, {
-            viewport: { width: 100, height: 100 },
+            viewport: { width: $scope.badge["photo"].width, height: $scope.badge["photo"].height },
             showZoomer: false
         });
 

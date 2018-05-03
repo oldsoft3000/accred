@@ -17,6 +17,11 @@ var Utils = angular.module('Utils', []);
 var SiteControllers = angular.module('SiteControllers', ['ngRoute', 'ngCookies']);
 var ParticipControllers = angular.module('ParticipControllers', ['ngRoute', 'ngCookies', 'Utils']);
 
+App.factory('BadgeData', ['$resource', function($resource) {
+    return $resource('views/badge.json');
+}]);
+
+
 App.factory('authInterceptor', function ($q, $window, $location) {
     var data = {
         lastError: ''

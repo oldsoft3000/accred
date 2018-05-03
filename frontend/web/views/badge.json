@@ -1,0 +1,18 @@
+{
+    "main-container" : {
+        "width": 400,
+        "height": 200
+    },
+    "photo" : {
+        "top": 10,
+        "left": 10,
+        "width": 100,
+        "height": 100
+    },
+    "name" : {
+        "top": 10,
+        "left": 10,
+        "width": 100,
+        "height": 100
+    }
+}

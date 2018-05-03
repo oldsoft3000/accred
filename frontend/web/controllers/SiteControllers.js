@@ -51,7 +51,8 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 'ViewData',
                                                 'HotelData',
                                                 'Countries',
-    function ($scope, $location, $window, SiteServices, ViewData, HotelData, Countries) {
+                                                'BadgeData',
+    function ($scope, $location, $window, SiteServices, ViewData, HotelData, Countries, BadgeData) {
         
         if (typeof $scope.viewdata == 'undefined') {
             ViewData.get().$promise.then(function(viewdata) {
@@ -66,6 +67,11 @@ SiteControllers.controller('MainController',    ['$scope',
         if (typeof $scope.countries == 'undefined') {
             Countries.get().$promise.then(function(countries) {
                 $scope.countries = countries;
+            });
+        }
+        if (typeof $scope.badge == 'undefined') {
+            BadgeData.get().$promise.then(function(badge) {
+                $scope.badge = badge;
             });
         }
         $scope.isLoggedIn = function() {

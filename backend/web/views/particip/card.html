@@ -1,0 +1,327 @@
+<form name="createForm" ng-submit="isCreation? create() : update()" role="form" novalidate>
+  <h1 class="subtitle">Карточка участника</h1>
+    <badge-widget/>
+  <h1 class="subtitle">Персональная информация</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 form-label required">Обращение</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['title'] = ''" ng-click="error['title'] = ''" ng-class="{'is-invalid': error['title'] }" ng-model="modelUser.title" class="form-control">
+          <option selected value="" style="display:none;">Выберите обращение</option>
+          <option value='1'>Г-н</option>
+          <option value='2'>Г-жа</option>
+        </select>
+        <div ng-if="error['title']" class="invalid-tooltip">
+          {{ error['title']}}
+        </div>
+      </div>
+    </div>  
+    <div class="form-group row">
+      <label class="col-sm-3 required">Фамилия</label>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name'] = ''" ng-class="{'is-invalid': error['last_name'] }" ng-model="modelUser.last_name" type="text" class="form-control" placeholder="" id="inputLastName">
+        <div ng-if="error['last_name']" class="invalid-tooltip">
+          {{ error['last_name']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Имя</label>
+      <div class="col-sm-7">
+        <input ng-click="error['first_name'] = ''" ng-class="{'is-invalid': error['first_name'] }" ng-model="modelUser.first_name" type="text" class="form-control" placeholder="">
+        <div ng-if="error['first_name']" class="invalid-tooltip">
+          {{ error['first_name']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Отчество</label>
+      <div class="col-sm-7">
+        <input ng-click="error['middle_name'] = ''" ng-class="{'is-invalid': error['middle_name'] }" ng-model="modelUser.middle_name" type="text" class="form-control" placeholder="">
+        <div ng-if="error['middle_name']" class="invalid-tooltip">
+          {{ error['middle_name']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label required" style="line-height: 50%">Фамилия</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['last_name_latin'] = ''" ng-class="{'is-invalid': error['last_name_latin'] }" ng-model="modelUser.last_name_latin" type="text" class="form-control" placeholder="" only-latin>
+        <div ng-if="error['last_name_latin']" class="invalid-tooltip">
+          {{ error['last_name_latin']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label required" style="line-height: 50%">Имя</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['first_name_latin'] = ''" ng-class="{'is-invalid': error['first_name_latin'] }" ng-model="modelUser.first_name_latin" type="text" class="form-control" placeholder="" only-latin>
+        <div ng-if="error['first_name_latin']" class="invalid-tooltip">
+          {{ error['first_name_latin']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Пол</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['gender'] = ''" ng-click="error['gender'] = ''" ng-class="{'is-invalid': error['gender'] }" ng-model="modelUser.gender" type="text" class="form-control">
+          <option selected value="" style="display:none;">Выберите пол</option>
+          <option value="1">Мужской</option>
+          <option value="2">Женский</option>
+        </select>
+        <div ng-if="error['gender']" class="invalid-tooltip">
+          {{ error['gender']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3">Фотография</label>
+      <div class="col-sm-8">
+        <label class="btn btn-primary">
+          <input type="file" id="photoFile" style="display:none" onchange="angular.element(this).scope().photoSelected()"> Выбрать файл
+        </label>
+        <button type="button" ng-if="modelUser.photo" ng-click="editPhoto()" class="btn btn-primary">Редактировать</button>
+        <!--<span class='' id="upload-file-info" style="padding-left:10px;">{{fileName}}</span> -->
+      </div>
+    </div>
+  </div>
+  <h1 class="subtitle">Пасортные данные</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 required">Гражданство</label>
+      <div class="col-sm-7">
+        <select ng-focus="error['citizenship'] = ''"
+                ng-click="error['citizenship'] = ''"
+                ng-class="{'is-invalid': error['citizenship'] }"
+                ng-model="modelUser.citizenship"
+                type="text"
+                class="form-control"
+                ng-options="key as value for (key , value) in countries">
+          <option selected value="" style="display:none;">Выберите гражданство</option>   
+        </select>
+        <div ng-if="error['citizenship']" class="invalid-tooltip">
+          {{ error['citizenship']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-xs-12 col-sm-3 required">Серия и номер паспорта</label>
+      <div class="col-xs-4 col-sm-2">
+        <input ng-click="error['passport_series'] = ''" ng-class="{'is-invalid': error['passport_series'] }" ng-model="modelUser.passport_series" type="text" class="form-control" placeholder="Серия" cleave="cleave_options.digits_4">
+        <div ng-if="error['passport_series']" class="invalid-tooltip">
+          {{ error['passport_series']}}
+        </div>
+      </div>
+      <div class="col-xs-8 col-sm-5">
+        <input ng-click="error['passport_number'] = ''" ng-class="{'is-invalid': error['passport_number'] }" ng-model="modelUser.passport_number" type="text" class="form-control" placeholder="Номер" cleave="cleave_options.digits_6">
+        <div ng-if="error['passport_number']" class="invalid-tooltip">
+          {{ error['passport_number']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Дата рождения</label>
+      <div class="col-sm-7">
+        <div class="input-group"
+             moment-picker="modelUser.date_of_birth"
+             format="DD.MM.YYYY"
+             locale="ru">   
+            <input class="form-control"
+                   placeholder="дд.мм.гг"
+                   ng-click="error['date_of_birth'] = ''" 
+                   ng-model="modelUser.date_of_birth"
+                   ng-model-options="{ updateOn: 'blur' }"> 
+            <span class="input-group-addon">
+                <img class="date-time-icon" border="0" src="images/calendar.png" >
+            </span>
+        </div>
+        <div ng-if="error['date_of_birth']" class="invalid-tooltip">
+            {{ error['date_of_birth']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Место рождения</label>
+      <div class="col-sm-7">
+        <input ng-click="error['place_of_birth'] = ''" ng-class="{'is-invalid': error['place_of_birth'] }" ng-model="modelUser.place_of_birth" type="text" class="form-control" placeholder="">
+        <div ng-if="error['place_of_birth']" class="invalid-tooltip">
+          {{ error['place_of_birth']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Адрес регистрации</label>
+      <div class="col-sm-7">
+        <input ng-click="error['registration_address'] = ''" ng-class="{'is-invalid': error['registration_address'] }" ng-model="modelUser.registration_address" type="text" class="form-control" placeholder="РФ,119213,г.Москва,ул.Ленина,д.10">
+        <div ng-if="error['registration_address']" class="invalid-tooltip">
+          {{ error['registration_address']}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="subtitle">Визовая поддержка</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 required">Требуется виза</label>
+      <div class="col-sm-7">
+        <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
+          <input class="form-check-input" name="visa_required_0" type="radio" ng-value="0" ng-model="modelUser.visa_required" ng-checked="modelUser.visa_required === 0">
+          <label class="form-check-label">
+            Виза не требуется
+          </label>
+        </div>
+        <div class="form-check" style="padding-top:5px;padding-bottom:5px;">
+          <input class="form-check-input" name="visa_required_1" type="radio" ng-value="1" ng-model="modelUser.visa_required" ng-checked="modelUser.visa_required === 1">
+          <label class="form-check-label">
+            Виза требуется
+          </label>
+        </div>
+      </div>
+    </div>
+    <fieldset id="visa-fieldset">
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-3 required_ext">
+          <div class="input-group"
+               moment-picker="modelUser.visa_passport_validity"
+               format="DD.MM.YYYY"
+               locale="ru">
+              <input class="form-control"
+                     placeholder="Паспорт действует до"
+                     ng-click="error['visa_passport_validity'] = ''" 
+                     ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : modelUser.visa_passport_validity }"
+                     ng-model="modelUser.visa_passport_validity"
+                     ng-model-options="{ updateOn: 'blur' }"> 
+              <span class="input-group-addon">
+                  <img class="date-time-icon" border="0" src="images/calendar.png" >
+              </span>
+          </div>
+          <div ng-if="error['visa_passport_validity']" class="invalid-tooltip">
+            {{ error['visa_passport_validity']}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-3 required_ext">
+          <select ng-focus="error['visa_country'] = ''"
+                  ng-click="error['visa_country'] = ''"
+                  ng-class="{'is-invalid': error['visa_country'] }"
+                  ng-model="modelUser.visa_country"
+                  type="text"
+                  class="form-control"
+                  ng-options="key as value for (key , value) in countries">
+            <option selected value="" style="display:none;">Страна получения визы</option>
+          </select>
+          <div ng-if="error['visa_country']" class="invalid-tooltip">
+            {{ error['visa_country']}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-7 col-sm-offset-3 required_ext">
+          <input ng-click="error['visa_city'] = ''" ng-class="{'is-invalid': error['visa_city'] }" ng-model="modelUser.visa_city" type="text" class="form-control test" placeholder="Город получения визы">
+          <div ng-if="error['visa_city']" class="invalid-tooltip">
+            {{ error['visa_city']}}
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <h1 class="subtitle">Профессиональная деятельность</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3">Организация</label>
+      <div class="col-sm-7">
+        <input ng-click="error['organization'] = ''" ng-class="{'is-invalid': error['organization'] }" ng-model="modelUser.organization" type="text" class="form-control" placeholder="">
+        <div ng-if="error['organization']" class="invalid-tooltip">
+          {{ error['organization']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Должность</label>
+      <div class="col-sm-7">
+        <input ng-click="error['position'] = ''" ng-class="{'is-invalid': error['position'] }" ng-model="modelUser.position" type="text" class="form-control" placeholder="">
+        <div ng-if="error['position']" class="invalid-tooltip">
+          {{ error['position']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label" style="line-height: 50%">Организация</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['organization_latin'] = ''" ng-class="{'is-invalid': error['organization_latin'] }" ng-model="modelUser.organization_latin" type="text" class="form-control" placeholder="" only-latin>
+        <div ng-if="error['organization_latin']" class="invalid-tooltip">
+          {{ error['organization_latin']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-4 col-sm-3 col-md-3 col-lg-3 col-xl-3 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+        <label class="col-form-label required" style="line-height: 50%">Должность</label>
+        <p class="" style="line-height: 50%; font-size:80%;">на латинице</p>
+      </div>
+      <div class="col-sm-7">
+        <input ng-click="error['position_latin'] = ''" ng-class="{'is-invalid': error['position_latin'] }" ng-model="modelUser.position_latin" type="text" class="form-control" name="position_latin" placeholder="" only-latin>
+        <div ng-if="error['position_latin']" class="invalid-tooltip">
+          {{ error['position_latin']}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="subtitle">Контактная информация</h1>
+  <div class="subblock">
+    <div class="form-group row">
+      <label class="col-sm-3 required">E-mail</label>
+      <div class="col-sm-7">
+        <input ng-click="error['email'] = ''" ng-class="{'is-invalid': error['email'] }" ng-model="modelUser.email" type="email" class="form-control" placeholder="">
+        <div ng-if="error['email']" class="invalid-tooltip">
+          {{ error['email']}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 required">Мобильный телефон</label>
+      <div class="col-sm-7">
+        <input ng-click="error['phone_number'] = ''" ng-class="{'is-invalid': error['phone_number'] }" ng-model="modelUser.phone_number" placeholder="+_(___)___-__-__" type="text" class="form-control" name="phone_number" cleave="cleave_options.telephone">
+        <div ng-if="error['phone_number']" class="invalid-tooltip">
+          {{ error['phone_number']}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row justify-content-center common-block" style="text-align:center;">
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary">{{button}}</button>
+    </div>
+  </div>
+</form>
+<div class="modal" id="photoEditor" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        Редактор фотографии
+        <button type="button" class="close" data-dismiss="modal">&times;</button> 
+      </div>
+        <div class="crop-area">
+          
+        </div>
+
+
+      <div class="modal-footer text-center">
+        <button type="button" ng-click='saveCropResult()' class="btn btn-primary crop-button" data-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-primary crop-button" data-dismiss="modal">Закрыть</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!--<button class="btn btn-primary" ng-click="debugRequest()">Debug</button>-->

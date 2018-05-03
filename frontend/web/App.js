@@ -67,6 +67,11 @@ App.factory('Countries', ['$resource', function($resource) {
     return $resource('views/country.json');
 }]);
 
+App.factory('BadgeData', ['$resource', function($resource) {
+    return $resource('views/badge.json');
+}]);
+
+
 App.config(function($httpProvider){
   $httpProvider.defaults.headers.common['Cache-Control'] = 'no-cache';
   $httpProvider.defaults.cache = false;
