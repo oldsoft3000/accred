@@ -82,7 +82,14 @@ App.config(function($httpProvider){
   $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
 });
 
-
+App.run([
+    '$rootScope',
+    function ($rootScope) {
+        $rootScope.$on('$locationChangeStart', function (event) {
+            $('div.modal').modal('hide');
+        });
+    }
+]);
 
 App.directive('onlyLatin', function () {
     return {

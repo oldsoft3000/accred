@@ -67,7 +67,7 @@ AppAsset::register($this);
         <div class="device-sm" style="display:none;"></div>
 
         <script type="text/javascript">
-
+            
         </script>
     </body>
 </html>
