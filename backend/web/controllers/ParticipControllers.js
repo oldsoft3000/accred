@@ -150,12 +150,24 @@ ParticipControllers.controller('CardController', ['$timeout',
                                                     '$http',
                                                     '$route',
                                                     '$location',
+                                                    '$window',
                                                     'response',
                                                     'ParticipServices',
-    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
+    function($timeout, $scope, $rootScope, $http, $route, $location, $window, response, ParticipServices) {
         var el = document.querySelector(".crop-area");
+        var w = angular.element($window);
+        var boundary_width;
+        var boundary_height;
+        if (w.innerWidth() <= 800) {
+            boundary_width = w.innerWidth() * 0.95;
+            boundary_height = w.innerHeight() * 0.5;
+        } else {
+            boundary_width = 400;
+            boundary_height = 400;
+        }
 
         $scope.croppie = new Croppie(el, {
+            boundary: { width: boundary_width, height: boundary_height },
             viewport: { width: 100, height: 100 },
             showZoomer: false
         });
@@ -239,7 +251,16 @@ ParticipControllers.controller('CardController', ['$timeout',
                 $scope.croppie.bind({
                     url: base64
                 });
+                $scope.$apply();
             });
+        }
+
+        $scope.printBadge = function(idSection) {
+            var innerContents = document.getElementById(idSection).innerHTML;
+            var popupWinindow = window.open('', '_blank', 'width=600,height=400,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+            popupWinindow.document.open();
+            popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="css/badge.css" /></head><body onload="window.print()">' + innerContents + '</html>');
+            popupWinindow.document.close();
         }
     }
 ]);

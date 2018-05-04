@@ -1,6 +1,12 @@
-<form name="createForm" ng-submit="isCreation? create() : update()" role="form" novalidate>
+<form name="createForm" ng-submit="update()" role="form" novalidate>
   <h1 class="subtitle">Карточка участника</h1>
+  <div id="badge">
     <badge-widget/>
+  </div> 
+  <div style="padding-top: 15px;">
+    <button type="button" class="btn btn-primary print" ng-click="printBadge('badge')">Печать</button>
+  </div>
+
   <h1 class="subtitle">Персональная информация</h1>
   <div class="subblock">
     <div class="form-group row">
@@ -196,7 +202,8 @@
                      ng-click="error['visa_passport_validity'] = ''" 
                      ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : modelUser.visa_passport_validity }"
                      ng-model="modelUser.visa_passport_validity"
-                     ng-model-options="{ updateOn: 'blur' }"> 
+                     ng-model-options="{ updateOn: 'blur' }"
+                     ng-disabled="modelUser.visa_required===0"> 
               <span class="input-group-addon">
                   <img class="date-time-icon" border="0" src="images/calendar.png" >
               </span>
@@ -300,7 +307,7 @@
   </div>
   <div class="form-group row justify-content-center common-block" style="text-align:center;">
     <div class="col-10">
-      <button type="submit" class="btn btn-primary">{{button}}</button>
+      <button type="submit" class="btn btn-primary">Сохранить</button>
     </div>
   </div>
 </form>

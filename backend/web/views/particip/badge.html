@@ -1,22 +1,23 @@
 <div class='badge-container' ng-style="{'width':badge['main-container'].width,'height':badge['main-container'].height }">
   <img class="badge-background_0" src="../images/badge_background_0.png">
-  <img class="badge-background_1" src="../images/badge_background_4.png">
+  <img class="badge-background_1" src="../images/badge_background_3.png">
   <div class="badge-photo" ng-style="{'width':badge['photo'].width,'height':badge['photo'].height,'top':badge['photo'].top,'left':badge['photo'].left}">
+    <img ng-src="{{modelUser.photo}}">
   </div>
   <div class="badge-name">
-    Дроздович Олег Борисович
+    {{modelUser.last_name + " " + modelUser.first_name + " " + modelUser.middle_name}}
   </div>
   <div class="badge-organization">
-    OLDOSFT
+    {{modelUser.organization}}
   </div>
   <div class="badge-position">
-    Директор
+    {{modelUser.position}}
   </div>
   <div class="badge-email">
-    user@mail.ru
+    {{modelUser.email}}
   </div>
   <div class="badge-telephone">
-    +33454534534
+    {{modelUser.phone_number}}
   </div>
   
 </div>

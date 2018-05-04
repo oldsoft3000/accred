@@ -194,7 +194,8 @@
                      ng-click="error['visa_passport_validity'] = ''" 
                      ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : modelUser.visa_passport_validity }"
                      ng-model="modelUser.visa_passport_validity"
-                     ng-model-options="{ updateOn: 'blur' }"> 
+                     ng-model-options="{ updateOn: 'blur' }"
+                     ng-disabled="modelUser.visa_required===0">
               <span class="input-group-addon">
                   <img class="date-time-icon" border="0" src="images/calendar.png" >
               </span>

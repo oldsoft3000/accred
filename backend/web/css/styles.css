@@ -299,12 +299,12 @@ label {
   /*width:300px;
   height:300px;*/
   top: 10rem;
-   position: relative;
-    display: table; /* This is important */ 
-    overflow-y: auto;    
-    overflow-x: auto;
-    width: auto;
-    min-width: 300px; 
+  position: relative;
+  display: table; /* This is important */ 
+  overflow-y: auto;    
+  overflow-x: auto;
+  width: auto;
+  min-width: 300px; 
 }
 
 .view-area {
@@ -317,13 +317,10 @@ label {
 }
 
 .crop-area {
-  display:block;
-  position: relative;
-  width: 400px;
-  height: 400px;
+
 }
 
-.crop-button {*
+.crop-button {
   width: 120px;
 }
 
@@ -384,7 +381,7 @@ label {
   color: #001158!important;
 }
 
-/*select {
+select {
   color: #999!important;
 }
 
@@ -398,5 +395,14 @@ select.ng-not-empty {
 
 option {
   color: #555555!important;
-}*/
+}
+
+
+th select {
+  color: #333333!important;
+}
+
+th select.ng-empty {
+  color: #333333!important;
+}
 

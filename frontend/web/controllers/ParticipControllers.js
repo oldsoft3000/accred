@@ -60,25 +60,36 @@ ParticipControllers.controller('CreateController', ['$timeout',
                                                     '$http',
                                                     '$route',
                                                     '$location',
+                                                    '$window',
                                                     'response',
                                                     'ParticipServices',
-    function($timeout, $scope, $rootScope, $http, $route, $location, response, ParticipServices) {
+    function($timeout, $scope, $rootScope, $http, $route, $location, $window, response, ParticipServices) {
         $scope.fileName = "Выберите файл";
         $scope.modelUser = {};
         $scope.modelUser.visa_passport_validity = null;
         $scope.modelUser.visa_required = 1;
 
         var el = document.querySelector(".crop-area");
+        var w = angular.element($window);
+        var boundary_width;
+        var boundary_height;
+        if (w.innerWidth() <= 800) {
+            boundary_width = w.innerWidth() * 0.95;
+            boundary_height = w.innerHeight() * 0.5;
+        } else {
+            boundary_width = 400;
+            boundary_height = 400;
+        }
 
         $scope.croppie = new Croppie(el, {
-            viewport: { width: $scope.badge["photo"].width, height: $scope.badge["photo"].height },
+            boundary: { width: boundary_width, height: boundary_height },
+            viewport: { width: 100, height: 100 },
             showZoomer: false
         });
 
-
         if ($route.current.$$route.originalPath === "/particip/view/:id") {
             console.log("update");
-            $scope.button = "Обновить данные";
+            $scope.button = "Сохранить";
             $scope.modelUser = response.data;
             $scope.modelUser.title = response.data.title.toString();
             $scope.modelUser.gender = response.data.gender.toString();

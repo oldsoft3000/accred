@@ -16,6 +16,12 @@ ParticipControllers.factory('ParticipServices', ['$http', '$window', '$location'
             });
         };
         
+        obj.update = function(modelUser) {
+            return $http.put('particips/' + modelUser.id, modelUser).then(function(response) {
+                return response;
+            });
+        };
+        
         return obj; 
     }
 ]);
