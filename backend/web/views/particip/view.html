@@ -1,6 +1,8 @@
 <div>
   <h1 class="subtitle">Список участников</h1>
-
+    <button class="btn btn-link" ng-click="exportToExcel('#table1')">
+      <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>
     <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
       <!-- <thead>
         <tr>
