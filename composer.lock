@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ad77924825c175a77b069ce7e504672",
+    "content-hash": "e59d38ea04be4e9ebc3d978cbaccd796",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -63,6 +63,29 @@
                 "yii2"
             ],
             "time": "2017-07-05T10:05:39+00:00"
+        },
+        {
+            "name": "bower-asset/alasql",
+            "version": "0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agershun/alasql.git",
+                "reference": "44ee4283de8d0b162242ec2fc6cf2be784063c00"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agershun/alasql/zipball/44ee4283de8d0b162242ec2fc6cf2be784063c00",
+                "reference": "44ee4283de8d0b162242ec2fc6cf2be784063c00",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/es6-promise": "~3.0",
+                "bower-asset/js-xlsx": "~0.11.5"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/angular",
@@ -229,6 +252,25 @@
             ]
         },
         {
+            "name": "bower-asset/es6-promise",
+            "version": "v3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefanpenner/es6-promise.git",
+                "reference": "00ad48b202aab74683b440868c20ad12106d0437"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefanpenner/es6-promise/zipball/00ad48b202aab74683b440868c20ad12106d0437",
+                "reference": "00ad48b202aab74683b440868c20ad12106d0437",
+                "shasum": null
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
@@ -290,6 +332,22 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/js-xlsx",
+            "version": "v0.11.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SheetJS/js-xlsx.git",
+                "reference": "75845a0ca722b634dd39993958ccf813a9649405"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SheetJS/js-xlsx/zipball/75845a0ca722b634dd39993958ccf813a9649405",
+                "reference": "75845a0ca722b634dd39993958ccf813a9649405",
+                "shasum": null
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/pace",

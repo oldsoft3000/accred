@@ -34,7 +34,10 @@ class BowerAsset extends AssetBundle
         //'jquery-datatables-columnfilter/jquery.dataTables.columnFilter.js',
         'angular-datatables/dist/angular-datatables.min.js',
         //'angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.min.js'
-        'angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.min.js'
+        'angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.min.js',
+        'alasql/dist/alasql.min.js',
+        'js-xlsx/dist/xlsx.min.js'
+        
 
     ];
 

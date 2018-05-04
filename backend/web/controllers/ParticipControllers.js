@@ -99,7 +99,7 @@ ParticipControllers.controller('ViewController', ['$scope',
                 var response = ParticipServices.view();
                 defer.resolve(response);
                 response.then(function(data) {
-        
+                    $scope.particips = data.data;
                     $scope.dtOptions.withLightColumnFilter({
                         '0' : {
                             html: 'input',
@@ -140,6 +140,16 @@ ParticipControllers.controller('ViewController', ['$scope',
     
 
         ];
+
+        var xls_style = {
+            headers: true,
+            column: { width: 200 }
+        };
+        $scope.exportData = function () {
+            //alasql('SELECT * INTO XLSX("john.xlsx",{headers:true}) FROM ?',[$scope.items]);
+            alasql('SELECT * INTO XLS("test.xls",?) FROM ?', [xls_style, $scope.particips]);
+        };
+
     }
 ]);
 
