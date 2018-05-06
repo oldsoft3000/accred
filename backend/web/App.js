@@ -21,6 +21,9 @@ App.factory('BadgeData', ['$resource', function($resource) {
     return $resource('views/badge.json');
 }]);
 
+App.factory('Countries', ['$resource', function($resource) {
+    return $resource('views/country.json');
+}]);
 
 App.factory('authInterceptor', function ($q, $window, $location) {
     var data = {

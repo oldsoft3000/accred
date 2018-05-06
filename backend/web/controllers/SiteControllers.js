@@ -27,10 +27,16 @@ SiteControllers.controller('MainController',    ['$scope',
                                                 '$window',
                                                 'SiteServices',
                                                 'BadgeData',
-    function ($scope, $location, $window, SiteServices, BadgeData) {
+                                                'Countries',
+    function ($scope, $location, $window, SiteServices, BadgeData, Countries) {
         if (typeof $scope.badge == 'undefined') {
             BadgeData.get().$promise.then(function(badge) {
                 $scope.badge = badge;
+            });
+        }
+        if (typeof $scope.countries == 'undefined') {
+            Countries.get().$promise.then(function(countries) {
+                $scope.countries = countries;
             });
         }
 
