@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'backend\controllers',
+    'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
@@ -33,7 +33,7 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['particip'],
+                    'controller' => ['particip', 'hotel', 'flight', 'ticket', 'car'],
                 ],
                 '/' => 'site/index',
                 '<action:\w+>' => 'site/<action>',

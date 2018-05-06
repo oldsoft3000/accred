@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace app\controllers;
 
 use Yii;
 use yii\filters\ContentNegotiator;
@@ -40,7 +40,7 @@ class ParticipController extends Controller {
     public function actionView($id = null) {
         if ($id == null) {
             $modelSearch = new ParticipSearch();
-            return $modelSearch->searchAll();
+            return $modelSearch->searchFull();
         } else {
             $model = $this->findModel($id);
             ParticipController::checkAccess('view', $model);
@@ -56,7 +56,8 @@ class ParticipController extends Controller {
         $model = new Particip();
 
         if ($model->load(Yii::$app->getRequest()->getBodyParams(), '') && $model->save()) {
-            return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+            return ['access_token' => Yii::$app->user->identity->getAuthKey(),
+                    'id' => $model->id];
         } else {
             $model->validate();
             return $model;

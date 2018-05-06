@@ -288,10 +288,12 @@ class ParticipSearch extends Particip
                     flight.id as flight_id,
                     flight.arrival_place,
                     flight.arrival_date as flight_arrival_date,
+                    flight.arrival_time as flight_arrival_time,
                     flight.arrival_flight_number,
                     flight.arrival_terminal,
                     flight.departure_place,
                     flight.departure_date as flight_departure_date,
+                    flight.departure_time as flight_departure_time,
                     flight.departure_flight_number,
                     flight.departure_terminal,
                     ticket.id as ticket_id,
@@ -318,7 +320,7 @@ class ParticipSearch extends Particip
                     car.date_of_birth as car_date_of_birth,
                     car.passport_series as car_passport_series,
                     car.passport_number as car_passport_number,
-                    car.place_of_birth as car_place_of_birth,
+                    car.place_of_birth as car_place_of_birth
             FROM particip
             LEFT JOIN hotel ON (hotel.id = particip.hotel_id)
             LEFT JOIN flight ON (flight.id = particip.flight_id)

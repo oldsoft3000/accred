@@ -21,3 +21,8 @@ th select {
     background-image: none;
     border-radius: 4px;
 }
+
+.cell-actions {
+  padding:0px 10px!important;
+  vertical-align: middle!important;
+}

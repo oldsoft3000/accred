@@ -46,7 +46,6 @@ Utils.factory('Utils', [
                 result.push({'value': value, 'label': value});
             });
 
-            console.log(result);
             return result;
         }
 

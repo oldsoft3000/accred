@@ -1,11 +1,11 @@
 <?php
 
-namespace frontend\controllers;
+namespace app\controllers;
 
 use Yii;
 use common\models\LoginForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+use app\models\SignupForm;
+use app\models\ContactForm;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
 use yii\filters\AccessControl;

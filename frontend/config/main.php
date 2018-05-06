@@ -28,7 +28,7 @@ return [
         ],*/
         'log'
     ],
-    'controllerNamespace' => 'frontend\controllers',
+    'controllerNamespace' => 'app\controllers',
 
     'components' => [
         'request' => [

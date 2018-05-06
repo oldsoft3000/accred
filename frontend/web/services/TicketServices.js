@@ -17,15 +17,15 @@ TicketControllers.factory('TicketServices', ['$http', '$route', '$q',
             }
         };
 
-        obj.create = function(idParticip, modelFlight, isUpdate) {
+        obj.create = function(idParticip, modelTicket, isUpdate) {
              if (isUpdate) {
-                return $http.put('tickets/' + idParticip, modelFlight).then(function(response) {
+                return $http.put('tickets/' + idParticip, modelTicket).then(function(response) {
                     return response;
                 });
             } else {
-                modelFlight.idParticip = idParticip;
+                modelTicket.idParticip = idParticip;
 
-                return $http.post('tickets', modelFlight).then(function(response) {
+                return $http.post('tickets', modelTicket).then(function(response) {
                     return response;
                 });
             }

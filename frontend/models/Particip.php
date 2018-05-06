@@ -61,6 +61,7 @@ class Particip extends \yii\db\ActiveRecord {
             'phone_number', 'visa_country', 'visa_city', 'place_of_birth', 'first_name_latin',
             'last_name_latin', 'position', 'organization_latin', 'position_latin'], 'string', 'max' => 100],
             [['citizenship', 'visa_country'], 'string', 'max' => 11],
+            [['first_name', 'middle_name', 'last_name'], 'unique', 'targetAttribute' => ['first_name', 'middle_name', 'last_name'], 'message' => 'Участник с таким именем уже существует.']
         ];
     }
 

@@ -32,6 +32,8 @@ ParticipControllers.controller('ViewController', ['$scope',
                                                   '$route',
                                                   '$q',
                                                   '$location',
+                                                  '$timeout',
+                                                  '$window',
                                                   'ParticipServices',
                                                   'DTOptionsBuilder',
                                                   'DTColumnBuilder',
@@ -41,6 +43,8 @@ ParticipControllers.controller('ViewController', ['$scope',
                 $route,
                 $q,
                 $location,
+                $timeout,
+                $window,
                 ParticipServices,
                 DTOptionsBuilder,
                 DTColumnBuilder,
@@ -76,10 +80,6 @@ ParticipControllers.controller('ViewController', ['$scope',
                 });
             });
             return nRow;
-        }
-
-        $scope.clickHandler = function(row) {
-            $location.path('/particip/view/' + row.id);
         }
 
         $scope.delete = function(id) {
@@ -124,7 +124,7 @@ ParticipControllers.controller('ViewController', ['$scope',
             .withDataProp('data')
             .withPaginationType('full_numbers')
             .withDisplayLength(-1)
-            .withOption('rowCallback', rowCallback)
+            //.withOption('rowCallback', rowCallback)
             .withLanguage(language);
 
         $scope.dtColumns = [
@@ -137,6 +137,11 @@ ParticipControllers.controller('ViewController', ['$scope',
                 }),
             DTColumnBuilder.newColumn('organization').withTitle('Организация'),
             DTColumnBuilder.newColumn('position').withTitle('Должность'),
+            DTColumnBuilder.newColumn(null)
+                .withTitle('Действия')
+                .renderWith(function(data, type, full, meta) {
+                    return '<a class="action-icon-block" href="#!/particip/view/' + data.id + '" data-toggle="tooltip" title="Редактировать"><img class="action-icon" border="0" src="images/edit.png"></a><a class="action-icon-block" onclick="angular.element(this).scope().delete(' + data.id + ')" data-toggle="tooltip" title="Удалить"><img class="action-icon" border="0" src="images/delete.png">';
+                }).withClass("cell-actions").notSortable()     
     
 
         ];
@@ -145,11 +150,124 @@ ParticipControllers.controller('ViewController', ['$scope',
             headers: true,
             column: { width: 200 }
         };
+
+
         $scope.exportData = function () {
-            //alasql('SELECT * INTO XLSX("john.xlsx",{headers:true}) FROM ?',[$scope.items]);
-            alasql('SELECT * INTO XLS("test.xls",?) FROM ?', [xls_style, $scope.particips]);
+            alasql('SELECT * INTO XLSX("export.xls",?) FROM ?', [xls_style, $scope.particips]);
         };
 
+        $scope.importData = function(event) {
+            alasql('SELECT * FROM FILE(?,{headers:true})',[event], function(dataParticip){
+                    var index = 0;
+
+                    angular.forEach(dataParticip, function(dataRow) {
+                        var modelParticip = {};
+        
+                        index = index + 1;
+                        modelParticip.id = dataRow.id;
+                        modelParticip.title = dataRow.title;
+                        modelParticip.first_name = dataRow.first_name;
+                        modelParticip.last_name = dataRow.last_name;
+                        modelParticip.middle_name = dataRow.middle_name;
+                        modelParticip.first_name_latin = dataRow.first_name_latin;
+                        modelParticip.last_name_latin = dataRow.last_name_latin;
+                        modelParticip.gender = dataRow.gender;
+                        modelParticip.photo = dataRow.photo;
+                        modelParticip.citizenship = dataRow.citizenship;
+                        modelParticip.passport_series = dataRow.passport_series;
+                        modelParticip.passport_number = dataRow.passport_number;
+                        modelParticip.date_of_birth = dataRow.date_of_birth;
+                        modelParticip.place_of_birth = dataRow.place_of_birth;
+                        modelParticip.registration_address = dataRow.registration_address;
+                        modelParticip.visa_required = dataRow.visa_required;
+                        modelParticip.visa_passport_validity = dataRow.visa_passport_validity;
+                        modelParticip.visa_country = dataRow.visa_country;
+                        modelParticip.visa_city = dataRow.visa_city;
+                        modelParticip.organization = dataRow.organization;
+                        modelParticip.position = dataRow.position;
+                        modelParticip.organization_latin = dataRow.organization_latin;
+                        modelParticip.position_latin = dataRow.position_latin;
+                        modelParticip.email = dataRow.email;
+                        modelParticip.phone_number = dataRow.phone_number;
+
+                        ParticipServices.importParticip(modelParticip).then(function(response) {
+                            if (!isNaN(dataRow.hotel_id)) {
+                                $scope.importHotel(dataRow, response.data.id);
+                            }
+                            if (!isNaN(dataRow.flight_id)) {
+                                $scope.importFlight(dataRow, response.data.id);
+                            }
+                            if (!isNaN(dataRow.ticket_id)) {
+                                $scope.importTicket(dataRow, response.data.id);
+                            }
+                            if (!isNaN(dataRow.car_id)) {
+                                $scope.importCar(dataRow, response.data.id);
+                            }
+                            if (index == dataParticip.length) {
+                                $window.location.reload();
+                            }
+                        });
+                    });
+                    
+            });
+        };
+
+        $scope.importHotel = function(dataRow, idParticip) {
+            var modelHotel = {};
+            modelHotel.arrival_date = dataRow.hotel_arrival_date;
+            modelHotel.departure_date = dataRow.hotel_departure_date;
+            modelHotel.guests = dataRow.guests;
+            modelHotel.type_name = dataRow.type_name;
+            modelHotel.category_name = dataRow.category_name;
+            modelHotel.hotel_index = dataRow.hotel_index;
+            ParticipServices.importHotel(modelHotel, idParticip);
+        }
+        $scope.importFlight = function(dataRow, idParticip) {
+            var modelFlight = {};
+            modelFlight.arrival_place = dataRow.arrival_place;
+            modelFlight.arrival_date = dataRow.flight_arrival_date;
+            modelFlight.arrival_time = dataRow.flight_arrival_time;
+            modelFlight.arrival_flight_number = dataRow.arrival_flight_number;
+            modelFlight.arrival_terminal = dataRow.arrival_terminal;
+            modelFlight.departure_place = dataRow.departure_place;
+            modelFlight.departure_date = dataRow.flight_departure_date;
+            modelFlight.departure_time = dataRow.flight_departure_time;
+            modelFlight.departure_flight_number = dataRow.departure_flight_number;
+            modelFlight.departure_terminal = dataRow.departure_terminal;
+            ParticipServices.importFlight(modelFlight, idParticip);
+        }
+        $scope.importTicket = function(dataRow, idParticip) {
+            var modelTicket = {};
+            modelTicket.ticket_type = dataRow.ticket_type;
+            modelTicket.departure_date = dataRow.ticket_departure_date;
+            modelTicket.flight_number = dataRow.flight_number;
+            modelTicket.from = dataRow.from;
+            modelTicket.where = dataRow.where;
+            modelTicket.class = dataRow.class;
+            modelTicket.passport_number = dataRow.ticket_passport_number;
+            modelTicket.passport_validity = dataRow.ticket_passport_validity;
+            modelTicket.bonus_card = dataRow.bonus_card;
+            modelTicket.company_name = dataRow.company_name;
+            ParticipServices.importTicket(modelTicket, idParticip);
+        }
+
+        $scope.importCar = function(dataRow, idParticip) {
+            var modelCar = {};
+            modelCar.country = dataRow.car_country;
+            modelCar.car_number = dataRow.car_number;
+            modelCar.car_brand = dataRow.car_brand;
+            modelCar.is_particip = dataRow.is_particip;
+            modelCar.first_name = dataRow.car_first_name;
+            modelCar.middle_name = dataRow.car_middle_name;
+            modelCar.last_name = dataRow.car_last_name;
+            modelCar.first_name_latin = dataRow.car_first_name_latin;
+            modelCar.last_name_latin = dataRow.car_last_name_latin;
+            modelCar.date_of_birth = dataRow.car_date_of_birth;
+            modelCar.passport_series = dataRow.car_passport_series;
+            modelCar.passport_number = dataRow.car_passport_number;
+            modelCar.place_of_birth = dataRow.car_place_of_birth;
+            ParticipServices.importCar(modelCar, idParticip);
+        }
     }
 ]);
 

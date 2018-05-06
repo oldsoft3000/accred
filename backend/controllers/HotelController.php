@@ -1,0 +1,1 @@
+../../frontend/controllers/HotelController.php

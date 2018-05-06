@@ -1,8 +1,18 @@
 <div>
   <h1 class="subtitle">Список участников</h1>
     <button class="btn btn-link" ng-click="exportData()">
-      <span class="glyphicon glyphicon-share"></span> Export to Excel
+      <span class="glyphicon glyphicon-export"></span> Экспорт в Excel
     </button>
+    <!-- button class="btn btn-link" ng-click="importData()">
+      <span class="glyphicon glyphicon-import"></span> Импорт из Excel
+    </button> -->
+
+    <label class="btn btn-link">
+        <input type="file" id="xlsFile" style="display:none" onchange="angular.element(this).scope().importData(event)">
+        <span class="glyphicon glyphicon-import"></span> Импорт из Excel
+    </label>
+    <!-- <button type="button" ng-if="modelUser.photo" ng-click="editPhoto()" class="btn btn-primary">Редактировать</button> -->
+     
     <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
       <!-- <thead>
         <tr>
