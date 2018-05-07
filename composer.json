@@ -28,7 +28,8 @@
     	"bower-asset/pace": "1.0.2",
     	"yii2mod/yii2-rbac": "~2.3",
         "bower-asset/croppie": "2.6.2",
-        "bower-asset/alasql": "^0.4.5"
+        "bower-asset/alasql": "^0.4.5",
+        "fzaninotto/faker" : "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

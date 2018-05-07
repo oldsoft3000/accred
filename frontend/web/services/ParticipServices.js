@@ -34,6 +34,14 @@ ParticipControllers.factory('ParticipServices', ['$http', '$route', '$q',
             });
         };
 
+        obj.generate = function() {
+            return $http.get('particip/generate').then(function(response) {
+                return response;
+            });
+        };
+
+
+
         return obj;
     }
 ]);

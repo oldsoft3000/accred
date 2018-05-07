@@ -30,12 +30,24 @@ ParticipControllers.config(['$routeProvider', '$httpProvider',
                 }
             }
         }).
+        when('/particip/generate', {
+            templateUrl: 'views/particip/view.html',
+            controller: 'GenerateController',
+        }).
         otherwise({
             templateUrl: 'views/site/404.html'
         });
         $httpProvider.interceptors.push('authInterceptor');
     }
 ]);
+
+
+ParticipControllers.controller('GenerateController', ['ParticipServices',
+    function(ParticipServices) {
+        ParticipServices.generate();
+    }
+]);
+
 
 ParticipControllers.controller('ViewController', ['$scope', '$http', '$route', 'response', 'ParticipServices',
     function($scope, $http, $route, response, ParticipServices) {

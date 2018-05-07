@@ -92,6 +92,43 @@ class ParticipController extends Controller {
         return $model;
     }
 
+    public function actionGenerate() {
+        $model = new Particip();
+        ParticipController::checkAccess('unlock', $model);
+        $faker = \Faker\Factory::create('ru_RU');
+        $faker_latin = \Faker\Factory::create('en_EN');
+
+        $name = explode(" ", $faker->name);
+        $name_latin = explode(" ", $faker_latin->name);
+        $model->title = 1;
+        $model->gender = 1;
+        $model->passport_series = $faker->randomNumber(4);
+        $model->passport_number = $faker->randomNumber(6);
+        $model->last_name = $name[0];
+        $model->first_name = $name[1];
+        $model->middle_name = $name[2];
+        $model->email = $faker->email;
+        $model->date_of_birth = $faker->dateTimeThisCentury();
+        $model->registration_address = $faker->address;
+        $model->phone_number = $faker->phoneNumber;
+        $model->place_of_birth = $faker->city;
+        $model->first_name_latin = $name_latin[1];
+        $model->last_name_latin = $name_latin[0];
+
+        $model->organization = $faker->company;
+        $model->organization_latin = $faker_latin->company;
+        $model->position = $faker->jobTitle;
+        $model->position_latin = $faker_latin->jobTitle;
+        $model->citizenship = 'RU';
+        $model->photo = 'data:image/jpg;base64,' . base64_encode(file_get_contents($faker->imageUrl(100, 100, 'cats')));
+        
+        if (!$model->save()) {
+            $model->validate();
+        }
+        
+        return $model;
+    }
+
     public static function findModel($id) {
         if (($model = particip::findOne($id)) !== null) {
             return $model;
