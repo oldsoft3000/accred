@@ -66,7 +66,7 @@ ParticipControllers.factory('ParticipServices', ['$http', '$window', '$location'
             var data = {};
             var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
             data.locked_date = new Date().toLocaleString();
-            return $http.post('particip/lock/' + idParticip).then(function(response) {
+            return $http.post('particip/lock/' + idParticip, data).then(function(response) {
                 return response;
             });
         }

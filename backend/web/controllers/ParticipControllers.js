@@ -280,9 +280,10 @@ ParticipControllers.controller('CardController', ['$timeout',
                                                     '$route',
                                                     '$location',
                                                     '$window',
+                                                    '$q',
                                                     'response',
                                                     'ParticipServices',
-    function($timeout, $scope, $rootScope, $http, $route, $location, $window, response, ParticipServices) {
+    function($timeout, $scope, $rootScope, $http, $route, $location, $window, $q,response, ParticipServices) {
         var el = document.querySelector(".crop-area");
         var w = angular.element($window);
         var boundary_width;
@@ -300,12 +301,31 @@ ParticipControllers.controller('CardController', ['$timeout',
             viewport: { width: 100, height: 100 },
             showZoomer: false
         });
-
+        $scope.canUnlock = response.data.canUnlock;
         $scope.modelUser.visa_passport_validity = null;
         $scope.modelUser.visa_required = 1;
-        $scope.modelUser = response.data;
-        $scope.modelUser.title = response.data.title.toString();
-        $scope.modelUser.gender = response.data.gender.toString();
+        $scope.modelUser = response.data.model;
+        $scope.modelUser.title = response.data.model.title.toString();
+        $scope.modelUser.gender = response.data.model.gender.toString();
+
+        $scope.isCardLocked = function() {
+            return $scope.modelUser.card_locked_date !== null;
+        };
+
+
+        $scope.disableCardFieldset = function(value) {
+            var el = angular.element(document.querySelector('#card-fieldset'));
+            if (value === 1) {
+                el.attr('disabled', 'true');
+            } else {
+                el.removeAttr('disabled');
+            }
+        };
+
+
+        if ($scope.isCardLocked()) {
+            $scope.disableCardFieldset(1);
+        }
 
         $scope.update = function() {
             $scope.dataLoading = true;
@@ -392,13 +412,25 @@ ParticipControllers.controller('CardController', ['$timeout',
             popupWinindow.document.close();
         }
 
-        
+
         $scope.lockCard = function(idParticip) {
-            ParticipServices.lockCard(idParticip);
+            ParticipServices.lockCard(idParticip).then(function(response) {
+                $scope.disableCardFieldset(1);
+                $scope.modelUser.card_locked_date = response.data.card_locked_date;
+                $scope.$apply();
+            });
         }
 
         $scope.unlockCard = function(idParticip) {
-            ParticipServices.unlockCard(idParticip);
+            ParticipServices.unlockCard(idParticip).then(function(response) {
+                $scope.disableCardFieldset(0);
+                $scope.modelUser.card_locked_date = null;
+                $scope.$apply();
+            }).catch(function(response) {
+                if (response.status == 403) {
+                    $q.reject(response);
+                }
+            });
         }
     }
 ]);

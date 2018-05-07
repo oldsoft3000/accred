@@ -48,7 +48,13 @@ class ParticipController extends Controller {
             $model->date_of_birth = Formater::convertOutput($model->date_of_birth);
             $model->visa_passport_validity = Formater::convertOutput($model->visa_passport_validity);
 
-            return $model;
+            $canUnlock = false;
+
+            if ($model && \Yii::$app->user->can('unlock', ['particip' => $model])) {
+                $canUnlock = true;
+            }
+
+            return ['model' => $model, 'canUnlock' => $canUnlock];
         }
     }
 
@@ -98,8 +104,7 @@ class ParticipController extends Controller {
 
         ParticipController::checkAccess('lock', $model);
         $locked_date = Yii::$app->getRequest()->getBodyParam("locked_date");
-        return $locked_date;
-        $model->card_locked_date = Formater::convertInput($locked_date);
+        $model->card_locked_date = Formater::convertInput($locked_date, 'datetime');
         $model->save();
         return $model;
     }

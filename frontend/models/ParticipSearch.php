@@ -90,7 +90,6 @@ class ParticipSearch extends Particip
             'query' => $query,
         ]);
 
-
         if ( !\Yii::$app->user->can('admin') &&
              !\Yii::$app->user->can('operator')) {
             $query->andFilterWhere([
