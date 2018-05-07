@@ -268,6 +268,7 @@ ParticipControllers.controller('ViewController', ['$scope',
             modelCar.place_of_birth = dataRow.car_place_of_birth;
             ParticipServices.importCar(modelCar, idParticip);
         }
+
     }
 ]);
 
@@ -389,6 +390,15 @@ ParticipControllers.controller('CardController', ['$timeout',
             popupWinindow.document.open();
             popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="css/badge.css" /></head><body onload="window.print()">' + innerContents + '</html>');
             popupWinindow.document.close();
+        }
+
+        
+        $scope.lockCard = function(idParticip) {
+            ParticipServices.lockCard(idParticip);
+        }
+
+        $scope.unlockCard = function(idParticip) {
+            ParticipServices.unlockCard(idParticip);
         }
     }
 ]);

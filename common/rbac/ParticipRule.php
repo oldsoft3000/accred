@@ -16,7 +16,14 @@ class ParticipRule extends Rule {
      * @return boolean a value indicating whether the rule permits the role or permission it is associated with.
      */
     public function execute($user, $item, $params) {
-        if (Yii::$app->user->can('admin')) {
+        if (Yii::$app->user->can('operator')) {
+            if ($item->name == 'unlock') {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        else if (Yii::$app->user->can('admin')) {
             return true;
         } else {
             if (isset($params['particip'])) {

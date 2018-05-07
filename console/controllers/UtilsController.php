@@ -35,9 +35,11 @@ class UtilsController extends Controller
         $authManager->removeAll(); 
 
         $admin = $authManager->createRole('admin');
+        $operator = $authManager->createRole('operator');
         $editor = $authManager->createRole('editor');
 
         $authManager->add($admin);
+        $authManager->add($operator);
         $authManager->add($editor);
 
         $participeRule = new \common\rbac\ParticipRule; 
@@ -50,11 +52,15 @@ class UtilsController extends Controller
         $view   = $authManager->createPermission('view');
         $update = $authManager->createPermission('update');
         $delete = $authManager->createPermission('delete');
+        $unlock = $authManager->createPermission('unlock');
+        $lock = $authManager->createPermission('lock');
 
         $index->ruleName = $participeRule->name;
         $view->ruleName = $participeRule->name;
         $update->ruleName = $participeRule->name;
         $delete->ruleName = $participeRule->name;
+        $unlock->ruleName = $participeRule->name;
+        $lock->ruleName = $participeRule->name;
 
         $authManager->add($login);
         $authManager->add($logout);
@@ -63,6 +69,8 @@ class UtilsController extends Controller
         $authManager->add($view);
         $authManager->add($update);
         $authManager->add($delete);
+        $authManager->add($unlock);
+        $authManager->add($lock);
 
         $authManager->addChild($editor, $login);
         $authManager->addChild($editor, $logout);
@@ -72,8 +80,18 @@ class UtilsController extends Controller
         $authManager->addChild($editor, $update);
         $authManager->addChild($editor, $delete);
 
+        $authManager->addChild($operator, $lock);
+        $authManager->addChild($operator, $editor);
+
+        $authManager->addChild($admin, $unlock);
         $authManager->addChild($admin, $editor);
+        $authManager->addChild($admin, $operator);
  
         $authManager->assign($admin, 1); 
+        $authManager->assign($operator, 2);
+        $authManager->assign($operator, 3);
+        $authManager->assign($operator, 4);
     }
+
+
 }

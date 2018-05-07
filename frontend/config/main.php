@@ -78,6 +78,24 @@ return [
             ],
             'appendTimestamp' => true,
         ],
+        'user' => [
+            'identityClass' => 'common\models\User',
+            //'on afterLogin' => ['app\events\AfterLoginEvent', 'handleNewUser'],
+            'enableSession' => true,
+            'enableAutoLogin' => true,
+            'loginUrl' => null,
+
+        ],
+        'request' => [
+            'class' => '\yii\web\Request',
+            'enableCookieValidation' => true,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
     ],
     'params' => $params,
 ];

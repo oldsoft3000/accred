@@ -91,7 +91,8 @@ class ParticipSearch extends Particip
         ]);
 
 
-        if ( !\Yii::$app->user->can('admin') ) {
+        if ( !\Yii::$app->user->can('admin') &&
+             !\Yii::$app->user->can('operator')) {
             $query->andFilterWhere([
                 'created_by' => Yii::$app->user->id,
             ]);
@@ -113,7 +114,8 @@ class ParticipSearch extends Particip
             FROM particip
             LEFT JOIN hotel ON (hotel.id = particip.hotel_id)';
 
-        if ( !\Yii::$app->user->can('admin') ) {
+        if ( !\Yii::$app->user->can('admin') &&
+             !\Yii::$app->user->can('operator')) {
             $str = $str . 'WHERE particip.created_by = :id'; 
         }
         $command = Yii::$app->db->createCommand($str);
@@ -133,7 +135,8 @@ class ParticipSearch extends Particip
             FROM particip
             LEFT JOIN flight ON (flight.id = particip.flight_id)';
 
-        if ( !\Yii::$app->user->can('admin') ) {
+        if ( !\Yii::$app->user->can('admin') &&
+             !\Yii::$app->user->can('operator')) {
             $str = $str . 'WHERE particip.created_by = :id'; 
         }
         $command = Yii::$app->db->createCommand($str);
@@ -152,7 +155,8 @@ class ParticipSearch extends Particip
             FROM particip
             LEFT JOIN ticket ON (ticket.id = particip.ticket_id)';
 
-        if ( !\Yii::$app->user->can('admin') ) {
+        if ( !\Yii::$app->user->can('admin') &&
+             !\Yii::$app->user->can('operator')) {
             $str = $str . 'WHERE particip.created_by = :id'; 
         }
         $command = Yii::$app->db->createCommand($str);
@@ -171,7 +175,8 @@ class ParticipSearch extends Particip
             FROM particip
             LEFT JOIN car ON (car.id = particip.car_id)';
 
-        if ( !\Yii::$app->user->can('admin') ) {
+        if ( !\Yii::$app->user->can('admin') &&
+             !\Yii::$app->user->can('operator')) {
             $str = $str . 'WHERE particip.created_by = :id'; 
         }
         $command = Yii::$app->db->createCommand($str);
@@ -327,7 +332,8 @@ class ParticipSearch extends Particip
             LEFT JOIN ticket ON (ticket.id = particip.ticket_id)
             LEFT JOIN car ON (car.id = particip.car_id)';
 
-        if ( !\Yii::$app->user->can('admin') ) {
+        if ( !\Yii::$app->user->can('admin') &&
+             !\Yii::$app->user->can('operator')) {
             $str = $str . 'WHERE particip.created_by = :id'; 
         }
         $command = Yii::$app->db->createCommand($str);

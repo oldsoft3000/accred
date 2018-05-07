@@ -62,6 +62,20 @@ ParticipControllers.factory('ParticipServices', ['$http', '$window', '$location'
             });
         };
 
+        obj.lockCard = function(idParticip) {
+            var data = {};
+            var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+            data.locked_date = new Date().toLocaleString();
+            return $http.post('particip/lock/' + idParticip).then(function(response) {
+                return response;
+            });
+        }
+
+        obj.unlockCard = function(idParticip) {
+            return $http.post('particip/unlock/' + idParticip).then(function(response) {
+                return response;
+            });
+        }
         return obj; 
     }
 ]);

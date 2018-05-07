@@ -93,6 +93,28 @@ class ParticipController extends Controller {
         return $model;
     }
 
+    public function actionLock($id) {
+        $model = $this->findModel($id);
+
+        ParticipController::checkAccess('lock', $model);
+        $locked_date = Yii::$app->getRequest()->getBodyParam("locked_date");
+        return $locked_date;
+        $model->card_locked_date = Formater::convertInput($locked_date);
+        $model->save();
+        return $model;
+    }
+
+    public function actionUnlock($id) {
+        $model = $this->findModel($id);
+
+        ParticipController::checkAccess('unlock', $model);
+
+        $model->card_locked_date = null;
+        $model->save();
+        return $model;
+    }
+
+
     public static function findModel($id) {
         if (($model = particip::findOne($id)) !== null) {
             return $model;

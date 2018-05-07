@@ -20,6 +20,34 @@
   padding-right: 0px!important;
 }
 
+.topbar-loading {
+  visibility: hidden;
+}
+
+.topbar-loaded {
+  visibility: visible!important;
+}
+
+.btn-site:hover {
+  color: white;
+}
+.btn-site {
+  display: inline-block;
+  color: white;
+  padding: 25px;
+}
+
+.btn-site:focus,.btn-site:active {
+   outline: none !important;
+   box-shadow: none;
+   color: white;
+}
+
+.nav {
+  position: absolute;
+  right: 0px;
+}
+
 .sidebar {
 	display: block;
 	position: fixed;
@@ -68,14 +96,11 @@
 .sidebar .nav-link.active {
 }
 
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  
-}
 
 .sidebar li {
 
 }
+
 
 .sidebar li a {
   display: block;
@@ -172,6 +197,10 @@
 
 .text-left {
 	text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .common-block {

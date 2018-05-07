@@ -1,10 +1,12 @@
 <form name="createForm" ng-submit="update()" role="form" novalidate>
-  <h1 class="subtitle">Карточка участника</h1>
+  <h1 class="subtitle">Бэйдж участника</h1>
   <div id="badge">
     <badge-widget/>
   </div> 
   <div style="padding-top: 15px;">
     <button type="button" class="btn btn-primary print" ng-click="printBadge('badge')">Печать</button>
+    <button type="button" class="btn btn-primary print" ng-click="lockCard(modelUser.id)">Заблокировать бэйдж</button>
+    <button type="button" class="btn btn-primary print" ng-click="unlockCard(modelUser.id)">Разблокировать бэйдж</button>
   </div>
   <h1 class="subtitle">Персональная информация</h1>
   <div class="subblock">
