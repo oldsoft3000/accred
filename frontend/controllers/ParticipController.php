@@ -121,6 +121,7 @@ class ParticipController extends Controller {
         $model->position_latin = $faker_latin->jobTitle;
         $model->citizenship = 'RU';
         $model->photo = 'data:image/jpg;base64,' . base64_encode(file_get_contents($faker->imageUrl(100, 100, 'cats')));
+        $model->visa_required = 0;
         
         if (!$model->save()) {
             $model->validate();
