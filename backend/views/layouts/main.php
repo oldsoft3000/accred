@@ -24,7 +24,6 @@ AppAsset::register($this);
               <img class="logo" src="../images/logo_1.png" >
 
               <div class="nav navbar-nav">
-                <a ng-if="!isLoggedIn()" ng-class="{'topbar-loaded': true}" class="btn-site topbar-loading" role="button" aria-disabled="true" href="#!/login">Войти</a> 
                 <a ng-if="isLoggedIn()" ng-class="{'topbar-loaded': true}" class="btn-site topbar-loading" role="button" ng-click="logout()" aria-disabled="true">Выйти</a> 
               </div>
           </div>
