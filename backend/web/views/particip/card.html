@@ -95,9 +95,9 @@
       <label class="col-sm-3">Фотография</label>
       <div class="col-sm-8">
         <label class="btn btn-primary">
-          <input type="file" id="photoFile" style="display:none" onchange="angular.element(this).scope().photoSelected()"> Выбрать файл
+          <input ng-disabled="canUnlock == false" type="file" id="photoFile" style="display:none" onchange="angular.element(this).scope().photoSelected()"> Выбрать файл
         </label>
-        <button type="button" ng-if="modelUser.photo" ng-click="editPhoto()" class="btn btn-primary">Редактировать</button>
+        <button ng-disabled="canUnlock == false" type="button" ng-if="modelUser.photo" ng-click="editPhoto()" class="btn btn-primary">Редактировать</button>
         <!--<span class='' id="upload-file-info" style="padding-left:10px;">{{fileName}}</span> -->
       </div>
     </div>
@@ -147,6 +147,7 @@
                    placeholder="дд.мм.гг"
                    ng-click="error['date_of_birth'] = ''" 
                    ng-model="modelUser.date_of_birth"
+                   ng-disabled="canUnlock == false" 
                    ng-model-options="{ updateOn: 'blur' }"> 
             <span class="input-group-addon">
                 <img class="date-time-icon" border="0" src="images/calendar.png" >
@@ -208,7 +209,7 @@
                      ng-class="{'is-invalid': error['visa_passport_validity'], 'has-value' : modelUser.visa_passport_validity }"
                      ng-model="modelUser.visa_passport_validity"
                      ng-model-options="{ updateOn: 'blur' }"
-                     ng-disabled="modelUser.visa_required===0"> 
+                     ng-disabled="modelUser.visa_required===0 || canUnlock == false"> 
               <span class="input-group-addon">
                   <img class="date-time-icon" border="0" src="images/calendar.png" >
               </span>
@@ -313,7 +314,7 @@
 
   <div class="form-group row justify-content-center" style="text-align:center;">
     <div class="col-10">
-      <button type="submit" class="btn btn-primary">Сохранить</button>
+      <button type="submit" class="btn btn-primary" ng-disabled="canUnlock == false">Сохранить</button>
     </div>
   </div>
 

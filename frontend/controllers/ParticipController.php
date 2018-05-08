@@ -67,7 +67,9 @@ class ParticipController extends Controller {
         $model = $this->findModel($id);
 
         ParticipController::checkAccess('update', $model);
-
+        if (!\Yii::$app->user->can('admin') && $model->card_locked_date != null) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         if ($model->load(Yii::$app->request->post(), '') && $model->save()) {
             return ['access_token' => Yii::$app->user->identity->getAuthKey()];
         } else {
