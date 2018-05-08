@@ -18,8 +18,8 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-/vendor
-#!/vendor/bower-asset
+/vendor/*
+!/vendor/bower-asset/
 
 # composer itself is not needed
 composer.phar

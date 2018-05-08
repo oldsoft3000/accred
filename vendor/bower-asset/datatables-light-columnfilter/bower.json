@@ -1,0 +1,17 @@
+{
+  "name": "datatables-light-columnfilter",
+  "version": "1.0.5",
+  "license": "CC by-nc",
+  "main": "dist/dataTables.lightColumnFilter.js",
+  "ignore": [
+    "src",
+    "nbproject",
+    "package.json",
+    "Gruntfile.js",
+    "README.md",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "datatables": "1.10.*"
+  }
+}
