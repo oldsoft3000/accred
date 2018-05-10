@@ -26,7 +26,8 @@ return [
             ],
 
         ],*/
-        'log'
+        'log',
+        'app\config\Settings',
     ],
     'controllerNamespace' => 'app\controllers',
 
@@ -95,6 +96,18 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
+                'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'oldsoft3000@gmail.com',
+                'password' => '',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
         ],
     ],
     'params' => $params,

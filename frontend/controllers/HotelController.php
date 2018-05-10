@@ -42,7 +42,7 @@ class HotelController extends Controller {
     public function actionView($id = null) {
         if ($id == null) {
             $modelSearch = new ParticipSearch();
-            return $modelSearch->searchHotel();   
+            return $modelSearch->searchHotel();
         } else {
             ParticipController::checkAccess('view', null, ['id' => $id]);
             $modelHotel = $this->findModelByParticip($id);
@@ -57,30 +57,31 @@ class HotelController extends Controller {
     public function actionReserve($id /* Particip id */) {
         $modelParticip = particip::findOne($id);
         ParticipController::checkAccess('update', $modelParticip);
-        $modelHotelOld = $this->findModelByParticip($id); 
+        $modelHotelOld = $this->findModelByParticip($id);
         $modelHotel = new Hotel();
 
         if ($modelHotel->load(Yii::$app->getRequest()->getBodyParams(), '') &&
-            $modelHotel->save()) {
-                $modelParticip->hotel_id = $modelHotel->id;
-                if ($modelParticip->save()) {
-                    if ($modelHotelOld) {
-                        $modelHotelOld->delete();
-                    }
-                    return ['access_token' => Yii::$app->user->identity->getAuthKey()];
-                } else {
-                    throw new ServerErrorHttpException('Server error.');
+                $modelHotel->save()) {
+            $modelParticip->hotel_id = $modelHotel->id;
+            if ($modelParticip->save()) {
+                if ($modelHotelOld) {
+                    $modelHotelOld->delete();
                 }
+                $this->sendReserveForm($modelParticip);
+                return ['access_token' => Yii::$app->user->identity->getAuthKey()];
+            } else {
+                throw new ServerErrorHttpException('Server error.');
+            }
         } else {
-            $modelHotel->validate(); 
-            return $modelHotel; 
+            $modelHotel->validate();
+            return $modelHotel;
         }
     }
 
     public function actionDelete($id) {
         $modelParticip = particip::findOne($id);
         ParticipController::checkAccess('delete', $modelParticip);
-        $modelHotel = $this->findModelByParticip($id); 
+        $modelHotel = $this->findModelByParticip($id);
         if ($modelHotel) {
             $modelParticip->hotel_id = 0;
             $modelParticip->save();
@@ -88,6 +89,16 @@ class HotelController extends Controller {
         }
         return $modelHotel;
     }
+
+    private function sendReserveForm($modelParticip) {
+        Yii::$app->mailer->compose()
+    ->setFrom('from@domain.com')
+    ->setTo('oldsoft3000@gmail.com')
+    ->setSubject('Message subject')
+    ->setTextBody('Plain text content')
+    ->setHtmlBody('<b>HTML content</b>')
+    ->send();
+    }   
 
     protected function findModelByParticip($id) {
         if (($modelParticip = particip::findOne($id)) !== null) {
@@ -100,4 +111,5 @@ class HotelController extends Controller {
         }
         return null;
     }
+
 }

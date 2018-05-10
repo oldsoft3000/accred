@@ -112,7 +112,11 @@ HotelControllers.controller('HotelController', ['$location',
             function errorHandler(response) {
                 $scope.dataLoading = false;
                 angular.forEach(response.data, function(error) {
-                    $scope.error[error.field] = error.message;
+                    if (error.message != 'duplcated') {
+                        $scope.error[error.field] = error.message;
+                    } else {
+                        $location.path('/hotel/view').replace();
+                    }
                 });
                 return response;
             }

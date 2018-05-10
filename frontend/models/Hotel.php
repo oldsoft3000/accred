@@ -30,6 +30,8 @@ class Hotel extends \yii\db\ActiveRecord {
         return [
             [['arrival_date', 'departure_date', 'guests', 'type_name', 'category_name', 'hotel_index'], 'required'],
             [['guests'], 'integer'],
+
+            [[  'arrival_date', 'departure_date', 'guests', 'type_name','category_name', 'hotel_index'], 'unique', 'targetAttribute' => ['arrival_date', 'departure_date', 'guests', 'type_name', 'category_name', 'hotel_index'], 'message' => 'duplcated']
         ];
     }
 
